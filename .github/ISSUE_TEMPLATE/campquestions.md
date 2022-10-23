@@ -4,7 +4,6 @@ about: '코드랩 과정 중 이슈탭에 질문을 올리기 위한 템플릿�
 title: '예시) [Unit1][Create your first Android app] 관련 질문입니다.  '
 labels: Unit1, question
 assignees: ''
-
 ---
 
 ## 질문 내용
