@@ -71,7 +71,7 @@ Perferences -> Languages & Frameworks -> Kotlin
 ### 2. 코드랩 진행하기
 1. Fork 브랜치를 로컬로 가져오기 위해서 Github 주소가 필요하기에, 아래 사진 등을 참고하여 주소를 복사합니다.
 ![](https://i.imgur.com/5e5vyzD.png)
-2. git clone을 이용해 fork한 개인 브랜치를 로컬로 다운받습니다.
+2. git clone을 이용해 fork한 개인 브랜치를 로컬로 다운받습니다.  
 `예시: $git clone https://github.com/(Github아이디)/ComposeCamp2022-for-Beginners.git`
 3. 일정 별 각 주차에 맞는 폴더 위치에서 코드랩을 진행합니다. (~/week 1,2,3,4/Compose .../XXXComposeCodelab)
 4. 완성된 코드를 개인 fork 브랜치로 push하여 업데이트 합니다.
