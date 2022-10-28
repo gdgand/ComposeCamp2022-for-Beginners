@@ -48,5 +48,6 @@
 - [단원 4: 탐색 및 앱 아키텍처](https://developer.android.com/courses/android-basics-compose/unit-4)
 
 ### 가이드 위키 페이지
+- 깃허브 사용 및 각종 오류 대처를 위한 가이드 페이지입니다.
 - 아래 사진과 같이 'Wiki'탭 클릭!
 ![](https://i.imgur.com/hJvdRea.png)
