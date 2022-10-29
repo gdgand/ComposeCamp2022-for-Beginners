@@ -1,0 +1,117 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<!--
+3  ~ Copyright (C) 2022 The Android Open Source Project
+4  ~
+5  ~ Licensed under the Apache License, Version 2.0 (the "License");
+6  ~ you may not use this file except in compliance with the License.
+7  ~ You may obtain a copy of the License at
+8  ~
+9  ~     http://www.apache.org/licenses/LICENSE-2.0
+10  ~
+11  ~ Unless required by applicable law or agreed to in writing, software
+12  ~ distributed under the License is distributed on an "AS IS" BASIS,
+13  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+14  ~ See the License for the specific language governing permissions and
+15  ~ limitations under the License.
+16-->
+17<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+18    package="com.example.happybirthday"
+19    android:versionCode="1"
+20    android:versionName="1.0" >
+21
+22    <uses-sdk
+23        android:minSdkVersion="21"
+23-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml
+24        android:targetSdkVersion="32" />
+24-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml
+25
+26    <application
+26-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:21:5-39:19
+27        android:allowBackup="true"
+27-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:22:9-35
+28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+28-->[androidx.core:core:1.7.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/52d505bd74d95d5a6ee13ff584afbe48/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
+29        android:debuggable="true"
+30        android:icon="@mipmap/ic_launcher"
+30-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:23:9-43
+31        android:label="@string/app_name"
+31-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:24:9-41
+32        android:roundIcon="@mipmap/ic_launcher_round"
+32-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:25:9-54
+33        android:supportsRtl="true"
+33-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:26:9-35
+34        android:testOnly="true"
+35        android:theme="@style/Theme.HappyBirthday" >
+35-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:27:9-51
+36        <activity
+36-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:28:9-38:20
+37            android:name="com.example.happybirthday.MainActivity"
+37-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:29:13-66
+38            android:exported="true"
+38-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:30:13-36
+39            android:label="@string/app_name"
+39-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:31:13-45
+40            android:theme="@style/Theme.HappyBirthday" >
+40-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:32:13-55
+41            <intent-filter>
+41-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:33:13-37:29
+42                <action android:name="android.intent.action.MAIN" />
+42-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:34:17-69
+42-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:34:25-66
+43
+44                <category android:name="android.intent.category.LAUNCHER" />
+44-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:36:17-77
+44-->/Users/jeonbyeongseo/AndroidStudioProjects/happybirthday/basic-android-kotlin-compose-birthday-card-app/app/src/main/AndroidManifest.xml:36:27-74
+45            </intent-filter>
+46        </activity>
+47        <activity
+47-->[androidx.compose.ui:ui-tooling:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/9ad0424fb97cbee0b69d7d6189f26933/transformed/ui-tooling-1.2.0/AndroidManifest.xml:24:9-26:39
+48            android:name="androidx.compose.ui.tooling.PreviewActivity"
+48-->[androidx.compose.ui:ui-tooling:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/9ad0424fb97cbee0b69d7d6189f26933/transformed/ui-tooling-1.2.0/AndroidManifest.xml:25:13-71
+49            android:exported="true" />
+49-->[androidx.compose.ui:ui-tooling:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/9ad0424fb97cbee0b69d7d6189f26933/transformed/ui-tooling-1.2.0/AndroidManifest.xml:26:13-36
+50
+51        <provider
+51-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:25:9-33:20
+52            android:name="androidx.startup.InitializationProvider"
+52-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:26:13-67
+53            android:authorities="com.example.happybirthday.androidx-startup"
+53-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:27:13-68
+54            android:exported="false" >
+54-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:28:13-37
+55            <meta-data
+55-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:30:13-32:52
+56                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+56-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:31:17-85
+57                android:value="androidx.startup" />
+57-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:32:17-49
+58        </provider>
+59
+60        <receiver
+60-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:35:9-47:20
+61            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+61-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:36:13-76
+62            android:directBootAware="false"
+62-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:37:13-44
+63            android:enabled="true"
+63-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:38:13-35
+64            android:exported="true"
+64-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:39:13-36
+65            android:permission="android.permission.DUMP" >
+65-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:40:13-57
+66            <intent-filter>
+66-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:41:13-43:29
+67                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+67-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:42:17-91
+67-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:42:25-88
+68            </intent-filter>
+69            <intent-filter>
+69-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:44:13-46:29
+70                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+70-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:45:17-85
+70-->[androidx.profileinstaller:profileinstaller:1.2.0] /Users/jeonbyeongseo/.gradle/caches/transforms-3/5bf98f6343f4e50a14df32364bcf51ae/transformed/profileinstaller-1.2.0/AndroidManifest.xml:45:25-82
+71            </intent-filter>
+72        </receiver>
+73    </application>
+74
+75</manifest>
