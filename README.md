@@ -51,3 +51,11 @@
 - 깃허브 사용 및 각종 오류 대처를 위한 가이드 페이지입니다.
 - 아래 사진과 같이 'Wiki'탭 클릭!
 ![](https://i.imgur.com/hJvdRea.png)
+
+
+## 📌 수료를 위한 유의 사항!
+- Commit 기록 또한 수료 기준의 일환입니다. 따라서, 최종 프로젝트만을 제출하는 것이 아닌, Commit을 통해 과정도 함께 해주세요!
+- Pull Request시 다음 곳을 향하도록 해주세요!
+    - base repository: gdgand/ComposeCamp2022-for-Beginners
+    - base: main
+
