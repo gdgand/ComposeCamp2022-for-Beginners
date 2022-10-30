@@ -30,7 +30,7 @@ local.properties
 */**/.idea/*
 
 # Gradle cache
-.gradle
+*/**/.gradle
 
 # Sandbox stuff
 _sandbox
