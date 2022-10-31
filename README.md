@@ -32,7 +32,7 @@
 
 - **Compose Camp 초급코스 운영방에 참가**
     - [카카오톡 오픈채팅방 링크](https://open.kakao.com/o/g1drN5Ie)
-    - 비밀번호: gdscand!
+    - 비밀번호: gdscand
 
 - **Compose 1.2 사용을 위한 환경 설정 맞추기**
     - Kotlin : 1.7.0 이상 / Compose 1.2-beta 설치
