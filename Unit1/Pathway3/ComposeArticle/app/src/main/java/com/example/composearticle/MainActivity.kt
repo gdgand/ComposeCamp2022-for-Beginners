@@ -68,21 +68,21 @@ private fun ArticleCard(
                     blurRadius = 3f
                 )
             )
-            , modifier = Modifier.align(Alignment.CenterHorizontally)
+            , modifier = modifier.align(Alignment.CenterHorizontally)
                 . fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally)
                 .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp)
         )
         Text(text = shortDescription
             , textAlign = TextAlign.Justify
-            , modifier = Modifier.align(Alignment.CenterHorizontally)
+            , modifier = modifier.align(Alignment.CenterHorizontally)
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally)
                 .padding(start = 16.dp, end = 16.dp)
         )
         Text(text = longDescription
             , textAlign = TextAlign.Justify
-            , modifier = Modifier.align(Alignment.CenterHorizontally)
+            , modifier = modifier.align(Alignment.CenterHorizontally)
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally)
                 .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp)
