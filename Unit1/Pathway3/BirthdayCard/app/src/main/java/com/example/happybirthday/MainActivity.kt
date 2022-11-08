@@ -42,7 +42,7 @@ fun BirthdayGreetingWithText(message: String, from: String) {
             text = message,
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentWidth(Alignment.Start)
+                .wrapContentWidth(Alignment.CenterHorizontally)
                 .padding(start = 16.dp, top = 16.dp),
             fontSize = 36.sp,
         )
@@ -51,7 +51,7 @@ fun BirthdayGreetingWithText(message: String, from: String) {
             fontSize = 24.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentWidth(Alignment.End)
+                .wrapContentWidth(Alignment.CenterHorizontally)
                 .padding(start = 16.dp, end = 16.dp)
         )
     }
