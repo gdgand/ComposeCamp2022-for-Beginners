@@ -3,13 +3,16 @@ package com.example.android.happybirthday
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import com.example.happybirthday.R
 import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 
 class MainActivity : ComponentActivity() {
@@ -39,10 +42,20 @@ fun BirthdayGreetingWithText(message: String, from: String) {
     }
 }
 
+@Composable
+fun BirthDayGreetingWithImage(message: String, from: String) {
+    val image = painterResource(R.drawable.androidparty)
+    Image(
+        painter = image,
+        contentDescription = null
+    )
+}
+
+
 @Preview(showBackground = false)
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        BirthdayGreetingWithText("Happy Birthday Sam!", "- from Emma")
+        BirthDayGreetingWithImage("Happy Birthday Sam!", "- from Emma")
     }
 }
