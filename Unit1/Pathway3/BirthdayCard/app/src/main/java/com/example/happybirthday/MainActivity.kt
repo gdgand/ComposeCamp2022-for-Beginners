@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             HappyBirthdayTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    BirthdayGreetingWithText("Happy Birthday Sam!", "- from Emma")
+                    BirthDayGreetingWithImage("Happy Birthday Sam!", "- from Emma")
                 }
             }
         }
@@ -45,10 +46,13 @@ fun BirthdayGreetingWithText(message: String, from: String) {
 @Composable
 fun BirthDayGreetingWithImage(message: String, from: String) {
     val image = painterResource(R.drawable.androidparty)
-    Image(
-        painter = image,
-        contentDescription = null
-    )
+    Box {
+        Image(
+            painter = image,
+            contentDescription = null
+        )
+        BirthdayGreetingWithText(message = message, from = from)
+    }
 }
 
 
