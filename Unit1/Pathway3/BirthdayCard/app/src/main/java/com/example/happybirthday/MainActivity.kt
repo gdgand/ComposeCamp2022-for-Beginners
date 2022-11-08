@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
         setContent {
                 HappyBirthdayTheme {
                     Surface(color = MaterialTheme.colors.background) {
-                        
+                        BirthdayGreetingWithText(message = "Happy Birth Sam!", from = "- from Emma")
                     }
                 }
 
@@ -52,14 +52,16 @@ class MainActivity : ComponentActivity() {
 // 7. 텍스트 정렬 및 패딩 추가
 @Composable
 fun BirthdayGreetingWithText(message: String, from: String) {
-    Text(
-        text = message,
-        fontSize = 36.sp
-    )
-    Text(
-        text = from,
-        fontSize = 24.sp
-    )
+    Column {
+        Text(
+            text = message,
+            fontSize = 36.sp
+        )
+        Text(
+            text = from,
+            fontSize = 24.sp
+        )
+    }
 }
 
 // 5. Box 레이아웃 추
