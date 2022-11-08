@@ -16,4 +16,6 @@
   -->
 <resources>
     <string name="app_name">Happy Birthday</string>
+    <string name="str_happy_birth_day_text">생일 축하해</string>
+    <string name="str_from">- from HyeSeong</string>
 </resources>
