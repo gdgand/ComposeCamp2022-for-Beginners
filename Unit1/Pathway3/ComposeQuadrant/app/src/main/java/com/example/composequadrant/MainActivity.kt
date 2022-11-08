@@ -5,8 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,6 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextAlign.Companion.Justify
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
@@ -33,40 +32,43 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ComposeQuadrantApp() {
 
-    val modifier = Modifier
+//    val modifier = Modifier
 
-    Column(modifier = Modifier.fillMaxWidth().fillMaxHeight()
-        , horizontalAlignment = Alignment.CenterHorizontally
-        , verticalArrangement = Arrangement.Center
+    Column(modifier = Modifier.fillMaxWidth()
     ) {
-        Row(modifier = Modifier.fillMaxHeight(fraction = .5f).fillMaxWidth()
-//            horizontalArrangement = Arrangement.SpaceEvenly
+        Row(modifier = Modifier
+            .weight(1f)
+           ,  horizontalArrangement = Arrangement.SpaceEvenly
         ) {
 
             ComposableInfoCard(stringResource(R.string.first_title)
                 , stringResource(R.string.first_description)
                 , backgroundColor = Color.Green
-                , modifier =   modifier.fillMaxWidth(fraction = .5f)
+                , modifier = Modifier.weight(1f)
             )
 
             ComposableInfoCard(stringResource(R.string.second_title)
                 , stringResource(R.string.second_description)
                 , backgroundColor = Color.Yellow
-                , modifier = modifier.fillMaxWidth(1f)
+                , modifier = Modifier.weight(1f)
             )
         }
-        Row(modifier = Modifier.fillMaxHeight().fillMaxWidth()
+
+        Row(modifier = Modifier.weight(1f)
+            ,  horizontalArrangement = Arrangement.SpaceEvenly
         ) {
 
-                    ComposableInfoCard(stringResource(R.string.third_title)
+            ComposableInfoCard(stringResource(R.string.third_title)
                 , stringResource(R.string.third_description)
-                , backgroundColor = Color.Blue
-                , modifier = modifier.fillMaxWidth(fraction = .5f)
+                , backgroundColor = Color.Cyan
+                , modifier = Modifier.weight(1f)
             )
+
+
             ComposableInfoCard(stringResource(R.string.fourth_title)
                 , stringResource(R.string.fourth_description)
                 , backgroundColor = Color.LightGray
-                , modifier = modifier.fillMaxWidth(1f)
+                , modifier = Modifier.weight(1f)
             )
         }
     }
@@ -79,22 +81,25 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier = modifier.fillMaxWidth().fillMaxHeight()
+//    Box(modifier = modifier
+//        .background(color = backgroundColor).fillMaxSize()
+//    ) {
+        Column(modifier = modifier.fillMaxSize().background(color = backgroundColor).padding(16.dp)
         , verticalArrangement = Arrangement.Center
         , horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = title
-//            , backgroundColor = backgroundColor
-            , modifier = modifier.fillMaxWidth()
-                .align(Alignment.CenterHorizontally)
-        )
-        Text(text = description
-//            , backgroundColor = backgroundColor
-            , modifier = modifier.fillMaxWidth()
-            , textAlign = TextAlign.Justify
-//                .align(Alignment.Start)
-        )
-    }
+        ) {
+
+            Text(text = title
+                , fontWeight = FontWeight.Bold
+                , modifier = Modifier.padding(4.dp)
+            )
+
+            Text(text = description
+                , textAlign = Justify
+            )
+        }
+//    }
+
 }
 
 
