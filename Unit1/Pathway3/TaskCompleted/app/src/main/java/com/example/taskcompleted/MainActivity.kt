@@ -19,7 +19,13 @@ import androidx.compose.ui.unit.sp
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            TaskCompletedScreen(
+                imagePainter = painterResource(id = R.drawable.ic_task_completed),
+                title = stringResource(id = R.string.all_task_completed),
+                subTitle = stringResource(id = R.string.nice_work),
+            )
+        }
     }
 }
 
@@ -48,6 +54,6 @@ fun DefaultPreview() {
     TaskCompletedScreen(
         painterResource(id = R.drawable.ic_task_completed),
         stringResource(id = R.string.all_task_completed),
-        stringResource(id = R.string.nice_work)
+        stringResource(id = R.string.nice_work),
     )
 }
