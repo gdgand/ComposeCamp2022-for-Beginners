@@ -42,8 +42,8 @@ class MainActivity : ComponentActivity() {
             HappyBirthdayTheme() {
                 Surface(color = MaterialTheme.colors.background) {
                     BirthdayGreetingWithImage(
-                        message = "Happy Birthday~~~ Mina",
-                        from = "from Doyeon"
+                        message = stringResource(id = R.string.birthday_message),
+                        from = stringResource(id = R.string.from_message)
                     )
                 }
             }
@@ -62,7 +62,7 @@ fun BirthdayGreetingWithText(message: String, from: String) {
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally)
-                .padding(top=16.dp)
+                .padding(top = 16.dp)
         )
         Text(
             text=from,
@@ -95,6 +95,8 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
 @Preview(showBackground = false)
 @Composable
 private fun BirthdayCardPreview() {
-    BirthdayGreetingWithImage(message = "Happy Birthday mina!", from = "- from DoYeon")
+    BirthdayGreetingWithImage(message = stringResource(R.string.birthday_message), 
+        from = stringResource(R.string.from_message)
+        )
 }
 
