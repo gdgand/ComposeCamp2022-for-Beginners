@@ -1,0 +1,157 @@
+// =====================================
+
+fun main() {
+   println("Use the val keyword when the value doesn't change.")
+   println("Use the var keyword when the value can change.")
+   println("When you define a function, you define the parameters that can be passed to it.")
+   println("When you call a function, you pass arguments for the parameters.")
+}
+
+// =====================================
+
+fun main() {
+    println("New chat message from a friend")
+}
+
+// =====================================
+
+fun main() {
+    var discountPercentage: Int = 0
+    var offer: String = ""
+    val item = "Google Chromecast"
+    discountPercentage = 20
+    offer = "Sale - Up to $discountPercentage% discount on $item! Hurry up!"
+
+    println(offer)
+}
+
+// =====================================
+
+fun main() {
+    val numberOfAdults = 20
+    val numberOfKids = 30
+    val total = numberOfAdults + numberOfKids
+    println("The total party size is: $total")
+}
+
+// =====================================
+
+fun main() {
+    val baseSalary = 5000
+    val bonusAmount = 1000
+    // val totalSalary = "$baseSalary + $bonusAmount"
+    val totalSalary = baseSalary + bonusAmount
+    println("Congratulations for your bonus! You will receive a total of $totalSalary(additional bonus).")
+}
+
+// =====================================
+
+fun main() {
+    val firstNumber = 10
+    val secondNumber = 5
+	val result = firstNumber + secondNumber
+    println("$firstNumber + $secondNumber = $result")
+}
+
+// =====================================
+
+fun main() {
+    val firstNumber = 10
+    val secondNumber = 5
+    val thirdNumber = 8
+
+    val result = add(firstNumber, secondNumber)
+    val anotherResult = subtract(firstNumber, thirdNumber)
+
+    println("$firstNumber + $secondNumber = $result")
+    println("$firstNumber - $thirdNumber = $anotherResult")
+}
+
+// Define add() function below this line
+fun add(first: Int, second: Int): Int {
+    return first + second
+}
+
+fun subtract(first: Int, second: Int): Int {
+    return first - second
+}
+
+// =====================================
+
+fun main() {
+    val firstUserEmailId = "user_one@gmail.com"
+
+    // The following line of code assumes that you named your parameter as emailId.
+    // If you named it differently, feel free to update the name.
+    println(displayAlertMessage(emailId = firstUserEmailId))
+    println()
+
+    val secondUserOperatingSystem = "Windows"
+    val secondUserEmailId = "user_two@gmail.com"
+
+    println(displayAlertMessage(secondUserOperatingSystem, secondUserEmailId))
+    println()
+
+    val thirdUserOperatingSystem = "Mac OS"
+    val thirdUserEmailId = "user_three@gmail.com"
+
+    println(displayAlertMessage(thirdUserOperatingSystem, thirdUserEmailId))
+    println()
+}
+
+// Define your displayAlertMessage() below this line.
+fun displayAlertMessage(operatingSystem: String = "Unknown OS", emailId: String): String {
+    // println("There's a new sign-in request on $operatingSystem for your Google Account $emailId.")
+    return "There's a new sign-in request on $operatingSystem for your Google Account $emailId."
+}
+
+// =====================================
+
+fun main() {
+    val steps = 4000
+    val caloriesBurned = pedometerStepsToCalories(steps);
+    println("Walking $steps steps burns $caloriesBurned calories")
+}
+
+// fun PEDOMETERstepsTOcalories(NumberOFStepS: Int): Double {
+fun pedometerStepsToCalories(numberOfSteps: Int): Double {
+    // val CaloriesBURNEDforEachStep = 0.04
+    val caloriesBurnedForEachStep = 0.04
+    // val TotalCALORIESburned = NumberOFStepS * CaloriesBURNEDforEachStep
+    val totalCaloriesBurned = numberOfSteps * caloriesBurnedForEachStep
+    // return TotalCALORIESburned
+    return totalCaloriesBurned
+}
+
+// =====================================
+
+fun main() {
+   println(compareTimeSpent(300, 250))
+   println(compareTimeSpent(300, 300))
+   println(compareTimeSpent(200, 220))
+}
+
+fun compareTimeSpent(timeSpentToday: Int, timeSpentYesterday: Int): Boolean {
+    if (timeSpentToday > timeSpentYesterday) 
+    	return true
+    else 
+    	return false
+}
+
+// =====================================
+
+fun main() {
+   printWeatherOfCity("Ankara", 27, 31, 82)
+   printWeatherOfCity("Tokyo", 32, 36, 10)
+   printWeatherOfCity("Cape Town", 59, 64, 2)
+   printWeatherOfCity("Guatemala City", 50, 55, 7)
+}
+
+fun printWeatherOfCity(city: String, lowTemperature: Int, highTemperature: Int, chanceOfRain: Int) {
+    println("City: $city")
+    println("Low temperature: $lowTemperature, High temperature: $highTemperature")
+    println("Chance of rain: $chanceOfRain%")
+    println()
+}
+
+// =====================================
