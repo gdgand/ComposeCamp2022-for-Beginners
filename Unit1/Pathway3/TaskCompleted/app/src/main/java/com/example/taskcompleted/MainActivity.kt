@@ -38,8 +38,9 @@ fun TaskCompletedScreen(
     subTitle: String,
     modifier: Modifier=Modifier,
     ) {
-    Column(modifier.fillMaxWidth().fillMaxHeight().wrapContentWidth(Alignment.CenterHorizontally),
-        verticalArrangement = Arrangement.Center) {
+    Column(modifier.fillMaxWidth().fillMaxHeight(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally) {
         Image(painter = imagePainter, contentDescription = null,
             modifier
                 .fillMaxWidth()
@@ -47,7 +48,7 @@ fun TaskCompletedScreen(
                 .wrapContentHeight(Alignment.CenterVertically))
 
         Text(text = title, Modifier.fillMaxWidth()
-                .wrapContentWidth(Alignment.CenterHorizontally).padding(top = 24.dp, bottom = 8.dp), fontSize = 24.sp)
+                .wrapContentWidth(Alignment.CenterHorizontally).padding(top = 24.dp, bottom = 8.dp), fontSize = 24.sp, fontWeight = FontWeight.Bold)
 
         Text(text = subTitle, Modifier.fillMaxWidth()
             .wrapContentWidth(Alignment.CenterHorizontally), fontSize = 16.sp)
