@@ -25,16 +25,18 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ArticleCard(title = stringResource(R.string.title_jetpack_compose_tutorial),
-                shortDescription = stringResource(id = R.string.compose_short_desc) ,
-                longDescription = stringResource(id = R.string.compose_long_desc),
-                imagePainter = painterResource(id = R.drawable.bg_compose_background))
+            ComposeArticleApp()
         }
     }
 }
 
 @Composable
-fun ComposeArticleApp() { }
+fun ComposeArticleApp() {
+    ArticleCard(title = stringResource(R.string.title_jetpack_compose_tutorial),
+        shortDescription = stringResource(id = R.string.compose_short_desc) ,
+        longDescription = stringResource(id = R.string.compose_long_desc),
+        imagePainter = painterResource(id = R.drawable.bg_compose_background))
+}
 
 @Composable
 private fun ArticleCard(
@@ -63,9 +65,6 @@ private fun ArticleCard(
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { 
-    ArticleCard(title = stringResource(R.string.title_jetpack_compose_tutorial),
-        shortDescription = stringResource(id = R.string.compose_short_desc) ,
-        longDescription = stringResource(id = R.string.compose_long_desc),
-        imagePainter = painterResource(id = R.drawable.bg_compose_background))
+fun DefaultPreview() {
+    ComposeArticleApp()
 }
