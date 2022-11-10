@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BusinessCard</string>
+    <string name="name">LeeMooJin</string>
+    <string name="title">Android Developer Extraordinaire</string>
+    <string name="phone_number">+82–10-????-????</string>
+    <string name="share">\@AndroidDev</string>
+    <string name="email">zkzkzhzj@gmail.com</string>
+</resources>
