@@ -1,0 +1,73 @@
+// ==========================
+
+fun main() {
+    // val favoriteActor = "Sandra Oh"
+    // val favoriteActor = null
+    // println(favoriteActor)
+    
+    var favoriteActor: String? = "Sandra Oh"
+    println(favoriteActor)
+    //favoriteActor = "Meryl Streep"
+    
+    favoriteActor = null
+    println(favoriteActor)
+}
+
+// ==========================
+
+fun main() {
+   	var number: Int? = 10
+    println(number)
+    
+    number = null
+    println(number)
+}
+
+// ==========================
+
+fun main() {
+   	// var favoriteActor: String? = "Sandra Oh"
+   	var favoriteActor: String? = null
+    
+    // println(favoriteActor?.length)
+    // println(favoriteActor!!.length)
+    
+    val lengthOfName = if (favoriteActor != null) {
+        // println("The number of characters in your favorite actor's name is ${favoriteActor.length}.")
+        favoriteActor.length
+    } else {
+        // println("You didn't input a name")
+        0
+    }
+    
+    println("The number of characters in your favorite actor's name is $lengthOfName.")
+}
+
+// ==========================
+
+fun main() {
+    // val favoriteActor: String? = "Sandra Oh"
+    val favoriteActor: String? = null
+
+    val lengthOfName = favoriteActor?.length ?: 0
+
+    println("The number of characters in your favorite actor's name is $lengthOfName.")
+}
+
+// ==========================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
