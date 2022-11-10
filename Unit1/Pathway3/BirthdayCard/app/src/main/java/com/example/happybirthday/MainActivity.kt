@@ -19,6 +19,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             HappyBirthdayTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    BirthdayGreetingWithText("Happy Birthday Sam!", "- from Emma")
+                    BirthdayGreetingWithImage("Happy Birthday Sam!", "- from Emma")
                 }
             }
         }
@@ -51,11 +52,15 @@ fun BirthdayGreetingWithText(message: String, from: String) {
     }
 }
 
-// 5. Box 레이아웃 추
+// 5. Box 레이아웃 추가
 @Composable
 fun BirthdayGreetingWithImage(message: String, from: String) {
     val image = painterResource(R.drawable.androidparty)
-    Image(painter = image, contentDescription = null)
+    Box {
+        Image(painter = image, contentDescription = null)
+        BirthdayGreetingWithText(message = message, from = from)
+    }
+
 }
 
 // 4. 이미지 컴포저블 추가
@@ -63,7 +68,6 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
 @Composable
 private fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        BirthdayGreetingWithText("Happy Birthday Sam!", "- from Emma")
         BirthdayGreetingWithImage("Happy Birthday Sam!", "- from Emma")
     }
 }
