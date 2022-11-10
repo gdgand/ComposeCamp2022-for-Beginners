@@ -59,7 +59,7 @@ fun BirthdayGreetingWithText(message: String, from: String) {
     Column {
         Text(text = message, fontSize = 36.sp ,
             modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.CenterHorizontally)
-                .padding(start = 16.dp, top = 16.dp, end = 16.dp))
+                .padding(start = 16.dp, top = 16.dp))
 
         Text(text = from, fontSize = 24.sp,
             modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.CenterHorizontally)
