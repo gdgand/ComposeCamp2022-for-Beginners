@@ -50,7 +50,7 @@ private fun ArticleCard(
     shortDescription: String,
     longDescription: String,
     imagePainter: Painter,
-    modifier: Modifier = Modifier,
+    modifier: Modifier,
 ) {
     Column {
         Image(
