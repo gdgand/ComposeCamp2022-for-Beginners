@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,15 +23,42 @@ import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeQuadrantTheme {
+                ComposeQuadrantApp()
+            }
+        }
     }
 }
 
 @Composable
 fun ComposeQuadrantApp() {
-    Column() {
-        Row() { }
-        Row() { }
+    Column {
+        Row {
+            ComposableInfoCard(
+                title = stringResource(id = R.string.first_title),
+                description = stringResource(id = R.string.first_description),
+                backgroundColor = Color.Green
+            )
+            ComposableInfoCard(
+                title = stringResource(id = R.string.second_title),
+                description = stringResource(id = R.string.second_description),
+                backgroundColor = Color.Yellow
+            )
+        }
+
+        Row {
+            ComposableInfoCard(
+                title = stringResource(id = R.string.third_title),
+                description = stringResource(id = R.string.third_description),
+                backgroundColor = Color.Cyan
+            )
+            ComposableInfoCard(
+                title = stringResource(id = R.string.fourth_title),
+                description = stringResource(id = R.string.fourth_description),
+                backgroundColor = Color.LightGray
+            )
+        }
     }
 }
 
@@ -38,13 +66,36 @@ fun ComposeQuadrantApp() {
 private fun ComposableInfoCard(
     title: String,
     description: String,
-    backgroundColor: Color,
-    modifier: Modifier = Modifier
+    backgroundColor: Color
 ) {
-    Column( ) { }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(backgroundColor)
+//            .width(IntrinsicSize.Max)
+    ) {
+        Text(
+            text = title,
+            style = TextStyle(
+                fontWeight = FontWeight.Bold
+            ),
+            modifier = Modifier.fillMaxWidth().wrapContentWidth(align = Alignment.CenterHorizontally)
+                .padding(bottom = 16.dp)
+        )
+
+        Text(text = description)
+    }
 }
 
 
-@Preview(showBackground = true)
+@Preview(
+    name = "TaskCompleted",
+    showBackground = false,
+    showSystemUi = true
+)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeQuadrantTheme {
+        ComposeQuadrantApp()
+    }
+}
