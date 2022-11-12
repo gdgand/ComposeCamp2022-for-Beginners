@@ -54,6 +54,7 @@ fun BirthdayGreetingWithText(message: String, from: String) {
     // Create a column so that texts don't overlap
     Column {
         Text(text = message, fontSize = 36.sp)
+        Text(text = from, fontSize = 24.sp)
     }
 }
 
@@ -67,7 +68,7 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
 @Composable
 private fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        BirthdayGreetingWithText(message = "Happy Birthday Sam!", from = "")
+        BirthdayGreetingWithText(message = "Happy Birthday Sam!", from = "- from Emma")
     }
 }
 
