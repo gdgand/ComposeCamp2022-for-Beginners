@@ -39,23 +39,19 @@ fun TaskCompletedScreen() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight()
-            .wrapContentWidth(
-                align = Alignment
-                    .CenterHorizontally
-            )
-            .wrapContentHeight(
-                align = Alignment
-                    .CenterVertically
-            )
+            .fillMaxHeight(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
 
     ) {
         Image(painter = painterResource(R.drawable.ic_task_completed), contentDescription = null)
         Text(
             text = stringResource(R.string.all_task_completed),
             fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
             modifier = Modifier
-                .padding(top = 24.dp, end=24.dp)
+                .padding(top = 24.dp, end= 8.dp),
+//            textAlign = Alignment.CenterHorizontally
         )
         Text(
             text = stringResource(R.string.nice_work),
