@@ -61,6 +61,8 @@ fun BirthdayGreetingWithText(message: String, from: String) {
 // 5. Box 레이아웃 추
 @Composable
 fun BirthdayGreetingWithImage(message: String, from: String) {
+    val image = painterResource(R.drawable.androidparty)
+    Image(painter = image, contentDescription = null)
 }
 
 // 4. 이미지 컴포저블 추가
@@ -68,7 +70,7 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
 @Composable
 private fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        BirthdayGreetingWithText(message = "Happy Birthday Sam!", from = "- from Emma")
+        BirthdayGreetingWithImage(message = "Happy Birthday Sam!", from = "- from Emma")
     }
 }
 
