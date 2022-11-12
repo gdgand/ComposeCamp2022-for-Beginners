@@ -47,8 +47,9 @@ private fun ArticleCard(
     shortDescription: String,
     longDescription: String,
     imagePainter: Painter,
+    modifier: Modifier = Modifier,
 ) {
-    Column {
+    Column (modifier = modifier){
         Image(
             painter = imagePainter, contentDescription = null, modifier = Modifier.fillMaxWidth()
         )
