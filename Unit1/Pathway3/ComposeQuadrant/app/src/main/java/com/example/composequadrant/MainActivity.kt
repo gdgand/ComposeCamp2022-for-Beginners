@@ -53,7 +53,14 @@ fun ComposeQuadrantApp() {
                 backgroundColor = Color.Yellow)
         }
         Row() {
-
+            ComposableInfoCard(
+                title = stringResource(R.string.third_title),
+                description = stringResource(R.string.third_description),
+                backgroundColor = Color.Cyan)
+            ComposableInfoCard(
+                title = stringResource(R.string.fourth_title),
+                description = stringResource(R.string.fourth_description),
+                backgroundColor = Color.LightGray)
         }
     }
 }
