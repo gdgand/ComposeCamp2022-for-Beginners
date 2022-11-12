@@ -49,23 +49,26 @@ private fun ArticleCard(
     modifier: Modifier = Modifier,
 ) {
     Column() {
-        Image(painter = imagePainter,
-            contentDescription = null
+        Image(
+            painter = imagePainter,
+            contentDescription = null,
+            modifier = modifier.fillMaxWidth()
         )
-        Column (
-            modifier = modifier.padding(20.dp)
-        ){
+        Column (){
             Text(
                 text = title,
-                fontSize = 30.sp
+                fontSize = 24.sp,
+                modifier = modifier.padding(16.dp)
             )
             Text(
                 text = shortDescription,
-                modifier = modifier.padding(top = 10.dp, bottom = 10.dp)
+                textAlign = TextAlign.Justify,
+                modifier = modifier.padding(start = 16.dp, end = 16.dp)
             )
             Text(
                 text = longDescription,
-                modifier = modifier.padding(top = 10.dp, bottom = 10.dp)
+                textAlign = TextAlign.Justify,
+                modifier = modifier.padding(16.dp)
             )
         }
 
