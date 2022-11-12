@@ -40,6 +40,15 @@ fun TaskCompletedScreen() {
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
+            .wrapContentWidth(
+                align = Alignment
+                    .CenterHorizontally
+            )
+            .wrapContentHeight(
+                align = Alignment
+                    .CenterVertically
+            )
+
     ) {
         Image(painter = painterResource(R.drawable.ic_task_completed), contentDescription = null)
         Text(
