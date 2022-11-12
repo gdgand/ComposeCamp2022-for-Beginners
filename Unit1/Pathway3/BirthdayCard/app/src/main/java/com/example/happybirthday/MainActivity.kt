@@ -39,7 +39,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
+            HappyBirthdayTheme() {
+                Surface() {
+                    BirthdayGreetingWithImage(
+                        message = stringResource(R.string.happy_birthday_text),
+                        from = stringResource(R.string.happy_brithday_from)
+                    )
+                }
+            }
         }
     }
 }
