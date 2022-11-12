@@ -23,7 +23,13 @@ import com.example.taskcompleted.ui.theme.TaskCompletedTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            TaskCompletedTheme {
+                Surface {
+                    TaskCompletedScreen()
+                }
+            }
+        }
     }
 }
 
@@ -50,5 +56,9 @@ fun TaskCompletedScreen() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    TaskCompletedScreen()
+    TaskCompletedTheme {
+        Surface {
+            TaskCompletedScreen()
+        }
+    }
 }
