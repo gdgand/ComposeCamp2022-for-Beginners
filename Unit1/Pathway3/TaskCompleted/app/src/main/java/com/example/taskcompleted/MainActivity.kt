@@ -51,7 +51,6 @@ fun TaskCompletedScreen() {
             fontWeight = FontWeight.Bold,
             modifier = Modifier
                 .padding(top = 24.dp, end= 8.dp),
-//            textAlign = Alignment.CenterHorizontally
         )
         Text(
             text = stringResource(R.string.nice_work),
