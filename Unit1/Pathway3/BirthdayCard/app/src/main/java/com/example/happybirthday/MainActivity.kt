@@ -63,7 +63,14 @@ fun BirthdayGreetingWithText(message: String, from: String) {
 fun BirthdayGreetingWithImage(message: String, from: String) {
     val image = painterResource(R.drawable.androidparty)
     Box {
-        Image(painter = image, contentDescription = null)
+        Image(
+            painter = image,
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop
+        )
         BirthdayGreetingWithText(message = message, from = from)
     }
 }
