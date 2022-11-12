@@ -38,15 +38,11 @@ fun ComposeArticleApp() {
     val title = stringResource(id = R.string.title_jetpack_compose_tutorial)
     val shortDescription = stringResource(id = R.string.compose_short_desc)
     val longDescription = stringResource(id = R.string.compose_long_desc)
-    val modifier = Modifier
-        .fillMaxWidth()
-        .fillMaxHeight()
     ArticleCard(
         title = title,
         shortDescription = shortDescription,
         longDescription = longDescription,
         imagePainter = image,
-        modifier = modifier
     )
 }
 
