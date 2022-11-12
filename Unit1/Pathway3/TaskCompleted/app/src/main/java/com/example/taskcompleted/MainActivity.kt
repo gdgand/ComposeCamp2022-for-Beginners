@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -28,9 +29,26 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TaskCompletedScreen() {
-    Column( ) { }
+    Column(
+        modifier = Modifier
+            .fillMaxHeight()
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        val image = painterResource(id = R.drawable.ic_task_completed)
+        Image(painter = image, contentDescription = null)
+        Text(
+            text = "All tasks completed",
+            fontSize = 24.sp,
+            modifier = Modifier.padding(top = 24.dp, bottom = 8.dp)
+        )
+        Text(text = "Nice work!", fontSize = 16.sp)
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    TaskCompletedScreen()
+}
