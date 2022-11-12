@@ -1,5 +1,6 @@
 package com.example.composequadrant
 
+import android.content.pm.ModuleInfo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 
 class MainActivity : ComponentActivity() {
@@ -43,7 +45,11 @@ fun ComposeQuadrantApp() {
         }
     }
 }
-
+//텍스트
+//전체 사분면(시작, 끝, 상단, 하단)을 16dp 패딩으로 설정합니다.
+//각 사분면의 모든 콘텐츠를 수직 및 수평으로 정렬합니다.
+//첫 번째 Text 컴포저블에 굵게 서식을 지정하고 16dp 패딩 하단으로 설정합니다.
+//두 번째 Text 컴포저블을 Default 글꼴 크기로 설정합니다.
 @Composable
 private fun ComposableInfoCard(
     title: String,
@@ -51,8 +57,17 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column( ) {
-
+    Column(
+        modifier = Modifier
+            .background(backgroundColor)
+    ) {
+        Text(
+            text = title,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(bottom = 16.dp)
+        )
+        Text(text = description)
     }
 }
 
