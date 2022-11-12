@@ -23,7 +23,13 @@ import com.example.taskcompleted.ui.theme.TaskCompletedTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            TaskCompletedTheme {
+                androidx.compose.material.Surface {
+                    TaskCompletedScreen()
+                }
+            }
+        }
     }
 }
 

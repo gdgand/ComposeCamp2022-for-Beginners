@@ -24,7 +24,13 @@ import com.example.composearticle.ui.theme.ComposeArticleTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeArticleTheme {
+                androidx.compose.material.Surface {
+                    ComposeArticleApp()
+                }
+            }
+        }
     }
 }
 
