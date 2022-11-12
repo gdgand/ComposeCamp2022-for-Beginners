@@ -24,14 +24,17 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            HappyBirthdayTheme() {
-                GreetingCard(name = "HoJoon", cardColor = MaterialTheme.colors.background)
+            HappyBirthdayTheme {
+                Surface(color = MaterialTheme.colors.background) {
+                    BirthdayGreetingWithText(message = "Happy Birthday Hojoon!", from = "- from Kim")
+                }
             }
         }
     }
@@ -41,7 +44,16 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BirthdayGreetingWithText(message: String, from: String) {
     // Create a column so that texts don't overlap
-    Column { }
+    Column {
+        Text(
+            text = message,
+            fontSize = 36.sp,
+        )
+        Text(
+            text = from,
+            fontSize = 24.sp
+        )
+    }
 }
 
 // 5. Box 레이아웃 추
@@ -53,7 +65,7 @@ fun BirthdayGreetingWithImage(message: String, from: String) { }
 @Composable
 private fun BirthdayCardPreview() {
     HappyBirthdayTheme() {
-
+        BirthdayGreetingWithText(message = "Happy Birthday HoJoon", from = "- from Kim")
     }
 }
 
