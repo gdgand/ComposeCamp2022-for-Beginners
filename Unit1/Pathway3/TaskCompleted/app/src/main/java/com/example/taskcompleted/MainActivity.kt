@@ -24,8 +24,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent { 
             TaskCompletedTheme() {
-                androidx.compose.material.Surface() {
-                    
+                androidx.compose.material.Surface {
+                    TaskCompletedScreen()
                 }
             }
         }
@@ -37,7 +37,17 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun TaskCompletedScreen() {
     Column( ) {
-
+        Image(painter = painterResource(R.drawable.ic_task_completed), contentDescription = null)
+        Text(
+            text = stringResource(R.string.all_task_completed),
+            fontSize = 24.sp,
+            modifier = Modifier
+                .padding(top = 24.dp, end=24.dp)
+        )
+        Text(
+            text = stringResource(R.string.nice_work),
+            fontSize = 16.sp
+        )
     }
 }
 
@@ -45,8 +55,8 @@ fun TaskCompletedScreen() {
 @Composable
 fun DefaultPreview() {
     TaskCompletedTheme() {
-        androidx.compose.material.Surface() {
-            
+        androidx.compose.material.Surface {
+            TaskCompletedScreen()
         }
     }
 }
