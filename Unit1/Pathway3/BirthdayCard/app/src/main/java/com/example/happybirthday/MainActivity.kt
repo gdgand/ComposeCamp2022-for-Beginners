@@ -16,6 +16,7 @@
 package com.example.happybirthday
 
 import android.os.Bundle
+import android.provider.Settings.System.getString
 import android.text.Layout
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -41,7 +42,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             HappyBirthdayTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    BirthdayGreetingWithImage(message = "Happy Birthday Sam!", from = "- from Emma")
+                    BirthdayGreetingWithImage(
+                        message = stringResource(R.string.happy_birthday_text),
+                        from = stringResource(
+                            R.string.signature_text
+                        )
+                    )
                 }
             }
         }
@@ -94,7 +100,11 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
 @Composable
 private fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        BirthdayGreetingWithImage(message = "Happy Birthday Sam!", from = "- from Emma")
+        BirthdayGreetingWithImage(
+            message = stringResource(R.string.happy_birthday_text), from = stringResource(
+                R.string.signature_text
+            )
+        )
     }
 }
 
