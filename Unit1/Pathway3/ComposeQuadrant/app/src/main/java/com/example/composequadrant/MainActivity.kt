@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
 //androidx.compose.ui.graphics.Color.LightGray
 @Composable
 fun ComposeQuadrantApp() {
-    Column() {
+    Column(Modifier.fillMaxWidth()) {
         Row(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(R.string.first_title),
@@ -87,8 +87,10 @@ private fun ComposableInfoCard(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
+            .fillMaxSize()
             .background(backgroundColor)
+            .padding(16.dp),
     ) {
         Text(
             text = title,
