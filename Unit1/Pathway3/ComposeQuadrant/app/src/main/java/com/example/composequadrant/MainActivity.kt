@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ComposeQuadrantApp() {
     Column() {
-        Row() {
+        Row(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(R.string.first_title),
                 description = stringResource(R.string.first_description),
@@ -52,7 +52,7 @@ fun ComposeQuadrantApp() {
                 description = stringResource(R.string.second_description),
                 backgroundColor = Color.Yellow)
         }
-        Row() {
+        Row(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(R.string.third_title),
                 description = stringResource(R.string.third_description),
