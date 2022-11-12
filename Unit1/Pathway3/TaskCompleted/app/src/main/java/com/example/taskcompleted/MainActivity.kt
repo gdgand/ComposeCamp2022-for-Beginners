@@ -22,15 +22,31 @@ import com.example.taskcompleted.ui.theme.TaskCompletedTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent { 
+            TaskCompletedTheme() {
+                androidx.compose.material.Surface() {
+                    
+                }
+            }
+        }
     }
 }
-
+//모든 콘텐츠를 수직 및 수평으로 화면에 정렬합니다.
+//첫 번째 Text 컴포저블을 24sp 글꼴 크기, 24dp 패딩 상단, 8dp 패딩 하단으로 설정합니다.
+//두 번째 Text 컴포저블을 16sp 글꼴 크기로 설정합니다.
 @Composable
 fun TaskCompletedScreen() {
-    Column( ) { }
+    Column( ) {
+
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    TaskCompletedTheme() {
+        androidx.compose.material.Surface() {
+            
+        }
+    }
+}
