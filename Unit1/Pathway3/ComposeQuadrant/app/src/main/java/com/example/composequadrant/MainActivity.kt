@@ -91,6 +91,8 @@ private fun ComposableInfoCard(
             .fillMaxSize()
             .background(backgroundColor)
             .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
         Text(
             text = title,
@@ -98,7 +100,10 @@ private fun ComposableInfoCard(
             modifier = Modifier
                 .padding(bottom = 16.dp)
         )
-        Text(text = description)
+        Text(
+            text = description,
+            textAlign = TextAlign.Justify
+        )
     }
 }
 
