@@ -36,7 +36,11 @@ class MainActivity : ComponentActivity() {
 //두 번째 Text 컴포저블을 16sp 글꼴 크기로 설정합니다.
 @Composable
 fun TaskCompletedScreen() {
-    Column( ) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+    ) {
         Image(painter = painterResource(R.drawable.ic_task_completed), contentDescription = null)
         Text(
             text = stringResource(R.string.all_task_completed),
