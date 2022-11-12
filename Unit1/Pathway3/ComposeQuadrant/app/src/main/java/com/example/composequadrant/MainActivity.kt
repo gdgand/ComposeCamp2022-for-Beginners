@@ -34,6 +34,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 //색상
 //androidx.compose.ui.graphics.Color.Green
 //androidx.compose.ui.graphics.Color.Yellow
@@ -46,24 +47,33 @@ fun ComposeQuadrantApp() {
             ComposableInfoCard(
                 title = stringResource(R.string.first_title),
                 description = stringResource(R.string.first_description),
-                backgroundColor = Color.Green)
+                backgroundColor = Color.Green,
+                modifier = Modifier.weight(1f)
+            )
             ComposableInfoCard(
                 title = stringResource(R.string.second_title),
                 description = stringResource(R.string.second_description),
-                backgroundColor = Color.Yellow)
+                backgroundColor = Color.Yellow,
+                modifier = Modifier.weight(1f)
+            )
         }
         Row(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(R.string.third_title),
                 description = stringResource(R.string.third_description),
-                backgroundColor = Color.Cyan)
+                backgroundColor = Color.Cyan,
+                modifier = Modifier.weight(1f)
+            )
             ComposableInfoCard(
                 title = stringResource(R.string.fourth_title),
                 description = stringResource(R.string.fourth_description),
-                backgroundColor = Color.LightGray)
+                backgroundColor = Color.LightGray,
+                modifier = Modifier.weight(1f)
+            )
         }
     }
 }
+
 //텍스트
 //전체 사분면(시작, 끝, 상단, 하단)을 16dp 패딩으로 설정합니다.
 //각 사분면의 모든 콘텐츠를 수직 및 수평으로 정렬합니다.
