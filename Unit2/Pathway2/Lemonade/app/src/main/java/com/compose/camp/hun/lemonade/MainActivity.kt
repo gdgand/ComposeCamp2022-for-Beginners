@@ -87,7 +87,11 @@ fun MakeLemonade(initLemonadeState: LevelOfLemonade, modifier: Modifier = Modifi
         Button(
             onClick = {
                 tabCount = changeTabCount(stateOfLemonade, tabCount)
-                stateOfLemonade = changeState(stateOfLemonade, tabCount)
+                val nextState = changeState(stateOfLemonade, tabCount)
+                if (stateOfLemonade != nextState) {
+                    tabCount = 0
+                    stateOfLemonade = nextState
+                }
             },
             colors = ButtonDefaults.buttonColors(backgroundColor = TransParent),
             elevation = ButtonDefaults.elevation(defaultElevation = 0.dp)
@@ -106,7 +110,7 @@ fun MakeLemonade(initLemonadeState: LevelOfLemonade, modifier: Modifier = Modifi
 private fun changeTabCount(lemonState: LevelOfLemonade, prevTabCount: Int): Int {
     return when (lemonState) {
         is LevelOfLemonade.Lemon, is LevelOfLemonade.Lemonade -> prevTabCount + 1
-        else -> prevTabCount
+        else -> 0
     }
 }
 
