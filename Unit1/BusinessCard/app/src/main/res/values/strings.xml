@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BusinessCard</string>
+    <string name="my_name">홍종표</string>
+    <string name="my_job"><![CDATA[플러터 & 안드로이드 개발자]]></string>
+    <string name="my_phone">+82 (010) 9122 3968</string>
+    <string name="my_tweet">\@hongjongpyo1</string>
+    <string name="my_email">jpoh281@gmail.com</string>
+</resources>
