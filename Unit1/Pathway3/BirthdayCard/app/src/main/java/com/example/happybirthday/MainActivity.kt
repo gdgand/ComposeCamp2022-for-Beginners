@@ -53,7 +53,7 @@ class MainActivity : ComponentActivity() {
 fun BirthdayGreetingWithText(message: String, from: String) {
     // Create a column so that texts don't overlap
     Column {
-        Text(text = message)
+        Text(text = message, fontSize = 36.sp)
     }
 }
 
