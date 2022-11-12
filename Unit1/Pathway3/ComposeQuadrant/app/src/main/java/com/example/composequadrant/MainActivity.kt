@@ -107,7 +107,6 @@ private fun ComposableInfoCard(
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -117,3 +116,4 @@ fun DefaultPreview() {
         }
     }
 }
+//완
