@@ -75,7 +75,6 @@ private fun ArticleCard(
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
