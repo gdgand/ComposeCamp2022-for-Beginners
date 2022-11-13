@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyBusinessCard</string>
+    <string name="full_name">HongRyeol So</string>
+    <string name="title">Android Developer Engineer</string>
+    <string name="phone">+11 (123) 444 555 666</string>
+    <string name="sns">"@shy1008"</string>
+    <string name="email">lokixa96@gmail.com</string>
+</resources>
