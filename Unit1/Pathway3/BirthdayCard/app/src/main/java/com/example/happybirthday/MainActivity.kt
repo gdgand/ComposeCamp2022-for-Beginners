@@ -39,7 +39,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BirthdayGreetingWithText("Happy Birthday Sam!","- from Arite")
+            HappyBirthdayTheme() {
+                Surface(color = MaterialTheme.colors.background) {
+                    BirthdayGreetingWithImage(message = "Haapy B-day Sam!", from = "- from Aritee")
+                }
+            }
         }
     }
 }
@@ -63,7 +67,14 @@ fun BirthdayGreetingWithText(message: String, from: String) {
 
 // 5. Box 레이아웃 추
 @Composable
-fun BirthdayGreetingWithImage(message: String, from: String) { }
+fun BirthdayGreetingWithImage(message: String, from: String) {
+    val image = painterResource(id = R.drawable.androidparty)
+    
+    Box {
+        Image(painter = image, contentDescription = null)
+        BirthdayGreetingWithText(message = message, from = from)
+    }
+}
 
 // 4. 이미지 컴포저블 추가
 @Preview(showBackground = false)
@@ -71,6 +82,7 @@ fun BirthdayGreetingWithImage(message: String, from: String) { }
 private fun BirthdayCardPreview() { 
     HappyBirthdayTheme() {
         BirthdayGreetingWithText(message = "Happy Birthday Sam", from = "-from Emma")
+        BirthdayGreetingWithImage(message = "Happy Birthday sam with image", from = "from Emma")
     }
 }
 
