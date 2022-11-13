@@ -41,7 +41,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             HappyBirthdayTheme() {
                 Surface(color = MaterialTheme.colors.background) {
-                    BirthdayGreetingWithImage(message = "Haapy B-day Sam!", from = "- from Aritee")
+                    BirthdayGreetingWithImage(message = getString(R.string.happy_birthday_text), from = getString(
+                                            R.string.signature_text))
                 }
             }
         }
@@ -55,12 +56,21 @@ fun BirthdayGreetingWithText(message: String, from: String) {
     Column {
         Text(
             text = message,
-            fontSize = 36.sp
+            fontSize = 36.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.Start)
+                .padding(start = 16.dp, top = 16.dp)
         )
 
         Text(
             text = from,
-            fontSize = 36.sp
+            fontSize = 24.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.End)
+                .padding(start = 16.dp, end = 16.dp)
+
         )
     }
 }
@@ -71,7 +81,15 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
     val image = painterResource(id = R.drawable.androidparty)
     
     Box {
-        Image(painter = image, contentDescription = null)
+        Image(
+            painter = image,
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop
+
+        )
         BirthdayGreetingWithText(message = message, from = from)
     }
 }
@@ -82,7 +100,7 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
 private fun BirthdayCardPreview() { 
     HappyBirthdayTheme() {
         BirthdayGreetingWithText(message = "Happy Birthday Sam", from = "-from Emma")
-        BirthdayGreetingWithImage(message = "Happy Birthday sam with image", from = "from Emma")
+        BirthdayGreetingWithImage(message = "Happy Birthday sam with image", from = "-from Emma")
     }
 }
 
