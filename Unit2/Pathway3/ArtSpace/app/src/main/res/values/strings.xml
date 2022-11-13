@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Art Space</string>
+
+    <string name="lemon_tree_descrip">lemon tree</string>
+    <string name="lemon_squeeze_descrip">squeeze lemon!</string>
+    <string name="lemon_descrip">lemon</string>
+    <string name="lemon_restart_descrip">restart remon!</string>
+
+    <string name="art_title_1">lemon tree</string>
+    <string name="art_title_2">squeeze lemon!</string>
+    <string name="art_title_3">lemon</string>
+    <string name="art_title_4">restart remon!</string>
+
+    <string name="artist_1" tools:ignore="Typos">hhyeok1 (2022)</string>
+    <string name="artist_2">hhyeok2 (2022)</string>
+    <string name="artist_3">hhyeok3 (2022)</string>
+    <string name="artist_4">hhyeok4 (2022)</string>
+</resources>
