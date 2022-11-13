@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Art Space</string>
+    <string name="lemon_tree">Lemon Tree</string>
+    <string name="lemon_tree_desc">This is lemon tree</string>
+    <string name="lemon_squeeze">Lemon</string>
+    <string name="lemon_squeeze_desc">This is lemon</string>
+    <string name="lemon_drink">Lemonade</string>
+    <string name="lemon_drink_desc">This is lemonade</string>
+    <string name="lemon_restart">Cup</string>
+    <string name="lemon_restart_desc">This is cup</string>
 </resources>
