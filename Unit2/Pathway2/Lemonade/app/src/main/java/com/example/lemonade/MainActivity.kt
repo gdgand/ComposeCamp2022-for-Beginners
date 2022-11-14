@@ -4,9 +4,12 @@ import android.media.Image
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -16,6 +19,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role.Companion.Button
@@ -65,6 +70,10 @@ fun DirectionOne(title: Int
                 , fontStyle = FontStyle.Italic
                 , modifier = Modifier.padding(8.dp)
                     .align(alignment = Alignment.CenterHorizontally)
+//                    .border(BorderStroke(2.dp,
+//                        color = Color(105, 205, 216))
+//                        , shape = RoundedCornerShape(4.dp))
+//                    .padding(8.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
             Image(painterResource(image)
@@ -73,7 +82,10 @@ fun DirectionOne(title: Int
                     .clickable(enabled = true
     //                , onClickLabel: String? = null
     //                , role: Role? = null
-                    , onClick = onClickAction)
+                      , onClick = onClickAction)
+                    .border(
+                        BorderStroke(2.dp, Color(105, 205, 216))
+                        , shape = RoundedCornerShape(4.dp))
             )
         }
     }
@@ -84,7 +96,7 @@ fun DirectionOne(title: Int
 @Composable
 fun LemonadeApp() {
     var currentState by remember { mutableStateOf(1)}
-    var maxSqueezeTap: Int = (1..4).random()
+    var maxSqueezeTap: Int = (2..4).random()
     var currentSqueezeTap by remember { mutableStateOf(0) }
 
     var image = when (currentState) {
