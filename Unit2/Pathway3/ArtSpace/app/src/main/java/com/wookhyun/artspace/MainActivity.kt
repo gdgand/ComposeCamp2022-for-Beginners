@@ -160,3 +160,70 @@ fun DefaultPreview2() {
         MainScreen()
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun PaddingExample1() {
+    Box(
+        Modifier
+            .padding(20.dp)
+            .border(2.dp, Color.Green)
+            .padding(20.dp)
+            .border(2.dp, Color.Red)
+            .size(200.dp)
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PaddingExample1_2() {
+    Box(
+        Modifier
+            .border(2.dp, Color.Green)
+            .border(2.dp, Color.Red)
+            .padding(20.dp)
+            .padding(20.dp)
+            .size(200.dp)
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PaddingExample2() {
+    Box(
+        Modifier
+            .border(2.dp, Color.Green)
+            .padding(20.dp)
+            .border(2.dp, Color.Red)
+            .padding(20.dp)
+            .size(200.dp)
+    )
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun PaddingExample3() {
+    Box(
+        Modifier
+            .border(2.dp, Color.Green)
+            .padding(20.dp)
+            .size(200.dp)
+            .padding(20.dp)
+            .border(2.dp, Color.Red)
+    )
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun PaddingExample4() {
+    Box(
+        Modifier
+            .border(2.dp, Color.Green)
+            .size(200.dp)
+            .padding(20.dp)
+            .padding(20.dp)
+            .border(2.dp, Color.Red)
+    )
+}
