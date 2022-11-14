@@ -25,39 +25,40 @@ import com.example.taskcompleted.ui.theme.TaskCompletedTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { 
+        setContent {
             TaskCompletedTheme() {
-                TaskCompletedScreen(text1 = "All tasks completed", text2 = "Nice work!")
+                Surface {
+                    TaskCompletedScreen()
+                }
             }
         }
     }
 }
 
 @Composable
-fun TaskCompletedScreen(
-    text1: String,
-    text2: String,
-//    modifier: Modifier
-) {
+fun TaskCompletedScreen() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
+        val image = painterResource(R.drawable.ic_task_completed)
         Image(
-            painter = painterResource(id = R.drawable.ic_task_completed),
+            painter = image,
             contentDescription = null
         )
         Text(
-            text = text1,
-            fontSize = 24.sp,
-            modifier = Modifier
-                .padding(top = 24.dp, bottom = 8.dp)
+            text = stringResource(R.string.all_task_completed),
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(
+                top = 24.dp,
+                bottom = 8.dp
+            )
         )
         Text(
-            text = text2,
+            text = stringResource(R.string.nice_work),
             fontSize = 16.sp
         )
     }
@@ -67,11 +68,6 @@ fun TaskCompletedScreen(
 @Composable
 fun DefaultPreview() {
     TaskCompletedTheme {
-        TaskCompletedScreen(
-            text1 = "All tasks completed",
-            text2 = "Nice work!",
-//            modifier = Modifier
-//                .padding(top = 24.dp, bottom = 8.dp)
-        )
+        TaskCompletedScreen()
     }
 }

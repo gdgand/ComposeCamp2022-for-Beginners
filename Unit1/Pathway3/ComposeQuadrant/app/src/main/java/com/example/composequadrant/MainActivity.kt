@@ -37,28 +37,28 @@ fun ComposeQuadrantApp() {
     Column(Modifier.fillMaxWidth()) {
         Row(Modifier.weight(1f)) {
             ComposableInfoCard(
-                title = "Text composable",
-                description = "Displays text and follows Material Design guidelines.",
+                title = stringResource(id = R.string.first_title),
+                description = stringResource(id = R.string.first_description),
                 backgroundColor = Color.Green,
                 modifier = Modifier.weight(1f)
             )
             ComposableInfoCard(
-                title = "Image composable",
-                description = "Creates a composable that lays out and draws a given Painter class object.",
+                title = stringResource(id = R.string.second_title),
+                description = stringResource(id = R.string.second_description),
                 backgroundColor = Color.Yellow,
                 modifier = Modifier.weight(1f)
             )
         }
         Row(Modifier.weight(1f)) {
             ComposableInfoCard(
-                title = "Row composable",
-                description = "A layout composable that places its children in a horizontal sequence.",
+                title = stringResource(id = R.string.third_title),
+                description = stringResource(id = R.string.third_description),
                 backgroundColor = Color.Cyan,
                 modifier = Modifier.weight(1f)
             )
             ComposableInfoCard(
-                title = "Column composable",
-                description = "A layout composable that places its children in a vertical sequence.",
+                title = stringResource(id = R.string.fourth_title),
+                description = stringResource(id = R.string.fourth_description),
                 backgroundColor = Color.LightGray,
                 modifier = Modifier.weight(1f)
             )
