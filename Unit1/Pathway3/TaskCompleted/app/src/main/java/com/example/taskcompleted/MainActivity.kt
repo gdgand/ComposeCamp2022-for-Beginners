@@ -28,9 +28,24 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TaskCompletedScreen() {
-    Column( ) { }
+    Column(
+        modifier = Modifier
+            .fillMaxHeight()
+            .fillMaxHeight(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        var image = painterResource(id = R.drawable.ic_task_completed)
+        Image(painter = image, contentDescription = "test")
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    TaskCompletedTheme {
+        Surface {
+            TaskCompletedScreen()
+        }
+    }
+}
