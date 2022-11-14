@@ -22,15 +22,47 @@ import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeQuadrantTheme {
+                Surface(color = MaterialTheme.colors.background) {
+                    ComposeQuadrantApp()
+                }
+            }
+        }
     }
 }
 
 @Composable
 fun ComposeQuadrantApp() {
-    Column() {
-        Row() { }
-        Row() { }
+    Column(Modifier.fillMaxWidth()) {
+        Row(Modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = "Text composable",
+                description = "Displays text and follows Material Design guidelines.",
+                backgroundColor = Color.Green,
+                modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(
+                title = "Image composable",
+                description = "Creates a composable that lays out and draws a given Painter class object.",
+                backgroundColor = Color.Yellow,
+                modifier = Modifier.weight(1f)
+            )
+        }
+        Row(Modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = "Row composable",
+                description = "A layout composable that places its children in a horizontal sequence.",
+                backgroundColor = Color.Cyan,
+                modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(
+                title = "Column composable",
+                description = "A layout composable that places its children in a vertical sequence.",
+                backgroundColor = Color.LightGray,
+                modifier = Modifier.weight(1f)
+            )
+        }
     }
 }
 
@@ -41,10 +73,36 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column( ) { }
+    Column(
+        modifier = modifier
+            .background(backgroundColor)
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(
+            text = title,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+        Text(
+            text = description,
+            textAlign = TextAlign.Justify
+        )
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeQuadrantTheme {
+//        ComposableInfoCard(
+//            title = "Text composable",
+//            description = "Displays text and follows Material Design guidelines.",
+//            backgroundColor = Color.Green
+//        )
+        ComposeQuadrantApp()
+    }
+}
