@@ -62,9 +62,10 @@ fun DirectionOne(title: Int
                 .align(alignment = Alignment.CenterHorizontally)
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Image(painterResource(image),
-            contentDescription = stringResource(contDesc),
-            modifier = Modifier.clickable(enabled = true
+        Image(painterResource(image)
+            , contentDescription = stringResource(contDesc)
+            , modifier = Modifier.wrapContentSize()
+                .clickable(enabled = true
 //                , onClickLabel: String? = null
 //                , role: Role? = null
                 , onClick = onClickAction)
