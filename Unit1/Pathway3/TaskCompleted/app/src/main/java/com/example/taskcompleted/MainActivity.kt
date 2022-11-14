@@ -37,6 +37,9 @@ fun TaskCompletedScreen() {
     ) {
         var image = painterResource(id = R.drawable.ic_task_completed)
         Image(painter = image, contentDescription = "test")
+        Text(text = stringResource(id = R.string.all_task_completed),
+        fontSize = 24.sp,
+        modifier = Modifier.padding(top = 24.dp, bottom = 8.dp))
     }
 }
 
