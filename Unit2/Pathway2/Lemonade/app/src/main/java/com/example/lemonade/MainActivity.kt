@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role.Companion.Button
 import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,34 +50,43 @@ fun DirectionOne(title: Int
                  , contDesc: Int
                  , onClickAction: ()->Unit
 ) {
+    Surface(modifier = Modifier.fillMaxSize()
+        , color = MaterialTheme.colors.background
+    ){
 
-    Column(modifier = Modifier.fillMaxSize().wrapContentSize()
-        , horizontalAlignment = Alignment.CenterHorizontally
-        , verticalArrangement = Arrangement.Center
-    ) {
-        Text(
-            text = stringResource(title)
-            , fontSize = 24.sp
-            , fontStyle = FontStyle.Italic
-            , modifier = Modifier.padding(8.dp)
-                .align(alignment = Alignment.CenterHorizontally)
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Image(painterResource(image)
-            , contentDescription = stringResource(contDesc)
-            , modifier = Modifier.wrapContentSize()
-                .clickable(enabled = true
-//                , onClickLabel: String? = null
-//                , role: Role? = null
-                , onClick = onClickAction)
-        )
+
+        Column(modifier = Modifier.fillMaxSize().wrapContentSize()
+            , horizontalAlignment = Alignment.CenterHorizontally
+            , verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = stringResource(title)
+                , fontSize = 24.sp
+                , fontStyle = FontStyle.Italic
+                , modifier = Modifier.padding(8.dp)
+                    .align(alignment = Alignment.CenterHorizontally)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Image(painterResource(image)
+                , contentDescription = stringResource(contDesc)
+                , modifier = Modifier.wrapContentSize()
+                    .clickable(enabled = true
+    //                , onClickLabel: String? = null
+    //                , role: Role? = null
+                    , onClick = onClickAction)
+            )
+        }
     }
+
 }
 
 
 @Composable
 fun LemonadeApp() {
     var currentState by remember { mutableStateOf(1)}
+    var maxSqueezeTap: Int = (1..4).random()
+    var currentSqueezeTap by remember { mutableStateOf(0) }
+
     var image = when (currentState) {
         1 -> R.drawable.lemon_tree
         2 -> R.drawable.lemon_squeeze
@@ -98,15 +108,41 @@ fun LemonadeApp() {
         else -> R.string.cont_desc_4
     }
 
+    WelcomeScreen("Cuttie!!") {
+
+    }
+
     DirectionOne(title, image, contDesc) {
-        currentState++
+
+        when (currentState) {
+            1 -> { currentSqueezeTap = 0 }
+            2 -> {  // fill "squeeze routine" here
+                if (currentSqueezeTap < maxSqueezeTap) {
+                    currentSqueezeTap++
+                    return@DirectionOne
+                }
+            }
+            else -> { }
+        }
+
+
         if (currentState in 1..4) { }
         else {
             currentState %= 4
         }
-
+        currentState++
     }
+}
 
+
+@Composable
+fun WelcomeScreen(name: String, onStartClicked: () -> Unit) {
+    Column {
+        Text(text = "Welcome $name!")
+//        Button(onClick = onStartClicked) {
+//            Text("Start")
+//        }
+    }
 }
 
 @Preview(showBackground = true)
