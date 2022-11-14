@@ -23,7 +23,7 @@ import com.example.taskcompleted.ui.theme.TaskCompletedTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent { TaskCompletedScreen() }
     }
 }
 
@@ -60,7 +60,9 @@ fun TaskCompletedScreen() {
 @Composable
 fun DefaultPreview() {
     TaskCompletedTheme {
-        TaskCompletedScreen()
+        Surface {
+            TaskCompletedScreen()
+        }
     }
 }
 
