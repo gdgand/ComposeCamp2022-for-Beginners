@@ -5,12 +5,17 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.composearticle.ui.theme.ComposeArticleTheme
 
 
@@ -29,7 +34,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ComposeArticleApp() {
-    ArticleCard(title = "", shortDescription = "", longDescription = "", imagePainter = painterResource(
+    ArticleCard(title = stringResource(id = R.string.title_jetpack_compose_tutorial),
+        shortDescription = "", longDescription = "", imagePainter = painterResource(
         id = R.drawable.bg_compose_background
     ) )
 }
@@ -44,6 +50,8 @@ private fun ArticleCard(
 ) {
     Column(modifier = modifier) {
         Image(painter = imagePainter, contentDescription = null)
+        Text(text = title, fontSize = 24.sp,
+        modifier = Modifier.padding(16.dp))
     }
 }
 
