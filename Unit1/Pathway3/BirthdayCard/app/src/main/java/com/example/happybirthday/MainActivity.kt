@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             HappyBirthdayTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    BirthdayGreetingWithText("Happy Brithday Mike", "- from Othani")
+                    BirthdayGreetingWithImage("Happy Brithday Mike", "- from Othani")
                 }
             }
         }
@@ -64,10 +64,17 @@ fun BirthdayGreetingWithText(message: String, from: String) {
     }
 }
 
+// Box 레이아웃으로 요소 쌓기
 @Composable
 fun BirthdayGreetingWithImage(message: String, from: String) {
     val image = painterResource(id = R.drawable.android_party)
-    Image(painter = image, null)
+    Box {
+        Image(
+            painter = image,
+            null
+        )
+        BirthdayGreetingWithText(message = message, from = from)
+    }
 }
 
 // 4. 이미지 컴포저블 추가
