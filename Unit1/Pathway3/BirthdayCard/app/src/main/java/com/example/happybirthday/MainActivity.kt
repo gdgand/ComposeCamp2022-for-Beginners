@@ -71,7 +71,11 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
     Box {
         Image(
             painter = image,
-            null
+            null,
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop
         )
         BirthdayGreetingWithText(message = message, from = from)
     }
@@ -82,7 +86,10 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        BirthdayGreetingWithImage(message = "Happy BirthDay Mike!", "- from Ohtani")
+        BirthdayGreetingWithImage(
+            message = "Happy BirthDay Mike!",
+            "- from Ohtani"
+        )
     }
 }
 
