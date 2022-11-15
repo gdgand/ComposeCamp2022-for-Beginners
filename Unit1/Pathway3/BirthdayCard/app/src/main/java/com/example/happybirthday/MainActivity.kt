@@ -41,7 +41,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             HappyBirthdayTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    BirthdayGreetingWithImage("Happy Brithday Mike", "- from Othani")
+                    BirthdayGreetingWithImage(
+                        message = stringResource(R.string.happy_birthday_text),
+                        from = stringResource(R.string.signature_text)
+                    )
                 }
             }
         }
@@ -57,7 +60,7 @@ fun BirthdayGreetingWithText(message: String, from: String) {
             fontSize = 36.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentWidth(Alignment.Start)  // 텍스트 정렬
+                .wrapContentWidth(Alignment.CenterHorizontally)  // 텍스트 정렬
                 .padding(
                     start = 16.dp,
                     top = 16.dp
@@ -68,7 +71,7 @@ fun BirthdayGreetingWithText(message: String, from: String) {
             fontSize = 24.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentWidth(Alignment.End)
+                .wrapContentWidth(Alignment.CenterHorizontally)
                 .padding(
                     start = 16.dp,
                     end = 16.dp
@@ -101,8 +104,8 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
         BirthdayGreetingWithImage(
-            message = "Happy BirthDay Mike!",
-            "- from Ohtani"
+            message = stringResource(R.string.happy_birthday_text),
+            from = stringResource(R.string.signature_text)
         )
     }
 }
