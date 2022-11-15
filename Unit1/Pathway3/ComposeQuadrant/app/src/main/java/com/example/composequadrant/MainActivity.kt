@@ -29,8 +29,26 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ComposeQuadrantApp() {
     Column() {
-        Row() { }
-        Row() { }
+        Row() {
+            ComposableInfoCard(
+                title = "",
+                description = "",
+                backgroundColor = Color.Green)
+            ComposableInfoCard(
+                title = "",
+                description = "",
+                backgroundColor = Color.Yellow)
+        }
+        Row() {
+            ComposableInfoCard(
+                title = "",
+                description = "",
+                backgroundColor = Color.Cyan)
+            ComposableInfoCard(
+                title = "",
+                description = "",
+                backgroundColor = Color.LightGray)
+        }
     }
 }
 
@@ -41,10 +59,18 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column( ) { }
+    Column(
+        modifier = modifier
+            .background(backgroundColor)
+            .padding(16.dp)
+    ) { }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeQuadrantTheme {
+        ComposeQuadrantApp()
+    }
+}
