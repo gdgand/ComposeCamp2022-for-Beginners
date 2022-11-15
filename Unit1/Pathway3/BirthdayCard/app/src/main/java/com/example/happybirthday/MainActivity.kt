@@ -48,7 +48,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-// 7. 텍스트 정렬 및 패딩 추가
 @Composable
 fun BirthdayGreetingWithText(message: String, from: String) {
     // Create a column so that texts don't overlap
@@ -65,17 +64,18 @@ fun BirthdayGreetingWithText(message: String, from: String) {
     }
 }
 
-// 5. Box 레이아웃 추
 @Composable
-fun BirthdayGreetingWithImage(message: String) {
+fun BirthdayGreetingWithImage(message: String, from: String) {
+    val image = painterResource(id = R.drawable.android_party)
+    Image(painter = image, null)
 }
 
 // 4. 이미지 컴포저블 추가
 @Preview(showBackground = false)
 @Composable
-private fun BirthdayCardPreview() {
+fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        BirthdayGreetingWithText(message = "Happy BirthDay Mike!", "- from Ohtani")
+        BirthdayGreetingWithImage(message = "Happy BirthDay Mike!", "- from Ohtani")
     }
 }
 
