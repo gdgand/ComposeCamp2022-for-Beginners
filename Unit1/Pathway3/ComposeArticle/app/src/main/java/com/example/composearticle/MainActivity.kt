@@ -116,21 +116,3 @@ fun DefaultPreview() {
 
     }
 }
-@Preview(showBackground = true)
-@Composable
-fun Preview() {
-    ComposeArticleTheme {
-        Surface(color = MaterialTheme.colors.background) {
-            ComposeArticleApp(title = stringResource(id = R.string.title_jetpack_compose_tutorial),
-                shortDescription = stringResource(id = R.string.compose_short_desc),
-                longDescription = stringResource(id = R.string.compose_long_desc),
-                imagePainter = painterResource(id = R.drawable.bg_compose_background),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, end = 16.dp)
-            )
-
-        }
-
-    }
-}
