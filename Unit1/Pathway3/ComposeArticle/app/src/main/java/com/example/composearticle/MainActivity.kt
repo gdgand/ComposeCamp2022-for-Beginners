@@ -4,15 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -26,7 +25,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeArticleTheme {
-                ComposeArticleApp()
+                // 백그라운드 컬러를 변경할 때 surface로 감싸준다.
+                Surface(color = MaterialTheme.colors.background) {
+                    ComposeArticleApp()
+                }
             }
         }
     }
@@ -36,7 +38,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ComposeArticlePreview() {
     ComposeArticleTheme {
-        ComposeArticleApp()
+        // 여기는 안감싸줘도 될듯?
+        Surface() {
+            ComposeArticleApp()
+        }
     }
 }
 
@@ -47,8 +52,9 @@ fun ComposeArticleApp() {
         stringResource(id = R.string.title_jetpack_compose_tutorial),
         stringResource(id = R.string.compose_short_desc),
         stringResource(id = R.string.compose_long_desc),
-        imagePainter = image,
-        modifier = Modifier
+        imagePainter = image
+        // 생성자에서 초기화를 해주기 때문에 생략
+//        modifier = Modifier
     )
 }
 
@@ -60,53 +66,43 @@ private fun ArticleCard(
     imagePainter: Painter,
     modifier: Modifier = Modifier,
 ) {
+    // Column 생성자에 modifier 파라미터를 넣어준다.
     Column(
-        modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
+        modifier = modifier
+        // 화면크기는 Column 파라미터에 맞지 않는 값이다.
+//            .fillMaxWidth()
+//            .fillMaxHeight()
     ) {
         Image(
             painter = imagePainter,
             contentDescription = null,
-            modifier = Modifier.fillMaxWidth()
+            // 이미지를 화면가로 사이즈 맞출 필요가 없나?, match_parent 와 동일?
+//            modifier = Modifier.fillMaxWidth()
         )
 
         Text(
             text = title,
             fontSize = 24.sp,
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentWidth(Alignment.Start)
-                .padding(
-                    start = 16.dp,
-                    end = 16.dp,
-                    top = 16.dp,
-                    bottom = 16.dp
-                )
+            modifier = Modifier.padding(16.dp)
+            // fillMaxWidth, wrapContentWidth 속성은 텍스트를 정렬해야 될 때 사용
+            // ex) Alignment.CenterHorizontally
+//                .fillMaxWidth()
+//                .wrapContentWidth(Alignment.Start)
         )
 
         Text(
             text = shortDescription,
-            fontSize = 16.sp,
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentWidth()
-                .padding(start = 16.dp, end = 16.dp),
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+//                .fillMaxWidth()
+//                .wrapContentWidth()
             textAlign = TextAlign.Justify
         )
 
         Text(
             text = longDescription,
-            fontSize = 16.sp,
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentWidth()
-                .padding(
-                    start = 16.dp,
-                    end = 16.dp,
-                    top = 16.dp,
-                    bottom = 16.dp
-                ),
+            modifier = Modifier.padding(16.dp),
+//                .fillMaxWidth()
+//                .wrapContentWidth()
             textAlign = TextAlign.Justify
         )
     }
