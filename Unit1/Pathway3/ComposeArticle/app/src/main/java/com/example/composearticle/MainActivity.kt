@@ -94,6 +94,14 @@ private fun ArticleCard(
                 )
         )
 
+        Image(
+            painter = imagePainter,
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop
+        )
     }
 }
 
