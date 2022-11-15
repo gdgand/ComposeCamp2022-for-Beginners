@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeArticleTheme {
-
+                ComposeArticleApp()
             }
         }
     }
@@ -43,13 +43,13 @@ fun ComposeArticlePreview() {
 @Composable
 fun ComposeArticleApp() {
     val image = painterResource(R.drawable.bg_compose_background)
-    Image(
-        painter = image,
-        contentDescription = null,
+    ArticleCard(
+        stringResource(id = R.string.title_jetpack_compose_tutorial),
+        stringResource(id = R.string.compose_short_desc),
+        stringResource(id = R.string.compose_long_desc),
+        imagePainter = image,
         modifier = Modifier
-            .fillMaxWidth()
     )
-//    ArticleCard()
 }
 
 @Composable
@@ -60,47 +60,54 @@ private fun ArticleCard(
     imagePainter: Painter,
     modifier: Modifier = Modifier,
 ) {
-    Column {
+    Column(
+        modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+    ) {
+        Image(
+            painter = imagePainter,
+            contentDescription = null,
+            modifier = Modifier.fillMaxWidth()
+        )
+
         Text(
             text = title,
             fontSize = 24.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentWidth(Alignment.CenterHorizontally)
+                .wrapContentWidth(Alignment.Start)
                 .padding(
-                    horizontal = 16.dp,
-                    vertical = 16.dp
+                    start = 16.dp,
+                    end = 16.dp,
+                    top = 16.dp,
+                    bottom = 16.dp
                 )
         )
 
         Text(
             text = shortDescription,
-            fontSize = 24.sp,
+            fontSize = 16.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentWidth(Alignment.CenterHorizontally)
-                .padding(horizontal = 16.dp)
+                .wrapContentWidth()
+                .padding(start = 16.dp, end = 16.dp),
+            textAlign = TextAlign.Justify
         )
 
         Text(
             text = longDescription,
-            fontSize = 24.sp,
+            fontSize = 16.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentWidth(Alignment.CenterHorizontally)
+                .wrapContentWidth()
                 .padding(
-                    horizontal = 16.dp,
-                    vertical = 16.dp
-                )
-        )
-
-        Image(
-            painter = imagePainter,
-            contentDescription = null,
-            modifier = Modifier
-                .fillMaxHeight()
-                .fillMaxWidth(),
-            contentScale = ContentScale.Crop
+                    start = 16.dp,
+                    end = 16.dp,
+                    top = 16.dp,
+                    bottom = 16.dp
+                ),
+            textAlign = TextAlign.Justify
         )
     }
 }
