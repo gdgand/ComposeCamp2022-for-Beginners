@@ -1,0 +1,327 @@
+[33mcommit 4422886114d186e54dca1125cca591be61f89049[m[33m ([m[1;36mHEAD -> [m[1;32munit1[m[33m, [m[1;31morigin/unit1[m[33m)[m
+Merge: 468c78b 040924f
+Author: Parthis1833 <parthisj03@gmail.com>
+Date:   Wed Nov 16 04:47:40 2022 +0530
+
+     complete
+
+[33mcommit 468c78bf37d8fa66947f65fa7883eaf18669c2dd[m
+Author: Parthis1833 <parthisj03@gmail.com>
+Date:   Wed Nov 16 04:32:44 2022 +0530
+
+    unit-1 done
+
+[33mcommit 9e6c82f869a214ae063d2492a6d81767000d9dea[m
+Author: Parthis1833 <parthisj03@gmail.com>
+Date:   Wed Nov 16 03:22:08 2022 +0530
+
+    unit 1 completed *
+
+[33mcommit cda0b32dbed8d6c0a16764f19a10b0a9574ab06a[m
+Author: Parthis1833 <parthisj03@gmail.com>
+Date:   Wed Nov 16 03:19:36 2022 +0530
+
+    all set
+
+[33mcommit 040924fb9c792f20731433b0672b1d2279d74e29[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Parthis Joshi <62930148+Parthis1833@users.noreply.github.com>
+Date:   Tue Nov 15 21:40:22 2022 +0000
+
+    git  commit  -m "unit 1 completed"
+
+[33mcommit 4ce19dc168b021c12b4a00968b7c07095025d565[m
+Merge: 29ea00f 1b295a6
+Author: Jaesung Lee <51078673+JaesungLeee@users.noreply.github.com>
+Date:   Thu Nov 10 02:40:10 2022 +0900
+
+    Merge pull request #14 from JaesungLeee/main
+    
+    Fix Unit2, Unit4
+
+[33mcommit 1b295a6bb05cec5cd656f2ffcf37d16a8e43e473[m
+Author: JaesungLeee <viki0114@naver.com>
+Date:   Thu Nov 10 02:36:43 2022 +0900
+
+    Fix Unit4
+
+[33mcommit 08aab2ab46888b277819ec61c71f5f6f47ff28be[m
+Author: JaesungLeee <viki0114@naver.com>
+Date:   Thu Nov 10 01:27:24 2022 +0900
+
+    Fix Unit2
+
+[33mcommit 29ea00fd9de8fc13836d46b8b1118c42d25e5d03[m
+Author: Jaesung Lee <51078673+JaesungLeee@users.noreply.github.com>
+Date:   Wed Nov 9 23:10:56 2022 +0900
+
+    Update campquestions.md
+
+[33mcommit 0745062539d0b088b7ad1491c548749066657417[m
+Author: TreeJin99 <90708425+TreeJin99@users.noreply.github.com>
+Date:   Tue Nov 8 01:45:23 2022 +0900
+
+    Update README.md
+
+[33mcommit 91cea00fe3b97a6da15e2a2a67f190b67f7290e4[m
+Author: TreeJin99 <90708425+TreeJin99@users.noreply.github.com>
+Date:   Mon Nov 7 23:39:37 2022 +0900
+
+    Update README.md
+
+[33mcommit dfc287be43906f53232e312bdddcdf0aa6978946[m
+Author: yeoncheong <yjin1100@sookmyung.ac.kr>
+Date:   Sun Nov 6 23:26:10 2022 +0900
+
+    [chore] update version
+
+[33mcommit 39c11d52f235110bc91c9fd9d6b24369b1e8fdcb[m
+Author: yeoncheong <yjin1100@sookmyung.ac.kr>
+Date:   Thu Nov 3 17:56:53 2022 +0900
+
+    [Add] update LICENSE and README
+
+[33mcommit ba917d5cbb33b4d1115f103bc38f7fd28ca16b0e[m
+Author: yeoncheong <yjin1100@sookmyung.ac.kr>
+Date:   Thu Nov 3 17:56:28 2022 +0900
+
+    [refactor] 앱 아이콘 수정
+
+[33mcommit 273701d3de5d0b6aea88aa1c337920e2579ac695[m
+Author: yeoncheong <yjin1100@sookmyung.ac.kr>
+Date:   Thu Nov 3 16:52:34 2022 +0900
+
+    [Add] update LICENSE and README
+
+[33mcommit 0a242aac0bc82de35dd7e3c5f79a32936b96b31d[m
+Author: Jaesung Lee <51078673+JaesungLeee@users.noreply.github.com>
+Date:   Tue Nov 1 16:57:13 2022 +0900
+
+    Update README.md
+
+[33mcommit e48f02a087fa6a29cc1b1f35fda74ade2335be00[m
+Author: Jaesung Lee <51078673+JaesungLeee@users.noreply.github.com>
+Date:   Tue Nov 1 15:21:37 2022 +0900
+
+    Update README.md
+
+[33mcommit 7b5e8087d12cb917e7eb6a5f43b0d4c163583104[m
+Merge: 6c3c375 79dc17d
+Author: Jaesung Lee <51078673+JaesungLeee@users.noreply.github.com>
+Date:   Mon Oct 31 19:18:20 2022 +0900
+
+    Merge pull request #9 from JaesungLeee/main
+    
+    Unit2/Pathway2
+
+[33mcommit 79dc17d949913a861088385f5031292595e72dee[m
+Author: JaesungLeee <viki0114@naver.com>
+Date:   Mon Oct 31 19:16:36 2022 +0900
+
+    Unit2/Pathway2
+
+[33mcommit 94ff315947736206c9b1f9c23f132db33fdf9c35[m
+Author: JaesungLeee <viki0114@naver.com>
+Date:   Mon Oct 31 19:11:56 2022 +0900
+
+    Unit2/Pathway2
+
+[33mcommit 6c3c37533392103569aa257597784ec879651bfc[m
+Author: N <35582991+slsksh@users.noreply.github.com>
+Date:   Mon Oct 31 11:37:25 2022 +0900
+
+    Update README.md
+    
+    add speaker deck
+
+[33mcommit ac00ace0f5a1ba2c185fcb8f66a299a3bb53a5cc[m
+Author: N <35582991+slsksh@users.noreply.github.com>
+Date:   Mon Oct 31 11:15:10 2022 +0900
+
+    Update README.md
+
+[33mcommit bac2eb6252423222d4b4337843f417eb2bc61f41[m
+Author: dangeunii <101170415+dangeunii@users.noreply.github.com>
+Date:   Mon Oct 31 10:43:05 2022 +0900
+
+    Update README.md
+
+[33mcommit b4fc91b6dc6772a99f14ca3bb0123ef693bf9300[m
+Merge: 108265a 5882b36
+Author: yeoncheong <yjin1100@sookmyung.ac.kr>
+Date:   Sun Oct 30 21:32:00 2022 +0900
+
+    Merge branch 'main' of https://github.com/gdgand/ComposeCamp2022-for-Beginners
+
+[33mcommit 108265a66e8f19c02d89fe6894261201b66a5e64[m
+Author: yeoncheong <yjin1100@sookmyung.ac.kr>
+Date:   Sun Oct 30 21:26:10 2022 +0900
+
+    [Add] Unit3 Pathway3 WoofCodelab
+
+[33mcommit 5882b362c59d21f6229c204409180271df9d2b36[m
+Author: TreeJin99 <90708425+TreeJin99@users.noreply.github.com>
+Date:   Sun Oct 30 21:06:58 2022 +0900
+
+    Update README.md
+
+[33mcommit 4244fd89e93ee98e12f3bdd6a8641ae900ba13b4[m
+Author: yeoncheong <yjin1100@sookmyung.ac.kr>
+Date:   Sun Oct 30 20:53:48 2022 +0900
+
+    [Add] Unit3 Pathway2 AffirmationsCodelab
+
+[33mcommit a7dbca175edbd3a7812a91f62b5aef1745629443[m
+Merge: 53e6fac ced47f0
+Author: TreeJin99 <90708425+TreeJin99@users.noreply.github.com>
+Date:   Sun Oct 30 20:37:45 2022 +0900
+
+    Merge pull request #8 from JaesungLeee/main
+    
+    Unit2, Unit4 Codelabs
+
+[33mcommit ced47f04d39f3a9df6bca5974d06ea4f7eb31ccd[m
+Author: JaesungLeee <viki0114@naver.com>
+Date:   Sun Oct 30 17:54:01 2022 +0900
+
+    Unit4 Codelab
+
+[33mcommit 961b3b2bb62b3514a2aae3fbf622952655efd191[m
+Author: JaesungLeee <viki0114@naver.com>
+Date:   Sun Oct 30 17:32:52 2022 +0900
+
+    Unit2 Codelab
+
+[33mcommit 53e6face84cd443791857d7a8a984cc089c5a57a[m
+Merge: 0c46b80 2d031fc
+Author: TreeJin99 <90708425+TreeJin99@users.noreply.github.com>
+Date:   Sun Oct 30 16:22:23 2022 +0900
+
+    Merge pull request #7 from dogdduddy/main
+    
+    Comment 수정
+
+[33mcommit 0c46b80664810c2111bd615f17fc3561f58b5bfd[m
+Author: TreeJin99 <90708425+TreeJin99@users.noreply.github.com>
+Date:   Sun Oct 30 16:21:29 2022 +0900
+
+    Update README.md
+
+[33mcommit 2d031fc64bbc4ed4f50c0526726c3b8b3ec017cc[m
+Merge: a39f0a7 15885e1
+Author: dogdduddy <32217176+dogdduddy@users.noreply.github.com>
+Date:   Sun Oct 30 15:41:59 2022 +0900
+
+    Merge pull request #1 from dogdduddy/unit
+    
+    Unit Merge
+
+[33mcommit 15885e16cc9ad5c749d3ad37bbe74204edf16826[m
+Author: dogdduddy <dogdduddy@gmail.com>
+Date:   Sun Oct 30 15:37:53 2022 +0900
+
+    fixed untracked files
+
+[33mcommit ace0a592381e96e5f2110f13674d4e89f17e5472[m
+Author: dogdduddy <dogdduddy@gmail.com>
+Date:   Sun Oct 30 15:32:48 2022 +0900
+
+    Del : gitignore gradle
+
+[33mcommit b8d44bd3219c6d101f334beee556668500f85e9d[m
+Author: dogdduddy <dogdduddy@gmail.com>
+Date:   Sun Oct 30 15:19:04 2022 +0900
+
+    Del : .gitkeep
+
+[33mcommit 60a5398616b7635905a07d135b0b2fe596a0f6ea[m
+Author: dogdduddy <dogdduddy@gmail.com>
+Date:   Sun Oct 30 15:03:32 2022 +0900
+
+    .gitignore (gradle, apk 등), Unit1 이외 폴더 삭제
+
+[33mcommit a39f0a7aac4af664d64b7db3f0b682444646fdcd[m
+Author: dogdduddy <dogdduddy@gmail.com>
+Date:   Sun Oct 30 00:18:56 2022 +0900
+
+    Done
+
+[33mcommit 7028a4e9cd7bd902583371faa84baf10b57fe222[m
+Author: dogdduddy <dogdduddy@gmail.com>
+Date:   Sun Oct 30 00:10:23 2022 +0900
+
+    Done
+
+[33mcommit 9dafa6ce313e1a97db84d85129de2285967b0f97[m
+Author: dogdduddy <dogdduddy@gmail.com>
+Date:   Sun Oct 30 00:08:26 2022 +0900
+
+    Add gitignore
+
+[33mcommit 89967f1abd7b94d30f824d81cbea320fea0ea7e6[m
+Author: dogdduddy <dogdduddy@gmail.com>
+Date:   Sat Oct 29 23:23:49 2022 +0900
+
+    Add : Unit1  .gitkeep 파일 추가
+
+[33mcommit 856d0178a73d751afc124895f63d1c5a5f8c4251[m
+Author: dogdduddy <dogdduddy@gmail.com>
+Date:   Sat Oct 29 23:22:39 2022 +0900
+
+    Add : 빈 폴더 .gitkeep 파일 추가
+
+[33mcommit 4f014f74d5bb16e242dbca5b59d29fd67b2f56b1[m
+Author: dogdduddy <dogdduddy@gmail.com>
+Date:   Sat Oct 29 23:19:08 2022 +0900
+
+    Add : Unit 폴더 추가
+
+[33mcommit 85772d7db668385c0ade2815d51741adc62e2a93[m
+Author: TreeJin99 <90708425+TreeJin99@users.noreply.github.com>
+Date:   Sat Oct 29 02:48:18 2022 +0900
+
+    Update README.md
+
+[33mcommit 34b1d2d8b6dd9855f6f608561b561d8e6e304d63[m
+Author: TreeJin99 <90708425+TreeJin99@users.noreply.github.com>
+Date:   Sat Oct 29 02:46:13 2022 +0900
+
+    Update README.md
+
+[33mcommit 06963237fabe7363d9b786a69ad8158bb74e8415[m
+Author: Jaesung Lee <51078673+JaesungLeee@users.noreply.github.com>
+Date:   Sat Oct 29 01:31:00 2022 +0900
+
+    Update PULL_REQUEST_TEMPLATE.md
+
+[33mcommit b481bc61616ba2021cfcc6210bfbd0d2829e0765[m
+Author: TreeJin99 <90708425+TreeJin99@users.noreply.github.com>
+Date:   Wed Oct 26 23:11:23 2022 +0900
+
+    Update README.md
+
+[33mcommit 7fa9d871ad9f315c916e6f09eaa9fb66168f1f8a[m
+Author: TreeJin99 <90708425+TreeJin99@users.noreply.github.com>
+Date:   Wed Oct 26 23:10:23 2022 +0900
+
+    Update README.md
+
+[33mcommit 4a32ee0532047c22035d6db1d1698e76771cf92d[m
+Merge: fdbcc17 9389865
+Author: Jaesung Lee <51078673+JaesungLeee@users.noreply.github.com>
+Date:   Thu Oct 6 15:44:56 2022 +0900
+
+    Merge pull request #1 from gdgand/jaesung/template
+    
+    Issue, PR 템플릿 추가
+
+[33mcommit 9389865c5d952a29f7d02cd3da8f39651438fcb4[m
+Author: JaesungLeee <viki0114@naver.com>
+Date:   Thu Oct 6 15:40:52 2022 +0900
+
+    Issue, PR 템플릿 추가
+
+[33mcommit fdbcc17c447d3db84ee372f5644f73c442e439f0[m
+Author: Veronikapj <sherlockpj@hotmail.com>
+Date:   Fri Sep 30 10:43:15 2022 +0900
+
+    Initial commit
