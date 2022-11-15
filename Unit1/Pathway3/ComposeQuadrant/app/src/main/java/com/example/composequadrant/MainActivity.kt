@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -43,39 +44,35 @@ fun ComposeQuadrantApp() {
             modifier = Modifier
                 .weight(weight = 1f)
         ) {
-            Column(modifier = Modifier.weight(1f)) {
-                ComposableInfoCard(
-                    title = stringResource(id = R.string.first_title),
-                    description = stringResource(id = R.string.first_description),
-                    backgroundColor = Color.Green
-                )
-            }
-            Column(modifier = Modifier.weight(1f)) {
-                ComposableInfoCard(
-                    title = stringResource(id = R.string.second_title),
-                    description = stringResource(id = R.string.second_description),
-                    backgroundColor = Color.Yellow
-                )
-            }
+            ComposableInfoCard(
+                title = stringResource(id = R.string.first_title),
+                description = stringResource(id = R.string.first_description),
+                backgroundColor = Color.Green,
+                modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(
+                title = stringResource(id = R.string.second_title),
+                description = stringResource(id = R.string.second_description),
+                backgroundColor = Color.Yellow,
+                modifier = Modifier.weight(1f)
+            )
         }
         Row(
             modifier = Modifier
                 .weight(weight = 1f)
         ) {
-            Column(modifier = Modifier.weight(1f)) {
-                ComposableInfoCard(
-                    title = stringResource(id = R.string.third_title),
-                    description = stringResource(id = R.string.third_description),
-                    backgroundColor = Color.Cyan
-                )
-            }
-            Column(modifier = Modifier.weight(1f)) {
-                ComposableInfoCard(
-                    title = stringResource(id = R.string.fourth_title),
-                    description = stringResource(id = R.string.fourth_description),
-                    backgroundColor = Color.LightGray
-                )
-            }
+            ComposableInfoCard(
+                title = stringResource(id = R.string.third_title),
+                description = stringResource(id = R.string.third_description),
+                backgroundColor = Color.Cyan,
+                modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(
+                title = stringResource(id = R.string.fourth_title),
+                description = stringResource(id = R.string.fourth_description),
+                backgroundColor = Color.LightGray,
+                modifier = Modifier.weight(1f)
+            )
         }
     }
 }
@@ -88,7 +85,7 @@ private fun ComposableInfoCard(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(backgroundColor)
             .padding(16.dp),
