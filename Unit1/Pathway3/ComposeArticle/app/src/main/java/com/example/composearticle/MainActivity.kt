@@ -71,7 +71,7 @@ private fun ArticleCard(
             painter = imagePainter,
             contentDescription = null,
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
         )
         //title
         Text(
@@ -79,17 +79,20 @@ private fun ArticleCard(
             fontSize = 24.sp,
             modifier = modifier
                 .padding(top = 16.dp, bottom = 16.dp)
+
         )
         //shortDescription
         Text(
             text = shortDescription,
-            modifier = modifier
+            modifier = modifier,
+            textAlign = TextAlign.Justify
 
         )
         //longDescription
         Text(
             text = longDescription,
-            modifier =  modifier.padding(top = 16.dp, bottom = 16.dp)
+            modifier =  modifier.padding(top = 16.dp, bottom = 16.dp),
+            textAlign = TextAlign.Justify
         )
     }
 }
@@ -98,6 +101,24 @@ private fun ArticleCard(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
+    ComposeArticleTheme {
+        Surface(color = MaterialTheme.colors.background) {
+            ComposeArticleApp(title = stringResource(id = R.string.title_jetpack_compose_tutorial),
+                shortDescription = stringResource(id = R.string.compose_short_desc),
+                longDescription = stringResource(id = R.string.compose_long_desc),
+                imagePainter = painterResource(id = R.drawable.bg_compose_background),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, end = 16.dp)
+            )
+
+        }
+
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun Preview() {
     ComposeArticleTheme {
         Surface(color = MaterialTheme.colors.background) {
             ComposeArticleApp(title = stringResource(id = R.string.title_jetpack_compose_tutorial),
