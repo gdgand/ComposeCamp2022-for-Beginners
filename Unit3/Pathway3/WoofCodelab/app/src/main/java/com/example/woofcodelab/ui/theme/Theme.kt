@@ -15,14 +15,11 @@
  */
 package com.example.woofcodelab.ui.theme
 
-import android.graphics.Color
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.graphics.Color.Companion.White
 
 private val DarkColorPalette = darkColors(
@@ -42,10 +39,10 @@ private val LightColorPalette = lightColors(
 //     Other default colors to override
     background = Green100,
     surface = Green50,
+    onSurface = Grey900,
+    primary = Grey50,
     onPrimary = Grey900,
-    onSecondary = Grey50,
-    onBackground = Grey900,
-    onSurface = Grey700,
+    secondary = Grey700
 )
 
 @Composable
