@@ -20,11 +20,12 @@ class TipUITest {
                 TipTimeScreen()
             }
         }
-        composeTestRule.onNodeWithText("Bill Amount").performTextInput("200.0")
-//        composeTestRule.onNodeWithText("Tip (%)").performTextInput("15")
+        composeTestRule.onNodeWithText("Bill Amount").performTextInput("1")
+        composeTestRule.onNodeWithText("Tip (%)").assertExists()
+        composeTestRule.onNodeWithText("Tip (%)").performTextInput("20")
 //        val output = "Tip : " + NumberFormat.getCurrencyInstance().format(20.00)
 //        val output = "Tip : " + NumberFormat.getCurrencyInstance().format(0)
-        val output = "Tip : $30.00"
+        val output = "Tip : $0.20"
 //        val output = "Tip : ₩0.00"
         composeTestRule.onNodeWithText(output).assertExists()
 

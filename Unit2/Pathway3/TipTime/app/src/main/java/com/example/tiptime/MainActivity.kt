@@ -51,8 +51,8 @@ class MainActivity : ComponentActivity() {
 fun TipTimeScreen() {
 
     var amountInput by remember { mutableStateOf("") }
-    var tipInput by remember {  mutableStateOf( "15.0" ) }
-    var roundUp by remember { mutableStateOf(true) }
+    var tipInput by remember {  mutableStateOf( "" ) }
+    var roundUp by remember { mutableStateOf(false) }
 
     val amount = amountInput.toDoubleOrNull() ?: 0.0
     val tipString = calculateTip(amount, tipInput.toDoubleOrNull() ?: 0.0, roundUp)
@@ -128,7 +128,7 @@ internal fun calculateTip(amount: Double
                 , tipPercent : Double
                 , roundUp : Boolean
 ): String {
-    var tip = tipPercent / 100 * amount
+    var tip = (tipPercent / 100.0) * amount
     if (roundUp) {
         tip = kotlin.math.ceil(tip)
     }
