@@ -22,7 +22,9 @@ import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeQuadrantApp()
+        }
     }
 }
 
@@ -63,10 +65,18 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column( ) { }
+    Column(modifier = modifier
+        .fillMaxSize()
+        .background(backgroundColor)
+        .padding(16.dp) ) {
+        Text(text = title)
+        Text(text = description)
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeQuadrantApp()
+}
