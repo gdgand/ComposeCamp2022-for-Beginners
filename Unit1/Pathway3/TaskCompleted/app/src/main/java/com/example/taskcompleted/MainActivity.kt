@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,15 +24,47 @@ import com.example.taskcompleted.ui.theme.TaskCompletedTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            TaskCompletedTheme {
+                TaskCompletedScreen()
+            }
+        }
     }
 }
 
 @Composable
 fun TaskCompletedScreen() {
-    Column( ) { }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+        Image(
+            painter = painterResource(id = R.drawable.ic_task_completed),
+            contentDescription = null,
+            modifier = Modifier
+        )
+
+        Text(
+            text = "All tasks completed",
+            fontSize = 24.sp,
+            modifier = Modifier.padding(top = 24.dp, bottom = 8.dp)
+        )
+
+        Text(text = "Nice work!",
+            fontSize = 16.sp
+        )
+
+    }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, device = Devices.NEXUS_7)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    TaskCompletedTheme {
+        TaskCompletedScreen()
+    }
+}

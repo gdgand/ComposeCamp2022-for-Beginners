@@ -38,7 +38,11 @@ import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            Surface( color = MaterialTheme.colors.background) {
+                BirthdayGreetingWithText(message = "Happy birthday Sam!", from = "- from Emma")
+            }
+        }
     }
 }
 
