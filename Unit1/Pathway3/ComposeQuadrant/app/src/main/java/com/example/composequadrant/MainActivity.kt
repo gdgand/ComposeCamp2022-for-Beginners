@@ -29,8 +29,30 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ComposeQuadrantApp() {
     Column() {
-        Row() { }
-        Row() { }
+        Row() {
+            ComposableInfoCard(
+                stringResource(R.string.first_title),
+                stringResource(R.string.first_description),
+                Color.Green
+            )
+            ComposableInfoCard(
+                stringResource(R.string.second_title),
+                stringResource(R.string.second_description),
+                Color.Yellow
+                )
+        }
+        Row() {
+            ComposableInfoCard(
+                stringResource(R.string.third_title),
+                stringResource(R.string.third_description),
+                Color.Cyan
+                )
+            ComposableInfoCard(
+                stringResource(R.string.fourth_title),
+                stringResource(R.string.fourth_description),
+                Color.LightGray
+                )
+        }
     }
 }
 
