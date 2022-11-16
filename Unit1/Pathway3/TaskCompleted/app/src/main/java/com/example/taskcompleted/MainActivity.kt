@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TaskCompletedScreen("All tasks completed", "Nice work!")
+            TaskCompletedScreen(stringResource(R.string.title), stringResource(R.string.content))
         }
     }
 }
@@ -41,5 +41,5 @@ fun TaskCompletedScreen(title: String, content: String) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    TaskCompletedScreen("All tasks completed", "Nice work!")
+    TaskCompletedScreen(stringResource(R.string.title), stringResource(R.string.content))
 }
