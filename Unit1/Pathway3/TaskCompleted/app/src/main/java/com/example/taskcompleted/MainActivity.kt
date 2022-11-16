@@ -23,15 +23,17 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TaskCompletedScreen()
+            TaskCompletedScreen("All tasks completed", "Nice work!")
         }
     }
 }
 
 @Composable
-fun TaskCompletedScreen() {
+fun TaskCompletedScreen(title: String, content: String) {
     Column( ) {
         Image(painter = painterResource(R.drawable.ic_task_completed), contentDescription = null)
+        Text(text = title)
+        Text(text = content)
     }
 }
 
@@ -39,5 +41,5 @@ fun TaskCompletedScreen() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    TaskCompletedScreen()
+    TaskCompletedScreen("All tasks completed", "Nice work!")
 }
