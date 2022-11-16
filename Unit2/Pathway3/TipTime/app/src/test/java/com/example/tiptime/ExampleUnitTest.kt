@@ -14,4 +14,9 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+
+    @Test
+    fun calculate_20_percent_tip_no_roundup() {
+        assertEquals(calculateTip(10.0, 10.0, true), "₩1")
+    }
 }
