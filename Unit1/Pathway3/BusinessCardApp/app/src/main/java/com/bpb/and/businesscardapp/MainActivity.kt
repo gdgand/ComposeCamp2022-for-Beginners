@@ -11,6 +11,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ComposeCompilerApi
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -51,12 +52,15 @@ fun BusinessCardApp(name: String) {
 //        , verticalArrangement = Arrangement.Center
         , horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Row(modifier = Modifier.weight(1.8f).fillMaxHeight()
+        Row(modifier = Modifier
+            .weight(1.8f)
+            .fillMaxHeight()
             , horizontalArrangement = Arrangement.Center
             , verticalAlignment = Alignment.Bottom) {
+
             LogoFullName(name)
         }
-        Row(modifier = Modifier.weight(1f)) {
+        Row(modifier = Modifier.weight(1f).fillMaxSize()) {
             AdditionalInfo()
         }
     }
@@ -67,8 +71,7 @@ fun BusinessCardApp(name: String) {
 private fun LogoFullName(name: String) {
     Column(
         modifier = Modifier
-//            .height(300.dp)
-        , verticalArrangement = Arrangement.Bottom
+        , verticalArrangement = Arrangement.Center
     ) {
         val image = painterResource(R.drawable.android_logo)
         Image(painter = image
@@ -79,8 +82,6 @@ private fun LogoFullName(name: String) {
                 .width(150.dp)
                 .padding(top = 16.dp, start = 16.dp, end = 16.dp)
                 .align(Alignment.CenterHorizontally)
-//                .fillMaxHeight()
-//                .fillMaxWidth()
             , contentScale = ContentScale.Fit
         )
         Text(text = "Hello $name!"
@@ -95,40 +96,45 @@ private fun LogoFullName(name: String) {
 }
 
 @Composable
-private fun AdditionalInfo() {
-    Row(modifier = Modifier.fillMaxHeight().padding(bottom = 52.dp)
-    , horizontalArrangement = Arrangement.Center
-    , verticalAlignment = Alignment.Bottom) {
-        Column(modifier = Modifier.weight(1.2f).padding(end = 12.dp)
-            , verticalArrangement = Arrangement.Bottom
-            , horizontalAlignment = Alignment.End
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_mobile_phone),
-                contentDescription = null
-            )
-            Icon(
-                painter = painterResource(id = android.R.drawable.sym_action_call),
-                contentDescription = null
-            )
-            Icon(
-                painter = painterResource(id = android.R.drawable.ic_dialog_email),
-                contentDescription = null
-            )
-        }
-        Column(modifier = Modifier.weight(3f)
-            , verticalArrangement = Arrangement.Bottom
-            , horizontalAlignment = Alignment.Start
-        ) {
+private fun IconWithText(id: Int, text: String) {
 
+    val fillColor = Color(0xFF3ddc84)
 
-            Text("Mobile: 010-1234-5678", color = Color.White)
-            Text("Office: 02) 1234-5678", color = Color.White)
-            Text("Email : crystal@google.com", color = Color.White)
-        }
+    Spacer(
+        Modifier
+            .height(4.dp)
+            .size(4.dp))
+    Row (modifier = Modifier.padding(start = 30.dp, end = 30.dp)
+        , horizontalArrangement = Arrangement.Center
+    ) {
+        Icon(
+            painter = painterResource(id = id),
+            contentDescription = null,
+            tint = fillColor,
+            modifier = Modifier
+                .weight(1f)
+                .padding(start = 32.dp, end = 4.dp)
+        )
+        Text(
+            text = text, color = Color.White
+            , style = TextStyle(
+                fontSize = 17.unitSp)
+            , modifier = Modifier.weight(3f)
+        )
     }
 }
 
+@Composable
+private fun AdditionalInfo() {
+    Column(modifier = Modifier.fillMaxWidth().fillMaxHeight()
+            .padding(bottom = 40.dp)
+        , verticalArrangement = Arrangement.Bottom
+    ) {
+        IconWithText(R.drawable.ic_mobile_phone,  "Mobile: 010-1234-5678")
+        IconWithText(R.drawable.ic_land_phone, "Office: 02) 1234-5678")
+        IconWithText(R.drawable.ic_mail, "Email : crystal@google.com")
+    }
+}
 
 
 @Preview(showBackground = true)
