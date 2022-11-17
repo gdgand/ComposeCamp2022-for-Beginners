@@ -79,7 +79,6 @@ private fun ArticleCard(
     }
 }
 
-
 @Composable
 private fun Contact(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
