@@ -39,6 +39,9 @@ fun LemonApp() {
     var currentStep by remember {
         mutableStateOf(1)
     }
+    var squeezeCount by remember {
+        mutableStateOf(0)
+    }
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colors.background
@@ -49,14 +52,23 @@ fun LemonApp() {
                     textLabelResourceId = R.string.tap_lemon,
                     drawableResourceId = R.drawable.lemon_tree,
                     contentDescriptionResourceId = R.string.lemon_tree_content_description,
-                    onImageClick = { currentStep = 2})
+                    onImageClick = {
+                        currentStep = 2
+                        squeezeCount = (2..4).random()
+                    }
+                )
             }
             2 -> {
                 LemonTextAndImage(
                     textLabelResourceId = R.string.tap_keep,
                     drawableResourceId = R.drawable.lemon_squeeze,
                     contentDescriptionResourceId = R.string.lemon_content_description,
-                    onImageClick = { currentStep = 3})
+                    onImageClick = {
+                        squeezeCount--
+                        if (squeezeCount ==0) {
+                            currentStep = 3}
+                    }
+                )
             }
             3 -> {
                 LemonTextAndImage(
