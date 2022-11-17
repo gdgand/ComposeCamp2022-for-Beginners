@@ -17,25 +17,20 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             DiceRollerTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-
-                }
+                DiceRollerApp()
             }
         }
     }
 }
 
+@Preview(showBackground = true)
 @Composable
-fun DiceWithButtonAndImage(){
+fun DiceWithButtonAndImage(modifier: Modifier = Modifier){
 
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun DiceRollerApp(){
-
+    DiceWithButtonAndImage()
 }
