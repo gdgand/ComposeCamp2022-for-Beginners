@@ -64,8 +64,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-class ArtPiece(@DrawableRes val image: Int
+data class ArtPiece(@DrawableRes val image: Int
     , @StringRes val title: Int
     , @StringRes val source:Int
     )
