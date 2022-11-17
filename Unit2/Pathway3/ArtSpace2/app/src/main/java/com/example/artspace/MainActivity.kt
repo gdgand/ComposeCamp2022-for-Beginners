@@ -81,7 +81,8 @@ fun ArtSpaceApp(name: String) {
 //        , (R.drawable.image_4, R.string.image_title_4, R.string.image_source_4)
 //    )
 
-    val myChristmasArts : Array<ArtPiece> = arrayOf(ArtPiece(R.drawable.image_1, R.string.image_title_1, R.string.image_source_1)
+    val myChristmasArts : Array<ArtPiece> = arrayOf(
+        ArtPiece(R.drawable.image_1, R.string.image_title_1, R.string.image_source_1)
         , ArtPiece(R.drawable.image_2, R.string.image_title_2, R.string.image_source_2)
         , ArtPiece(R.drawable.image_3, R.string.image_title_3, R.string.image_source_3)
         , ArtPiece(R.drawable.image_4, R.string.image_title_4, R.string.image_source_4))
