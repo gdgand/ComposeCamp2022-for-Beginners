@@ -34,31 +34,27 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TaskCompletedWithTextAndImage(text1: String, text2 : String) {
-    Column{
+fun TaskCompletedWithTextAndImage(modifier: Modifier = Modifier, text1: String, text2 : String) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ){
         val image = painterResource(R.drawable.ic_task_completed)
         Image(
             painter = image,
             contentDescription = null,
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentWidth(Alignment.CenterHorizontally)
-                .wrapContentHeight(Alignment.CenterVertically)
         )
         
         Text(
             text = text1,
             fontSize = 36.sp,
             modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentWidth(Alignment.CenterHorizontally)
                 .padding(top = 24.dp, end = 8.dp)
         )
         Text(
             text = text2,
             fontSize = 16.sp,
             modifier = Modifier
-                .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally)
         )
 
@@ -70,5 +66,8 @@ fun TaskCompletedWithTextAndImage(text1: String, text2 : String) {
 @Preview(showBackground = false)
 @Composable
 fun TaskCompletedPreview() {
-    TaskCompletedWithTextAndImage(text1 = "All tasks completed", text2 = "Nice work!")
+    TaskCompletedWithTextAndImage(
+        modifier = Modifier.fillMaxSize()
+        .wrapContentSize(Alignment.Center),
+        text1 = "All tasks completed", text2 = "Nice work!",)
 }
