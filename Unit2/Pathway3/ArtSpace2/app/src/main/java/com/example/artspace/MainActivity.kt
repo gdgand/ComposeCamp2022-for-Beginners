@@ -36,6 +36,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
@@ -111,28 +112,14 @@ fun ArtOnePiece(@DrawableRes image: Int
 ) {
     val padding = 20.dp
     val density = LocalDensity.current
-    val shadowModifier = Modifier
-        .padding(padding)
-        .drawWithContent {
-            val paddingPx = with(density) { padding.toPx() }
-            clipRect(
-                left = -paddingPx,
-                top = 0f,
-                right = size.width + paddingPx,
-                bottom = size.height + paddingPx
-            ) {
-                this@drawWithContent.drawContent()
-            }
-        }
 
-    Column(modifier = Modifier.fillMaxWidth().padding(32.dp)
+    Column(modifier = Modifier.wrapContentSize().padding(32.dp)
         , horizontalAlignment = Alignment.CenterHorizontally
-//        , verticalArrangement = Arrangement.Center
     ) {
 
-    // 1. A picture of Art
+        // 1. A picture of Art
         Surface( shape = CutCornerShape(8.dp), color = Color.White, elevation = 12.dp
-            , modifier = Modifier.weight(7f).fillMaxSize()
+            , modifier = Modifier.weight(7f).wrapContentSize()
             .drawWithContent {
                 val paddingPx = with(density) { padding.toPx() }
                 clipRect(
@@ -158,14 +145,14 @@ fun ArtOnePiece(@DrawableRes image: Int
                 , modifier = Modifier.border(BorderStroke(2.dp, Color.LightGray),
                     shape = CutCornerShape(4.dp)
                 ).padding(24.dp)
-                , contentScale = ContentScale.Crop
+                , contentScale = ContentScale.Fit
             )
 
         }
 
 
         Surface(shape = RectangleShape, color = Color.White, elevation = 12.dp
-            , modifier = Modifier
+            , modifier = Modifier.wrapContentSize()
                 .padding(padding)
                 .drawWithContent {
                     val paddingPx = with(density) { padding.toPx() }
@@ -182,7 +169,7 @@ fun ArtOnePiece(@DrawableRes image: Int
 
             // 2. Title
             Column(
-                modifier = Modifier.weight(2f).fillMaxWidth().height(120.dp).padding(12.dp)
+                modifier = Modifier.weight(2f).wrapContentSize().padding(20.dp)
                 , horizontalAlignment = Alignment.Start
             ) {
 
@@ -197,13 +184,13 @@ fun ArtOnePiece(@DrawableRes image: Int
                         append(stringResource(title))
                     }
                 }
-                Text(text = titleWithStyle, fontSize = 24.sp)
+                Text(text = titleWithStyle, fontSize = 24.sp, fontFamily = FontFamily.Serif)
                 Spacer(modifier = Modifier.height(8.dp))
                 val subtitleWithStyle = buildAnnotatedString {
                     withStyle(
                         style = SpanStyle(
                             fontWeight = FontWeight.Bold,
-                            fontStyle = FontStyle.Italic,
+//                            fontStyle = FontStyle.Italic,
                             color = Color.Gray
                         )
                     ) {
