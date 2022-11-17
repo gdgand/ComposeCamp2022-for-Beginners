@@ -92,9 +92,17 @@ private fun Contact(modifier: Modifier = Modifier) {
 
 @Composable
 private fun ContactCard(content: String) {
-    Row(horizontalArrangement = Arrangement.SpaceBetween) {
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier.padding(start = 20.dp, end = 20.dp)
+        ) {
         Icon(imageVector = Icons.Rounded.Email, contentDescription = null)
-        Text(text = content, color = colorResource(R.color.white))
+        Text(
+            text = content,
+            color = colorResource(R.color.white),
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.Center
+        )
     }
 }
 
