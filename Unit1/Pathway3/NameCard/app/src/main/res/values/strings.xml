@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NameCard</string>
+    <string name="name">HD Kim</string>
+    <string name="desc"><![CDATA[Android & Back End Developer]]></string>
+    <string name="call">010-1234-5678</string>
+    <string name="id">\@admin</string>
+    <string name="email">admin@google.com</string>
+</resources>
