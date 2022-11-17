@@ -1,0 +1,15 @@
+*.iml
+.gradle
+/local.properties
+/DiceRoller/.idea/caches
+/DiceRoller/.idea/libraries
+/DiceRoller/.idea/modules.xml
+/DiceRoller/.idea/workspace.xml
+/DiceRoller/.idea/navEditor.xml
+/DiceRoller/.idea/assetWizardSettings.xml
+.DS_Store
+/DiceRoller/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
