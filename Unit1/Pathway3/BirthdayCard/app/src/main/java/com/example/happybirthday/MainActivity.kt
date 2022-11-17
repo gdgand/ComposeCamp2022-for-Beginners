@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
         setContent {
                 HappyBirthdayTheme {
                     Surface(color = MaterialTheme.colors.background) {
-                        BirthdayGreetingWithImage(message = "Happy Birth Sam!", from = "- from Emma")
+                        BirthdayGreetingWithImage(message = getString(R.string.happy_birthday_text), from = "- from Emma")
                     }
                 }
 
@@ -55,11 +55,19 @@ fun BirthdayGreetingWithText(message: String, from: String) {
     Column {
         Text(
             text = message,
-            fontSize = 36.sp
+            fontSize = 36.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(start = 16.dp, end = 16.dp)
         )
         Text(
             text = from,
-            fontSize = 24.sp
+            fontSize = 24.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(start = 16.dp, end = 16.dp)
         )
     }
 }
