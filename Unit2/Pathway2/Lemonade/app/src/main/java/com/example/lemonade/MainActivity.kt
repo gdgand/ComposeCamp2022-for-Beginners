@@ -76,6 +76,22 @@ fun LemonApp() {
     }
 }
 
+@Composable
+fun LemonTextAndImage(
+    textLabelResourceId: Int,
+    drawableResourceId: Int,
+    contentDescriptionResourceId: Int,
+    onImageClick: () -> Unit,
+    modifier: Modifier = Modifier
+    ) {
+    Text(text = stringResource(id = textLabelResourceId))
+    Spacer(modifier = Modifier.height(16.dp))
+    Image(painter = painterResource(id = drawableResourceId),
+        contentDescription = stringResource(id = contentDescriptionResourceId),
+        modifier = Modifier.clickable(onClick = onImageClick)
+    )
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
