@@ -115,6 +115,7 @@ fun LemonadeTextAndImage(
                     shape = RoundedCornerShape(4.dp)
                 )
                 .clickable(onClick = onImageClick)
+                .padding(16.dp)
         )
 
     }
