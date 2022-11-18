@@ -28,6 +28,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.graphics.Color
 import java.text.NumberFormat
+import java.util.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -172,7 +173,9 @@ internal fun calculateTip(
 
     println("tipa2? $tipa2")
 
-    return NumberFormat.getCurrencyInstance().format(tip)
+    return NumberFormat.getCurrencyInstance(
+        Locale.US
+    ).format(tip)
 }
 
 @Preview(showBackground = true)

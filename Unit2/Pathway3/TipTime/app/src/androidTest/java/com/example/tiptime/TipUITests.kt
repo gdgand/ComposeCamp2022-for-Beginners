@@ -22,6 +22,6 @@ class TipUITests {
 
         composeTestRule.onNodeWithText("Bill Amount").performTextInput("10")
         composeTestRule.onNodeWithText("Tip (%)").performTextInput("20")
-        composeTestRule.onNodeWithText("Tip Amount: ₩2").assertExists()
+        composeTestRule.onNodeWithText("Tip Amount: \$2.00").assertExists()
     }
 }
