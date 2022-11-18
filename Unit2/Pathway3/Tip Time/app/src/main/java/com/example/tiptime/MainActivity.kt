@@ -1,5 +1,6 @@
 package com.example.tiptime
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,6 +10,8 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -48,9 +51,10 @@ fun TipTimeScreen() {
 
 @Composable
 fun EditNumberField() {
+    var amountInput: MutableState<String> = mutableStateOf("0")
     TextField(
-        value = "",
-        onValueChange = {},
+        value = amountInput.value,
+        onValueChange = { amountInput.value = it},
     )
 }
 
