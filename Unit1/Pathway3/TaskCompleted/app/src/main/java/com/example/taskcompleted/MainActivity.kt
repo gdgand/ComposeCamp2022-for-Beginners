@@ -35,7 +35,12 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TaskCompletedScreen() {
-    Column() {
+    Column(
+        modifier = Modifier.fillMaxHeight().fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+
+    ) {
         val image = painterResource(id = R.drawable.ic_task_completed)
         Image(painter = image, contentDescription = null)
         Text(
