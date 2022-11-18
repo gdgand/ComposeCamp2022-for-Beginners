@@ -38,7 +38,14 @@ import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            HappyBirthdayTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(color = MaterialTheme.colors.background) {
+                    BirthdayGreetingWithText( "Happy Birthday Sam!", "- from Emma")
+                }
+            }
+        }
     }
 }
 
@@ -46,7 +53,16 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BirthdayGreetingWithText(message: String, from: String) {
     // Create a column so that texts don't overlap
-    Column { }
+    Column {
+        Text(
+            text = message,
+            fontSize = 36.sp,
+        )
+        Text(
+            text = from,
+            fontSize = 24.sp,
+        )
+    }
 }
 
 // 5. Box 레이아웃 추
@@ -56,5 +72,9 @@ fun BirthdayGreetingWithImage(message: String, from: String) { }
 // 4. 이미지 컴포저블 추가
 @Preview(showBackground = false)
 @Composable
-private fun BirthdayCardPreview() { }
+private fun BirthdayCardPreview() { 
+    HappyBirthdayTheme {
+        BirthdayGreetingWithText( "Happy Birthday Sam!", "- from Emma")
+    }
+}
 
