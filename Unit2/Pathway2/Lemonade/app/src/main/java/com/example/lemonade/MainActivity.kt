@@ -38,39 +38,51 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun LemonadeApp() {
-    var result by remember { mutableStateOf(1) }
+    var currentStep by remember { mutableStateOf(1) }
+    var squeezeCount by remember {
+        mutableStateOf(0)
+    }
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colors.background
     ) {
-        when (result) {
+        when (currentStep) {
             1 -> {
                 LemonadeTextAndImage(
                     textLabelResource = R.string.lemon_tree_description,
                     descriptionResource = R.string.lemon_tree,
                     drawableResource = R.drawable.lemon_tree,
-                    onImageClick = { /*TODO*/ })
+                    onImageClick = {
+                        currentStep = 2
+                        squeezeCount = (2..4).random()
+                    })
             }
             2 -> {
                 LemonadeTextAndImage(
                     textLabelResource = R.string.lemon_description,
                     descriptionResource = R.string.lemon,
                     drawableResource = R.drawable.lemon_squeeze,
-                    onImageClick = { /*TODO*/ })
+                    onImageClick = {
+                        squeezeCount--
+                        if (squeezeCount == 0)
+                            currentStep = 3
+                    })
             }
             3 -> {
                 LemonadeTextAndImage(
                     textLabelResource = R.string.glass_of_lemonade_description,
                     descriptionResource = R.string.glass_of_lemonade,
                     drawableResource = R.drawable.lemon_drink,
-                    onImageClick = { /*TODO*/ })
+                    onImageClick = {
+                        currentStep = 4
+                    })
             }
             else -> {
                 LemonadeTextAndImage(
                     textLabelResource = R.string.empty_glass_description,
                     descriptionResource = R.string.empty_glass,
                     drawableResource = R.drawable.lemon_restart,
-                    onImageClick = { /*TODO*/ })
+                    onImageClick = { currentStep = 1 })
             }
         }
     }
