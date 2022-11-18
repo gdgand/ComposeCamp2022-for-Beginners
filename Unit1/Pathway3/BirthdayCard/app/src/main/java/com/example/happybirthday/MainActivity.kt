@@ -48,7 +48,6 @@ class MainActivity : ComponentActivity() {
                         message = "Happy Birthday yeongdon!",
                         from = "-yeongdon"
                     )
-
                 }
             }
         }
@@ -66,7 +65,7 @@ fun BirthdayGreetingWithText(message: String, from: String) {
             fontSize = 30.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentWidth(align = Alignment.Start)
+                .wrapContentWidth(align = Alignment.CenterHorizontally)
                 .padding(start = 16.dp, top = 16.dp)
         )
         Text(
@@ -74,7 +73,7 @@ fun BirthdayGreetingWithText(message: String, from: String) {
             fontSize = 20.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentWidth(align = Alignment.End)
+                .wrapContentWidth(align = Alignment.CenterHorizontally)
                 .padding(start = 16.dp,end=16.dp)
         )
 
