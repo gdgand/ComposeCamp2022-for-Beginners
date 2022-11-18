@@ -3,11 +3,16 @@ package com.example.artspace
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -37,16 +42,27 @@ class MainActivity : ComponentActivity() {
 fun ArtSpaceApp() {
     val modifier = Modifier;
 
+    val arts = arrayOf(
+        ArtData("Title1", "Artist1", "2021", R.drawable.img1),
+        ArtData("", "", "", R.drawable.img2),
+        ArtData("", "", "", R.drawable.img3),
+        ArtData("", "", "", R.drawable.img4),
+        ArtData("", "", "", R.drawable.img5),
+    )
+
+    var currentIndex by remember { mutableStateOf(0) }
+
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
+
     ) {
         Box {
             Box(
                 modifier = modifier.border(2.dp, Color.Black)
             ) {
                 Image(
-                    painter = painterResource(R.drawable.img1),
+                    painter = painterResource(arts[currentIndex].imgResourceId),
                     contentDescription = null,
                     modifier = modifier.padding(20.dp)
                 )
@@ -55,16 +71,16 @@ fun ArtSpaceApp() {
 
         Card(
             elevation = 5.dp,
-            modifier = modifier.padding(top = 20.dp)
+            modifier = modifier.padding(top = 20.dp).fillMaxWidth().padding(horizontal = 50.dp)
         ) {
             Column(
                 modifier = modifier.padding(10.dp)
             ) {
                 Text(
-                    text = "Title"
+                    text = arts[currentIndex].title
                 )
                 Text(
-                    text = "Sub Title (2021)"
+                    text = "${arts[currentIndex].artist} (${arts[currentIndex].year})"
                 )
             }
         }
@@ -105,3 +121,5 @@ fun DefaultPreview() {
         }
     }
 }
+
+data class ArtData(val title: String, val artist: String, val year: String, @DrawableRes val imgResourceId: Int)
