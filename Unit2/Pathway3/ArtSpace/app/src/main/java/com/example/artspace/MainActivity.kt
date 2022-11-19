@@ -52,58 +52,64 @@ fun ArtSpaceApp() {
 
     var currentIndex by remember { mutableStateOf(0) }
 
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-
+    Box(
+        modifier = modifier.fillMaxSize()
     ) {
-        Box {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = modifier.padding(20.dp)
+        ) {
             Box(
-                modifier = modifier.border(2.dp, Color.Black)
+                modifier = modifier.weight(1f)
             ) {
-                Image(
-                    painter = painterResource(arts[currentIndex].imgResourceId),
-                    contentDescription = null,
-                    modifier = modifier.padding(20.dp)
-                )
+                Box(
+                    modifier = modifier.border(2.dp, Color.Black)
+                ) {
+                    Image(
+                        painter = painterResource(arts[currentIndex].imgResourceId),
+                        contentDescription = null,
+                        modifier = modifier.padding(20.dp)
+                    )
+                }
             }
-        }
 
-        Card(
-            elevation = 5.dp,
-            modifier = modifier.padding(top = 20.dp).fillMaxWidth().padding(horizontal = 50.dp)
-        ) {
-            Column(
-                modifier = modifier.padding(10.dp)
+            Card(
+                elevation = 5.dp,
+                modifier = modifier.padding(top = 20.dp).fillMaxWidth().padding(horizontal = 50.dp)
             ) {
-                Text(
-                    text = arts[currentIndex].title
-                )
-                Text(
-                    text = "${arts[currentIndex].artist} (${arts[currentIndex].year})"
-                )
+                Column(
+                    modifier = modifier.padding(10.dp)
+                ) {
+                    Text(
+                        text = arts[currentIndex].title
+                    )
+                    Text(
+                        text = "${arts[currentIndex].artist} (${arts[currentIndex].year})"
+                    )
+                }
             }
-        }
 
-        Row(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp, vertical = 40.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            val buttonWidth = 130.dp
+            Row(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(top = 40.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                val buttonWidth = 130.dp
 
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = modifier.width(buttonWidth)
-            ) {
-                Text(text = "Previous")
-            }
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = modifier.width(buttonWidth)
-            ) {
-                Text(text = "Next")
+                Button(
+                    onClick = { /*TODO*/ },
+                    modifier = modifier.width(buttonWidth)
+                ) {
+                    Text(text = "Previous")
+                }
+                Button(
+                    onClick = { /*TODO*/ },
+                    modifier = modifier.width(buttonWidth)
+                ) {
+                    Text(text = "Next")
+                }
             }
         }
     }
