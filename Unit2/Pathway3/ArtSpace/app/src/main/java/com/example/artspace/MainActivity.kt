@@ -1,6 +1,7 @@
 package com.example.artspace
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
@@ -44,10 +45,10 @@ fun ArtSpaceApp() {
 
     val arts = arrayOf(
         ArtData("Title1", "Artist1", "2021", R.drawable.img1),
-        ArtData("", "", "", R.drawable.img2),
-        ArtData("", "", "", R.drawable.img3),
-        ArtData("", "", "", R.drawable.img4),
-        ArtData("", "", "", R.drawable.img5),
+        ArtData("Title2", "Artist2", "2020", R.drawable.img2),
+        ArtData("Title3", "Artist3", "2019", R.drawable.img3),
+        ArtData("Title4", "Artist4", "2018", R.drawable.img4),
+        ArtData("Title5", "Artist5", "2017", R.drawable.img5),
     )
 
     var currentIndex by remember { mutableStateOf(0) }
@@ -61,7 +62,8 @@ fun ArtSpaceApp() {
             modifier = modifier.padding(20.dp)
         ) {
             Box(
-                modifier = modifier.weight(1f)
+                modifier = modifier.weight(1f),
+                contentAlignment = Alignment.Center
             ) {
                 Box(
                     modifier = modifier.border(2.dp, Color.Black)
@@ -99,13 +101,25 @@ fun ArtSpaceApp() {
                 val buttonWidth = 130.dp
 
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        if (currentIndex <= 0) {
+                            currentIndex = arts.size-1
+                            return@Button
+                        }
+                        currentIndex--
+                    },
                     modifier = modifier.width(buttonWidth)
                 ) {
                     Text(text = "Previous")
                 }
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        if (arts.size-1 <= currentIndex) {
+                            currentIndex = 0
+                            return@Button
+                        }
+                        currentIndex++
+                    },
                     modifier = modifier.width(buttonWidth)
                 ) {
                     Text(text = "Next")
