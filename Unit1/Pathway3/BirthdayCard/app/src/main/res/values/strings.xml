@@ -16,4 +16,6 @@
   -->
 <resources>
     <string name="app_name">Happy Birthday</string>
+    <string name="happy_birthday_text">Happy birthday Jaehun!</string>
+    <string name="signature_text">- from me!</string>
 </resources>
