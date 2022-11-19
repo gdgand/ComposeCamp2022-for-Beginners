@@ -40,13 +40,14 @@ class MainActivity : ComponentActivity() {
 sealed class LevelOfLemonade(
     @StringRes val desc: Int,
     @DrawableRes val imageRes: Int,
-    @StringRes val imageDesc: Int
+    @StringRes val imageDesc: Int,
+    onClick: (Unit) -> LevelOfLemonade,
 ) {
-    object LemonTree :
-        LevelOfLemonade(R.string.lemon_tree_desc, R.drawable.lemon_tree, R.string.lemon_title)
+    class LemonTree(onClick: (Unit) -> LevelOfLemonade) :
+        LevelOfLemonade(R.string.lemon_tree_desc, R.drawable.lemon_tree, R.string.lemon_title, onClick)
 
-    class Lemon(val timesOfTab: Int) :
-        LevelOfLemonade(R.string.lemon_desc, R.drawable.lemon_squeeze, R.string.lemon_title)
+    class Lemon(var tabCount: Int, val timesOfTab: Int, onClick: (Unit) -> LevelOfLemonade) :
+        LevelOfLemonade(R.string.lemon_desc, R.drawable.lemon_squeeze, R.string.lemon_title, onClick)
 
     class Lemonade(val timesOfTab: Int) :
         LevelOfLemonade(R.string.tap_lemon_desc, R.drawable.lemon_drink, R.string.tap_lemon_title)
@@ -116,7 +117,7 @@ private fun changeTabCount(lemonState: LevelOfLemonade, prevTabCount: Int): Int 
 
 private fun changeState(prevState: LevelOfLemonade, tabCount: Int = 0): LevelOfLemonade {
     return when (prevState) {
-        LevelOfLemonade.LemonTree -> LevelOfLemonade.Lemon((3..10).random())
+        is LevelOfLemonade.LemonTree -> LevelOfLemonade.Lemon((3..10).random())
         is LevelOfLemonade.Lemon -> {
             if (tabCount >= prevState.timesOfTab) LevelOfLemonade.Lemonade((3..10).random())
             else prevState
@@ -125,6 +126,8 @@ private fun changeState(prevState: LevelOfLemonade, tabCount: Int = 0): LevelOfL
             if (tabCount >= prevState.timesOfTab) LevelOfLemonade.EmptyGlass
             else prevState
         }
-        LevelOfLemonade.EmptyGlass -> LevelOfLemonade.LemonTree
+        LevelOfLemonade.EmptyGlass -> LevelOfLemonade.LemonTree {
+            LevelOfLemonade.Lemon()
+        }
     }
 }
