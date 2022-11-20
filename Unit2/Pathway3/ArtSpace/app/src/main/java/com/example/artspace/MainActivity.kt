@@ -11,7 +11,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -39,8 +39,17 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+val imageIds = listOf(
+    R.drawable.image1,
+    R.drawable.image2
+)
+
 @Composable
 fun ArtSpaceScreen() {
+    var position by remember { mutableStateOf(0) }
+
+    val image = imageIds[position]
+
     Column(
         modifier = Modifier
             .padding(20.dp)
@@ -55,10 +64,9 @@ fun ArtSpaceScreen() {
                 .weight(1f)
         ) {
             Image(
-                painter = painterResource(id = R.drawable.image1),
+                painter = painterResource(id = image),
                 contentDescription = null,
-                modifier = Modifier
-                    .fillMaxSize(),
+                modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
 
@@ -78,28 +86,25 @@ fun ArtSpaceScreen() {
         Spacer(modifier = Modifier.height(16.dp))
         Row(
             horizontalArrangement = Arrangement.SpaceAround,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp)
+            modifier = Modifier.fillMaxWidth().padding(10.dp)
         ) {
             Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .weight(2f)
+                onClick = { position = (position - 1 + imageIds.size) % imageIds.size },
+                modifier = Modifier.weight(2f)
             ) {
                 Text(text = "Previous")
             }
             Spacer(modifier = Modifier.weight(1f))
             Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .weight(2f)
+                onClick = { position = (position + 1) % imageIds.size },
+                modifier = Modifier.weight(2f)
             ) {
                 Text(text = "Next")
             }
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
