@@ -45,11 +45,13 @@ import com.example.cupcake.data.DataSource.quantityOptions
 @Composable
 fun StartOrderScreen(
     quantityOptions: List<Pair<Int, Int>>,
-    // TODO: add onNextButtonClicked
+    onNextButtonClicked: (Int) -> Unit,
     modifier: Modifier = Modifier
-){
+) {
     Column(
-        modifier = modifier.padding(16.dp).fillMaxWidth(),
+        modifier = modifier
+            .padding(16.dp)
+            .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
@@ -65,7 +67,9 @@ fun StartOrderScreen(
         quantityOptions.forEach { item ->
             SelectQuantityButton(
                 labelResourceId = item.first,
-                onClick = { /* TODO: handle next button */ }
+                onClick = {
+                    onNextButtonClicked(item.second)
+                }
             )
         }
     }
@@ -80,7 +84,7 @@ fun SelectQuantityButton(
     @StringRes labelResourceId: Int,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
-){
+) {
     Button(
         onClick = onClick,
         modifier = modifier.widthIn(min = 250.dp)
@@ -91,6 +95,11 @@ fun SelectQuantityButton(
 
 @Preview
 @Composable
-fun StartOrderPreview(){
-    StartOrderScreen(quantityOptions = quantityOptions)
+fun StartOrderPreview() {
+    StartOrderScreen(
+        quantityOptions = quantityOptions,
+        onNextButtonClicked = {
+
+        }
+    )
 }
