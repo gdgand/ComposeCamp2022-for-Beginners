@@ -1,7 +1,6 @@
 package com.example.artspace
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
@@ -18,8 +17,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.artspace.ui.theme.ArtSpaceTheme
 
 class MainActivity : ComponentActivity() {
@@ -78,17 +79,29 @@ fun ArtSpaceApp() {
 
             Card(
                 elevation = 5.dp,
-                modifier = modifier.padding(top = 20.dp).fillMaxWidth().padding(horizontal = 50.dp)
+                modifier = modifier
+                    .padding(top = 20.dp)
+                    .padding(horizontal = 50.dp)
+                    .width(300.dp),
             ) {
                 Column(
-                    modifier = modifier.padding(10.dp)
+                    modifier = modifier.padding(10.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = arts[currentIndex].title
+                        text = arts[currentIndex].title,
+                        fontSize = 24.sp
                     )
-                    Text(
-                        text = "${arts[currentIndex].artist} (${arts[currentIndex].year})"
-                    )
+                    Row {
+                        Text(
+                            text = arts[currentIndex].artist,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            text = " (${arts[currentIndex].year})",
+                            color = Color.Gray
+                        )
+                    }
                 }
             }
 
