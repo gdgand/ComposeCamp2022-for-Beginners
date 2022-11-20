@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -24,12 +25,25 @@ import com.example.composearticle.ui.theme.ComposeArticleTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeArticleTheme {
+                Surface(color = MaterialTheme.colors.background) {
+                    ComposeArticleApp()
+                }
+            }
+        }
     }
 }
 
 @Composable
-fun ComposeArticleApp() { }
+fun ComposeArticleApp() {
+    ArticleCard(
+        title = stringResource(R.string.title_jetpack_compose_tutorial),
+        shortDescription = stringResource(R.string.compose_short_desc),
+        longDescription = stringResource(R.string.compose_long_desc),
+        imagePainter = painterResource(R.drawable.bg_compose_background)
+    )
+}
 
 @Composable
 private fun ArticleCard(
@@ -39,10 +53,32 @@ private fun ArticleCard(
     imagePainter: Painter,
     modifier: Modifier = Modifier,
 ) {
-    Column() { }
+    Column(modifier = modifier) {
+        Image(
+            painter = imagePainter,
+            contentDescription = null,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Text(
+            text = shortDescription,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier.padding(start=16.dp, end=16.dp)
+        )
+        Text(
+            text = longDescription,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier.padding(16.dp)
+        )
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeArticleTheme {
+        Surface {
+            ComposeArticleApp()
+        }
+    }
+}
