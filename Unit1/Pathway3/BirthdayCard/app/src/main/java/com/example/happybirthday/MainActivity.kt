@@ -30,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Typeface
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,7 +39,13 @@ import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            HappyBirthdayTheme {
+                Surface(color = MaterialTheme.colors.background) {
+                    BirthdayGreetingWithText( "Hello Compose!", "from Ch0pp4")
+                }
+            }
+        }
     }
 }
 
@@ -46,7 +53,21 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BirthdayGreetingWithText(message: String, from: String) {
     // Create a column so that texts don't overlap
-    Column { }
+
+//    Row {
+//        Text(text = message, fontSize = 36.sp)
+//        Text(text = from, fontSize = 20.sp)
+//    }
+
+    Column {
+        Text(text = message, fontSize = 36.sp)
+        Text(text = from, fontSize = 20.sp)
+    }
+}
+
+@Composable
+fun BirthdayGreetingText(message: String) {
+    Text(text = message, fontSize = 18.sp)
 }
 
 // 5. Box 레이아웃 추
@@ -56,5 +77,8 @@ fun BirthdayGreetingWithImage(message: String, from: String) { }
 // 4. 이미지 컴포저블 추가
 @Preview(showBackground = false)
 @Composable
-private fun BirthdayCardPreview() { }
+private fun BirthdayCardPreview() {
+//    BirthdayGreetingText(message = "Hello Compose!")
+    BirthdayGreetingWithText(message = "Hello Compose!", from = "from Ch0pp4")
+}
 
