@@ -15,11 +15,13 @@
  */
 package com.example.happybirthday
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Layout
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -27,6 +29,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color.Companion.Blue
+import androidx.compose.ui.graphics.Color.Companion.Green
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -39,10 +44,13 @@ import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val msg = getString(R.string.birthday_from)
+        val from = getString(R.string.birthday_from)
         setContent {
             HappyBirthdayTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    BirthdayGreetingWithText( "Hello Compose!", "from Ch0pp4")
+//                    BirthdayGreetingWithText( "Hello Compose!", "from Ch0pp4")
+                    BirthdayGreetingWithImage(message = msg, from = from)
                 }
             }
         }
@@ -60,8 +68,23 @@ fun BirthdayGreetingWithText(message: String, from: String) {
 //    }
 
     Column {
-        Text(text = message, fontSize = 36.sp)
-        Text(text = from, fontSize = 20.sp)
+//        Text(text = message, fontSize = 36.sp, modifier = Modifier.background(color = White))
+        Text(text = message, fontSize = 36.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+//                .wrapContentWidth(Alignment.Start)
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(start = 16.dp, top = 16.dp)
+        )
+
+        Text(
+            text = from, fontSize = 20.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+//                .wrapContentWidth(Alignment.End)
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(start = 16.dp, end = 16.dp)
+        )
     }
 }
 
@@ -72,13 +95,29 @@ fun BirthdayGreetingText(message: String) {
 
 // 5. Box 레이아웃 추
 @Composable
-fun BirthdayGreetingWithImage(message: String, from: String) { }
+fun BirthdayGreetingWithImage(message: String, from: String) {
+    val img = painterResource(R.drawable.image)
+    Box() {
+        Image(
+            painter = img, contentDescription = "description",
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop
+        )
+        BirthdayGreetingWithText(message = "Hello Compose!", from = "from Ch0pp4")
+    }
+
+}
 
 // 4. 이미지 컴포저블 추가
 @Preview(showBackground = false)
 @Composable
 private fun BirthdayCardPreview() {
 //    BirthdayGreetingText(message = "Hello Compose!")
-    BirthdayGreetingWithText(message = "Hello Compose!", from = "from Ch0pp4")
+//    BirthdayGreetingWithText(message = "Hello Compose!", from = "from Ch0pp4")
+    val from = stringResource(id = R.string.birthday_from)
+    val msg = stringResource(id = R.string.birthday_to)
+    BirthdayGreetingWithImage(message = msg, from = from)
 }
 
