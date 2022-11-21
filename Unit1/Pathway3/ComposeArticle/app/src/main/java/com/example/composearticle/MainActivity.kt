@@ -24,12 +24,28 @@ import com.example.composearticle.ui.theme.ComposeArticleTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeArticleTheme {
+                ComposeArticleApp()
+            }
+        }
     }
 }
 
 @Composable
-fun ComposeArticleApp() { }
+fun ComposeArticleApp() {
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colors.background
+    ) {
+        ArticleCard(
+            title = stringResource(id = R.string.title_jetpack_compose_tutorial),
+            shortDescription = stringResource(id = R.string.compose_short_desc),
+            longDescription = stringResource(id = R.string.compose_long_desc),
+            imagePainter = painterResource(id = R.drawable.bg_compose_background)
+        )
+    }
+}
 
 @Composable
 private fun ArticleCard(
@@ -39,10 +55,31 @@ private fun ArticleCard(
     imagePainter: Painter,
     modifier: Modifier = Modifier,
 ) {
-    Column() { }
+    Column {
+        Image(painter = imagePainter, contentDescription = null)
+        Text(
+            text = title,
+            fontSize = 24.sp,
+            modifier = Modifier.padding(16.dp)
+        )
+        Text(
+            text = shortDescription,
+            modifier = Modifier.padding(horizontal = 16.dp),
+            textAlign = TextAlign.Justify
+        )
+        Text(
+            text = longDescription,
+            modifier = Modifier.padding(16.dp),
+            textAlign = TextAlign.Justify
+        )
+    }
 }
 
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeArticleTheme {
+        ComposeArticleApp()
+    }
+}
