@@ -35,8 +35,8 @@ class MainActivity : ComponentActivity() {
                 result = stringResource(R.string.all_task_completed),
                 message = stringResource(R.string.nice_work),
                 modifier = Modifier
-                    .fillMaxHeight()
-                    .fillMaxWidth()
+                    .wrapContentHeight(CenterVertically)
+                    .wrapContentWidth(CenterHorizontally)
             )
         }
     }
