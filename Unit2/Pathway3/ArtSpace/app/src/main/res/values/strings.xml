@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">ArtSpace</string>
+    <string name="b_previous">Previous</string>
+    <string name="b_next">Next</string>
+
+    <string name="starry_night_title">Starry Night</string>
+    <string name="starry_night_description">《별이 빛나는 밤》은 네덜란드의 화가 빈센트 반 고흐의 가장 널리 알려진 작품이자 정신병을 앓고 있을 당시 고흐가 그린 그림이다. 1889년 생레미의 정신병원에서 고흐는 정신적 질환으로 인한 고통을 떠올려 그림 속의 소용돌이로 묘사했다.</string>
+    <string name="starry_night_artist">Vincent van Gogh</string>
+    <string name="starry_night_year">(1889)</string>
+
+    <string name="bedroom_title">Bedroom in Arles</string>
+    <string name="bedroom_description">Currently on view. Vincent van Gogh (1853 – 1890), Arles, October 1888. oil on canvas, 72.4 cm x 91.3 cm. While he was in Arles, Van Gogh made this painting of his bedroom in the Yellow House.</string>
+    <string name="bedroom_artist">Vincent van Gogh</string>
+    <string name="bedroom_year">(1888)</string>
+
+    <string name="sunflowers_title">Bedroom in Arles</string>
+    <string name="sunflowers_description">《해바라기》는 빈센트 반 고흐가 그린 정물화이다. 이 그림은 두 가지 버전이 있는데, 첫 번째는 1887년 파리에서 그린 바닥에 놓여있는 해바라기이며, 두 번째는 1년 뒤 아를에서 그린 꽃병에 담긴 해바라기이다.</string>
+    <string name="sunflowers_artist">Vincent van Gogh</string>
+    <string name="sunflowers_year">(1880)</string>
+
+    <string name="launch_title">Launch on grass</string>
+    <string name="launch_description">《풀밭 위의 점심 식사》는 에두아르 마네가 1862년과 1863년 사이에 그린 대형 유화이다. 이 그림은 전원을 배경으로 잘 차려 입은 두 명의 남성과 함께 있는 누드인 한 여인과 옷을 거의 벗은 또 다른 여인을 묘사한다.</string>
+    <string name="launch_artist">Edouard Manet</string>
+    <string name="launch_year">(1862-1863)</string>
+
+    <string name="woman_title">Woman with a Parasol</string>
+    <string name="woman_description">영어에서 번역됨-파라솔을 든 여인 - 모네 부인과 그녀의 아들, 때로는 산책이라고도 알려진 클로드 모네가 1875년에 그린 캔버스에 유채 그림입니다. 인상파 작품은 1871년부터 1877년까지 그의 아내 카미유 모네와 그들의 아들 장 모네를 묘사합니다.</string>
+    <string name="woman_artist">Claude Monet</string>
+    <string name="woman_year">(1875)</string>
+
+</resources>
