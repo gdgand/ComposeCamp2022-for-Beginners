@@ -6,6 +6,8 @@ import android.media.midi.MidiDevice.MidiConnection
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.Spring.DampingRatioLowBouncy
 import androidx.compose.animation.core.Spring.StiffnessVeryLow
 import androidx.compose.animation.core.spring
@@ -72,7 +74,16 @@ fun OneDayCard(item: OneDayItem, modifier: Modifier = Modifier) {
     Card(elevation = 8.dp, modifier = modifier
         .padding(8.dp)
     ) {
-        Column(modifier = Modifier.fillMaxWidth().padding(start = 12.dp)) {
+        Column(modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 12.dp, end = 12.dp, bottom = 12.dp)
+            .animateContentSize(
+                animationSpec = spring(
+                    dampingRatio = Spring.DampingRatioLowBouncy,
+                    stiffness = Spring.StiffnessMedium
+                )
+            )
+        ) {
             val dayString = "Day" + item.day.toString()
             Text(text = dayString, style = MaterialTheme.typography.h1
                 , color = Color.Gray
@@ -87,16 +98,17 @@ fun OneDayCard(item: OneDayItem, modifier: Modifier = Modifier) {
             )
             Image(painter = painterResource(R.drawable.snowman)
                 , contentDescription = null
-                , modifier = Modifier.padding(bottom = 12.dp).clickable {
+                , modifier = Modifier.clickable {
                     expanded = !expanded
                 }
             )
 
             if (expanded) {
+                Spacer(modifier = Modifier.height(12.dp))
                 Text(
                     text = stringResource(item.descriptionRes),
                     style = MaterialTheme.typography.body1,
-                    modifier = Modifier.padding(start = 12.dp, end = 12.dp, bottom = 12.dp)
+                    modifier = Modifier
                 )
             }
         }
@@ -128,7 +140,9 @@ fun ThirtyDaysApp() {
     Scaffold (topBar =  { ThirtyDaysTopAppBar() }
     ) {
 
-        LazyColumn(modifier = Modifier.fillMaxWidth().padding(8.dp)
+        LazyColumn(modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
             , contentPadding = PaddingValues(12.dp)
         ) {
             items(ThirtyDaysItemList.items) {
