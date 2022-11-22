@@ -1,5 +1,6 @@
-package com.example.composequadrant
+package com.example.aop.name_card
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,12 +20,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(sa4vedInstanceState)
         setContent { }
     }
 }
+
 
 @Composable
 fun ComposeQuadrantApp() {
