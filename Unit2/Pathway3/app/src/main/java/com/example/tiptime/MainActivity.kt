@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    TipTimeScreen("Android")
+                    TipTimeScreen()
                 }
             }
         }
@@ -88,7 +89,8 @@ fun RoundTheTipRow(
     }
 }
 
-private fun calculateTip(
+@VisibleForTesting
+internal fun calculateTip(
     amount: Double,
     tipPercent: Double = 15.0,
     roundUp: Boolean
@@ -100,7 +102,7 @@ private fun calculateTip(
 }
 
 @Composable
-fun TipTimeScreen(name: String) {
+fun TipTimeScreen() {
 
     var amountInput by remember { mutableStateOf("") }
     var tipInput by remember { mutableStateOf("") }
@@ -160,6 +162,6 @@ fun TipTimeScreen(name: String) {
 @Composable
 fun DefaultPreview() {
     TipTimeTheme {
-        TipTimeScreen("Android")
+        TipTimeScreen()
     }
 }
