@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Art Space</string>
+
+    <string name="first_art_title">Woman with a Parasol – Madame Monet and Her Son</string>
+    <string name="first_art_author">Claude Monet</string>
+    <string name="first_art_year">(1875)</string>
+
+    <string name="second_art_title">The Weeping Woman</string>
+    <string name="second_art_author">Pablo Picasso</string>
+    <string name="second_art_year">(1937)</string>
+
+
+    <string name="third_art_title">The Scream of Nature</string>
+    <string name="third_art_author">Edvard Munch</string>
+    <string name="third_art_year">(1893)</string>
+
+</resources>
