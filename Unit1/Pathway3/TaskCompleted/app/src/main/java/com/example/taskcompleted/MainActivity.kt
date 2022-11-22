@@ -34,26 +34,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun TaskCompletedScreen() {
     Column() {
-        Image(
-            painter = painterResource(id = R.drawable.bg_compose_background),
-            contentDescription = null,
-            modifier = Modifier
-                .fillMaxWidth()
-        )
-        Text(text = stringResource(R.string.title_text) ,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        fontSize = 24.sp)
-        Text(text = stringResource(id = R.string.content_text),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 16.dp, end = 16.dp,)
-        )
-        Text(text = stringResource(id = R.string.sub_content_text),
-        modifier = Modifier
-            .padding(16.dp),
-        textAlign = TextAlign.Justify)
     }
 }
 
@@ -61,6 +41,5 @@ fun TaskCompletedScreen() {
 @Composable
 fun DefaultPreview() {
     TaskCompletedTheme{
-        TaskCompletedScreen()
     }
 }
