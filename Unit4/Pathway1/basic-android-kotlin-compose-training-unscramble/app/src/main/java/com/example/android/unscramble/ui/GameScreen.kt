@@ -99,6 +99,13 @@ fun GameScreen(
                 Text(stringResource(R.string.submit))
             }
         }
+
+        if (gameUiState.isGameOver) {
+            FinalScoreDialog(
+                score = gameUiState.score,
+                onPlayAgain = { gameViewModel.resetGame() }
+            )
+        }
     }
 }
 
@@ -169,6 +176,7 @@ fun GameLayout(
  */
 @Composable
 private fun FinalScoreDialog(
+    score: Int,
     onPlayAgain: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -181,7 +189,7 @@ private fun FinalScoreDialog(
             // onCloseRequest.
         },
         title = { Text(stringResource(R.string.congratulations)) },
-        text = { Text(stringResource(R.string.you_scored, 0)) },
+        text = { Text(stringResource(R.string.you_scored, score)) },
         modifier = modifier,
         dismissButton = {
             TextButton(
