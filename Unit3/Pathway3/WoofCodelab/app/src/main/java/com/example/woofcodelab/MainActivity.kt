@@ -78,7 +78,7 @@ class MainActivity : ComponentActivity() {
 fun WoofTopAppBar(modifier: Modifier = Modifier) {
     Row(modifier = modifier
         .fillMaxWidth()
-        .background(color = MaterialTheme.colors.primary)
+        .background(color = MaterialTheme.colors.background)
         , verticalAlignment = Alignment.CenterVertically
 
     ) {
