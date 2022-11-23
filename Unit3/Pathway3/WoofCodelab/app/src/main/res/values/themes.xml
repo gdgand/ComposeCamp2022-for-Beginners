@@ -15,8 +15,8 @@
   ~ limitations under the License.
   -->
 <resources>
-
     <style name="Theme.WoofCodelab" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/purple_700</item>
+        <item name="android:statusBarColor">@color/grey_50</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>
