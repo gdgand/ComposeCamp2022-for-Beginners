@@ -56,7 +56,7 @@ fun BirthdayGreetingWithText(message: String, from: String) {
     }
 }
 
-// 5. Box 레이아웃 추
+// 5. Box 레이아웃 추가
 @Composable
 fun BirthdayGreetingWithImage(message: String, from: String) { }
 
