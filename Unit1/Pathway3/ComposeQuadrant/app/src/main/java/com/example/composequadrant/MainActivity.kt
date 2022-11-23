@@ -22,15 +22,44 @@ import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeQuadrantTheme() {
+                Surface {
+                    ComposeQuadrantApp()
+                }
+
+            }
+        }
     }
 }
 
 @Composable
 fun ComposeQuadrantApp() {
-    Column() {
-        Row() { }
-        Row() { }
+    Column(modifier = Modifier.fillMaxHeight().fillMaxWidth()) {
+        Row(modifier = Modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = stringResource(R.string.first_title),
+                description = stringResource(id = R.string.first_description),
+                backgroundColor = Color.Green,
+            modifier = Modifier.weight(1f))
+            ComposableInfoCard(
+                title = stringResource(R.string.second_title),
+                description = stringResource(id = R.string.second_description),
+                backgroundColor = Color.Yellow,
+                        modifier = Modifier.weight(1f))
+        }
+        Row(modifier = Modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = stringResource(R.string.third_title),
+                description = stringResource(id = R.string.third_description),
+                backgroundColor = Color.Cyan,
+                modifier = Modifier.weight(1f))
+            ComposableInfoCard(
+                title = stringResource(R.string.fourth_title),
+                description = stringResource(id = R.string.first_description),
+                backgroundColor = Color.LightGray ,
+                modifier = Modifier.weight(1f))
+        }
     }
 }
 
@@ -41,10 +70,21 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column( ) { }
+    Column( modifier = modifier
+        .fillMaxSize()
+        .background(color = backgroundColor)
+        .padding(16.dp),
+    verticalArrangement = Arrangement.Center,
+    horizontalAlignment = Alignment.CenterHorizontally,
+) {
+        Text(text = title, fontWeight = FontWeight.Bold,modifier = Modifier.padding(bottom=16.dp))
+        Text(text = description, textAlign = TextAlign.Justify) // 양쪽정렬
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeQuadrantApp()
+}
