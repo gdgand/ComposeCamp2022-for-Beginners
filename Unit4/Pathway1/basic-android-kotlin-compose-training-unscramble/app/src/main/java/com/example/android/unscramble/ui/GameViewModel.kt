@@ -3,18 +3,15 @@ package com.example.android.unscramble.ui
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.android.unscramble.data.MAX_NO_OF_WORDS
 import com.example.android.unscramble.data.SCORE_INCREASE
 import com.example.android.unscramble.data.allWords
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 
-class GameViewModel : ViewModel() {
-    private val _uiState = MutableStateFlow(GameUiState())
-    val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
+class GameViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
+    val uiState: StateFlow<GameUiState> get() = savedStateHandle.getStateFlow(GAME_UI_STATE_KEY, GameUiState())
 
     private lateinit var currentWord: String
 
@@ -46,16 +43,16 @@ class GameViewModel : ViewModel() {
 
     private fun updateGameState(updatedScore: Int) {
         if (usedWords.size == MAX_NO_OF_WORDS) {
-            _uiState.update { currentState ->
-                currentState.copy(
+            savedStateHandle.get<GameUiState>(GAME_UI_STATE_KEY)?.also { gameUiState ->
+                savedStateHandle[GAME_UI_STATE_KEY] = gameUiState.copy(
                     isGuessedWordWrong = false,
                     score = updatedScore,
                     isGameOver = true
                 )
             }
         } else {
-            _uiState.update { currentState ->
-                currentState.copy(
+            savedStateHandle.get<GameUiState>(GAME_UI_STATE_KEY)?.also { currentState ->
+                savedStateHandle[GAME_UI_STATE_KEY] = currentState.copy(
                     currentScrambledWord = pickRandomWordAndShuffle(),
                     currentWordCount = currentState.currentWordCount.inc(),
                     isGuessedWordWrong = false,
@@ -67,7 +64,7 @@ class GameViewModel : ViewModel() {
 
     fun resetGame() {
         usedWords.clear()
-        _uiState.value = GameUiState(currentScrambledWord = pickRandomWordAndShuffle())
+        savedStateHandle[GAME_UI_STATE_KEY] = GameUiState(currentScrambledWord = pickRandomWordAndShuffle())
     }
 
     fun updateUserGuess(guessedWord: String){
@@ -76,24 +73,28 @@ class GameViewModel : ViewModel() {
 
     fun checkUserGuess() {
         if (userGuess.equals(currentWord, ignoreCase = true)) {
-            val updatedScore = _uiState.value.score.plus(SCORE_INCREASE)
+            val updatedScore = savedStateHandle.get<GameUiState>(GAME_UI_STATE_KEY)?.score?.plus(SCORE_INCREASE) ?: 0
 
             updateGameState(updatedScore)
         } else {
-            _uiState.update { currentState ->
-                currentState.copy(isGuessedWordWrong = true)
+            savedStateHandle.get<GameUiState>(GAME_UI_STATE_KEY)?.also { currentState ->
+                savedStateHandle[GAME_UI_STATE_KEY] = currentState.copy(isGuessedWordWrong = true)
             }
         }
         updateUserGuess("")
     }
 
     fun skipWord() {
-        updateGameState(_uiState.value.score)
+        updateGameState(savedStateHandle.get<GameUiState>(GAME_UI_STATE_KEY)?.score ?: 0)
         // Reset user guess
         updateUserGuess("")
     }
 
     init {
         resetGame()
+    }
+
+    companion object {
+        private const val GAME_UI_STATE_KEY = "game_ui_state"
     }
 }
