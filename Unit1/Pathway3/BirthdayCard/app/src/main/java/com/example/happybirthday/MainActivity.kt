@@ -40,7 +40,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             HappyBirthdayTheme() {
-
+                Surface(color = MaterialTheme.colors.background) {
+                    BirthdayGreetingWithText( "Happy Birthday Sam!", "- from Emma")
+                }
             }
         }
     }
@@ -55,21 +57,30 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BirthdayGreetingWithText(message: String, from: String) {
     // Create a column so that texts don't overlap
-    Row{
-        Text(
-            text = message, fontSize = 36.sp
-        )
-        Text(
-            text = from, fontSize = 24.sp
-        )
-    }
+//    Row{
+//        Text(
+//            text = message, fontSize = 36.sp
+//        )
+//        Text(
+//            text = from, fontSize = 24.sp
+//        )
+//    }
 //    Text(
 //        text = message, fontSize = 32.sp
 //    )
 //    Text(
 //        text = from, fontSize = 24.sp
 //    )
-//    Column { }
+    Column {
+        Text(
+            text = message,
+            fontSize = 36.sp,
+        )
+        Text(
+            text = from,
+            fontSize = 24.sp,
+        )
+    }
 }
 
 // 5. Box 레이아웃 추
