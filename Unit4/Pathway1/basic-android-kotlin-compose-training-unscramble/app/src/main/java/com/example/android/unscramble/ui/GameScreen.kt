@@ -59,6 +59,7 @@ fun GameScreen(modifier: Modifier = Modifier
     ) {
 
         GameStatus()
+        Text(text = gameViewModel.getAnswer())   // for cheating
         GameLayout(currentScrambledWord = gameUiState.currentScrambledWord
             , isGuessWrong  = gameUiState.isGuessWordWrong
             , userGuess = gameViewModel.userGuess
@@ -91,8 +92,7 @@ fun GameScreen(modifier: Modifier = Modifier
                 Text(stringResource(R.string.submit))
             }
         }
-        Spacer(modifier = Modifier.height(12.dp))
-        Text(text = gameViewModel.getAnswer())   // for cheating
+
     }
 }
 
