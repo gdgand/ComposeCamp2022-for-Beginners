@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalAnimationApi::class)
+
 package com.example.thirtydays
 
 import android.content.res.Configuration
@@ -6,12 +8,12 @@ import android.media.midi.MidiDevice.MidiConnection
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.*
+import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.Spring.DampingRatioLowBouncy
 import androidx.compose.animation.core.Spring.StiffnessVeryLow
 import androidx.compose.animation.core.spring
-import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -26,8 +28,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key.Companion.H
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -98,6 +103,8 @@ fun OneDayCard(item: OneDayItem, modifier: Modifier = Modifier) {
             )
             Image(painter = painterResource(R.drawable.snowman)
                 , contentDescription = null
+                , alignment = Alignment.TopCenter
+                , contentScale = ContentScale.FillWidth
                 , modifier = Modifier.clickable {
                     expanded = !expanded
                 }
@@ -135,36 +142,68 @@ fun ThirtyDaysTopAppBar(modifier: Modifier = Modifier) {
 }
 
 
+//@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun ThirtyDaysApp() {
+
+    val visibleState = remember {
+        MutableTransitionState(false).apply {
+            // Start the animation immediately.
+            targetState = true
+        }
+    }
+
     Scaffold (topBar =  { ThirtyDaysTopAppBar() }
     ) {
-
-        LazyColumn(modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-            , contentPadding = PaddingValues(12.dp)
+        AnimatedVisibility(
+            visibleState = visibleState,
+            enter = fadeIn(
+                animationSpec = spring(dampingRatio = DampingRatioLowBouncy)
+            ),
+            exit = fadeOut()
         ) {
-            items(ThirtyDaysItemList.items) {
 
-                OneDayCard(item = it
-                    , modifier = Modifier
-                )
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp), contentPadding = PaddingValues(12.dp)
+            ) {
+                itemsIndexed(ThirtyDaysItemList.items) { index, item ->
+
+                    OneDayCard(
+                        item = item
+                        , modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+                            .animateEnterExit(
+                            enter = slideInVertically(
+                                animationSpec = spring(
+                                    stiffness = StiffnessVeryLow,
+                                    dampingRatio = DampingRatioLowBouncy
+                                ),
+                                initialOffsetY = { it * (index + 1) } // staggered entrance
+                            )
+                        )
+                    )
+                }
             }
         }
-//        ThirtyDaysList(items = ThirtyDaysItemList.items)
+
     }
 }
 
 
 
-@Preview("ItemList")
+@Preview("Light Theme")
+@Preview("Dark Theme", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun ThirtyDaysItemListPreview() {
-    ThirtyDaysTheme(darkTheme = false) {
+    ThirtyDaysTheme() {
         Surface(color = MaterialTheme.colors.background
         ) {
-            ThirtyDaysList(items = ThirtyDaysItemList.items)
+//            var editable by remember { mutableStateOf(true) }
+//            AnimatedVisibility(visible = editable) {
+//                Text(text = "Edit")
+//            }
+//            ThirtyDaysList(items = ThirtyDaysItemList.items)
         }
 
     }
@@ -177,7 +216,10 @@ fun ThirtyDaysItemListPreview() {
 fun OneDayItemPreview() {
     val oneDayItem = OneDayItem(1, R.string.item_1, R.string.desc_1)
 
-    ThirtyDaysTheme {
+    ThirtyDaysTheme() {
+
+
+
         OneDayCard(item = oneDayItem)
     }
 }
