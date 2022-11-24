@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -36,7 +35,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ComposeArticleApp() {
-    ArticleCard(title = stringResource(R.string.app_name),
+    ArticleCard(
+        title = stringResource(R.string.app_name),
         shortDescription = stringResource(R.string.compose_short_desc),
         longDescription = stringResource(R.string.compose_long_desc),
         imagePainter = painterResource(R.drawable.bg_compose_background)
@@ -51,7 +51,33 @@ private fun ArticleCard(
     imagePainter: Painter,
     modifier: Modifier = Modifier,
 ) {
-    Column { }
+    Column {
+        Image(
+            painter = imagePainter,
+            contentDescription = null,
+        )
+
+        Text(
+            text = title,
+            fontSize = 24.sp,
+            modifier = Modifier
+                .padding(16.dp)
+        )
+
+        Text(
+            text = shortDescription,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier
+                .padding(start = 16.dp, end = 16.dp)
+        )
+
+        Text(
+            text = longDescription,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier
+                .padding(16.dp)
+        )
+    }
 }
 
 
