@@ -74,7 +74,7 @@ class GameViewModel : ViewModel() {
     }
 
     private fun updateGameState(updatedScore: Int) {
-        Log.d(TAG, "usedWords.size = ${usedWords.size}")
+//        Log.d(TAG, "usedWords.size = ${usedWords.size}")
         if (_uiState.value.numberOfStage <= usedWords.size) {
             _uiState.update { currentState ->
                 currentState.copy(isUserGuessedWordWrong = false,
