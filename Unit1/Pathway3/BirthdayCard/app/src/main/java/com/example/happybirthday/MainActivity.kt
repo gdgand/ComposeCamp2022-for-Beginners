@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    BirthdayGreetingWithText(message = "Happy birthday hyeon!", from = "from summer")
+                    BirthdayGreetingWithImage(stringResource(R.string.happy_birthday_text), stringResource(R.string.signature_text))
                 }
             }
         }
@@ -59,10 +59,23 @@ fun BirthdayGreetingWithText(message: String, from: String) {
         Text(
             text = message,
             fontSize = 36.sp,
+            modifier = Modifier.fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(
+                    top = 16.dp,
+                    start = 5.dp,
+                    end = 5.dp
+                )
         )
         Text(
             text = from,
             fontSize = 24.sp,
+            modifier = Modifier.fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(
+                    top = 10.dp ,
+                    start = 5.dp,
+                    end = 5.dp)
         )
     }
 }
@@ -71,7 +84,14 @@ fun BirthdayGreetingWithText(message: String, from: String) {
 @Composable
 fun BirthdayGreetingWithImage(message: String, from: String) {
     val image = painterResource(id = R.drawable.androidparty)
-    Image(painter = image, contentDescription = null)
+    Box {
+        Image(painter = image,
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(),
+        contentScale = ContentScale.Crop)
+    }
     BirthdayGreetingWithText(message = message ,from = from)
 }
 
@@ -80,7 +100,7 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
 @Composable
 private fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        BirthdayGreetingWithImage("Happy Birthday Hyeon!!", "From Summer")
+        BirthdayGreetingWithImage(stringResource(R.string.happy_birthday_text), stringResource(R.string.signature_text))
     }
 }
 
