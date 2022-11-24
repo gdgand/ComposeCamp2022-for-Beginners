@@ -72,4 +72,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
 }
