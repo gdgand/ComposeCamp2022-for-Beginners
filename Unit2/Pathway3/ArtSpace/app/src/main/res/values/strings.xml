@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ArtSpace</string>
+    <string name="art_title_1">Hogwarts Students</string>
+    <string name="art_title_2">Mickey Mouse</string>
+    <string name="art_title_3">Volcano</string>
+    <string name="art_title_4">Professional Gamer</string>
+    <string name="art_title_5">Rat In Water</string>
+    <string name="art_title_6">Parabarabam</string>
+    <string name="artist1">Kim &amp; Kwon</string>
+    <string name="artist2">Kim &amp; Kwon</string>
+    <string name="artist3">Kim &amp; Kwon</string>
+    <string name="artist4">Kim &amp; Kwon</string>
+    <string name="artist5">Kim &amp; Kwon</string>
+    <string name="artist6">Kim &amp; Kwon</string>
+</resources>
