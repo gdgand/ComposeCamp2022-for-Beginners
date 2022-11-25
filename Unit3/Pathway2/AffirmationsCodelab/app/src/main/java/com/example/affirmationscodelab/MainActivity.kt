@@ -85,7 +85,7 @@ fun AffirmationCard(
 ) {
     // 머터리얼 테마 카드 뷰
     Card(
-        // 패딩 값 8, 자식 뷰 간 거리 4
+        // 패딩 값 8, 그림자 세팅
         modifier = Modifier.padding(8.dp),
         elevation = 4.dp
     ) {
