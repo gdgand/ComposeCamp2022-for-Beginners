@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,11 +43,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-/*@Composable
-fun MyTheme(content: @Composable () -> Unit) {
-    MaterialTheme(content = content)
-}*/
-
 @Preview(showBackground = false)
 @Composable
 fun NameCard() {
@@ -63,8 +59,8 @@ fun NameCard() {
                 ) {
                     ProfileBlock(
                         imgSrc = R.drawable.android_logo,
-                        fullName = "Dan Brown",
-                        title = "Android Developer Extraordinaire"
+                        fullName = stringResource(R.string.fullName),
+                        title = stringResource(R.string.title)
                     )
                 }
                 Box(
@@ -78,7 +74,7 @@ fun NameCard() {
 
 @Composable
 fun ProfileBlock(imgSrc: Int, fullName: String, title: String) {
-        val AndroidGreen = Color(0xFF48dc9a)
+        val androidGreen = Color(0xFF48dc9a)
         val profileImg = painterResource(id = imgSrc)
         Column(
             verticalArrangement = Arrangement.SpaceAround
@@ -86,7 +82,7 @@ fun ProfileBlock(imgSrc: Int, fullName: String, title: String) {
             Row {
                 Image(
                     painter = profileImg,
-                    contentDescription = "profile image",
+                    contentDescription = stringResource(R.string.profileImgDescription),
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(100.dp)
@@ -109,7 +105,7 @@ fun ProfileBlock(imgSrc: Int, fullName: String, title: String) {
                     text = title,
                     style = androidx.compose.ui.text.TextStyle(
                         fontSize = 10.sp,
-                        color = AndroidGreen,
+                        color = androidGreen,
                         fontWeight = FontWeight(500),
                     ),
                     modifier = Modifier
@@ -122,7 +118,7 @@ fun ProfileBlock(imgSrc: Int, fullName: String, title: String) {
 
 @Composable
 fun ContentBlock() {
-        val AndroidGreen = Color(0xFF48dc9a)
+        val androidGreen = Color(0xFF48dc9a)
         val defaultColor = Color(0xFFFFFFFF)
         val iconPadding = Modifier.padding(start = 40.dp, end = 20.dp)
         val rowModifier = Modifier
@@ -146,10 +142,10 @@ fun ContentBlock() {
                     Icons.Rounded.Call,
                     contentDescription = "telephone icon",
                     modifier = iconPadding,
-                    tint = AndroidGreen
+                    tint = androidGreen
                 )
                 Text(
-                    text = "+82 010 1544 3434",
+                    text = stringResource(R.string.telephonNumber),
                     color = defaultColor
                 )
             }
@@ -160,10 +156,10 @@ fun ContentBlock() {
                     Icons.Rounded.Share,
                     contentDescription = "share icon",
                     modifier = iconPadding,
-                    tint = AndroidGreen
+                    tint = androidGreen
                 )
                 Text(
-                    text = "@social media link",
+                    text = stringResource(R.string.socialMediaLink),
                     color = defaultColor,
                 )
             }
@@ -174,10 +170,10 @@ fun ContentBlock() {
                     Icons.Rounded.Email,
                     contentDescription = "email icon",
                     modifier = iconPadding,
-                    tint = AndroidGreen
+                    tint = androidGreen
                 )
                 Text(
-                    text = "email@domain.com",
+                    text = stringResource(R.string.emailAddress),
                     color = defaultColor,
                 )
             }
