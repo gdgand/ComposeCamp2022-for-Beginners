@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">NameCard</string>
+    <string name="fullName">Dan Brown</string>
+    <string name="title">Android Developer Extraordinaire</string>
+    <string name="profileImgDescription">profile image</string>
+    <string name="telephonNumber">+82 010 1544 3434</string>
+    <string name="socialMediaLink">\@social media link</string>
+    <string name="emailAddress">email@domain.com</string>
 </resources>
