@@ -28,6 +28,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,7 +40,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BirthdayGreetingWithText(message = "Happy Birthday Sam!", from = "- from Emma")
+            BirthdayGreetingWithImage(
+                message = getString(R.string.happy_birthday_text),
+                from = getString(R.string.signature_text)
+            )
         }
     }
 }
@@ -51,19 +55,39 @@ fun BirthdayGreetingWithText(message: String, from: String) {
     Column {
         Text(
             text = message,
-            fontSize = 36.sp
+            fontSize = 36.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(top = 16.dp)
         )
         Text(
             text = from,
-            fontSize = 24.sp
+            fontSize = 24.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(start = 16.dp, end = 16.dp)
+
         )
     }
-
 }
 
 // 5. Box 레이아웃 추가
 @Composable
 fun BirthdayGreetingWithImage(message: String, from: String) {
+    Box {
+        Image(
+            painter = painterResource(id = R.drawable.androidparty),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+        )
+
+        BirthdayGreetingWithText(message = message, from = from)
+    }
 }
 
 // 4. 이미지 컴포저블 추가
