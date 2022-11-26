@@ -68,7 +68,7 @@ fun CoursesCard(
                 modifier = Modifier
                     // 이미지 사이즈 68 dp
                     .size(68.dp)
-                    // 내부 조건에 맞게 크기 조정
+                    // 내부 조건에 맞게 크기 조정 
                     .aspectRatio(1f)
             )
             Column(
