@@ -44,6 +44,8 @@ import androidx.compose.ui.unit.dp
 import com.example.reply.R
 import com.example.reply.data.Email
 import com.example.reply.data.local.LocalAccountsDataProvider
+import android.app.Activity
+import androidx.compose.ui.platform.LocalContext
 
 /**
  * Component that displays a single pane of list of emails
@@ -80,7 +82,9 @@ fun ReplyListAndDetailContent(
     onEmailCardPressed: (Email) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val activity = LocalContext.current as Activity
     val emails = replyUiState.currentMailboxEmails
+
     Row(modifier = modifier) {
         LazyColumn(
             modifier = Modifier
@@ -99,7 +103,7 @@ fun ReplyListAndDetailContent(
         ReplyDetailsScreen(
             replyUiState = replyUiState,
             modifier = Modifier.weight(1f),
-            onBackPressed = {}
+            onBackPressed = { activity.finish() }
         )
     }
 }
