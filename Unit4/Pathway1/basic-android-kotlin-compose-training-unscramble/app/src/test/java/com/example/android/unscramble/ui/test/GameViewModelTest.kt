@@ -94,7 +94,6 @@ class GameViewModelTest {
 
             loopCount += 1
             viewModel.updateUserGuess(correctPlayerWord)
-//            viewModel.updateUserGuess("and")
 
             viewModelAnswer = viewModel.getAnswer()
             expectedScore += SCORE_INCREASE
@@ -102,20 +101,36 @@ class GameViewModelTest {
             viewModel.checkUserGuess()
             currentGameUiState = viewModel.uiState.value
 
-//            assertFalse("direct comparison", viewModel.uiState.value.isUserGuessedWordWrong)
 
             assertEquals("Comparison in loop $loopCount", viewModelAnswer, correctPlayerWord )
             assertFalse("isUserGuessWrong", currentGameUiState.isUserGuessedWordWrong)
 
             correctPlayerWord = getUnscrambledWord(currentGameUiState.currentScrambledWord)
-
-
+            viewModelAnswer = viewModel.getAnswer()
         }
 
         // Assert that after each correct answer, score is updated correctly.
 
-//        assertEquals("loopCount", loopCount, currentGameUiState.numberOfStage)
+        assertEquals("loopCount", loopCount, currentGameUiState.numberOfStage)
         assertEquals("expectedCore", expectedScore, currentGameUiState.score)
     }
 
+
+
+    @Test
+    fun gameViewModel_WordSkipped_ScoreUnchangedAndWordCountIncreased() {
+        var currentGameUiState = viewModel.uiState.value
+        val correctPlayerWord = getUnscrambledWord(currentGameUiState.currentScrambledWord)
+        viewModel.updateUserGuess(correctPlayerWord)
+        viewModel.checkUserGuess()
+
+        currentGameUiState = viewModel.uiState.value
+        val lastWordCount = currentGameUiState.currentWordCount
+        viewModel.skipWord()
+        currentGameUiState = viewModel.uiState.value
+        // Assert that score remains unchanged after word is skipped.
+        assertEquals(SCORE_AFTER_FIRST_CORRECT_ANSWER, currentGameUiState.score)
+        // Assert that word count is increased by 1 after word is skipped.
+        assertEquals(lastWordCount + 1, currentGameUiState.currentWordCount)
+    }
 }
