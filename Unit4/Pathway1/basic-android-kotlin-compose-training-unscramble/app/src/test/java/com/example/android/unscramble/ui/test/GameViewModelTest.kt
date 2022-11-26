@@ -39,15 +39,17 @@ class GameViewModelTest {
 
         viewModel.updateUserGuess(correctPlayerWord)
 
-        assertEquals(viewModel.getAnswer(), correctPlayerWord)
+        var viewModelAnswer = viewModel.getAnswer()
+//        assertEquals(viewModelAnswer, correctPlayerWord)
 
         viewModel.checkUserGuess()
 
-//        assertEquals(viewModel.getAnswer(), correctPlayerWord)
+//        assertEquals(viewModelAnswer, correctPlayerWord)
 
         currentGameUiState = viewModel.uiState.value
 
-        assertEquals("실패 시", viewModel.getAnswer(), correctPlayerWord)
+
+
 
         // Assert that checkUserGuess() method updates isGuessedWordWrong is updated correctly.
         assertFalse(currentGameUiState.isUserGuessedWordWrong)
@@ -86,21 +88,34 @@ class GameViewModelTest {
         var correctPlayerWord = getUnscrambledWord(currentGameUiState.currentScrambledWord)
 
         var  loopCount = 0
+        var viewModelAnswer = viewModel.getAnswer()
 
         repeat(currentGameUiState.numberOfStage) {
-            expectedScore += SCORE_INCREASE
+
             loopCount += 1
             viewModel.updateUserGuess(correctPlayerWord)
-            viewModel.checkUserGuess()
+//            viewModel.updateUserGuess("and")
 
-            assertFalse(currentGameUiState.isUserGuessedWordWrong)
-            assertEquals(viewModel.getAnswer(), correctPlayerWord)
+            viewModelAnswer = viewModel.getAnswer()
+            expectedScore += SCORE_INCREASE
+
+            viewModel.checkUserGuess()
+            currentGameUiState = viewModel.uiState.value
+
+//            assertFalse("direct comparison", viewModel.uiState.value.isUserGuessedWordWrong)
+
+            assertEquals("Comparison in loop $loopCount", viewModelAnswer, correctPlayerWord )
+            assertFalse("isUserGuessWrong", currentGameUiState.isUserGuessedWordWrong)
+
+            correctPlayerWord = getUnscrambledWord(currentGameUiState.currentScrambledWord)
+
+
         }
 
         // Assert that after each correct answer, score is updated correctly.
 
-        assertEquals(loopCount, currentGameUiState.numberOfStage)
-        assertEquals(expectedScore, currentGameUiState.score)
+//        assertEquals("loopCount", loopCount, currentGameUiState.numberOfStage)
+        assertEquals("expectedCore", expectedScore, currentGameUiState.score)
     }
 
 }
