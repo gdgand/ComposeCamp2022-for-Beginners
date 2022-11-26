@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+
+    <string name="img_desc_1">셀러버 블랙화이트</string>
+    <string name="title_1">셀러버 세은</string>
+    <string name="detail_1">이때 포카 못 사서 아쉽다</string>
+
+    <string name="img_desc_2">최초 공개</string>
+    <string name="title_2">최초 공개 세은</string>
+    <string name="detail_2">파란 머리 왜 잘 어울리는디</string>
+
+    <string name="img_desc_3">데뷔 티저 세은</string>
+    <string name="title_3">데뷔 티저 세은</string>
+    <string name="detail_3">아름다움 레전드 흰옷세은</string>
+
+    <string name="img_desc_4">토파즈 보정 단골</string>
+    <string name="title_4">개맘에들어착장 세은</string>
+    <string name="detail_4">빨리 갈발로 돌아와줘</string>
+
+    <string name="img_desc_5">첫 팬미팅 세은</string>
+    <string name="title_5">첫 팬미팅 세은</string>
+    <string name="detail_5">개이뻐 아기여우</string>
+
+    <string name="img_desc_6">자컨 세은</string>
+    <string name="title_6">유닛 자컨 세은</string>
+    <string name="detail_6">핑크 개잘어울림</string>
+
+</resources>
