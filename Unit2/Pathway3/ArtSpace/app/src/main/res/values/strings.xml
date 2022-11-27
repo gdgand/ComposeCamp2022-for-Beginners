@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">ArtSpace</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="A_Sunday_Afternoon_on_the_Island_of_La_Grande_Jatte">A Sunday Afternoon on the Island of La\'Grande Jatte</string>
+    <string name="Georges_Seurat">Georges Seurat</string>
+    <string name="Guernica">Guernica</string>
+    <string name="Pablo_Picasso">Pablo Picasso(1937)</string>
+    <string name="girl_with_a_pearl_earring">Girl with a pearl earring</string>
+    <string name="Johannes_Vermeer">Johannes Vermeer (1665)</string>
+    <string name="monalisa">Mona Lisa</string>
+    <string name="Leonardo_da_Vinci">Leonardo da Vinci (1503)</string>
+    <string name="portrait_de_l_artiste_sans_barbe">portrait de l\'artiste sans barbe</string>
+    <string name="Van_Gogh">Vincent Van Gogh (1998)</string>
+    <string name="starry_night">Starry Night</string>
+    <string name="the_scream">The Scream</string>
+    <string name="Edvard_Munch">Edvard Munch</string>
+    <string name="Whistler_Mother">Whistler\'s Mother</string>
+    <string name="James_McNeill_Whistler">James McNeill Whistler (1871)</string>
+    <string name="the_persistence_of_memory">The Persistence of Memory</string>
+    <string name="Salvador_Dali">Salvador Dali (1931)</string>
+</resources>
