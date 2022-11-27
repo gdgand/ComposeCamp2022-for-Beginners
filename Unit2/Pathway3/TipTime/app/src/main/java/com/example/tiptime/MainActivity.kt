@@ -10,7 +10,6 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.remember
@@ -74,7 +73,7 @@ fun EditNumberField(value: String, onValueChanged: (String) -> Unit) {
         value = value,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         onValueChange = onValueChanged,
-        label = { Text(stringResource(id = R.string.cost_of_service)) })
+        label = { Text(stringResource(id = R.string.bill_amount)) })
 }
 
 private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
