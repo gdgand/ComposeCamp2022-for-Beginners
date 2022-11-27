@@ -3,6 +3,7 @@ package com.example.tiptime
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
@@ -46,15 +47,18 @@ class MainActivity : ComponentActivity() {
 fun TipTimeScreen() {
     Column(modifier = Modifier.padding(32.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         var amountInput by remember { mutableStateOf("") }
+        var tipInput by remember { mutableStateOf("") }
         val amount = amountInput.toDoubleOrNull() ?: 0.0
-        val tip = calculateTip(amount)
+        val tipPercent = tipInput.toDoubleOrNull() ?: 0.0
+        val tip = calculateTip(amount, tipPercent)
         Text(
             text = stringResource(id = R.string.calculate_tip),
             fontSize = 24.sp,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
         Spacer(modifier = Modifier.height(16.dp))
-        EditNumberField(amountInput, { amountInput = it })
+        EditNumberField(R.string.bill_amount, amountInput, { amountInput = it })
+        EditNumberField(R.string.how_was_the_service, tipInput, { tipInput = it })
         Spacer(modifier = Modifier.height(24.dp))
         Text(
             text = stringResource(id = R.string.tip_amount, tip),
@@ -66,14 +70,19 @@ fun TipTimeScreen() {
 }
 
 @Composable
-fun EditNumberField(value: String, onValueChanged: (String) -> Unit) {
+fun EditNumberField(
+    @StringRes label: Int,
+    value: String,
+    onValueChanged: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
     TextField(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier,
         singleLine = true,
         value = value,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         onValueChange = onValueChanged,
-        label = { Text(stringResource(id = R.string.bill_amount)) })
+        label = { Text(stringResource(id = label)) })
 }
 
 private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
