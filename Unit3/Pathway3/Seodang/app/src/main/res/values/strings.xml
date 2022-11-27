@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">칠일서당</string>
+    <string name="app_desc">일주일에 한 문장씩 익혀보자!</string>
+    <string name="source01">논어</string>
+    <string name="source02">맹자</string>
+    <string name="source03">중용</string>
+    <string name="source04">도덕경</string>
+    <string name="source05">논어</string>
+    <string name="source06">논어</string>
+    <string name="source07">논어</string>
+    <string name="mean01">"아는 것을 안다하고, 모르는 것을 모른다 하는 것, 이것이 곧 아는 것이다."</string>
+    <string name="mean02">"남을 사랑하는 사람은 남도 항상 그를 사랑하고, 남을 공경하는 사람은 남도 항상 그를 공경한다."</string>
+    <string name="mean03">숨겨진 것보다 더 잘 드러나는 것은 없으며, 작은 것 보다 더 잘 나타나는 것은 없다. 그러므로 군자는 홀로 있을 때 삼가는 것이다.</string>
+    <string name="mean04">최상의 선은 물과 같다. 물은 만물을 잘 이롭게 하고도 그 공을 다투지 않고, 모든 사람이 싫어하는 곳에 있으므로 거의 도에 가깝다.</string>
+    <string name="mean05">공자 말씀하기를 군자는 화목하되 동화되지 아니하고, 소인은 동화되지만 화목하게 지내지 못한다.</string>
+    <string name="mean06">지혜로운 사람은 물을 좋아하며 어진 사람은 산을 좋아한다.</string>
+    <string name="mean07">덕은 외롭지 않으며 반드시 이웃이 있다.</string>
+    <string name="pronounce01">지지위지지 부지위부지 시지야</string>
+    <string name="pronounce02">애인자 인항애지 경인자 인항경지</string>
+    <string name="pronounce03">막역호은 막현호미 고 군자신기독야</string>
+    <string name="pronounce04">상선약수 수선리만불이쟁 처중인지소오</string>
+    <string name="pronounce05">자왈 군자 화이부동 소인 동이불화</string>
+    <string name="pronounce06">자왈 지자요수 인자요산</string>
+    <string name="pronounce07">덕불고 필유린</string>
+</resources>
