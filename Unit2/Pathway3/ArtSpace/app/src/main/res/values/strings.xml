@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Art Space</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+
+    <string name="artist_name">홍종표</string>
+
+
+    <string name="dice_1">주사위 1</string>
+    <string name="dice_2">주사위 2</string>
+    <string name="dice_3">주사위 3</string>
+    <string name="dice_4">주사위 4</string>
+    <string name="dice_5">주사위 5</string>
+    <string name="dice_6">주사위 6</string>
 </resources>
