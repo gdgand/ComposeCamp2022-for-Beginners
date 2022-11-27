@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -57,8 +58,18 @@ fun TipTimeScreen() {
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
         Spacer(modifier = Modifier.height(16.dp))
-        EditNumberField(R.string.bill_amount, amountInput, { amountInput = it })
-        EditNumberField(R.string.how_was_the_service, tipInput, { tipInput = it })
+        EditNumberField(
+            R.string.bill_amount,
+            amountInput,
+            { amountInput = it },
+            KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next)
+        )
+        EditNumberField(
+            R.string.how_was_the_service,
+            tipInput,
+            { tipInput = it },
+            KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done)
+        )
         Spacer(modifier = Modifier.height(24.dp))
         Text(
             text = stringResource(id = R.string.tip_amount, tip),
@@ -74,13 +85,14 @@ fun EditNumberField(
     @StringRes label: Int,
     value: String,
     onValueChanged: (String) -> Unit,
+    keyboardOptions: KeyboardOptions,
     modifier: Modifier = Modifier
 ) {
     TextField(
         modifier = modifier,
         singleLine = true,
         value = value,
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        keyboardOptions = keyboardOptions,
         onValueChange = onValueChanged,
         label = { Text(stringResource(id = label)) })
 }
