@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">30Days</string>
+    <string name="app_desc">운동 스케줄</string>
+    <string name="source01">어깨</string>
+    <string name="source02">이두</string>
+    <string name="source03">삼두</string>
+    <string name="source04">대흉근</string>
+    <string name="source05">소흉근</string>
+    <string name="source06">복근</string>
+    <string name="source07">햄스트링</string>
+    <string name="mean01">밀리터리 프레스</string>
+    <string name="mean02">덤벨</string>
+    <string name="mean03">덤벨2</string>
+    <string name="mean04">벤치프레스</string>
+    <string name="mean05">벤치프레스2</string>
+    <string name="mean06">플랭크</string>
+    <string name="mean07">스쿼트</string>
+    <string name="pronounce01">10개 5세트</string>
+    <string name="pronounce02">15개 5세트</string>
+    <string name="pronounce03">15개 5세트</string>
+    <string name="pronounce04">10개 3세트</string>
+    <string name="pronounce05">12개 5세트</string>
+    <string name="pronounce06">30초 10세트</string>
+    <string name="pronounce07">15개 10세트</string>
+</resources>
