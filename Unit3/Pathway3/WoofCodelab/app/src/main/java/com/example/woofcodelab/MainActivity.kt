@@ -20,6 +20,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -27,10 +31,15 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -103,15 +112,74 @@ fun WoofTopAppBar(modifier: Modifier = Modifier) {
  */
 @Composable
 fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
+    var expanded by remember {
+        mutableStateOf(false)
+    }
+    val color by animateColorAsState(
+        targetValue = if (expanded) Color(255, 255, 255, 255) else MaterialTheme.colors.surface
+    )
     Card(modifier = modifier.padding(8.dp), elevation = 4.dp) {
-        Row(
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
+                .background(color = color)
+                .animateContentSize(animationSpec = spring(
+                    dampingRatio = Spring.DampingRatioMediumBouncy,
+                    stiffness = Spring.StiffnessLow
+                ))
         ) {
-            DogIcon(dog.imageResourceId)
-            DogInformation(dog.name, dog.age)
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                DogIcon(dog.imageResourceId)
+                DogInformation(dog.name, dog.age)
+                Spacer(modifier = Modifier.weight(1f))
+                DogItemButton(expanded = expanded, onClick = {
+                    expanded = !expanded
+                })
+            }
+            if (expanded) {
+                DogHobby(dogHobby = dog.hobbies)
+            }
         }
+    }
+}
+
+@Composable
+private fun DogItemButton(
+    expanded: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val imageVector = if (expanded)
+        Icons.Filled.ExpandLess
+    else
+        Icons.Filled.ExpandMore
+    IconButton(onClick = onClick) {
+        Icon(
+            imageVector = imageVector,
+            tint = MaterialTheme.colors.secondary,
+            contentDescription = stringResource(id = R.string.expand_button_content_description)
+        )
+    }
+}
+
+@Composable
+private fun DogHobby(@StringRes dogHobby: Int, modifier: Modifier = Modifier) {
+    Column(modifier = modifier.padding(
+        start = 16.dp, top = 8.dp, bottom = 16.dp, end = 16.dp
+    )) {
+        Text(
+            text = stringResource(id = R.string.about),
+            style = MaterialTheme.typography.h3,
+            color = MaterialTheme.colors.onBackground
+        )
+        Text(
+            text = stringResource(id = dogHobby),
+            style = MaterialTheme.typography.body1
+        )
+
     }
 }
 
