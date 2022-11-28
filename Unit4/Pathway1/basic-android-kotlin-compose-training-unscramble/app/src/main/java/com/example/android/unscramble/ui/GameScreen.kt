@@ -150,7 +150,7 @@ fun GameLayout(
             fontSize = 17.sp,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
-        OutlinedTextField(
+        OutlinedTextField (
             value = userGuess,
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),

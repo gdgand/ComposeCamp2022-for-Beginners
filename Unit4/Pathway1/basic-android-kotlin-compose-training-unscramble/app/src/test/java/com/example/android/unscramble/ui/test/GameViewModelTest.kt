@@ -26,6 +26,10 @@ import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
+/*
+Done 20221128
+ */
+
 class GameViewModelTest {
     private val viewModel = GameViewModel()
 
