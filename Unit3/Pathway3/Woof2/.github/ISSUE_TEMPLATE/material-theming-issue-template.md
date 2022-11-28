@@ -1,7 +1,7 @@
 ---
-name: 'Material theming issue template'
-about: 'Issue template for Material Theming with Jetpack Compose codelab'
-title: 'Material Theming with Jetpack Compose'
+name: Material theming issue template
+about: Issue template for Material Theming with Jetpack Compose codelab
+title: Material Theming with Jetpack Compose
 labels: ''
 assignees: ''
 
