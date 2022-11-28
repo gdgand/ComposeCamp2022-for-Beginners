@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Grid App</string>
+    <string name="architecture">Architecture</string>
+    <string name="crafts">Crafts</string>
+    <string name="business">Business</string>
+    <string name="culinary">Culinary</string>
+    <string name="design">Design</string>
+    <string name="fashion">Fashion</string>
+    <string name="film">Film</string>
+    <string name="gaming">Gaming</string>
+    <string name="drawing">Drawing</string>
+    <string name="lifestyle">Lifestyle</string>
+    <string name="music">Music</string>
+    <string name="painting">Painting</string>
+    <string name="photography">Photography</string>
+    <string name="tech">Tech</string>
+</resources>
