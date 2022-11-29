@@ -5,12 +5,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,26 +35,33 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun LemonComposable(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    imageReSource: Int,
+    textResource: Int,
+    descriptionResource: Int,
+    onImgClick: () -> Unit
 ) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = stringResource(R.string.lemon_tree),
+            text = stringResource(textResource),
             fontSize = 18.sp
         )
         Spacer(modifier = Modifier.height(16.dp))
         Image(
-            painter = painterResource(R.drawable.lemon_tree),
-            contentDescription = stringResource(R.string.lemon_tree_description),
+            painter = painterResource(imageReSource),
+            contentDescription = stringResource(descriptionResource),
             modifier = Modifier
                 .border(
                     width = 2.dp,
                     color = Color(105, 205, 216),
                     shape = RoundedCornerShape(4.dp)
                 )
+                .clickable {
+                    onImgClick()
+                }
         )
     }
 }
@@ -62,10 +70,57 @@ fun LemonComposable(
 @Composable
 fun LemonadeApp() {
     LemonadeTheme {
-        LemonComposable(
-            modifier = Modifier
-                .fillMaxSize()
-                .wrapContentSize(Alignment.Center)
-        )
+        var step by remember { mutableStateOf(1) }
+
+        when (step) {
+            1 -> {
+                LemonComposable(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center),
+                    imageReSource = R.drawable.lemon_tree,
+                    textResource = R.string.lemon_tree,
+                    descriptionResource = R.string.lemon_tree_description
+                ) {
+                    step++
+                }
+            }
+            2 -> {
+                LemonComposable(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center),
+                    imageReSource = R.drawable.lemon_squeeze,
+                    textResource = R.string.lemon_squeeze,
+                    descriptionResource = R.string.lemon_squeeze_description
+                ) {
+                    step++
+                }
+            }
+            3 -> {
+                LemonComposable(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center),
+                    imageReSource = R.drawable.lemon_drink,
+                    textResource = R.string.lemon_drink,
+                    descriptionResource = R.string.lemon_drink_description
+                ) {
+                    step++
+                }
+            }
+            4 -> {
+                LemonComposable(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center),
+                    imageReSource = R.drawable.lemon_restart,
+                    textResource = R.string.lemon_restart,
+                    descriptionResource = R.string.lemon_restart_description
+                ) {
+                    step = 1
+                }
+            }
+        }
     }
 }
