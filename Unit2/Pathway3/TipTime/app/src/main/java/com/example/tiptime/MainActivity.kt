@@ -159,7 +159,7 @@ internal fun calculateTip(
     return NumberFormat.getCurrencyInstance(Locale.US).format(tip)
 }
 
-@Preview(showBackground = true)
+@Preview(showSystemUi = true)
 @Composable
 fun DefaultPreview() {
     TipTimeTheme {

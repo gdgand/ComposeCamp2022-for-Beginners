@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Art space</string>
+    <string name="one_title">Women</string>
+    <string name="one_artist">anonymous(2011)</string>
+    <string name="two_title">cueva de Altamira</string>
+    <string name="two_artist">anonymous(1985)</string>
+    <string name="three_title">Scenery</string>
+    <string name="three_artist">anonymous(2020)</string>
+    <string name="four_title">Lemon Tree</string>
+    <string name="four_artist">anonymous(2021)</string>
+    <string name="five_title">Lemon</string>
+    <string name="five_artist">anonymous(2022)</string>
+    <string name="previous_button">Previous</string>
+    <string name="next_button">Next</string>
+</resources>
