@@ -71,6 +71,7 @@ fun LemonComposable(
 fun LemonadeApp() {
     LemonadeTheme {
         var step by remember { mutableStateOf(1) }
+        var countSqueeze by remember { mutableStateOf(0) }
 
         when (step) {
             1 -> {
@@ -83,6 +84,7 @@ fun LemonadeApp() {
                     descriptionResource = R.string.lemon_tree_description
                 ) {
                     step++
+                    countSqueeze = (2..4).random()
                 }
             }
             2 -> {
@@ -94,7 +96,10 @@ fun LemonadeApp() {
                     textResource = R.string.lemon_squeeze,
                     descriptionResource = R.string.lemon_squeeze_description
                 ) {
-                    step++
+                    countSqueeze--
+                    if(countSqueeze == 0) {
+                        step++
+                    }
                 }
             }
             3 -> {
