@@ -16,21 +16,63 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeQuadrantApp()
+        }
     }
 }
 
+@Preview(showBackground = false)
 @Composable
 fun ComposeQuadrantApp() {
-    Column() {
-        Row() { }
-        Row() { }
+    Column(
+        modifier = Modifier.fillMaxHeight()
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f, true)
+                .fillMaxHeight(1f)
+        ) {
+            ComposableInfoCard(
+                title = "Text Composable",
+                description = "Displays text and follows Material Design guidelines.",
+                backgroundColor = Color.Green,
+                modifier = Modifier.weight(1f, true)
+            )
+            ComposableInfoCard(
+                title = "Image Composable",
+                description = "Creates a composable that lays out and draws a given Painter class object.",
+                backgroundColor = Color.Yellow,
+                modifier = Modifier.weight(1f, true)
+            )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f, true)
+                .fillMaxHeight(1f)
+        ) {
+            ComposableInfoCard(
+                title = "Row Composable",
+                description = "A layout composable that places its children in a horizontal sequence.",
+                backgroundColor = Color.Cyan,
+                modifier = Modifier.weight(1f, true)
+            )
+            ComposableInfoCard(
+                title = "Column Composable",
+                description = "A layout composable that places its children in a vertical sequence.",
+                backgroundColor = Color.LightGray,
+                modifier = Modifier.weight(1f, true)
+            )
+        }
     }
 }
 
@@ -41,10 +83,24 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column( ) { }
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .then(modifier)
+            .fillMaxHeight(1f)
+            .background(color = backgroundColor)
+            .padding(all = 16.dp)
+    ) {
+        Text(
+            text = title,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 16.dp),
+            textAlign = TextAlign.Justify
+        )
+        Text(
+            text = description,
+            fontSize = TextUnit.Unspecified
+        )
+    }
 }
-
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() { }
