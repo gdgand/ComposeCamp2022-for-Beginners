@@ -51,14 +51,16 @@ fun SelectOptionScreen(
     options: List<String>,
     onSelectionChanged: (String) -> Unit = {},
     // TODO: add onCancelButtonClicked
+    onCancelButtonClicked: () -> Unit = {},
     // TODO: add onNextButtonClicked
+    onNextButtonClicked: () -> Unit = {},
     modifier: Modifier = Modifier
-){
+) {
     var selectedValue by rememberSaveable { mutableStateOf("") }
 
-    Column (modifier = modifier.padding(16.dp)){
+    Column(modifier = modifier.padding(16.dp)) {
         options.forEach { item ->
-            Row (
+            Row(
                 modifier = Modifier.selectable(
                     selected = selectedValue == item,
                     onClick = {
@@ -67,7 +69,7 @@ fun SelectOptionScreen(
                     }
                 ),
                 verticalAlignment = Alignment.CenterVertically
-            ){
+            ) {
                 RadioButton(
                     selected = selectedValue == item,
                     onClick = {
@@ -85,18 +87,20 @@ fun SelectOptionScreen(
                 .align(Alignment.End)
                 .padding(top = 16.dp, bottom = 16.dp)
         )
-        Row (
+        Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ){
-            OutlinedButton(modifier = Modifier.weight(1f), onClick = { /* TODO: handle cancel button */ }) {
+        ) {
+            OutlinedButton(
+                modifier = Modifier.weight(1f),
+                onClick = { /* TODO: handle cancel button */  onCancelButtonClicked() }) {
                 Text(stringResource(R.string.cancel))
             }
             Button(
                 modifier = Modifier.weight(1f),
                 // the button is enabled when the user makes a selection
                 enabled = selectedValue.isNotEmpty(),
-                onClick = { /* TODO: handle next button */ }
+                onClick = { /* TODO: handle next button */  onNextButtonClicked() }
             ) {
                 Text(stringResource(R.string.next))
             }
@@ -106,7 +110,7 @@ fun SelectOptionScreen(
 
 @Preview
 @Composable
-fun SelectOptionPreview(){
+fun SelectOptionPreview() {
     SelectOptionScreen(
         subtotal = "299.99",
         options = listOf("Option 1", "Option 2", "Option 3", "Option 4")
