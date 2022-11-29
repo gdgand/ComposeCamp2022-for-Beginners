@@ -8,8 +8,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -97,7 +95,7 @@ fun LemonadeApp() {
                     descriptionResource = R.string.lemon_squeeze_description
                 ) {
                     countSqueeze--
-                    if(countSqueeze == 0) {
+                    if (countSqueeze == 0) {
                         step++
                     }
                 }
