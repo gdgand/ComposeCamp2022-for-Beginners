@@ -18,15 +18,7 @@ package com.example.reply.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Drafts
 import androidx.compose.material.icons.filled.Inbox
@@ -38,12 +30,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.reply.R
 import com.example.reply.data.Email
 import com.example.reply.data.MailboxType
 import com.example.reply.data.local.LocalAccountsDataProvider
+import com.example.reply.ui.utils.ReplyContentType
 import com.example.reply.ui.utils.ReplyNavigationType
 
 /**
@@ -53,6 +47,7 @@ import com.example.reply.ui.utils.ReplyNavigationType
 @Composable
 fun ReplyHomeScreen(
     navigationType: ReplyNavigationType,
+    contentType: ReplyContentType,
     replyUiState: ReplyUiState,
     onTabPressed: (MailboxType) -> Unit,
     onEmailCardPressed: (Email) -> Unit,
@@ -81,18 +76,22 @@ fun ReplyHomeScreen(
             text = stringResource(id = R.string.tab_spam)
         )
     )
-    if (navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER && replyUiState.isShowingHomepage) {
+    if (navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER) {
         PermanentNavigationDrawer(
             drawerContent = {
-                NavigationDrawerContent(
-                    selectedDestination = replyUiState.currentMailbox,
-                    onTabPressed = onTabPressed,
-                    navigationItemContentList = navigationItemContentList
-                )
-            }
+                PermanentDrawerSheet(Modifier.width(240.dp)) {
+                    NavigationDrawerContent(
+                        selectedDestination = replyUiState.currentMailbox,
+                        onTabPressed = onTabPressed,
+                        navigationItemContentList = navigationItemContentList
+                    )
+                }
+            },
+            modifier = Modifier.testTag(stringResource(id = R.string.navigation_drawer))
         ) {
             ReplyAppContent(
                 navigationType = navigationType,
+                contentType = contentType,
                 replyUiState = replyUiState,
                 onTabPressed = onTabPressed,
                 onEmailCardPressed = onEmailCardPressed,
@@ -100,22 +99,25 @@ fun ReplyHomeScreen(
                 modifier = modifier
             )
         }
-    }
-    if (replyUiState.isShowingHomepage) {
-        ReplyAppContent(
-            navigationType = navigationType,
-            replyUiState = replyUiState,
-            onTabPressed = onTabPressed,
-            onEmailCardPressed = onEmailCardPressed,
-            navigationItemContentList = navigationItemContentList,
-            modifier = modifier
-        )
     } else {
-        ReplyDetailsScreen(
-            replyUiState = replyUiState,
-            onBackPressed = onDetailScreenBackPressed,
-            modifier = modifier
-        )
+        if (replyUiState.isShowingHomepage) {
+            ReplyAppContent(
+                navigationType = navigationType,
+                contentType = contentType,
+                replyUiState = replyUiState,
+                onTabPressed = onTabPressed,
+                onEmailCardPressed = onEmailCardPressed,
+                navigationItemContentList = navigationItemContentList,
+                modifier = modifier
+            )
+        } else {
+            ReplyDetailsScreen(
+                replyUiState = replyUiState,
+                onBackPressed = onDetailScreenBackPressed,
+                modifier = modifier,
+                isFullScreen = true
+            )
+        }
     }
 }
 
@@ -125,6 +127,7 @@ fun ReplyHomeScreen(
 @Composable
 private fun ReplyAppContent(
     navigationType: ReplyNavigationType,
+    contentType: ReplyContentType,
     replyUiState: ReplyUiState,
     onTabPressed: ((MailboxType) -> Unit) = {},
     onEmailCardPressed: (Email) -> Unit = {},
@@ -144,11 +147,19 @@ private fun ReplyAppContent(
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.inverseOnSurface)
         ) {
-            ReplyListOnlyContent(
-                replyUiState = replyUiState,
-                onEmailCardPressed = onEmailCardPressed,
-                modifier = Modifier.weight(1f)
-            )
+            if (contentType == ReplyContentType.LIST_AND_DETAIL) {
+                ReplyListAndDetailContent(
+                    replyUiState = replyUiState,
+                    onEmailCardPressed = onEmailCardPressed,
+                    modifier = Modifier.weight(1f)
+                )
+            } else {
+                ReplyListOnlyContent(
+                    replyUiState = replyUiState,
+                    onEmailCardPressed = onEmailCardPressed,
+                    modifier = Modifier.weight(1f)
+                )
+            }
             AnimatedVisibility(visible = navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
                 ReplyBottomNavigationBar(
                     currentTab = replyUiState.currentMailbox,
@@ -264,7 +275,7 @@ private fun NavigationDrawerHeader(modifier: Modifier) {
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        ReplyLogo()
+        ReplyLogo(modifier = Modifier.size(48.dp))
         ReplyProfileImage(
             drawableResource = LocalAccountsDataProvider.userAccount.avatar,
             description = stringResource(id = R.string.profile),
