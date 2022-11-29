@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.os.IResultReceiver.Default
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
@@ -41,6 +42,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun TipTimeScreen() {
     var amountInput by remember { mutableStateOf("") }
+    var tipInput by remember { mutableStateOf("") }
 
     val amount = amountInput.toDoubleOrNull() ?: 0.0
     val tip = calculateTip(amount)
@@ -54,9 +56,14 @@ fun TipTimeScreen() {
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
         EditNumberField(
+            label = R.string.bill_amount,
             value = amountInput,
             onValueChanged = { amountInput = it }
         )
+        EditNumberField(
+            label = R.string.how_was_the_service,
+            value = "",
+            onValueChanged = { })
         Spacer(Modifier.height(16.dp))
         Text(
             text = stringResource(R.string.tip_amount, tip),
@@ -72,14 +79,16 @@ fun TipTimeScreen() {
 @SuppressLint("UnrememberedMutableState")
 @Composable
 fun EditNumberField(
+    @StringRes label: Int,
     value: String,
-    onValueChanged: (String) -> Unit
+    onValueChanged: (String) -> Unit,
+    modifier: Modifier = Modifier
 ) {
 
     TextField(
         value = value,
         onValueChange = onValueChanged,
-        label = { Text(stringResource(R.string.cost_of_service))},
+        label = { Text(stringResource(label))},
         modifier = Modifier.fillMaxWidth(),
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -88,7 +97,7 @@ fun EditNumberField(
 
 private fun calculateTip(
     amount: Double,
-    tipPercent: Double = 15.0
+    tipPercent: Double = 15.00
 ) : String {
     val tip = tipPercent / 100 * amount
     return NumberFormat.getCurrencyInstance().format(tip)
