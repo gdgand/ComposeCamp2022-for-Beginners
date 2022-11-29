@@ -38,6 +38,10 @@ class MainActivity : ComponentActivity() {
             mutableStateOf(1)
         }
 
+        var squeezeCnt by remember {
+            mutableStateOf(0)
+        }
+
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
@@ -49,6 +53,7 @@ class MainActivity : ComponentActivity() {
                         imgId = R.drawable.lemon_tree,
                         onImgClick = {
                             step = 2
+                            squeezeCnt = (2..4).random()
                         }
                     )
                 }
@@ -57,7 +62,10 @@ class MainActivity : ComponentActivity() {
                         stringId = R.string.lemon_text_02,
                         imgId = R.drawable.lemon_squeeze,
                         onImgClick = {
-                            step = 3
+                            squeezeCnt -= 1
+                            if (squeezeCnt < 1) {
+                                step = 3
+                            }
                         }
                     )
                 }
