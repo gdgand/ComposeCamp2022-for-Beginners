@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TipTime</string>
+    <string name="calculate_tip">Calculate Tip</string>
+</resources>
