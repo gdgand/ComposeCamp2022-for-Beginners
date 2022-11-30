@@ -71,7 +71,7 @@ fun BirthdayGreetingWithText(message: String, from: String) {
             textAlign = TextAlign.Right,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(20.dp)
+                .padding(16.dp)
         )
     }
 }
