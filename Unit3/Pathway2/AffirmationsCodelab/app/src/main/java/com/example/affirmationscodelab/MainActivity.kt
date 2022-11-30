@@ -17,8 +17,14 @@ package com.example.affirmationscodelab
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.example.affirmationscodelab.model.Affirmation
 import com.example.affirmationscodelab.ui.theme.AffirmationsTheme
 
 class MainActivity : ComponentActivity() {
@@ -31,7 +37,10 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun AffirmationApp() {
-    AffirmationsTheme {
+fun AffirmationApp(affirmation: Affirmation, modifier: Modifier = Modifier) {
+    Card(modifier = modifier.padding(8.dp), elevation = 4.dp) {
+        Column() {
+            
+        }
     }
 }
