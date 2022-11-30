@@ -27,6 +27,14 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun DiceRollerApp() {
+    DiceWithButtonAndImage(modifier = Modifier
+        .fillMaxSize()
+        .wrapContentSize(Alignment.Center)
+    )}
+
+@Preview(showBackground = true)
+@Composable
+fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
 
 }
 
