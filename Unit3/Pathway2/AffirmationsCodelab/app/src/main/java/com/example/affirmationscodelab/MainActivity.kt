@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package com.example.affirmationscodelab
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -22,6 +23,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -29,10 +32,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.affirmationscodelab.data.Datasource
 import com.example.affirmationscodelab.model.Affirmation
 import com.example.affirmationscodelab.ui.theme.AffirmationsTheme
 
@@ -40,13 +45,26 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-//            AffirmationApp()
+            AffirmationApp()
         }
     }
 }
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun AffirmationApp(affirmation: Affirmation, modifier: Modifier = Modifier) {
+fun AffirmationApp() {
+    val context = LocalContext.current
+    AffirmationsTheme {
+        Scaffold(
+            content = {
+                AffirmationList(affirmationList = Datasource().loadAffirmations())
+            }
+        )
+    }
+}
+
+@Composable
+fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
     Card(modifier = modifier.padding(8.dp), elevation = 4.dp) {
         Column {
             Image(
@@ -66,8 +84,17 @@ fun AffirmationApp(affirmation: Affirmation, modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+private fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Modifier) {
+    LazyColumn {
+        items(affirmationList) { affirmation ->
+            AffirmationCard(affirmation)
+        }
+    }
+}
+
 @Preview
 @Composable
 private fun AffirmationCardPreview() {
-    AffirmationApp(Affirmation(R.string.affirmation1, R.drawable.image1))
+    AffirmationCard(Affirmation(R.string.affirmation1, R.drawable.image1))
 }
