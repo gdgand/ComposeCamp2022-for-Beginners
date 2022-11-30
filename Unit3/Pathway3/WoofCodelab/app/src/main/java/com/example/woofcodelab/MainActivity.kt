@@ -21,6 +21,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -42,7 +46,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.woofcodelab.data.Dog
 import com.example.woofcodelab.data.dogs
-import com.example.woofcodelab.ui.theme.WoofTheme
+import com.example.woofcodelab.ui.theme.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -108,11 +112,23 @@ fun WoofTopAppBar(modifier: Modifier = Modifier) {
 @Composable
 fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
     var expanded by remember { mutableStateOf(false) }
+    val color by animateColorAsState(
+        targetValue = if (expanded) Grey50 else MaterialTheme.colors.surface,
+    )
     Card(
         modifier = modifier.padding(8.dp),
         elevation = 4.dp
     ) {
-        Column() {
+        Column(
+            modifier = Modifier
+                .animateContentSize(
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioMediumBouncy,
+                        stiffness = Spring.StiffnessLow
+                    )
+                )
+                .background(color = color)
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
