@@ -44,11 +44,11 @@ fun ArtSpaceApp() {
 @Composable
 fun PhotoFrame(modifier: Modifier = Modifier) {
 
-    val myRes = listOf<ImageRes>(
-        ImageRes(R.drawable.lemon_tree, "",""),
-        ImageRes(R.drawable.lemon_restart, "",""),
-        ImageRes(R.drawable.lemon_drink, "",""),
-        ImageRes(R.drawable.lemon_squeeze, "","")
+    val myRes = listOf (
+        ImageRes(R.drawable.lemon_tree, "LEMON TREE","artist1"),
+        ImageRes(R.drawable.lemon_restart, "LEMON TREE R","artist2"),
+        ImageRes(R.drawable.lemon_drink, "LEMON DRINK","artist3"),
+        ImageRes(R.drawable.lemon_squeeze, "LEMON SQUEEZE","artist4")
     )
 
     var idx by remember { mutableStateOf(0) }
@@ -62,10 +62,6 @@ fun PhotoFrame(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
-        when (idx) {
-            1 -> {    println("prame1")}
-            2 -> {    println("prame2")}
-        }
 
         Box(modifier = modifier
             .shadow(5.dp)
@@ -73,34 +69,33 @@ fun PhotoFrame(modifier: Modifier = Modifier) {
         ) {
             Image(
                 painter = painterResource(art.imageId),
-                contentDescription = " ",
+                contentDescription = "",
                 modifier = modifier
                     .padding(10.dp)
             )
         }
         Spacer(modifier = Modifier.height(10.dp))
-        Text(text = "Artwork Title", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+        Text(text = art.title, fontSize = 20.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(5.dp))
-        Text(text = "SubTitle", fontSize = 14.sp)
+        Text(text = art.subTitle, fontSize = 14.sp)
         Spacer(modifier = Modifier.height(10.dp))
         Row(
             modifier = Modifier.wrapContentSize(Alignment.Center)
         ) {
             Button( onClick = {
-                idx --
-                println("Previous")
+                if(idx == 0) idx = myRes.size - 1
+                else idx --
             }) {
                 Text("Previous")
             }
             Spacer(modifier = Modifier.width(16.dp))
             Button(onClick = {
-                idx ++
-                println("Next")
+                if(idx == myRes.size - 1) idx = 0
+                else idx ++
             }) {
                 Text("Next")
             }
         }
-
     }
 
 }
