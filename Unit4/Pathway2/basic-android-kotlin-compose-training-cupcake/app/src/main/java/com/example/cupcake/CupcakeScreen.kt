@@ -78,9 +78,10 @@ fun CupcakeAppBar(
 }
 
 @Composable
-fun CupcakeApp(modifier: Modifier = Modifier, viewModel: OrderViewModel = viewModel()){
+fun CupcakeApp(modifier: Modifier = Modifier, viewModel: OrderViewModel = viewModel(),
+               navController: NavHostController = rememberNavController()){
     // TODO: Create NavController
-    val navController = rememberNavController()
+    // val navController = rememberNavController()
     // TODO: Get current back stack entry
     val backStackEntry by navController.currentBackStackEntryAsState()
     // TODO: Get the name of the current screen
