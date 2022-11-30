@@ -9,9 +9,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -33,7 +31,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun HTMLemonadeandImage(textId : Int, imageId : Int) {
+fun HTMLemonadeandImage(textId : Int, imageId : Int, onImageClick: () -> Unit) {
     Column(
         modifier = Modifier,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -45,7 +43,18 @@ fun HTMLemonadeandImage(textId : Int, imageId : Int) {
 }
 @Composable
 fun LemonadeApp() {
+    var lemonade_step by remember { mutableStateOf(1) }
+    var squeeze_cnt by remember { mutableStateOf(0) }
 
+    when (lemonade_step) {
+        1 -> {
+            HTMLemonadeandImage(textId = R.string.first_step, imageId = R.drawable.lemon_tree,
+            onImageClick = {lemonade_step = 2
+            squeeze_cnt = (2..4).random()})
+        }
+
+
+    }
 }
 @Preview(showBackground = true)
 @Composable
