@@ -40,7 +40,6 @@ fun DiceRollerApp() {
         .wrapContentSize(Alignment.Center)
     )}
 
-@Preview(showBackground = true)
 @Composable
 fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
     var result by remember { mutableStateOf(1) }
@@ -63,7 +62,3 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
         }
     }
 }
-
-//@Composable
-//fun DiceWithButtonAndImage() {
-//}
