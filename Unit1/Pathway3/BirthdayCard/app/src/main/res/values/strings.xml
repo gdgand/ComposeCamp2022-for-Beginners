@@ -16,4 +16,6 @@
   -->
 <resources>
     <string name="app_name">Happy Birthday</string>
+    <string name="happy_birthday_text">야 생일 축하한다…</string>
+    <string name="signature_text">주하가</string>
 </resources>
