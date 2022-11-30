@@ -28,8 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lemonade.ui.theme.LemonadeTheme
-import kotlinx.coroutines.flow.internal.NoOpContinuation.context
-import kotlin.coroutines.jvm.internal.CompletedContinuation.context
+
 
 
 class MainActivity : ComponentActivity() {
