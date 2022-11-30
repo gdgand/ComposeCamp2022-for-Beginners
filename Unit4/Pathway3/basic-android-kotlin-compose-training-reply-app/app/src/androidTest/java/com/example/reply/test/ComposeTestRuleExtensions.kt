@@ -47,7 +47,7 @@ fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>.o
  * returns the [SemanticsNodeInteraction] object.
  */
 fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>
-    .onNodeWithContentDescriptionForStringId(
+        .onNodeWithContentDescriptionForStringId(
     @StringRes id: Int
 ): SemanticsNodeInteraction = onNodeWithContentDescription(activity.getString(id))
 
@@ -61,6 +61,6 @@ fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>
  * returns the [SemanticsNodeInteraction] object.
  */
 fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>
-    .onNodeWithTagForStringId(
+        .onNodeWithTagForStringId(
     @StringRes id: Int
 ): SemanticsNodeInteraction = onNodeWithTag(activity.getString(id))
