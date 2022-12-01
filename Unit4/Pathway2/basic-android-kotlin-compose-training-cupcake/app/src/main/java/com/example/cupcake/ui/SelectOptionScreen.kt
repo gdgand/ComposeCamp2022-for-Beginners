@@ -38,6 +38,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.cupcake.R
 import com.example.cupcake.ui.components.FormattedPriceLabel
+import com.example.cupcake.ui.theme.CupcakeTheme
 
 /**
  * Composable that displays the list of items as [RadioButton] options,
@@ -50,8 +51,8 @@ fun SelectOptionScreen(
     subtotal: String,
     options: List<String>,
     onSelectionChanged: (String) -> Unit = {},
-    // TODO: add onCancelButtonClicked
-    // TODO: add onNextButtonClicked
+    onCancelButtonClicked: () -> Unit = {},
+    onNextButtonClicked: () -> Unit = {},
     modifier: Modifier = Modifier
 ){
     var selectedValue by rememberSaveable { mutableStateOf("") }
@@ -89,14 +90,15 @@ fun SelectOptionScreen(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ){
-            OutlinedButton(modifier = Modifier.weight(1f), onClick = { /* TODO: handle cancel button */ }) {
+            OutlinedButton(modifier = Modifier.weight(1f)
+                , onClick = {  onCancelButtonClicked }) {
                 Text(stringResource(R.string.cancel))
             }
             Button(
                 modifier = Modifier.weight(1f),
                 // the button is enabled when the user makes a selection
                 enabled = selectedValue.isNotEmpty(),
-                onClick = { /* TODO: handle next button */ }
+                onClick = { onNextButtonClicked }
             ) {
                 Text(stringResource(R.string.next))
             }
@@ -104,11 +106,13 @@ fun SelectOptionScreen(
     }
 }
 
-@Preview
+@Preview(showBackground = true, showSystemUi = true, name = "StartOrderScreen")
 @Composable
 fun SelectOptionPreview(){
-    SelectOptionScreen(
-        subtotal = "299.99",
-        options = listOf("Option 1", "Option 2", "Option 3", "Option 4")
-    )
+    CupcakeTheme {
+        SelectOptionScreen(
+            subtotal = "299.99",
+            options = listOf("Option 1", "Option 2", "Option 3", "Option 4")
+        )
+    }
 }
