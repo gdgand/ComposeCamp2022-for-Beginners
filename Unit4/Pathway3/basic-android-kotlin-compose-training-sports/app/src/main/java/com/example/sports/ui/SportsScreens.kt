@@ -69,8 +69,8 @@ fun SportsApp(
                 onBackButtonClick = { viewModel.navigateToListPage() },
                 windowSize = windowSize
             )
-        }
-    ) { innerPadding ->
+        })
+    { innerPadding ->
         if (contentType == SportsContentType.ListAndDetail) {
             SportsListAndDetail(
                 sports = uiState.sportsList,
