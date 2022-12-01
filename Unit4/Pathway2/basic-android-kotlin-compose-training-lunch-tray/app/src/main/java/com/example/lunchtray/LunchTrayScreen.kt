@@ -44,6 +44,9 @@ import com.example.lunchtray.ui.OrderViewModel
 import com.example.lunchtray.ui.SideDishMenuScreen
 import com.example.lunchtray.ui.StartOrderScreen
 
+/*
+done 2022-12-01
+ */
 enum class LunchTrayScreen(@StringRes val title: Int) {
     Start(title = R.string.app_name),
     Entree(title = R.string.choose_entree),
