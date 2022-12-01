@@ -1,4 +1,11 @@
 package com.example.cupcake.test
 
-class SreenAssertions {
+import androidx.navigation.NavController
+import org.junit.Assert.assertEquals
+
+class ScreenAssertions {
+}
+
+fun NavController.assertCurrentRouteName(expectedRouteName: String){
+    assertEquals(expectedRouteName, currentBackStackEntry?.destination?.route)
 }
