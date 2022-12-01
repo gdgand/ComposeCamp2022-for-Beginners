@@ -45,6 +45,9 @@ import com.example.cupcake.ui.OrderSummaryScreen
 import com.example.cupcake.ui.OrderViewModel
 import com.example.cupcake.ui.SelectOptionScreen
 import com.example.cupcake.ui.StartOrderScreen
+/*
+2022-12-01 done
+ */
 
 /**
  * enum values that represent the screens in the app
