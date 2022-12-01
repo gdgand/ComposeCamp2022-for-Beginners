@@ -97,9 +97,9 @@ fun ReplyHomeScreen(
             text = stringResource(id = R.string.tab_spam)
         )
     )
-    if (navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER) {
+    if (navigationType  == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER) {
         val navigationDrawerContentDescription = stringResource(R.string.navigation_drawer)
-        PermanentNavigationDrawer(
+        PermanentNavigationDrawer (
             drawerContent = {
                 NavigationDrawerContent(
                     selectedDestination = replyUiState.currentMailbox,
@@ -168,8 +168,7 @@ private fun ReplyAppContent(
         }
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.inverseOnSurface)
+                .fillMaxSize().background(MaterialTheme.colorScheme.inverseOnSurface)
         ) {
             if (contentType == ReplyContentType.LIST_AND_DETAIL) {
                 ReplyListAndDetailContent(
