@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -20,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tiptime.ui.theme.TipTimeTheme
 import java.text.NumberFormat
+import java.util.*
 import kotlin.math.ceil
 
 class MainActivity : ComponentActivity() {
@@ -49,7 +51,7 @@ fun TipTimeScreen() {
     }
     val amount = amountInput.toDoubleOrNull() ?: 0.0
     val tipPercent = tipInput.toDoubleOrNull() ?: 0.0
-    val tip = calculateTip(amount, tipPercent,roundUp)
+    val tip = calculateTip(amount, tipPercent, roundUp)
     Column(
         modifier = Modifier.padding(32.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -141,11 +143,12 @@ fun EditNumberField(
     )
 }
 
-private fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boolean): String {
+@VisibleForTesting
+internal fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boolean): String {
     var tip = tipPercent / 100 * amount
     if (roundUp)
         tip = ceil(tip)
-    return NumberFormat.getCurrencyInstance().format(tip)
+    return NumberFormat.getCurrencyInstance(Locale.US).format(tip)
 }
 
 @Preview(showBackground = true)
