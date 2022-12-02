@@ -3,8 +3,11 @@ package com.example.artspace
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -12,6 +15,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,10 +55,10 @@ private fun getPaintTitle(picNum: Int): Int{
     return when(picNum){
         0-> R.string.img1_title
         1-> R.string.img2_title
-        2-> R.string.img2_title
-        3-> R.string.img3_title
-        4-> R.string.img4_title
-        else -> R.string.img5_title
+        2-> R.string.img3_title
+        3-> R.string.img4_title
+        4-> R.string.img5_title
+        else -> R.string.img6_title
     }
 }
 
@@ -61,21 +66,11 @@ private fun getPaintDesc(picNum: Int): Int{
     return when(picNum){
         0-> R.string.img1_desc
         1-> R.string.img2_desc
-        2-> R.string.img2_desc
-        3-> R.string.img3_desc
-        4-> R.string.img4_desc
-        else -> R.string.img5_desc
+        2-> R.string.img3_desc
+        3-> R.string.img4_desc
+        4-> R.string.img5_desc
+        else -> R.string.img6_desc
     }
-}
-private fun calculatePicNum(picNum: Int): Int{
-    var temp = (picNum-1)
-    var result = 0
-    if(picNum >= 0){
-        result = temp%6
-    } else {
-        result = ((temp%6)+6)
-    }
-    return result
 }
 
 @Composable
@@ -96,15 +91,38 @@ fun ArtSpaceScreen() {
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
         Column(
-            modifier = Modifier.height(500.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.border(BorderStroke(4.dp, Color(128, 128, 128))
+            )
+
         ) {
             Image(
-                modifier = Modifier.width(300.dp),
-                painter = painterResource(paint), contentDescription = null)
-            Text(stringResource(paintTitle))
-            Text(stringResource(paintDesc))
+                modifier = Modifier
+                    .width(300.dp)
+                    .height(300.dp)
+                    .padding(30.dp),
+                painter = painterResource(paint),
+                contentDescription = null,
+                contentScale = ContentScale.Crop
+            )
+        }
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top,
+            modifier = Modifier.wrapContentSize(Alignment.Center)
+
+                .border(BorderStroke(1.dp, Color(230, 230, 230)))
+
+        ) {
+            Text(
+                text = stringResource(paintTitle),
+                modifier = Modifier.absolutePadding(10.dp,15.dp,10.dp,5.dp)
+            )
+            Text(text = stringResource(paintDesc),
+                modifier = Modifier.absolutePadding(10.dp,5.dp,10.dp,15.dp)
+            )
+
         }
         Row(
             modifier = Modifier
@@ -113,7 +131,7 @@ fun ArtSpaceScreen() {
             horizontalArrangement = Arrangement.SpaceAround,
             verticalAlignment = Alignment.CenterVertically
         ){
-            Button(onClick = { setPicNum(calculatePicNum(picNum)) }){ Text("previous")}
+            Button(onClick = { setPicNum(if(picNum<0) picNum+5 else picNum-1) }){ Text("previous")}
             Button(onClick = { setPicNum((picNum+1)%6) }){ Text("next")}
         }
     }
