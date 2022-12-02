@@ -45,9 +45,7 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 @Composable
 fun OrderSummaryScreen(
     orderUiState: OrderUiState,
-    // TODO: add onCancelButtonClicked
     onCancelButtonClicked: () -> Unit = {},
-    // TODO: add onSendButtonClicked
     onSendButtonClicked: (String, String) -> Unit = { _, _ ->  },
     modifier: Modifier = Modifier
 ){
@@ -92,14 +90,14 @@ fun OrderSummaryScreen(
             modifier = Modifier.align(Alignment.End).padding(end = 16.dp)
         )
         Button(
-            modifier = Modifier.padding(end = 16.dp).fillMaxWidth(),
-            onClick = {  onSendButtonClicked /* TODO: handle send button */ }
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {  onSendButtonClicked(newOrder, orderSummary) }
         ) {
             Text(stringResource(R.string.send))
         }
         OutlinedButton(
-            modifier = Modifier.padding(end = 16.dp).fillMaxWidth(),
-            onClick = { onCancelButtonClicked /* TODO: handle cancel button */ }
+            modifier = Modifier.fillMaxWidth(),
+            onClick = onCancelButtonClicked
         ) {
             Text(stringResource(R.string.cancel))
         }

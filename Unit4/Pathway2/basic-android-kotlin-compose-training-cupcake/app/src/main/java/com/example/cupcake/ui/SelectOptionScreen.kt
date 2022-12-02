@@ -15,6 +15,7 @@
  */
 package com.example.cupcake.ui
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -39,6 +40,8 @@ import androidx.compose.ui.unit.dp
 import com.example.cupcake.R
 import com.example.cupcake.ui.components.FormattedPriceLabel
 import com.example.cupcake.ui.theme.CupcakeTheme
+
+private const val TAG = "SelectOption_Cupcake"
 
 /**
  * Composable that displays the list of items as [RadioButton] options,
@@ -91,14 +94,14 @@ fun SelectOptionScreen(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ){
             OutlinedButton(modifier = Modifier.weight(1f)
-                , onClick = {  onCancelButtonClicked }) {
+                , onClick = onCancelButtonClicked ) {
                 Text(stringResource(R.string.cancel))
             }
             Button(
                 modifier = Modifier.weight(1f),
                 // the button is enabled when the user makes a selection
                 enabled = selectedValue.isNotEmpty(),
-                onClick = { onNextButtonClicked }
+                onClick = onNextButtonClicked
             ) {
                 Text(stringResource(R.string.next))
             }
@@ -113,6 +116,8 @@ fun SelectOptionPreview(){
         SelectOptionScreen(
             subtotal = "299.99",
             options = listOf("Option 1", "Option 2", "Option 3", "Option 4")
+            , onCancelButtonClicked = {}
+            , onNextButtonClicked = {}
         )
     }
 }
