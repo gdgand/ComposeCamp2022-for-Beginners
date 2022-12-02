@@ -77,10 +77,10 @@ fun EditNumberField(
     onValueChange: (String) -> Unit
 ) {
 //    var amountInput = "0"
-    var amountInput by remember { mutableStateOf("") }
-
-    val amount = amountInput.toDoubleOrNull() ?: 0.0
-    val tip = calculateTip(amount)
+//    var amountInput by remember { mutableStateOf("") }
+//
+//    val amount = amountInput.toDoubleOrNull() ?: 0.0
+//    val tip = calculateTip(amount)
     TextField(
         value = value,
         onValueChange = onValueChange,
