@@ -48,7 +48,13 @@ fun TipTimeScreen() {
     }
 }
 
-
+@Composable
+fun EditNumberField() {
+    TextField(
+        value = "",
+        onValueChange = {},
+    )
+}
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
