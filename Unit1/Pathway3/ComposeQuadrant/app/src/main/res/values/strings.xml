@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Compose Quadrant</string>
-    <!-- Compose Quadrant screen -->
+    <string name="app_name">ComposeQuadrant</string>
     <string name="first_title">Text composable</string>
     <string name="first_description">Displays text and follows Material Design guidelines.</string>
     <string name="second_title">Image composable</string>
