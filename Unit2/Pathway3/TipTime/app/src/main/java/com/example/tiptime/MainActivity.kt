@@ -45,6 +45,7 @@ fun TipTimeScreen() {
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
         Spacer(Modifier.height(16.dp))
+        EditNumberField()
     }
 }
 
