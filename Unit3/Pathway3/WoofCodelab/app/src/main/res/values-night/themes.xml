@@ -15,6 +15,7 @@
   ~ limitations under the License.
   -->
 <resources>
-    <color name="grey_50">#FFF8F9FA</color>
-    <color name="grey_900">#FF202124</color>
+    <style name="Theme.WoofCodelab" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">@color/grey_900</item>
+    </style>
 </resources>
