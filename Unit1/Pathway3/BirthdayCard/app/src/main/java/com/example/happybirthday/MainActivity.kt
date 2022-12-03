@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.example.happybirthday
 
 import android.os.Bundle
@@ -56,5 +57,13 @@ fun BirthdayGreetingWithImage(message: String, from: String) { }
 // 4. 이미지 컴포저블 추가
 @Preview(showBackground = false)
 @Composable
-private fun BirthdayCardPreview() { }
+private fun BirthdayCardPreview() {
+    HappyBirthdayTheme{
+        Greeting("James")
+    }
+}
 
+@Composable
+private fun Greeting(name:String) {
+    Text(text = "Hello $name")
+}
