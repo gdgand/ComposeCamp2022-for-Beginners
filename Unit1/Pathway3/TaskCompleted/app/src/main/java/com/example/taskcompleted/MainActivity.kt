@@ -28,9 +28,27 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TaskCompletedScreen() {
-    Column( ) { }
+    val image = painterResource(id = R.drawable.ic_task_completed)
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Image(painter = image, contentDescription = null)
+        Text(
+            text = stringResource(id = R.string.all_task_completed),
+            modifier = Modifier
+                .padding(top = 24.dp, bottom = 8.dp),
+            fontSize = 24.sp
+        )
+        Text(
+            text = stringResource(id = R.string.nice_work),
+            fontSize = 16.sp
+        )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    TaskCompletedScreen()
+}
