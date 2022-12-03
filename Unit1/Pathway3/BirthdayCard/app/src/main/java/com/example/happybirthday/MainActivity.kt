@@ -42,7 +42,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             HappyBirthdayTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    BirthdayGreetingWithImage(message = "Happy Birthday Sam", from = "from emma")
+                    BirthdayGreetingWithImage(message = getString(R.string.happy_birthday_text), from = getString(
+                                            R.string.signature_text))
                 }
             }
         }
