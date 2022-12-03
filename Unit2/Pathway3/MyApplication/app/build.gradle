@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.android.tiptime'
+    namespace 'com.android.diceroller'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.android.tiptime"
+        applicationId "com.android.diceroller"
         minSdk 21
         targetSdk 32
         versionCode 1
