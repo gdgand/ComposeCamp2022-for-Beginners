@@ -16,4 +16,6 @@
   -->
 <resources>
     <string name="app_name">Happy Birthday</string>
+    <string name="happy_birthday_text">축하합니다~!</string>
+    <string name="happy_birthday_from_text">- from rootachieve</string>
 </resources>
