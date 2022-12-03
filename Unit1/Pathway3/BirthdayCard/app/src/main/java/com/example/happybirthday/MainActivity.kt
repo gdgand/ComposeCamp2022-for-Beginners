@@ -49,16 +49,23 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-// 5. Box 레이아웃 추
 @Composable
-fun BirthdayGreetingWithImage(message: String, from: String) { }
+fun BirthdayGreetingWithImage(message: String, from: String) {
+    val image = painterResource(id = R.drawable.androidparty)
+    Box{
+        Image(
+            painter = image,
+            contentDescription = null
+            )
+        BirthdayGreetingWithText(message = message, from = from)
+    }
+}
 
-// 4. 이미지 컴포저블 추가
 @Preview(showBackground = true)
 @Composable
 private fun BirthdayCardPreview() {
     HappyBirthdayTheme{
-        BirthdayGreetingWithText("Happy Birthday Sam", "- from Emma")
+        BirthdayGreetingWithImage("Happy Birthday Sam", "- from Emma")
     }
 }
 
