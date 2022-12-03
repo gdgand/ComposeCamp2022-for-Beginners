@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -41,9 +42,41 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column( ) { }
+    Column(modifier = Modifier
+        .background(backgroundColor)
+        //.fillMaxWidth()
+        //.wrapContentWidth(Alignment.CenterHorizontally)
+        .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp)
+    ) {
+        Text(
+            text = title,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(bottom = 16.dp),
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Justify
+        )
+
+        Text(
+            text = description,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally),
+            textAlign = TextAlign.Justify
+        )
+    }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun ComposableInfoCardPreview() {
+    ComposableInfoCard(
+        title = stringResource(R.string.title),
+        description = stringResource(R.string.description),
+        backgroundColor = androidx.compose.ui.graphics.Color.Green
+    )
+}
 
 @Preview(showBackground = true)
 @Composable
