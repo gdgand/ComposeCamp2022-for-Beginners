@@ -55,15 +55,17 @@ fun BirthdayGreetingWithText(message: String, from: String) {
 fun BirthdayGreetingWithImage(message: String, from: String) { }
 
 // 4. 이미지 컴포저블 추가
-@Preview(showBackground = false)
+@Preview(showBackground = true)
 @Composable
 private fun BirthdayCardPreview() {
     HappyBirthdayTheme{
-        Greeting("James")
+        BirthdayGreetingsWithText("Happy Birthday Sam")
     }
 }
 
 @Composable
-private fun Greeting(name:String) {
-    Text(text = "Hello $name")
+private fun BirthdayGreetingsWithText(message:String) {
+    Text(
+        text = message
+    )
 }
