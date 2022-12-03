@@ -65,11 +65,14 @@ private fun BirthdayCardPreview() {
 
 @Composable
 private fun BirthdayGreetingsWithText(message: String, from: String) {
-    Text(
-        text = message
-    )
-    Text(
-        text = from,
-        fontSize = 24.sp
-    )
+    Column{
+        Text(
+            text = message,
+            fontSize = 36.sp
+        )
+        Text(
+            text = from,
+            fontSize = 24.sp
+        )
+    }
 }
