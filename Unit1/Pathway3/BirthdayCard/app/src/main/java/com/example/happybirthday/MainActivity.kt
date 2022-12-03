@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,8 +43,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             HappyBirthdayTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    BirthdayGreetingWithImage(message = getString(R.string.happy_birthday_text), from = getString(
-                                            R.string.signature_text))
+                    BirthdayGreetingWithImage(
+                        message = getString(R.string.happy_birthday_text),
+                        from = getString(R.string.signature_text)
+                    )
                 }
             }
         }
@@ -76,21 +79,21 @@ private fun BirthdayCardPreview() {
 
 @Composable
 private fun BirthdayGreetingWithText(message: String, from: String) {
-    Column{
+    Column(){
         Text(
             text = message,
             fontSize = 36.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentWidth(Alignment.Start)
-                .padding(start = 16.dp, top = 16.dp)
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(start = 16.dp, top = 16.dp),
         )
         Text(
             text = from,
             fontSize = 24.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentWidth(Alignment.End)
+                .wrapContentWidth(Alignment.CenterHorizontally)
                 .padding(start = 16.dp, end = 16.dp)
         )
     }
