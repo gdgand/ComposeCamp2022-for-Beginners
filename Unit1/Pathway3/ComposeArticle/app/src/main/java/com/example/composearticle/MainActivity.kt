@@ -28,7 +28,17 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ComposeArticleApp() { }
+fun ComposeArticleApp() {
+    val image = painterResource(id = R.drawable.bg_compose_background)
+    ComposeArticleTheme() {
+        ArticleCard(
+            title = stringResource(R.string.title),
+            shortDescription = stringResource(R.string.shortdescription),
+            longDescription = stringResource(R.string.longdescription),
+            imagePainter = image
+        )
+    }
+}
 
 @Composable
 private fun ArticleCard(
@@ -84,13 +94,5 @@ private fun ArticleCard(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    val image = painterResource(id = R.drawable.bg_compose_background)
-    ComposeArticleTheme() {
-        ArticleCard(
-            title = stringResource(R.string.title),
-            shortDescription = stringResource(R.string.shortdescription),
-            longDescription = stringResource(R.string.longdescription),
-            imagePainter = image
-        )
-    }
+    ComposeArticleApp()
 }
