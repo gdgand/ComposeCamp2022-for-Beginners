@@ -30,8 +30,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ComposeQuadrantApp() {
     Column() {
-        Row() { }
-        Row() { }
+        Row() {
+        }
+        Row() {
+        }
     }
 }
 
@@ -44,25 +46,18 @@ private fun ComposableInfoCard(
 ) {
     Column(modifier = Modifier
         .background(backgroundColor)
-        //.fillMaxWidth()
-        //.wrapContentWidth(Alignment.CenterHorizontally)
-        .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp)
+        .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = title,
             modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentWidth(Alignment.CenterHorizontally)
                 .padding(bottom = 16.dp),
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Justify
         )
-
         Text(
             text = description,
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentWidth(Alignment.CenterHorizontally),
             textAlign = TextAlign.Justify
         )
     }
@@ -80,4 +75,6 @@ fun ComposableInfoCardPreview() {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeQuadrantApp()
+}

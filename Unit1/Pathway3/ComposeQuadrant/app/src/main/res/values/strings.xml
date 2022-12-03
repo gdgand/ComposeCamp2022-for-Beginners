@@ -11,4 +11,6 @@
     <string name="fourth_description">A layout composable that places its children in a vertical sequence.</string>
     <string name="title">title</string>
     <string name="description">description</string>
+    <string name="textcomposabletitle">Text composable</string>
+    <string name="textcomposabledescription">Displays text and follows Material Design guidelines.</string>
 </resources>
