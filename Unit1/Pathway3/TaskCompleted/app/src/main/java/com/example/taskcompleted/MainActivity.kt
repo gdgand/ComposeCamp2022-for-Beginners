@@ -22,7 +22,11 @@ import com.example.taskcompleted.ui.theme.TaskCompletedTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            TaskCompletedTheme {
+                TaskCompletedScreen()
+            }
+        }
     }
 }
 
@@ -31,7 +35,8 @@ fun TaskCompletedScreen() {
     val image = painterResource(id = R.drawable.ic_task_completed)
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxSize()
     ) {
         Image(painter = image, contentDescription = null)
         Text(
