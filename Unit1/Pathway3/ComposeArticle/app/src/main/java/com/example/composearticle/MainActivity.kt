@@ -4,13 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
@@ -39,10 +38,59 @@ private fun ArticleCard(
     imagePainter: Painter,
     modifier: Modifier = Modifier,
 ) {
-    Column() { }
+    Column() {
+
+        Image(
+            imagePainter,
+            contentDescription = null,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Text(
+            title,
+            fontSize = 24.sp,
+            modifier = Modifier
+                .padding(
+                    start = 16.dp,
+                    end = 16.dp,
+                    top = 16.dp,
+                    bottom = 16.dp
+                )
+        )
+
+        Text(
+            shortDescription,
+            modifier = Modifier
+                .padding(
+                    start = 16.dp,
+                    end = 16.dp
+                ),
+            textAlign = TextAlign.Justify
+        )
+        Text(
+            longDescription,
+            modifier = Modifier
+                .padding(
+                    start = 16.dp,
+                    end = 16.dp,
+                    top = 16.dp,
+                    bottom = 16.dp
+                ),
+            textAlign = TextAlign.Justify
+        )
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    val image = painterResource(id = R.drawable.bg_compose_background)
+    ComposeArticleTheme() {
+        ArticleCard(
+            title = stringResource(R.string.title),
+            shortDescription = stringResource(R.string.shortdescription),
+            longDescription = stringResource(R.string.longdescription),
+            imagePainter = image
+        )
+    }
+}
