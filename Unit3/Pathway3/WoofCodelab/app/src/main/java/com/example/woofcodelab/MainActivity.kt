@@ -20,6 +20,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -28,6 +31,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -106,7 +110,12 @@ fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
     }
 
     Card(modifier = Modifier.padding(8.dp), elevation = 4.dp) {
-        Column {
+        Column(modifier = Modifier.animateContentSize(
+            animationSpec = spring(
+                dampingRatio = Spring.DampingRatioMediumBouncy,
+                stiffness = Spring.StiffnessLow
+            )
+        )) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -117,7 +126,9 @@ fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
                 Spacer(Modifier.weight(1f))
                 DogItemButton(expanded = expanded, onClick = { expanded = !expanded })
             }
-            DogHobby(dog.hobbies)
+            if (expanded) {
+                DogHobby(dog.hobbies)
+            }
         }
     }
 }
@@ -153,7 +164,7 @@ private fun DogItemButton(
 ) {
     IconButton(onClick = onClick) {
         Icon(
-            imageVector = Icons.Filled.ExpandMore,
+            imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
             tint = MaterialTheme.colors.secondary,
             contentDescription = stringResource(R.string.expand_button_content_description)
         )
