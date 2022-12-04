@@ -51,7 +51,7 @@ fun StartOrderScreen(
     }
 }
 
-@Preview
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun StartOrderPreview(){
     StartOrderScreen(onStartOrderButtonClicked = {})
