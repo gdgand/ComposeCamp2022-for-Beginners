@@ -3,6 +3,8 @@ package com.example.diceroller
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.MaterialTheme
@@ -37,5 +39,9 @@ fun DiceRollerApp() {
 @Preview(showBackground = true)
 @Composable
 fun DiceWithButtonAndImage(modifier: Modifier = Modifier){
+    Column(modifier = Modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
 
+    }
 }
