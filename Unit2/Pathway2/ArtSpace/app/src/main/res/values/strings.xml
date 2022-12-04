@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ArtSpace</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+
+    <string name="artwork1Title">노르웨이 네이로이 피오르덴</string>
+    <string name="artwork1Artist">케틸 버클랜드 모에</string>
+    <string name="artwork1Year">1987</string>
+
+    <string name="artwork2Title">Kayaker at Ekstremsportveko 2010, Voss</string>
+    <string name="artwork2Artist">Kjetil Birkeland Moe</string>
+    <string name="artwork2Year">1989</string>
+
+    <string name="artwork3Title">Parkrun 시퀀스의 프레임 10</string>
+    <string name="artwork3Artist">라스 해글룬드, SVT Sveriges Television AB</string>
+    <string name="artwork3Year">1988</string>
+
+</resources>
