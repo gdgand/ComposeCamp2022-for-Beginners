@@ -15,6 +15,7 @@
  */
 package com.example.lunchtray
 
+import android.util.Log
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -23,22 +24,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.lunchtray.ui.OrderViewModel
+import com.example.lunchtray.datasource.DataSource
+import com.example.lunchtray.ui.*
 import com.example.lunchtray.ui.theme.LunchTrayTheme
+
+private const val TAG = "LunchTrayScreen"
 
 // TODO: Screen enum
 enum class LunchTrayScreen {
     Start
-    , MainMenu
-    , SideMenu
-    , DessertMenu
-    , SumUp
+    , EntreeMenu
+    , SideDishMenu
+    , AccomplishmentMenu
+    , Checkout
 }
 // TODO: AppBar
 @Composable
@@ -85,11 +92,59 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
         NavHost(navController = navController
             , startDestination = LunchTrayScreen.Start.name
             , modifier = modifier.padding(innerPadding)) {
+            composable(route = LunchTrayScreen.Start.name) {
+                StartOrderScreen(onStartOrderButtonClicked = {
+//                        viewModel.setQuantity(it)
+                        navController.navigate(LunchTrayScreen.EntreeMenu.name)
+                    }
+                )
+            }
+            composable(route = LunchTrayScreen.EntreeMenu.name) {
+                val context = LocalContext.current
+                EntreeMenuScreen(options = DataSource.entreeMenuItems
+                    , onCancelButtonClicked = { cancelOrderAndNavigateToStart(viewModel, navController) }
+                    , onNextButtonClicked = { navController.navigate(LunchTrayScreen.SideDishMenu.name) }
+                    , onSelectionChanged = {
+                        viewModel.updateEntree(it)
+                    }
+                )
+            }
+            composable(route = LunchTrayScreen.SideDishMenu.name) {
+                SideDishMenuScreen(options = DataSource.sideDishMenuItems
+                    , onCancelButtonClicked = { cancelOrderAndNavigateToStart(viewModel, navController) }
+                    , onNextButtonClicked = { navController.navigate(LunchTrayScreen.AccomplishmentMenu.name) }
+                    , onSelectionChanged = {
+                        viewModel.updateSideDish(it)
+                    }
+                )
+            }
+            composable(route = LunchTrayScreen.AccomplishmentMenu.name) {
+                AccompanimentMenuScreen(options = DataSource.accompanimentMenuItems
+                    , onCancelButtonClicked = { cancelOrderAndNavigateToStart(viewModel, navController) }
+                    , onNextButtonClicked = { navController.navigate(LunchTrayScreen.Checkout.name) }
+                    , onSelectionChanged = {
+                        viewModel.updateAccompaniment(it)
+                    }
+                )
+            }
+            composable(route = LunchTrayScreen.Checkout.name) {
+                CheckoutScreen(orderUiState = uiState
+                    , onCancelButtonClicked = { cancelOrderAndNavigateToStart(viewModel, navController) }
+                    , onNextButtonClicked = { navController.navigate(LunchTrayScreen.Start.name) }
+                )
+            }
 
         }
     }
 }
 
+
+private fun cancelOrderAndNavigateToStart(viewModel: OrderViewModel
+                                          , navController: NavHostController
+) {
+    viewModel.resetOrder()
+    navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
+}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
