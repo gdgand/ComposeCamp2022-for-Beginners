@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+//왜 다 구현되어 있는거임
 package com.example.lemonade
 
 import android.os.Bundle
