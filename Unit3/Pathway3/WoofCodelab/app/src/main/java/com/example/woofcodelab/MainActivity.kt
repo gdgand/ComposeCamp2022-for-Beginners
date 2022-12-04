@@ -20,6 +20,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
@@ -109,13 +110,21 @@ fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
         mutableStateOf(false)
     }
 
+    val color by animateColorAsState(
+        targetValue = if (expanded) MaterialTheme.colors.secondary else MaterialTheme.colors.surface,
+    )
+
     Card(modifier = Modifier.padding(8.dp), elevation = 4.dp) {
-        Column(modifier = Modifier.animateContentSize(
-            animationSpec = spring(
-                dampingRatio = Spring.DampingRatioMediumBouncy,
-                stiffness = Spring.StiffnessLow
-            )
-        )) {
+        Column(
+            modifier = Modifier
+                .animateContentSize(
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioMediumBouncy,
+                        stiffness = Spring.StiffnessLow
+                    )
+                )
+                .background(color = color)
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
