@@ -1,17 +1,24 @@
 <resources>
     <string name="app_name">Art Space</string>
 
-    <string name="img1_title">title1</string>
-    <string name="img2_title">title2</string>
-    <string name="img3_title">title3</string>
-    <string name="img4_title">title4</string>
-    <string name="img5_title">title5</string>
-    <string name="img6_title">title6</string>
+    <string name="img1_title">이젤 앞의 화가</string>
+    <string name="img2_title">모나리자</string>
+    <string name="img3_title">진주 귀걸이를 한 소녀</string>
+    <string name="img4_title">별빛 밝은 밤</string>
+    <string name="img5_title">자화상</string>
+    <string name="img6_title">해바라기가 있는 정물</string>
 
-    <string name="img1_desc">desc1</string>
-    <string name="img2_desc">desc2</string>
-    <string name="img3_desc">desc3</string>
-    <string name="img4_desc">desc4</string>
-    <string name="img5_desc">desc5</string>
-    <string name="img6_desc">desc6</string>
+    <string name="img1_desc">Eugène Joors</string>
+    <string name="img2_desc">Leonardo da Vinci</string>
+    <string name="img3_desc">Johannes Jan Vermeer</string>
+    <string name="img4_desc">Vincent van Gogh</string>
+    <string name="img5_desc">Vincent van Gogh</string>
+    <string name="img6_desc">Claude Monet</string>
+
+    <string name="img1_desc_year">(1868~1910)</string>
+    <string name="img2_desc_year">(1503)</string>
+    <string name="img3_desc_year">(1666)</string>
+    <string name="img4_desc_year">(1889)</string>
+    <string name="img5_desc_year">(1889)</string>
+    <string name="img6_desc_year">(1881)</string>
 </resources>

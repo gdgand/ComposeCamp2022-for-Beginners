@@ -19,8 +19,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.artspace.ui.theme.ArtSpaceTheme
 
 class MainActivity : ComponentActivity() {
@@ -73,6 +75,17 @@ private fun getPaintDesc(picNum: Int): Int{
     }
 }
 
+private fun getPaintDescYear(picNum: Int): Int{
+    return when(picNum){
+        0-> R.string.img1_desc_year
+        1-> R.string.img2_desc_year
+        2-> R.string.img3_desc_year
+        3-> R.string.img4_desc_year
+        4-> R.string.img5_desc_year
+        else -> R.string.img6_desc_year
+    }
+}
+
 @Composable
 fun ArtSpaceScreen() {
     var page by remember { mutableStateOf(4) }
@@ -81,12 +94,13 @@ fun ArtSpaceScreen() {
     var paint = getPicture(picNum)
     var paintTitle = getPaintTitle(picNum)
     var paintDesc = getPaintDesc(picNum)
+    var paintDescYear = getPaintDescYear(picNum)
 
     val setPicNum: (Int) -> Unit = { it -> picNum = it}
 
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().padding(0.dp,10.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
@@ -99,8 +113,7 @@ fun ArtSpaceScreen() {
         ) {
             Image(
                 modifier = Modifier
-                    .width(300.dp)
-                    .height(300.dp)
+                    .fillMaxSize(0.7f)
                     .padding(30.dp),
                 painter = painterResource(paint),
                 contentDescription = null,
@@ -110,18 +123,33 @@ fun ArtSpaceScreen() {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top,
-            modifier = Modifier.wrapContentSize(Alignment.Center)
+            modifier = Modifier.wrapContentSize(Alignment.Center).padding(0.dp,20.dp)
 
                 .border(BorderStroke(1.dp, Color(230, 230, 230)))
 
         ) {
             Text(
                 text = stringResource(paintTitle),
-                modifier = Modifier.absolutePadding(10.dp,15.dp,10.dp,5.dp)
+                fontSize = 18.sp,
+                modifier = Modifier.absolutePadding(10.dp,15.dp,10.dp,1.dp)
+
             )
-            Text(text = stringResource(paintDesc),
-                modifier = Modifier.absolutePadding(10.dp,5.dp,10.dp,15.dp)
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = stringResource(paintDesc),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.absolutePadding(10.dp, 1.dp, 0.dp, 15.dp)
+                )
+                Text(
+                    text = stringResource(paintDescYear),
+                    fontSize = 14.sp,
+                    modifier = Modifier.absolutePadding(3.dp, 1.dp, 10.dp, 15.dp)
+                )
+            }
+
 
         }
         Row(
@@ -131,8 +159,8 @@ fun ArtSpaceScreen() {
             horizontalArrangement = Arrangement.SpaceAround,
             verticalAlignment = Alignment.CenterVertically
         ){
-            Button(onClick = { setPicNum(if(picNum<0) picNum+5 else picNum-1) }){ Text("previous")}
-            Button(onClick = { setPicNum((picNum+1)%6) }){ Text("next")}
+            Button(onClick = { setPicNum(if(picNum<0) picNum+5 else picNum-1) }){ Text("Previous")}
+            Button(onClick = { setPicNum((picNum+1)%6) }){ Text("Next")}
         }
     }
 }
