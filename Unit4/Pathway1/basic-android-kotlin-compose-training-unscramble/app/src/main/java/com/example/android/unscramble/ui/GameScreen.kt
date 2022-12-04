@@ -84,15 +84,16 @@ fun GameScreen(modifier: Modifier = Modifier, gameViewModel: GameViewModel = vie
                 Text(stringResource(R.string.skip))
             }
 
-            Button(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-                    .padding(start = 8.dp),
-                onClick = { gameViewModel.checkUserGuess() }
-            ) {
+            Button(modifier = modifier
+                .fillMaxWidth()
+                .weight(1f)
+                .padding(start = 8.dp),
+                onClick = { gameViewModel.checkUserGuess() }) {
                 Text(stringResource(R.string.submit))
             }
+        }
+        if (gameUiState.isGameOver) {
+            FinalScoreDialog(score = gameUiState.score, onPlayAgain = { gameViewModel.resetGame() })
         }
     }
 }
@@ -106,14 +107,14 @@ fun GameStatus(wordCount: Int, score: Int, modifier: Modifier = Modifier) {
             .size(48.dp),
     ) {
         Text(
-            text = stringResource(R.string.word_count, 0),
+            text = stringResource(R.string.word_count, wordCount),
             fontSize = 18.sp,
         )
         Text(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.End),
-            text = stringResource(R.string.score, 0),
+            text = stringResource(R.string.score, score),
             fontSize = 18.sp,
         )
     }
@@ -158,9 +159,7 @@ fun GameLayout(
             keyboardOptions = KeyboardOptions.Default.copy(
                 imeAction = ImeAction.Done
             ),
-            keyboardActions = KeyboardActions(
-                onDone = { onKeyboardDone() }
-            ),
+            keyboardActions = KeyboardActions(onDone = { onKeyboardDone() }),
         )
     }
 }
@@ -170,26 +169,22 @@ fun GameLayout(
  */
 @Composable
 private fun FinalScoreDialog(
-    onPlayAgain: () -> Unit,
-    modifier: Modifier = Modifier
+    score: Int, onPlayAgain: () -> Unit, modifier: Modifier = Modifier
 ) {
     val activity = (LocalContext.current as Activity)
 
-    AlertDialog(
-        onDismissRequest = {
-            // Dismiss the dialog when the user clicks outside the dialog or on the back
-            // button. If you want to disable that functionality, simply use an empty
-            // onCloseRequest.
-        },
+    AlertDialog(onDismissRequest = {
+        // Dismiss the dialog when the user clicks outside the dialog or on the back
+        // button. If you want to disable that functionality, simply use an empty
+        // onCloseRequest.
+    },
         title = { Text(stringResource(R.string.congratulations)) },
         text = { Text(stringResource(R.string.you_scored, 0)) },
         modifier = modifier,
         dismissButton = {
-            TextButton(
-                onClick = {
-                    activity.finish()
-                }
-            ) {
+            TextButton(onClick = {
+                activity.finish()
+            }) {
                 Text(text = stringResource(R.string.exit))
             }
         },
@@ -199,8 +194,7 @@ private fun FinalScoreDialog(
             ) {
                 Text(text = stringResource(R.string.play_again))
             }
-        }
-    )
+        })
 }
 
 @Preview(showBackground = true)
