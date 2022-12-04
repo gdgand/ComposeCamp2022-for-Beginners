@@ -3,4 +3,6 @@
     <!-- Task Completed Screen -->
     <string name="all_task_completed">All tasks completed</string>
     <string name="nice_work">Nice work!</string>
+    <string name="text1">All tasks completed</string>
+    <string name="text2">Nice work</string>
 </resources>
