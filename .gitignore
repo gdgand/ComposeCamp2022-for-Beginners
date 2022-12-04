@@ -12,7 +12,7 @@
 */**/bin/
 */**/gen/
 */**/out/
-*/**/build/
+Unit2/Pathway2/Lemonade/build/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -27,10 +27,10 @@ local.properties
 # IDEA/Android Studio project files, because
 # the project can be imported from settings.gradle.kts
 *.iml
-*/**/.idea/*
+Unit2/Pathway2/Lemonade/.idea/*
 
 # Gradle cache
-*/**/.gradle
+Unit2/Pathway2/Lemonade/.gradle
 
 # Sandbox stuff
 _sandbox
