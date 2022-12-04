@@ -98,6 +98,12 @@ fun ReplyHomeScreen(
 
         )
     }
+    else {
+        ReplyDetailsScreen(replyUiState = replyUiState
+            , onBackPressed = onDetailScreenBackPressed
+            , modifier = modifier
+        )
+    }
 }
 
 /**
