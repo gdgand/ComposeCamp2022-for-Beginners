@@ -16,6 +16,7 @@
 
 package com.example.reply.ui
 
+import android.accounts.Account
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -40,10 +41,12 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.reply.R
 import com.example.reply.data.Email
 import com.example.reply.data.local.LocalAccountsDataProvider
+import com.example.reply.ui.theme.ReplyTheme
 
 /**
  * Component that displays a single pane of list of emails
@@ -224,5 +227,37 @@ private fun ReplyHomeTopBar(modifier: Modifier = Modifier) {
                 .padding(end = 8.dp)
                 .size(48.dp)
         )
+    }
+}
+
+
+@Preview(showBackground = true, showSystemUi = false)
+@Composable
+fun ReplyHomeTopBarPreview(){
+    ReplyTheme {
+        ReplyHomeTopBar()
+    }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun ReplyEmailPreview(){
+    ReplyTheme {
+        val email = Email(
+            id = 0,
+            sender = LocalAccountsDataProvider.getContactAccountById(7),
+            recipients = listOf(LocalAccountsDataProvider.userAccount),
+            subject = "Package shipped!",
+            body = """
+           Cucumber facial mask has been shipped.
+
+           Keep an eye out for a package to arrive between this Thursday and next Tuesday. If for any reason you don't receive your package before the end of next week, please reach out to us for details on your shipment.
+
+           As always, thank you for shopping with us and we hope you love our specially formulated Cucumber mask!
+       """.trimIndent(),
+            createdAt = "20 mins ago"
+        )
+        ReplyEmailItemHeader(email = email)
     }
 }

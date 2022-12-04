@@ -47,11 +47,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.reply.R
 import com.example.reply.data.Email
 import com.example.reply.data.MailboxType
 import com.example.reply.data.local.LocalAccountsDataProvider
+import com.example.reply.ui.theme.ReplyTheme
 
 /**
  * Composable that displays home screen
@@ -86,14 +88,16 @@ fun ReplyHomeScreen(
             text = stringResource(id = R.string.tab_spam)
         )
     )
-    ReplyAppContent(
-        replyUiState = replyUiState,
-        onTabPressed = onTabPressed,
-        onEmailCardPressed = onEmailCardPressed,
-        navigationItemContentList = navigationItemContentList,
-        modifier = modifier
+    if (replyUiState.isShowingHomepage) {
+        ReplyAppContent(
+            replyUiState = replyUiState,
+            onTabPressed = onTabPressed,
+            onEmailCardPressed = onEmailCardPressed,
+            navigationItemContentList = navigationItemContentList,
+            modifier = modifier
 
-    )
+        )
+    }
 }
 
 /**
@@ -244,3 +248,13 @@ private data class NavigationItemContent(
     val icon: ImageVector,
     val text: String
 )
+
+
+
+@Preview(showBackground = true, showSystemUi = false)
+@Composable
+fun NavigationDrawerHeaderPreview(){
+    ReplyTheme {
+        NavigationDrawerHeader(Modifier)
+    }
+}
