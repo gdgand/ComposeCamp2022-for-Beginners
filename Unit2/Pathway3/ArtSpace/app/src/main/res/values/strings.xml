@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Art Space</string>
+    <string name="cat">Cat</string>
+    <string name="germany_building">Germany Building</string>
+    <string name="sunset">Sunset</string>
+    <string name="artist">Anonymous</string>
+    <string name="cat_year">2020</string>
+    <string name="germany_building_year">2021</string>
+    <string name="sunset_year">2022</string>
 </resources>
