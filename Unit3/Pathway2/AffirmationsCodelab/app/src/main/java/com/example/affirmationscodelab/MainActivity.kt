@@ -67,6 +67,7 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
 
 @Composable
 fun AffirmationApp() {
+    val context = LocalContext.current
     AffirmationsTheme {
     }
 }
