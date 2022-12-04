@@ -37,13 +37,16 @@ class GameViewModel : ViewModel() {
      */
     fun resetGame() {
         usedWords.clear()
-        _uiState.value = GameUiState(currentScrambledWord = pickRandomWordAndShuffle())
+        _uiState.value = GameUiState(
+            currentScrambledWord = pickRandomWordAndShuffle(),
+            currentWordCount = usedWords.size
+        )
     }
 
     /*
      * Update the user's guess
      */
-    fun updateUserGuess(guessedWord: String){
+    fun updateUserGuess(guessedWord: String) {
         userGuess = guessedWord
     }
 
@@ -81,7 +84,7 @@ class GameViewModel : ViewModel() {
      * current game state.
      */
     private fun updateGameState(updatedScore: Int) {
-        if (usedWords.size == MAX_NO_OF_WORDS){
+        if (usedWords.size == MAX_NO_OF_WORDS) {
             //Last round in the game, update isGameOver to true, don't pick a new word
             _uiState.update { currentState ->
                 currentState.copy(
@@ -90,7 +93,7 @@ class GameViewModel : ViewModel() {
                     isGameOver = true
                 )
             }
-        } else{
+        } else {
             // Normal round in the game
             _uiState.update { currentState ->
                 currentState.copy(
