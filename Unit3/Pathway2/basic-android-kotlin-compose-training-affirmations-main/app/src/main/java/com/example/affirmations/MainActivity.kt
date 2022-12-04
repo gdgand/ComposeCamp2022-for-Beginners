@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.affirmationscodelab
+package com.example.affirmations
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -31,13 +31,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.affirmationscodelab.data.Datasource
-import com.example.affirmationscodelab.model.Affirmation
-import com.example.affirmationscodelab.ui.theme.AffirmationsTheme
+import com.example.affirmations.data.Datasource
+import com.example.affirmations.model.Affirmation
+import com.example.affirmations.ui.theme.AffirmationsTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +46,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             AffirmationApp()
         }
+    }
+}
+
+@Composable
+fun AffirmationApp() {
+    AffirmationsTheme {
+        AffirmationList(affirmationList = Datasource().loadAffirmations())
     }
 }
 
@@ -70,7 +78,7 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
                 contentScale = ContentScale.Crop
             )
             Text(
-                text = stringResource(affirmation.stringResourceId),
+                text = LocalContext.current.getString(affirmation.stringResourceId),
                 modifier = Modifier.padding(16.dp),
                 style = MaterialTheme.typography.h6
             )
@@ -78,15 +86,8 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
     }
 }
 
-@Composable
-fun AffirmationApp() {
-    AffirmationsTheme {
-        AffirmationList(affirmationList = Datasource().loadAffirmations())
-    }
-}
-
 @Preview
 @Composable
-fun AffirmationCardPreview() {
+private fun AffirmationCardPreview() {
     AffirmationCard (Affirmation(R.string.affirmation1, R.drawable.image1))
 }

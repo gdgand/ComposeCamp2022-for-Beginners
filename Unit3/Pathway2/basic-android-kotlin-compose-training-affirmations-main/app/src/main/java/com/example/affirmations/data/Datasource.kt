@@ -13,10 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.affirmationscodelab.data
-import com.example.affirmationscodelab.R
-import com.example.affirmationscodelab.model.Affirmation
-
+package com.example.affirmations.data
+import com.example.affirmations.R
+import com.example.affirmations.model.Affirmation
 /**
  * [Datasource] generates a list of [Affirmation]
  */
