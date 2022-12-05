@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             HappyBirthdayTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    BirthdayGreetingWithText( "Happy Birthday Sam!", "- from Emma")
+                    BirthdayGreetingWithImage( "Happy Birthday Sam!", "- from Emma")
                 }
             }
         }
@@ -70,7 +70,14 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
     val image = painterResource(id = R.drawable.androidparty)
 
     Box {
-        Image(painter = image, contentDescription = null)
+        Image(
+            painter = image,
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop
+        )
         BirthdayGreetingWithText(message, from)
     }
 }
