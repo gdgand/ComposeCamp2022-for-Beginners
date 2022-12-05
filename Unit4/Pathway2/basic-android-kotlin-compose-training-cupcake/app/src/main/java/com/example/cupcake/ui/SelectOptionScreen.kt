@@ -53,12 +53,12 @@ fun SelectOptionScreen(
     onCancelButtonClicked: () -> Unit = {},
     onNextButtonClicked: () -> Unit = {},
     modifier: Modifier = Modifier
-){
+) {
     var selectedValue by rememberSaveable { mutableStateOf("") }
 
-    Column (modifier = modifier.padding(16.dp)){
+    Column(modifier = modifier.padding(16.dp)) {
         options.forEach { item ->
-            Row (
+            Row(
                 modifier = Modifier.selectable(
                     selected = selectedValue == item,
                     onClick = {
@@ -67,7 +67,7 @@ fun SelectOptionScreen(
                     }
                 ),
                 verticalAlignment = Alignment.CenterVertically
-            ){
+            ) {
                 RadioButton(
                     selected = selectedValue == item,
                     onClick = {
@@ -85,10 +85,10 @@ fun SelectOptionScreen(
                 .align(Alignment.End)
                 .padding(top = 16.dp, bottom = 16.dp)
         )
-        Row (
+        Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ){
+        ) {
             OutlinedButton(
                 modifier = Modifier.weight(1f),
                 onClick = onCancelButtonClicked
@@ -109,7 +109,7 @@ fun SelectOptionScreen(
 
 @Preview
 @Composable
-fun SelectOptionPreview(){
+fun SelectOptionPreview() {
     SelectOptionScreen(
         subtotal = "299.99",
         options = listOf("Option 1", "Option 2", "Option 3", "Option 4")
