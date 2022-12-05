@@ -46,7 +46,16 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BirthdayGreetingWithText(message: String, from: String) {
     // Create a column so that texts don't overlap
-    Column { }
+    Column {
+        Text(
+            text = message,
+            fontSize = 36.sp,
+        )
+        Text(
+            text = from,
+            fontSize = 24.sp,
+        )
+    }
 }
 
 // 5. Box 레이아웃 추
