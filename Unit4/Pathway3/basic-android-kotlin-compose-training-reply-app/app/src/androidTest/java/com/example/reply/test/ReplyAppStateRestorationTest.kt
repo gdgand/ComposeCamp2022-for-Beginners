@@ -62,19 +62,15 @@ class ReplyAppStateRestorationTest {
         composeTestRule.onNodeWithText(LocalEmailsDataProvider.allEmails[2].subject)
             .performClick()
 
-        // Select third email
-        composeTestRule.onNodeWithText(LocalEmailsDataProvider.allEmails[2].subject)
-            .performClick()
-
-        // Verify that third email is displayed on the details screen
-        composeTestRule.onNodeWithTagForStringId(R.string.details_screen).onChildren()
-            .assertAny(hasAnyDescendant(hasText(LocalEmailsDataProvider.allEmails[2].body)))
-
         // Verify that third email is displayed on the details screen
         composeTestRule.onNodeWithTagForStringId(R.string.details_screen).onChildren()
             .assertAny(hasAnyDescendant(hasText(LocalEmailsDataProvider.allEmails[2].body)))
 
         // Simulate a config change
         stateRestorationTester.emulateSavedInstanceStateRestore()
+
+        // Verify that third email is still displayed on the details screen
+        composeTestRule.onNodeWithTagForStringId(R.string.details_screen).onChildren()
+            .assertAny(hasAnyDescendant(hasText(LocalEmailsDataProvider.allEmails[2].body)))
     }
 }
