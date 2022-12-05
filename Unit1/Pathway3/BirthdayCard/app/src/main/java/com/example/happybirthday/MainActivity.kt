@@ -56,5 +56,9 @@ fun BirthdayGreetingWithImage(message: String, from: String) { }
 // 4. 이미지 컴포저블 추가
 @Preview(showBackground = false)
 @Composable
-private fun BirthdayCardPreview() { }
+private fun BirthdayCardPreview() {
+    HappyBirthdayTheme {
+        BirthdayGreetingWithText("Happy Birthday Sam!", "- from Emma")
+    }
+}
 
