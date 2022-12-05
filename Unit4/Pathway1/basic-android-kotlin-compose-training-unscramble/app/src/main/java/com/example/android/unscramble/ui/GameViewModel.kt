@@ -53,7 +53,7 @@ class GameViewModel : ViewModel() {
         _uiState.value = GameUiState(currentScrambledWord = pickRandomWordAndShuffle())
     }
 
-    fun updateUserGeuss(guessedWord: String) {
+    fun updateUserGuess(guessedWord: String) {
         userGuess = guessedWord
     }
 
@@ -66,7 +66,7 @@ class GameViewModel : ViewModel() {
                 currentState.copy(isGuessedWordWrong = true)
             }
         }
-        updateUserGeuss("")
+        updateUserGuess("")
     }
 
     private fun updateGameState(updatedScore: Int) {
@@ -93,6 +93,6 @@ class GameViewModel : ViewModel() {
 
     fun skipWord() {
         updateGameState(_uiState.value.score)
-        updateUserGeuss("")
+        updateUserGuess("")
     }
 }

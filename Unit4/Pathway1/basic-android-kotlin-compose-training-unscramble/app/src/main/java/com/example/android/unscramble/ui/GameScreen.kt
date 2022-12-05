@@ -63,7 +63,7 @@ fun GameScreen(modifier: Modifier = Modifier, vm: GameViewModel = viewModel()) {
         GameStatus(gameUiState.currentWordCount, gameUiState.score)
         GameLayout(
             userGeuss = vm.userGuess,
-            onUserGuessChanged = { vm.updateUserGeuss(it) },
+            onUserGuessChanged = { vm.updateUserGuess(it) },
             onKeyboardDone = { vm.checkUserGuess() },
             currentScrambledWord = gameUiState.currentScrambledWord,
             isGuessWrong = gameUiState.isGuessedWordWrong
