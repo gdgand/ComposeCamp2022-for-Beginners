@@ -16,23 +16,12 @@
 package com.example.android.unscramble.ui
 
 import android.app.Activity
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.AlertDialog
-import androidx.compose.material.Button
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -63,7 +52,7 @@ fun GameScreen(
     verticalArrangement = Arrangement.spacedBy(8.dp)
   ) {
 
-    GameStatus()
+    GameStatus(wordCount = gameUiState.currentWordCount, score = gameUiState.score)
     GameLayout(
       onUserGuessChanged = { gameViewModel.updateUserGuess(it) },
       onKeyboardDone = { gameViewModel.checkUserGuess() },
@@ -78,7 +67,7 @@ fun GameScreen(
       horizontalArrangement = Arrangement.SpaceAround
     ) {
       OutlinedButton(
-        onClick = { },
+        onClick = { gameViewModel.skipWord() },
         modifier = Modifier
           .weight(1f)
           .padding(end = 8.dp)
@@ -100,7 +89,7 @@ fun GameScreen(
 }
 
 @Composable
-fun GameStatus(modifier: Modifier = Modifier) {
+fun GameStatus(wordCount: Int, score: Int, modifier: Modifier = Modifier) {
   Row(
     modifier = modifier
       .fillMaxWidth()
@@ -108,14 +97,14 @@ fun GameStatus(modifier: Modifier = Modifier) {
       .size(48.dp),
   ) {
     Text(
-      text = stringResource(R.string.word_count, 0),
+      text = stringResource(R.string.word_count, wordCount),
       fontSize = 18.sp,
     )
     Text(
       modifier = Modifier
         .fillMaxWidth()
         .wrapContentWidth(Alignment.End),
-      text = stringResource(R.string.score, 0),
+      text = stringResource(R.string.score, score),
       fontSize = 18.sp,
     )
   }
