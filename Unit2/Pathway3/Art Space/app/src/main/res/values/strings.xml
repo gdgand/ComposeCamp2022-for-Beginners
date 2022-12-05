@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="dog_img">Dog</string>
+    <string name="dog_descript">Purpy &amp; Goopy</string>
+    <string name="cat_img">Cat</string>
+    <string name="cat_descript">Dukong\'s</string>
+    <string name="penguin_img">Penguin</string>
+    <string name="penguin_descript">South land</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+</resources>
