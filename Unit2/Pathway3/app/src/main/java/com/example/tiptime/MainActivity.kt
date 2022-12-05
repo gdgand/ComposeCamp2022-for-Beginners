@@ -44,23 +44,25 @@ class MainActivity : ComponentActivity() {
 }
 @Composable
 fun TipTimeScreen(){
+
     var amountInput by remember { mutableStateOf("") }
 
-    val amount = amountInput.toDoubleOrNull() ?: 0.0
-    val tip = caculateTip(amount)
+    val amount = amountInput.toDoubleOrNull() ?: 0.0 //금액. null입력상태인 경우 0으로 설정
+    val tip = caculateTip(amount) //팁 계산값 반환하여 저장
 
     Column(modifier = Modifier.padding(32.dp),
         //하위요소에 고정된 공백 추가
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(
+        Text( //제목!
             text = stringResource(R.string.calculate_tip),
             fontSize = 24.sp,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
         //공백추가
         Spacer(modifier = Modifier.height(16.dp))
-        EditNumberField(
+
+        EditNumberField( //입력창 함수 불러오기..
             value = amountInput,
             onValueChange = {amountInput=it}
         )
@@ -72,12 +74,11 @@ fun TipTimeScreen(){
             fontWeight = FontWeight.Bold
             )
     }
-
 }
 
 @Composable
 
-fun EditNumberField(
+fun EditNumberField( //입력창
     value :String,
     onValueChange:(String)->Unit //상태 호이스팅을 위한 매개변수 추가
 ){
@@ -93,12 +94,12 @@ fun EditNumberField(
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number) //키패드타입.
     )
 }
-private fun caculateTip(
+private fun caculateTip(//계산하기
     amount: Double, //서비스 비용
     tipPercent: Double=15.0 //팁 비율 (기본: 15퍼)
 ): String {
     val tip=tipPercent/100 * amount //총 팁 계산
-    return NumberFormat.getCurrencyInstance().format(tip) //숫자를 통화 형식으로 지정(숫자형식지정클래스)
+    return NumberFormat.getCurrencyInstance().format(tip) //팁을 통화 형식으로 지정하고 반환(숫자형식지정클래스)
 }
 
 @Preview(showBackground = true)
