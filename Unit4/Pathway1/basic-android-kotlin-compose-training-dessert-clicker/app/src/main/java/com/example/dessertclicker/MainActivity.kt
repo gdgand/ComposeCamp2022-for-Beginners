@@ -19,6 +19,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -61,15 +62,45 @@ import com.example.dessertclicker.data.Datasource.dessertList
 import com.example.dessertclicker.ui.theme.DessertClickerTheme
 import com.example.dessertclicker.model.Dessert
 
+private const val TAG = "MainActivity"
+
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Log.d(TAG, "onCreate Called")
+
         setContent {
             DessertClickerTheme {
                 DessertClickerApp(desserts = dessertList)
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onCreate onStart")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG, "onCreate onRestart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onCreate onResume")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onCreate onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onCreate onDestroy")
     }
 }
 
