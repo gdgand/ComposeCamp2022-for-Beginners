@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Art Space</string>
-    <string name="art_name_1">Ships Riding on the Seine at Rouen, 1872, National Gallery of Art, Washington DC</string>
-    <string name="art_name_2">The Basket of Apples 1890–1894 Art Institute of Chicago</string>
-    <string name="art_name_3">The Starry Night 1889, Museum of Modern Art, New York</string>
+    <string name="ship_riding">Ships Riding on the Seine at Rouen, 1872, National Gallery of Art, Washington DC</string>
+    <string name="basket_apple">The Basket of Apples 1890–1894 Art Institute of Chicago</string>
+    <string name="starry_night">The Starry Night 1889, Museum of Modern Art, New York</string>
+    <string name="button_previous">Pevious</string>
+    <string name="button_next">Next</string>
 </resources>
