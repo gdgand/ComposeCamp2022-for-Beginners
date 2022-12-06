@@ -15,9 +15,12 @@
  */
 package com.example.cupcake
 
+import android.app.Dialog
+import android.app.DialogFragment
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.ui.window.Dialog
 import com.example.cupcake.ui.theme.CupcakeTheme
 
 /**
