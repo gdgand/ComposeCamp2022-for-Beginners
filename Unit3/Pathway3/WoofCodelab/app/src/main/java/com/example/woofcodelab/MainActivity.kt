@@ -130,6 +130,19 @@ fun DogInformation(@StringRes dogName: Int, dogAge: Int, modifier: Modifier = Mo
     }
 }
 
+@Composable
+fun WoofTopAppBar(modifier: Modifier = Modifier){
+    Row(){
+        Image(
+            painter = painterResource(R.drawable.ic_woof_logo),
+            contentDescription = null
+        )
+        Text(
+            text = stringResource(R.string.app_name)
+        )
+    }
+}
+
 /**
  * Composable that displays what the UI of the app looks like in light theme in the design tab.
  */
