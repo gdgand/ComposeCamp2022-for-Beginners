@@ -27,11 +27,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -80,6 +79,9 @@ fun WoofApp() {
  */
 @Composable
 fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
+    var expanded by remember {
+        mutableStateOf(false)
+    }
     Card(modifier = modifier.padding(8.dp), elevation = 4.dp) {
         Row(
             modifier = Modifier
@@ -89,6 +91,8 @@ fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
         ) {
             DogIcon(dog.imageResourceId)
             DogInformation(dog.name, dog.age)
+            Spacer(modifier = Modifier.weight(1f))
+            DogButton(expanded = expanded, onClick = { /*TODO*/ })
         }
     }
 }
@@ -156,6 +160,21 @@ fun WoofTopAppBar(modifier: Modifier = Modifier) {
         Text(
             text = stringResource(R.string.app_name),
             style = MaterialTheme.typography.h1
+        )
+    }
+}
+
+@Composable
+fun DogButton(
+    expanded: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    IconButton(onClick = onClick) {
+        Icon(
+            imageVector = Icons.Filled.ExpandMore,
+            tint = MaterialTheme.colors.secondary,
+            contentDescription = stringResource(id = R.string.expand_button_content_description)
         )
     }
 }
