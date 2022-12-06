@@ -40,6 +40,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TipTimeScreen() {
+    // var amountInput = mutableStateOf("0")
+    var amountInput by remember { mutableStateOf("") }  // 관찰 가능
+    val amount = amountInput.toDoubleOrNull() ?: 0.0
+    val tip = calculateTip(amount = amount)
+
     Column(
         modifier = Modifier.padding(32.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -50,7 +55,10 @@ fun TipTimeScreen() {
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
         Spacer(modifier = Modifier.height(16.dp))
-        EditNumberField()
+        EditNumberField(
+            value = amountInput,
+            onValueChange = { amountInput = it }
+        )
         Spacer(modifier = Modifier.height(24.dp))
         Text(
             text = stringResource(id = R.string.tip_amount, ""),
@@ -62,17 +70,13 @@ fun TipTimeScreen() {
 }
 
 @Composable
-fun EditNumberField() {
-    // var amountInput = mutableStateOf("0")
-    var amountInput by remember { mutableStateOf("") }  // 관찰 가능
-    val amount = amountInput.toDoubleOrNull() ?: 0.0
-    val tip = calculateTip(amount = amount)
-
+fun EditNumberField(
+    value: String,
+    onValueChange: (String) -> Unit
+) {
     TextField(
-        value = amountInput, // 전달하는 문자열 값
-        onValueChange = { // 텍스트 입력 시 트리거되는 람다 콜백
-            amountInput = it
-        },
+        value = value, // 전달하는 문자열 값
+        onValueChange = onValueChange, // 텍스트 입력 시 트리거되는 람다 콜백
         label = {
             Text(stringResource(id = R.string.cost_of_service))
         },
