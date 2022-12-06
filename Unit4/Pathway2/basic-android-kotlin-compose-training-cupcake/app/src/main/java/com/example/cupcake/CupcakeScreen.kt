@@ -96,13 +96,23 @@ fun CupcakeApp(modifier: Modifier = Modifier, viewModel: OrderViewModel = viewMo
             modifier = modifier.padding(innerPadding)
         ) {
             composable(route = CupcakeScreen.Start.name) {
-               StartOrderScreen(quantityOptions = quantityOptions)
+               StartOrderScreen(
+                   quantityOptions = quantityOptions,
+                   onNextButtonClicked = {
+                       viewModel.setQuantity(it)
+                       navController.navigate(CupcakeScreen.Flavor.name)
+                   }
+               )
             }
 
             composable(route = CupcakeScreen.Flavor.name) {
                 val context = LocalContext.current
                 SelectOptionScreen(
                     subtotal = uiState.price,
+                    onNextButtonClicked = {
+                        navController.navigate(CupcakeScreen.Pickup.name)
+                    },
+                    onCancelButtonClicked = {},
                     options = flavors.map { id -> context.resources.getString(id) },
                     onSelectionChanged = { viewModel.setFlavor(it) }
                 )
@@ -111,13 +121,21 @@ fun CupcakeApp(modifier: Modifier = Modifier, viewModel: OrderViewModel = viewMo
             composable(route = CupcakeScreen.Pickup.name) {
                 SelectOptionScreen(
                     subtotal = uiState.price,
+                    onNextButtonClicked = {
+                      navController.navigate(CupcakeScreen.Summary.name)
+                    },
+                    onCancelButtonClicked = {},
                     options = uiState.pickupOptions,
                     onSelectionChanged = { viewModel.setDate(it)}
                 )
             }
 
             composable(route = CupcakeScreen.Summary.name) {
-                OrderSummaryScreen(orderUiState = uiState)
+                OrderSummaryScreen(
+                    orderUiState = uiState,
+                    onCancelButtonClicked = {},
+                    onSendButtonClicked = { subject: String, summary: String -> }
+                )
             }
         }
     }
