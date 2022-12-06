@@ -3,9 +3,7 @@ package com.example.composequadrant
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -22,15 +20,63 @@ import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeQuadrantTheme {
+                ComposeQuadrantApp()
+            }
+        }
     }
 }
 
 @Composable
 fun ComposeQuadrantApp() {
-    Column() {
-        Row() { }
-        Row() { }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+    ) {
+        Row(
+            modifier = Modifier
+                .weight(1f)
+        ) {
+            ComposableInfoCard(
+                stringResource(R.string.first_title),
+                stringResource(R.string.first_description),
+                Color.Green,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+            )
+            ComposableInfoCard(
+                stringResource(R.string.second_title),
+                stringResource(R.string.second_description),
+                Color.Yellow,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+            )
+        }
+        Row(
+            modifier = Modifier
+                .weight(1f)
+        ) {
+            ComposableInfoCard(
+                stringResource(R.string.third_title),
+                stringResource(R.string.third_description),
+                Color.Cyan,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+            )
+            ComposableInfoCard(
+                stringResource(R.string.fourth_title),
+                stringResource(R.string.fourth_description),
+                Color.LightGray,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+            )
+        }
     }
 }
 
@@ -41,10 +87,24 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column( ) { }
+    Surface(color = backgroundColor, modifier = modifier) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .padding(16.dp)
+        ) {
+            Text(title, fontWeight = FontWeight.Bold, modifier = Modifier.padding(bottom = 16.dp))
+            Text(description, textAlign = TextAlign.Justify)
+        }
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeQuadrantTheme {
+        ComposeQuadrantApp()
+    }
+}
