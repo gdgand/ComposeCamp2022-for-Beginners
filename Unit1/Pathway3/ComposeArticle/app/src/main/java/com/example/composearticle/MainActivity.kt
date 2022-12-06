@@ -68,12 +68,14 @@ private fun ArticleCard(
         Text(
             text = shortDescription,
             fontSize = 16.sp,
-            modifier = modifier
+            modifier = modifier,
+            textAlign = TextAlign.Justify
         )
         Text(
             text = longDescription,
             fontSize = 16.sp,
-            modifier = modifier
+            modifier = modifier,
+            textAlign = TextAlign.Justify
         )
     }
 }

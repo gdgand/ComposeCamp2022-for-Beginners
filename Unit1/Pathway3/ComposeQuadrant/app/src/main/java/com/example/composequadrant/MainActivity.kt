@@ -22,7 +22,11 @@ import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeQuadrantTheme {
+
+            }
+        }
     }
 }
 
@@ -41,10 +45,38 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column( ) { }
+    Column {
+        Text(
+            text = title,
+
+        )
+        Text(
+            text = description,
+            textAlign = TextAlign.Justify
+        )
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeQuadrantTheme {
+        val first = ComposableInfoCard(
+            title = stringResource(R.string.first_title),
+            description = stringResource(R.string.first_description)
+        )
+        val second = ComposableInfoCard(
+            title = stringResource(R.string.second_title),
+            description = stringResource(R.string.second_description)
+        )
+        val third = ComposableInfoCard(
+            title = stringResource(R.string.third_title),
+            description = stringResource(R.string.third_description)
+        )
+        val fourth = ComposableInfoCard(
+            title = stringResource(R.string.fourth_title),
+            description = stringResource(R.string.fourth_description)
+        )
+    }
+}
