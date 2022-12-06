@@ -3,6 +3,7 @@ package com.example.tiptime
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
@@ -56,6 +57,7 @@ fun TipTimeScreen() {
         )
         Spacer(modifier = Modifier.height(16.dp))
         EditNumberField(
+            label = R.string.bill_amount,
             value = amountInput,
             onValueChange = { amountInput = it }
         )
@@ -71,15 +73,15 @@ fun TipTimeScreen() {
 
 @Composable
 fun EditNumberField(
+    @StringRes label: Int,
     value: String,
-    onValueChange: (String) -> Unit
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     TextField(
         value = value, // 전달하는 문자열 값
         onValueChange = onValueChange, // 텍스트 입력 시 트리거되는 람다 콜백
-        label = {
-            Text(stringResource(id = R.string.cost_of_service))
-        },
+        label = { Text(stringResource(label)) },
         modifier = Modifier.fillMaxWidth(),
         singleLine = true,   // 가로로 스크롤 가능한 하나의 줄로 압축
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
