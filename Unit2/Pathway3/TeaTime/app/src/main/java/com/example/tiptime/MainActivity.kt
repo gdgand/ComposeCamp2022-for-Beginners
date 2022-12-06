@@ -159,7 +159,7 @@ fun RoundTheTipRow(
 
 @Preview(showBackground = true)
 @Composable
-fun TipTimePriview() {
+fun TipTimePreview() {
     TipTimeTheme {
         TipTimeScreen()
     }
