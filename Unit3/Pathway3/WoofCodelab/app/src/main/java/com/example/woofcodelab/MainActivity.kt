@@ -22,6 +22,8 @@ import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -85,7 +87,14 @@ fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
         mutableStateOf(false)
     }
     Card(modifier = modifier.padding(8.dp), elevation = 4.dp) {
-        Column(modifier = Modifier.animateContentSize()) {
+        Column(
+            modifier = Modifier.animateContentSize(
+                animationSpec = spring(
+                    dampingRatio = Spring.DampingRatioMediumBouncy,
+                    stiffness = Spring.StiffnessLow
+                )
+            )
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -179,7 +188,7 @@ fun DogButton(
 ) {
     IconButton(onClick = onClick) {
         Icon(
-            imageVector = if (expanded)Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
+            imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
             tint = MaterialTheme.colors.secondary,
             contentDescription = stringResource(id = R.string.expand_button_content_description)
         )
