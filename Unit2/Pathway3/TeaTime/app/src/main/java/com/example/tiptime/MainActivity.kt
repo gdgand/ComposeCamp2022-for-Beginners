@@ -43,8 +43,11 @@ class MainActivity : ComponentActivity() {
 fun TipTimeScreen() {
     // var amountInput = mutableStateOf("0")
     var amountInput by remember { mutableStateOf("") }  // 관찰 가능
+    var tipInput by remember { mutableStateOf("") }
+
     val amount = amountInput.toDoubleOrNull() ?: 0.0
-    val tip = calculateTip(amount = amount)
+    val tipPercent = tipInput.toDoubleOrNull() ?: 0.0
+    val tip = calculateTip(amount, tipPercent)
 
     Column(
         modifier = Modifier.padding(32.dp),
@@ -60,6 +63,11 @@ fun TipTimeScreen() {
             label = R.string.bill_amount,
             value = amountInput,
             onValueChange = { amountInput = it }
+        )
+        EditNumberField(
+            label = R.string.how_was_the_service,
+            value = tipInput,
+            onValueChange = { tipInput = it }
         )
         Spacer(modifier = Modifier.height(24.dp))
         Text(
