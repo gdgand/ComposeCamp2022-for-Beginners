@@ -15,21 +15,38 @@
  */
 package com.example.lunchtray
 
+import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.lunchtray.ui.OrderViewModel
+import com.example.lunchtray.ui.StartOrderPreview
+import com.example.lunchtray.ui.StartOrderScreen
 
 // TODO: Screen enum
+enum class LunchTrayScreen(@StringRes val title: Int) {
+    Start(title = R.string.start_order),
+    Mainmenu(title = R.string.choose_entree),
+    Sidemenu(title = R.string.choose_side_dish),
+    Dessertmenu(title = R.string.choose_accompaniment),
+    caculate(title = R.string.order_summary)
+
+}
 
 // TODO: AppBar
 
 @Composable
 fun LunchTrayApp(modifier: Modifier = Modifier) {
-    // TODO: Create Controller and initialization
+    val navController = rememberNavController()
 
     // Create ViewModel
     val viewModel: OrderViewModel = viewModel()
@@ -40,6 +57,31 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
         }
     ) { innerPadding ->
         val uiState by viewModel.uiState.collectAsState()
-        // TODO: Navigation host
+
+        NavHost(
+            navController = navController,
+            startDestination = LunchTrayScreen.Start.name,
+            modifier = modifier.padding(innerPadding)
+        ){
+            composable(route = LunchTrayScreen.Start.name) {
+                StartOrderScreen(
+                    onStartOrderButtonClicked = {
+                        navController.navigate(LunchTrayScreen.Mainmenu.name)
+                    }
+                )
+            }
+            composable(route = LunchTrayScreen.Mainmenu.name) {
+                val context = LocalContext.current
+            }
+            composable(route = LunchTrayScreen.Sidemenu.name) {
+
+            }
+            composable(route = LunchTrayScreen.Dessertmenu.name) {
+
+            }
+            composable(route = LunchTrayScreen.caculate.name) {
+
+            }
+         }
     }
 }
