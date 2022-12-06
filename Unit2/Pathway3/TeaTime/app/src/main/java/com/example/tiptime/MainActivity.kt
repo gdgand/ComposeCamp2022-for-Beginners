@@ -49,7 +49,7 @@ fun TipTimeScreen() {
 
     val amount = amountInput.toDoubleOrNull() ?: 0.0
     val tipPercent = tipInput.toDoubleOrNull() ?: 0.0
-    val tip = calculateTip(amount, tipPercent)
+    val tip = calculateTip(amount, tipPercent, roundUp)
 
     val focusManager = LocalFocusManager.current
 
@@ -123,9 +123,15 @@ fun EditNumberField(
 @Composable
 private fun calculateTip(
     amount: Double,
-    tipPercent: Double = 15.0
+    tipPercent: Double = 15.0,
+    roundUp: Boolean
 ): String {
-    val tip = tipPercent / 100 * amount
+    var tip = tipPercent / 100 * amount
+
+    if (roundUp) {
+        tip = kotlin.math.ceil(tip)
+    }
+
     return NumberFormat.getCurrencyInstance().format(tip)
 }
 
@@ -135,26 +141,26 @@ fun RoundTheTipRow(
     onRoundUpChanged: (Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
-   Row (
-       modifier = Modifier
-           .fillMaxWidth()
-           .size(48.dp),
-       verticalAlignment = Alignment.CenterVertically
-   ){
-       Text(
-           text = stringResource(id = R.string.round_up_tip)
-       )
-       Switch(
-           modifier = modifier
-               .fillMaxWidth()
-               .wrapContentWidth(Alignment.End),
-           checked = roundUp,
-           onCheckedChange = onRoundUpChanged,
-           colors = SwitchDefaults.colors(
-               uncheckedThumbColor = Color.DarkGray
-           )
-       )
-   }
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .size(48.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = stringResource(id = R.string.round_up_tip)
+        )
+        Switch(
+            modifier = modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.End),
+            checked = roundUp,
+            onCheckedChange = onRoundUpChanged,
+            colors = SwitchDefaults.colors(
+                uncheckedThumbColor = Color.DarkGray
+            )
+        )
+    }
 }
 
 @Preview(showBackground = true)
