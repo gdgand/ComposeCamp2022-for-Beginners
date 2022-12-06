@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -64,7 +65,8 @@ fun DefaultPreview() {
     ComposeQuadrantTheme {
         val first = ComposableInfoCard(
             title = stringResource(R.string.first_title),
-            description = stringResource(R.string.first_description)
+            description = stringResource(R.string.first_description),
+            backgroundColor = colorResource(R.color.)
         )
         val second = ComposableInfoCard(
             title = stringResource(R.string.second_title),

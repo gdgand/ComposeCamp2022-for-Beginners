@@ -41,9 +41,7 @@ fun ComposeArticleApp() {
         longDescription = stringResource(R.string.compose_long_desc),
         imagePainter = painterResource(R.drawable.bg_compose_background),
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 16.dp)
-            .padding(horizontal = 16.dp)
+            .padding(start = 16.dp)
     )
 }
 
@@ -64,17 +62,24 @@ private fun ArticleCard(
             text = title,
             fontSize = 24.sp,
             modifier = modifier
+                .padding(end = 16.dp)
+                .padding(top = 16.dp)
+                .padding(bottom = 16.dp)
         )
         Text(
             text = shortDescription,
             fontSize = 16.sp,
-            modifier = modifier,
+            modifier = modifier
+                .padding(end = 16.dp),
             textAlign = TextAlign.Justify
         )
         Text(
             text = longDescription,
             fontSize = 16.sp,
-            modifier = modifier,
+            modifier = modifier
+                .padding(end = 16.dp)
+                .padding(top = 16.dp)
+                .padding(bottom = 16.dp),
             textAlign = TextAlign.Justify
         )
     }
@@ -91,9 +96,7 @@ fun DefaultPreview() {
             longDescription = stringResource(R.string.compose_long_desc),
             imagePainter = painterResource(R.drawable.bg_compose_background),
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 16.dp)
-                .padding(horizontal = 16.dp)
+                .padding(start = 16.dp)
         )
     }
 }
