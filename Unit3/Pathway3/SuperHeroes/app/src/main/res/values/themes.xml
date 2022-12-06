@@ -2,6 +2,7 @@
 <resources>
 
     <style name="Theme.SuperHeroes" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/purple_700</item>
+        <item name="android:statusBarColor">@color/light_background</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>
