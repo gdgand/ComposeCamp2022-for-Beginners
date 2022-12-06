@@ -89,14 +89,13 @@ fun SelectOptionScreen(
       modifier = Modifier.fillMaxWidth(),
       horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-      OutlinedButton(modifier = Modifier.weight(1f), onClick = { onCancelButtonClicked }) {
+      OutlinedButton(modifier = Modifier.weight(1f), onClick = onCancelButtonClicked) {
         Text(stringResource(R.string.cancel))
       }
       Button(
         modifier = Modifier.weight(1f),
-        // the button is enabled when the user makes a selection
         enabled = selectedValue.isNotEmpty(),
-        onClick = { onNextButtonClicked }
+        onClick = onNextButtonClicked
       ) {
         Text(stringResource(R.string.next))
       }
