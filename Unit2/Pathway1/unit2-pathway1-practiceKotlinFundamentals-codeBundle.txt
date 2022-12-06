@@ -1,0 +1,229 @@
+// ====================================
+// 모바일 알림
+
+fun main() {
+    val morningNotification = 51
+    val eveningNotification = 135
+
+    printNotificationSummary(morningNotification)
+    printNotificationSummary(eveningNotification)
+}
+
+fun printNotificationSummary(numberOfMessages: Int) {
+    
+    when(numberOfMessages) {
+        in 0..100 -> println("You have $numberOfMessages notifications.")
+        else -> println("Your phone is blowing up! You have 99+ notifications.")
+    }
+}
+
+
+
+// ====================================
+// 영화 티켓 가격
+
+fun main() {
+    val child = 5
+    val adult = 60
+    val senior = 101
+
+    val isMonday = true
+
+    println("The movie ticket price for a person aged $child is  \$${ticketPrice(child, isMonday)}.")
+    println("The movie ticket price for a person aged $adult is \$${ticketPrice(adult, isMonday)}.")
+    println("The movie ticket price for a person aged $senior is \$${ticketPrice(senior, isMonday)}.")
+}
+
+fun ticketPrice(age: Int, isMonday: Boolean): Int {
+	if (age <= 12) {
+        return 15
+    } else if (age in 13..60) {
+        if(isMonday){
+        	return 25    
+        } else {
+            return 30
+        }
+    } else if (age in 61..100) {
+        return 20
+    } else {
+        return -1
+    }
+}
+
+
+
+// ====================================
+// 온도 변환기
+
+fun main() {
+    printFinalTemperature(27.0, "Celsius", "Fahrenheit"){ it ->
+    	( 9.0 / 5.0 * it) + 32.0
+    }
+    printFinalTemperature(350.0, "Kelvin", "Celsius"){ it ->
+    	it - 273.15
+    }
+    printFinalTemperature(10.0, "Fahrenheit", "Kelvin"){ it ->
+    	5.0 / 9.0 * (it - 32) + 273.15
+    }
+    
+}
+
+fun printFinalTemperature(
+    initialMeasurement: Double,
+    initialUnit: String,
+    finalUnit: String,
+    conversionFormula: (Double) -> Double
+) {
+    val finalMeasurement = String.format("%.2f", conversionFormula(initialMeasurement)) // two decimal places
+    println("$initialMeasurement degrees $initialUnit is $finalMeasurement degrees $finalUnit.")
+}
+
+
+
+
+// ====================================
+// 노래 카탈로그 -> 이거는 솔루션을 봐버렸다.
+
+class Song(
+	val title: String,
+    val artist: String,
+    val publishedYear: String,
+    val playCount: Int
+) {
+    val isPopular: Boolean
+    	get() = playCount >= 1000
+        
+    fun printSongInfo() {
+        println("$title, performed by $artist, was released in $publishedYear.")
+    }
+}
+
+fun main() {
+   val goodDaySong = Song("좋은날", "아이유", "publishedYear", 1001)
+    goodDaySong.printSongInfo()
+    println(goodDaySong.isPopular)
+}
+
+
+
+// ====================================
+// 인터넷 프로필
+
+fun main() {
+    
+    val amanda = Person("Amanda", 33, null, null)
+    val atiqah = Person("Atiqah", 28, "climb", amanda)
+
+    amanda.showProfile()
+    atiqah.showProfile()
+    
+}
+
+class Person(val name: String, val age: Int, val hobby: String?, val referrer: Person?) {
+    
+    fun showProfile() {
+        
+       println("Name: $name")
+       println("Age: $age")
+       
+       val lastStatement1 = 
+        	if(hobby == null) {
+                "Doesn't have a hobby."
+            } else {
+                "Like to $hobby."
+            }
+            
+       val lastStatement2 = 
+        	if(referrer == null) {
+                " Doesn't have a referrer."
+            } else {
+                if(referrer.hobby == null) {
+                	" Has a referrer named ${referrer.name}."    
+                } else {
+                    " Has a referrer named ${referrer.name}, who likes to ${referrer.hobby}."
+                }
+            }
+            
+       println(lastStatement1 + lastStatement2)
+       println()
+    }
+}
+
+
+
+// ====================================
+// 폴더블 스마트폰
+
+fun main() {
+    var phone = Phone(false)
+    phone.checkPhoneScreenLight()
+    phone.switchOn()
+    phone.checkPhoneScreenLight()
+    
+    phone = FoldablePhone(true)
+    phone.switchOn()
+    phone.checkPhoneScreenLight()
+    phone.switchFoldState()
+    phone.switchOn()
+    phone.checkPhoneScreenLight()
+}
+
+open class Phone(var isScreenLightOn: Boolean = false){
+    open fun switchOn() {
+        isScreenLightOn = true
+    }
+
+    open fun switchOff() {
+        isScreenLightOn = false
+    }
+
+    fun checkPhoneScreenLight() {
+        val phoneScreenLight = if(isScreenLightOn) "on" else "off"
+        println("The phone screen's light is $phoneScreenLight.")
+    }
+}
+
+class FoldablePhone(var isFolded: Boolean = false) : Phone() {
+    
+    override fun switchOn() {
+        if (!isFolded) {
+        	isScreenLightOn = true    
+        } else{
+            println("cannot Screen on in folded state")
+        }       
+    }
+
+    fun switchFoldState() {
+        isFolded = !isFolded
+        println("changed Fold - isFolded : $isFolded")
+    }
+}
+
+// ====================================
+// 특별 경매 -> 널세이프연산자랑, 엘비스 연산자 쓰면 1줄로 끝남..
+
+fun main() {
+    val winningBid = Bid(5000, "Private Collector")
+
+    println("Item A is sold at ${auctionPrice(winningBid, 2000)}.")
+    println("Item B is sold at ${auctionPrice(null, 3000)}.")
+}
+
+class Bid(val amount: Int, val bidder: String)
+
+fun auctionPrice(bid: Bid?, minimumPrice: Int): Int {
+   if(bid != null) {
+       if(bid.amount >= minimumPrice) {
+       		return bid.amount    
+       } else{
+       		return minimumPrice    
+       }
+   } else { 
+       return minimumPrice
+   }
+}
+
+
+// ====================================
+// 추가 연습
+
