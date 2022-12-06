@@ -51,11 +51,13 @@ fun ReplyApp(windowSize: WindowWidthSizeClass
         else -> ReplyContentType.LIST_ONLY
     }
 
+
     ReplyHomeScreen(
         navigationType = navigationType,
         contentType = contentType,
         replyUiState = replyUiState,
-        onTabPressed = { mailboxType: MailboxType ->
+        onTabPressed = {
+                mailboxType: MailboxType ->
             viewModel.updateCurrentMailbox(mailboxType = mailboxType)
             viewModel.resetHomeScreenStates()
         },
