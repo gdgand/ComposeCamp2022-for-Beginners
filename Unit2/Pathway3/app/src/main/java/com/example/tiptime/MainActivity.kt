@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -133,7 +134,9 @@ fun EditNumberField( //입력창
         keyboardActions = keyboardActions
     )
 }
-private fun caculateTip(//계산하기
+
+@VisibleForTesting //메서즈다 테스트목적으로만 공개됨
+internal fun caculateTip(//계산하기
     amount: Double, //서비스 비용
     tipPercent: Double=15.0, //팁 비율 (기본: 15퍼)
     roundUp: Boolean //반올림여부 알아내서 계산하세용,
