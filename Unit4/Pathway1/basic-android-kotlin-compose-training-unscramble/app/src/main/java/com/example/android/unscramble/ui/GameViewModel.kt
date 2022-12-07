@@ -97,6 +97,7 @@ class GameViewModel : ViewModel() {
      * current game state.
      */
     private fun updateGameState(updatedScore: Int) {
+
         if (usedWords.size == MAX_NO_OF_WORDS){
             //Last round in the game, update isGameOver to true, don't pick a new word
             _uiState.update { currentState ->
