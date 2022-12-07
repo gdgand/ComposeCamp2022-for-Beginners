@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyCity</string>
+    <string name="tab_restaurant">식당</string>
+    <string name="tab_coffeeshop">커피점</string>
+    <string name="tab_park">공원</string>
+    <string name="tab_shoppingmall">쇼핑몰</string>
+</resources>
