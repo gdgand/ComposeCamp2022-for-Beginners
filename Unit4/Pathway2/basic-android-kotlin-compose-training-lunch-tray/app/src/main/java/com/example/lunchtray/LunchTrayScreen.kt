@@ -26,15 +26,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.example.lunchtray.ui.OrderViewModel
+import com.example.lunchtray.datasource.DataSource.accompanimentMenuItems
+import com.example.lunchtray.datasource.DataSource.entreeMenuItems
+import com.example.lunchtray.datasource.DataSource.sideDishMenuItems
+import com.example.lunchtray.ui.*
+import javax.sql.DataSource
 
 enum class LunchTrayScreen() {
-    Start,
-    MainMenu,
-    SideMenu,
-    DessertMenu,
-    Calculation
+    StartOrder,
+    EntreeMenu,
+    SideDishMenu,
+    AccompanimentMenu,
+    CheckOut
 }
 
 @Composable
@@ -66,10 +72,56 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
 
         NavHost(
             navController = navController,
-            startDestination = LunchTrayScreen.Start.name,
+            startDestination = LunchTrayScreen.StartOrder.name,
             modifier = modifier.padding(innerPadding)
         ) {
+            composable(route = LunchTrayScreen.StartOrder.name) {
+                StartOrderScreen(
+                    onStartOrderButtonClicked = {
+                        navController.navigate(LunchTrayScreen.EntreeMenu.name)
+                    }
+                )
+            }
 
+            composable(route = LunchTrayScreen.EntreeMenu.name) {
+                EntreeMenuScreen(
+                    options = entreeMenuItems,
+                    onCancelButtonClicked = { /*TODO*/ },
+                    onNextButtonClicked = {
+                        navController.navigate(LunchTrayScreen.SideDishMenu.name)                  
+                    },
+                    onSelectionChanged = {}
+                )
+            }
+
+            composable(route = LunchTrayScreen.SideDishMenu.name) {
+                SideDishMenuScreen(
+                    options = sideDishMenuItems,
+                    onCancelButtonClicked = { /*TODO*/ },
+                    onNextButtonClicked = {
+                        navController.navigate(LunchTrayScreen.AccompanimentMenu.name)                  
+                    },
+                    onSelectionChanged = {}
+                )
+            }
+
+            composable(route = LunchTrayScreen.AccompanimentMenu.name) {
+                AccompanimentMenuScreen(
+                    options = accompanimentMenuItems,
+                    onCancelButtonClicked = { /*TODO*/ },
+                    onNextButtonClicked = { 
+                        navController.navigate(LunchTrayScreen.CheckOut.name)                  
+                    },
+                    onSelectionChanged = {}
+                )
+            }
+
+            composable(route = LunchTrayScreen.CheckOut.name) {
+                CheckoutScreen(
+                    orderUiState = uiState,
+                    onNextButtonClicked = { /*TODO*/ },
+                    onCancelButtonClicked = { /*TODO*/ })
+            }
         }
     }
 }
