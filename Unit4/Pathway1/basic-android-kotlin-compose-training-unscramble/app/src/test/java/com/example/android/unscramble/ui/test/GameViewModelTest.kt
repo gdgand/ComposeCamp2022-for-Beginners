@@ -71,6 +71,7 @@ class GameViewModelTest {
     @Test
     fun gameViewModel_CorrectWordGuessed_ScoreUpdatedAndErrorFlagUnset() {
         var currentGameUiState = viewModel.uiState.value
+
         val correctPlayerWord = getUnscrambledWord(currentGameUiState.currentScrambledWord)
 
         viewModel.updateUserGuess(correctPlayerWord)

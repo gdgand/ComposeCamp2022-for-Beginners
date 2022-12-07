@@ -62,6 +62,8 @@ import com.example.dessertclicker.data.Datasource.dessertList
 import com.example.dessertclicker.ui.theme.DessertClickerTheme
 import com.example.dessertclicker.model.Dessert
 
+
+
 // tag for logging
 private const val TAG = "MainActivity"
 
