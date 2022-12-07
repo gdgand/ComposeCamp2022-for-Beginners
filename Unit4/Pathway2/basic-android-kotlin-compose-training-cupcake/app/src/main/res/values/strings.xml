@@ -45,4 +45,6 @@
         <item quantity="other">%d cupcakes</item>
     </plurals>
 
+    <string name="my_string">Testttt</string>
+
 </resources>
