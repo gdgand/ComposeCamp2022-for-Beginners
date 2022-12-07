@@ -10,7 +10,6 @@ import com.example.reply.ui.ReplyApp
 import com.example.reply.*
 import org.junit.Rule
 import org.junit.Test
-import com.example.reply.*
 import com.example.reply.R.string.navigation_bottom
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
@@ -23,15 +22,41 @@ class ReplyAppTest {
 
     @Before
     fun setupReplyAppTest() {
-        composeTestRule.setContent {
-            ReplyApp(windowSize = WindowWidthSizeClass.Compact)
-        }
+
     }
 
     @Test
+    @TestCompactWidth
     fun compactDevice_verifyUsingBottomNavigation() {
+        composeTestRule.setContent {
+            ReplyApp(windowSize = WindowWidthSizeClass.Compact)
+        }
 //        composeTestRule.onNodeWithTagForStringId(id = R.string.navigation_bottom)
         composeTestRule.onNodeWithTagForStringId(id = com.example.reply.R.string.navigation_bottom)
+            .assertExists()
+    }
+
+    @Test
+    @TestMediumWidth
+    fun mediumDevice_verifyUsingNavigationRail() {
+        // Set up medium window
+        composeTestRule.setContent {
+            ReplyApp(windowSize = WindowWidthSizeClass.Medium)
+        }
+        // Navigation rail is displayed
+        composeTestRule.onNodeWithTagForStringId(com.example.reply.R.string.navigation_rail)
+            .assertExists()
+    }
+
+    @Test
+    @TestExpandedWidth
+    fun expandedDevice_verifyUsingNavigationDrawer() {
+        // Set up expanded window
+        composeTestRule.setContent {
+            ReplyApp(windowSize = WindowWidthSizeClass.Expanded)
+        }
+        // Navigation drawer is displayed
+        composeTestRule.onNodeWithTagForStringId(com.example.reply.R.string.navigation_drawer)
             .assertExists()
     }
 }

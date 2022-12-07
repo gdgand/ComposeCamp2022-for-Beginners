@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ReplyTheme {
                 val windowSize = calculateWindowSizeClass(activity = this)
-//                ReplyApp(windowSize = WindowWidthSizeClass.Expanded)
+//                ReplyApp(windowSize = WindowWidthSizeClass.Medium)
                 ReplyApp(windowSize = windowSize.widthSizeClass)
             }
         }
