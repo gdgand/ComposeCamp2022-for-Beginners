@@ -15,31 +15,61 @@
  */
 package com.example.lunchtray
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
 import com.example.lunchtray.ui.OrderViewModel
 
-// TODO: Screen enum
+enum class LunchTrayScreen() {
+    Start,
+    MainMenu,
+    SideMenu,
+    DessertMenu,
+    Calculation
+}
 
-// TODO: AppBar
+@Composable
+fun LunchTrayAppBar(
+    modifier: Modifier = Modifier
+) {
+    TopAppBar(
+        title = {Text(stringResource(id = R.string.app_name))},
+        modifier = modifier,
+        navigationIcon = {}
+    )
+}
 
 @Composable
 fun LunchTrayApp(modifier: Modifier = Modifier) {
-    // TODO: Create Controller and initialization
+    val navController = rememberNavController()
 
     // Create ViewModel
     val viewModel: OrderViewModel = viewModel()
 
     Scaffold(
         topBar = {
-            // TODO: AppBar
+            LunchTrayAppBar(
+
+            )
         }
     ) { innerPadding ->
         val uiState by viewModel.uiState.collectAsState()
-        // TODO: Navigation host
+
+        NavHost(
+            navController = navController,
+            startDestination = LunchTrayScreen.Start.name,
+            modifier = modifier.padding(innerPadding)
+        ) {
+
+        }
     }
 }
