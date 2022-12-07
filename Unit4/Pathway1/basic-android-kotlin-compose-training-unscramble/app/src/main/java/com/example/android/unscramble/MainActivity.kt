@@ -80,7 +80,14 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun GameLayout(modifier: Modifier = Modifier,currentScrambledWord: String,) {
+    fun GameLayout(
+        modifier: Modifier = Modifier,
+        currentScrambledWord: String,
+        userGuess: String,
+        onKeyboardDone: () -> Unit,
+        onUserGuessChanged: (String) -> Unit,
+        isGuessWrong: Boolean,
+    ) {
         Column(verticalArrangement = Arrangement.spacedBy(24.dp)) {
             Text(
                 text = currentScrambledWord,
@@ -93,20 +100,26 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = userGuess,
+                onValueChange = { onUserGuessChanged(it) },
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(),
-                label = { Text(text = stringResource(id = R.string.enter_your_word)) },
-                isError = false,
+                label = {
+                    if (isGuessWrong) {
+                        Text(stringResource(R.string.wrong_guess))
+                    } else {
+                        Text(stringResource(R.string.enter_your_word))
+                    }
+                },
+                isError = isGuessWrong,
                 keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
-                keyboardActions = KeyboardActions(onDone = {})
+                keyboardActions = KeyboardActions(onDone = { onKeyboardDone() })
             )
         }
     }
 
     @Composable
-    fun GameScreen(modifier: Modifier = Modifier,gameViewModel: GameViewModel = viewModel()) {
+    fun GameScreen(modifier: Modifier = Modifier, gameViewModel: GameViewModel = viewModel()) {
         val gameUiState by gameViewModel.uiState.collectAsState()
         Column(
             modifier = modifier
@@ -117,7 +130,13 @@ class MainActivity : ComponentActivity() {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             GameStatus()
-            GameLayout(currentScrambledWord = gameUiState.currentScrambledWord)
+            GameLayout(
+                currentScrambledWord = gameUiState.currentScrambledWord,
+                onKeyboardDone = { gameViewModel.checkUserGuess() },
+                onUserGuessChanged = { gameViewModel.updateUserGuess(it) },
+                userGuess = gameViewModel.userGuess,
+                isGuessWrong = gameUiState.isGuessedWordWrong
+            )
             Row(
                 modifier = modifier
                     .fillMaxWidth()
@@ -125,14 +144,15 @@ class MainActivity : ComponentActivity() {
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
                 OutlinedButton(
-                    onClick = { /*TODO*/ }, modifier = Modifier
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
                         .weight(1f)
                         .padding(end = 8.dp)
                 ) {
                     Text(text = stringResource(id = R.string.skip))
                 }
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { gameViewModel.checkUserGuess() },
                     modifier = modifier
                         .fillMaxWidth()
                         .weight(1f)
