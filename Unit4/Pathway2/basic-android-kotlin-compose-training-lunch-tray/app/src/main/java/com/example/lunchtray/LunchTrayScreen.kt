@@ -86,7 +86,9 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
             composable(route = LunchTrayScreen.EntreeMenu.name) {
                 EntreeMenuScreen(
                     options = entreeMenuItems,
-                    onCancelButtonClicked = { /*TODO*/ },
+                    onCancelButtonClicked = {
+                        navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
+                    },
                     onNextButtonClicked = {
                         navController.navigate(LunchTrayScreen.SideDishMenu.name)                  
                     },
@@ -97,7 +99,9 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
             composable(route = LunchTrayScreen.SideDishMenu.name) {
                 SideDishMenuScreen(
                     options = sideDishMenuItems,
-                    onCancelButtonClicked = { /*TODO*/ },
+                    onCancelButtonClicked = {
+                        navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
+                    },
                     onNextButtonClicked = {
                         navController.navigate(LunchTrayScreen.AccompanimentMenu.name)                  
                     },
@@ -108,7 +112,9 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
             composable(route = LunchTrayScreen.AccompanimentMenu.name) {
                 AccompanimentMenuScreen(
                     options = accompanimentMenuItems,
-                    onCancelButtonClicked = { /*TODO*/ },
+                    onCancelButtonClicked = {
+                        navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
+                    },
                     onNextButtonClicked = { 
                         navController.navigate(LunchTrayScreen.CheckOut.name)                  
                     },
@@ -119,7 +125,9 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
             composable(route = LunchTrayScreen.CheckOut.name) {
                 CheckoutScreen(
                     orderUiState = uiState,
-                    onNextButtonClicked = { /*TODO*/ },
+                    onNextButtonClicked = {
+                        navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
+                    },
                     onCancelButtonClicked = { /*TODO*/ })
             }
         }
