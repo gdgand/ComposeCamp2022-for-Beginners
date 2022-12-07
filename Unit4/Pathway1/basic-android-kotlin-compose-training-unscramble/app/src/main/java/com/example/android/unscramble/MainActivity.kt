@@ -27,6 +27,8 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -35,6 +37,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.android.unscramble.ui.GameViewModel
 import com.example.android.unscramble.ui.theme.UnscrambleTheme
 
 class MainActivity : ComponentActivity() {
@@ -76,10 +80,10 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun GameLayout(modifier: Modifier = Modifier) {
+    fun GameLayout(modifier: Modifier = Modifier,currentScrambledWord: String,) {
         Column(verticalArrangement = Arrangement.spacedBy(24.dp)) {
             Text(
-                text = "",
+                text = currentScrambledWord,
                 fontSize = 45.sp,
                 modifier = modifier.align(Alignment.CenterHorizontally)
             )
@@ -102,7 +106,8 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun GameScreen(modifier: Modifier = Modifier) {
+    fun GameScreen(modifier: Modifier = Modifier,gameViewModel: GameViewModel = viewModel()) {
+        val gameUiState by gameViewModel.uiState.collectAsState()
         Column(
             modifier = modifier
                 .verticalScroll(
@@ -112,7 +117,7 @@ class MainActivity : ComponentActivity() {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             GameStatus()
-            GameLayout()
+            GameLayout(currentScrambledWord = gameUiState.currentScrambledWord)
             Row(
                 modifier = modifier
                     .fillMaxWidth()
