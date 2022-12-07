@@ -267,7 +267,7 @@ private fun NavigationDrawerContent(
                 },
                 icon = {
                     Icon(
-                        imageVector = navItem.icon,
+                        tab = navItem.icon,
                         contentDescription = navItem.text
                     )
                 },
