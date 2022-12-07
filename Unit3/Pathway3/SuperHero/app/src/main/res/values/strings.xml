@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">SuperHero</string>
+    <string name="app_title">Superheroes</string>
+
+    <!-- hero name -->
+    <string name="hero1">첫 번째 영웅</string>
+    <string name="hero2">두 번째 영웅</string>
+    <string name="hero3">세 번째 영웅</string>
+    <string name="hero4">네 번째 영웅</string>
+    <string name="hero5">다섯 번째 영웅</string>
+    <string name="hero6">여섯 번째 영웅</string>
+
+    <!-- hero description -->
+    <string name="description1">첫 번째로 등록된 영웅이다. 인간을 뛰어넘는 로봇이며 사람에게 친화적이다.</string>
+    <string name="description2">두 번째로 등록된 영웅이다. 정글속에 지내던 것을 발견하여 교섭하였으며 현재는 서로에게 도움을 주고 있다.</string>
+    <string name="description3">세 번째로 등록된 영웅이다. 공학계의 대가이며 위험을 미리 예측하고 대비하던 중 먼저 도움을 주겠다고 나섰다.</string>
+    <string name="description4">네 번째로 등록된 영웅이다. 투명해질 수 있으며 과거에 미스터리한 일들은 모두 자기의 일이였다고 말하고 있다.</string>
+    <string name="description5">다섯 번째로 등록된 영웅이다. 누구보다 빠른 스피드를 가지고 있으며 보이지 않는 도움을 주고있다.</string>
+    <string name="description6">여섯 번째로 등록된 영웅이다. 고대 이집트 유적에서 지내는 것을 발견하였으며 현재는 연락이 닿지 않는 상태이다.</string>
+</resources>
