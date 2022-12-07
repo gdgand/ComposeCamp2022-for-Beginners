@@ -164,11 +164,17 @@ class MainActivity : ComponentActivity() {
                     Text(text = stringResource(id = R.string.submit))
                 }
             }
+            if (gameUiState.isGameOver){
+                FinalScoreDialog(
+                    score = gameUiState.score,
+                    onPlayAgain = { gameViewModel.resetGame() })
+            }
         }
     }
 
     @Composable
     fun FinalScoreDialog(
+        score: Int,
         onPlayAgain: () -> Unit,
         modifier: Modifier = Modifier
     ) {
@@ -177,7 +183,7 @@ class MainActivity : ComponentActivity() {
         AlertDialog(
             onDismissRequest = { /*TODO*/ },
             title = { Text(text = stringResource(id = R.string.congratulations)) },
-            text = { Text(text = stringResource(id = R.string.you_scored, 0)) },
+            text = { Text(text = stringResource(id = R.string.you_scored, score)) },
             modifier = modifier,
             dismissButton = {
                 TextButton(onClick = { activity.finish() }) {
@@ -185,7 +191,7 @@ class MainActivity : ComponentActivity() {
                 }
             },
             confirmButton = {
-                TextButton(onClick = { onPlayAgain }) {
+                TextButton(onClick = { onPlayAgain() }) {
                     Text(text = stringResource(id = R.string.play_again))
                 }
             }
