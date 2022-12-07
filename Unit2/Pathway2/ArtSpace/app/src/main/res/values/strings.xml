@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ArtSpace</string>
+
+    <string name="title1">Title1</string>
+    <string name="title2">Title2</string>
+    <string name="title3">Title3</string>
+
+    <string name="artist1">Artist1</string>
+    <string name="artist2">Artist2</string>
+    <string name="artist3">Artist3</string>
+
+
+    <string name="year1">2000</string>
+    <string name="year2">2010</string>
+    <string name="year3">2020</string>
+
+    <string name="next_button_text">Next</string>
+    <string name="prev_button_text">Previous</string>
+
+</resources>
