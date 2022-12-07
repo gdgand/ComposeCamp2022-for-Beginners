@@ -1,13 +1,11 @@
 package com.example.tiptime
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
@@ -37,10 +35,16 @@ class MainActivity : ComponentActivity() {
 fun TipTimeScreen() {
 
     var amountInput by remember {
-        mutableStateOf("0")
+        mutableStateOf("")
     }
+    var tipInput by remember {
+        mutableStateOf("")
+    }
+
     val amount = amountInput.toDoubleOrNull() ?: 0.0
-    val tip = calculateTips(amount)
+    val tipPercent = tipInput.toDoubleOrNull() ?: 0.0
+    val tip = calculateTips(amount,tipPercent)
+
 
     Column (
         modifier = Modifier
@@ -54,9 +58,17 @@ fun TipTimeScreen() {
         )
         Spacer(Modifier.height(16.dp))
         EditNumberField(
+            label = R.string.bill_amount,
             value = amountInput,
             onValueChange = { amountInput = it}
         )
+
+        EditNumberField(
+            label = R.string.how_was_the_service,
+            value = tipInput,
+            onValueChange = { tipInput = it}
+        )
+
         Spacer(Modifier.height(24.dp))
         Text(
             text = stringResource(id = R.string.tip_amount, tip),
@@ -69,8 +81,10 @@ fun TipTimeScreen() {
 
 @Composable
 fun EditNumberField(
+    @StringRes label: Int,
     value: String,
-    onValueChange: (String) -> Unit
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier
 ) {
 
     TextField(
@@ -79,7 +93,7 @@ fun EditNumberField(
         value = value,
         onValueChange = onValueChange,
         label = {
-          Text(text = stringResource(id = R.string.cost_of_service))
+          Text(text = stringResource(id = label))
         },
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
