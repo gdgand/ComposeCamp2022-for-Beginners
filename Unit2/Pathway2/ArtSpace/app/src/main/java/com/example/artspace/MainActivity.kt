@@ -64,13 +64,19 @@ fun ArtSpaceApp() {
             year = R.string.year3
         }
     }
-    Column() {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
         ArtFrame(
             art = art,
             title = title,
             artist = artist,
             year = year
         )
+        Spacer(modifier = Modifier.height(15.dp))
         ControlBox(
             onPrev = {
                 if(index < min_index) {
@@ -104,7 +110,7 @@ fun ArtFrame(
     val painter = painterResource(art)
     Column (horizontalAlignment = Alignment.CenterHorizontally){
         Image(painter = painter, contentDescription = null)
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(20.dp))
         TitleBox(
             title = title,
             artist = artist,
@@ -123,17 +129,24 @@ fun TitleBox(
     year: Int,
 ) {
     val info = stringResource(id = artist) + "(" +stringResource(id = year) + ")"
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(
-            stringResource(id = title),
-            fontSize = 25.sp,
-            fontWeight = FontWeight.Bold
-        )
-        Spacer(Modifier.height(8.dp))
-        Text(
-            info,
-            fontSize = 16.sp,
-        )
+    Surface(
+        elevation = 3.dp,
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(8.dp)
+        ) {
+            Text(
+                stringResource(id = title),
+                fontSize = 25.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(Modifier.height(8.dp))
+            Text(
+                info,
+                fontSize = 16.sp,
+            )
+        }
     }
 }
 
@@ -153,6 +166,14 @@ fun ControlBox(
         Button(onClick = onNext) {
             Text(stringResource(R.string.next_button_text))
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ArtSpaceAppPreview() {
+    ArtSpaceTheme {
+        ArtSpaceApp()
     }
 }
 
