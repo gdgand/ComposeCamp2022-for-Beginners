@@ -17,6 +17,7 @@ package com.example.cupcake
 
 import android.content.Context
 import android.content.Intent
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
@@ -50,8 +51,11 @@ import com.example.cupcake.ui.SelectOptionScreen
 import com.example.cupcake.ui.StartOrderScreen
 import javax.security.auth.Subject
 
-enum class CupcakeScreen {
-    Start, Flavor, Pickup, Summary
+enum class CupcakeScreen(@StringRes val title:Int) {
+    Start(title = R.string.app_name),
+    Flavor(title = R.string.choose_flavor),
+    Pickup(title = R.string.choose_pickup_date),
+    Summary(title = R.string.order_summary)
 }
 
 /**
@@ -59,12 +63,13 @@ enum class CupcakeScreen {
  */
 @Composable
 fun CupcakeAppBar(
+    title: Int,
     canNavigateBack: Boolean,
     navigateUp: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     TopAppBar(
-        title = { Text(stringResource(id = R.string.app_name)) },
+        title = { Text(stringResource(id = title)) },
         modifier = modifier,
         navigationIcon = {
             if (canNavigateBack) {
@@ -86,18 +91,21 @@ fun CupcakeAppBar(
 }
 
 @Composable
-fun CupcakeApp(modifier: Modifier = Modifier, viewModel: OrderViewModel = viewModel()) {
-    val navController = rememberNavController()
+fun CupcakeApp(
+    modifier: Modifier = Modifier, viewModel: OrderViewModel = viewModel(),
+    navController: NavHostController = rememberNavController(),
+) {
 
     val backstackEntry by navController.currentBackStackEntryAsState()
 
-    val currentScreen = backstackEntry?.destination?.route ?: CupcakeScreen.Start.name
+    val currentScreen = CupcakeScreen.valueOf(backstackEntry?.destination?.route ?: CupcakeScreen.Start.name)
 
     val canNavigateBack = navController.previousBackStackEntry != null
 
     Scaffold(
         topBar = {
             CupcakeAppBar(
+                title = currentScreen.title,
                 canNavigateBack = canNavigateBack,
                 navigateUp = { navController.navigateUp() }
             )
