@@ -58,7 +58,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun GameStatus(modifier: Modifier = Modifier) {
+    fun GameStatus(wordCount: Int, score: Int, modifier: Modifier = Modifier) {
         Row(
             modifier = modifier
                 .fillMaxWidth()
@@ -66,14 +66,14 @@ class MainActivity : ComponentActivity() {
                 .size(48.dp)
         ) {
             Text(
-                text = stringResource(id = R.string.word_count, 0),
+                text = stringResource(id = R.string.word_count, wordCount),
                 fontSize = 18.sp
             )
             Text(
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentWidth(Alignment.End),
-                text = stringResource(id = R.string.score, 0),
+                text = stringResource(id = R.string.score, score),
                 fontSize = 18.sp
             )
         }
@@ -129,7 +129,10 @@ class MainActivity : ComponentActivity() {
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            GameStatus()
+            GameStatus(
+                wordCount = gameUiState.currentWordCount,
+                score = gameUiState.score
+            )
             GameLayout(
                 currentScrambledWord = gameUiState.currentScrambledWord,
                 onKeyboardDone = { gameViewModel.checkUserGuess() },
@@ -144,7 +147,7 @@ class MainActivity : ComponentActivity() {
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
                 OutlinedButton(
-                    onClick = { /*TODO*/ },
+                    onClick = { gameViewModel.skipWord() },
                     modifier = Modifier
                         .weight(1f)
                         .padding(end = 8.dp)
