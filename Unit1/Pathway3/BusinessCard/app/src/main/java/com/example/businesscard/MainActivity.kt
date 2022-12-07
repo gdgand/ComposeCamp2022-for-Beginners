@@ -95,15 +95,21 @@ fun SubIntroItem(painter: Painter, info: String) {
             painter = painter,
             contentDescription = null,
             modifier = Modifier
+                .padding(end = 30.dp)
+            /*
+            modifier = Modifier
                 .padding(start = 100.dp)
                 .weight(1.5f)
+             */
         )
         Text(
             text = info,
             fontSize = 16.sp,
-            color = Color.White,
+            color = Color.White
+            /*
             modifier = Modifier
                 .weight(2f)
+             */
         )
     }
 }
@@ -112,11 +118,12 @@ fun SubIntroItem(painter: Painter, info: String) {
 fun SubIntro(modifier: Modifier) {
     Column(
         modifier = modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
-            .padding(bottom = 50.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Bottom
+            .fillMaxSize()
+            .wrapContentSize(Alignment.Center)
+        // 요소를 정렬 후 패딩을 주는 것보다 wrapContentSize 함수를 사용하는 것이 나음
+        //    .padding(bottom = 50.dp),
+        //horizontalAlignment = Alignment.CenterHorizontally,
+        //verticalArrangement = Arrangement.Bottom
     ) {
         SubIntroItem(painterResource(R.drawable.ic_phone), stringResource(R.string.phone))
         SubIntroItem(painterResource(R.drawable.ic_share), stringResource(R.string.share))
