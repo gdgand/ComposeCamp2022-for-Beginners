@@ -14,6 +14,12 @@ import com.example.mycity.util.CityContentType
 import com.example.mycity.util.CityNavigationType
 
 
+
+enum class MyCityScreen {
+    Start   // shows Category
+    , List
+    , Detail
+}
 @Composable
 fun CityApp(windowSize: WindowWidthSizeClass
     , modifier: Modifier = Modifier
@@ -46,13 +52,16 @@ fun CityApp(windowSize: WindowWidthSizeClass
         uiState = uiState,
         onTabPressed = { it: PlaceCategory ->
             viewModel.updateCurrentCategory(category = it)
-            viewModel.resetHomeScreenState()
+//            viewModel.resetHomeScreenState()
         },
         onPlaceCardPressed = { it: PlaceType->
             viewModel.updatePlace(place = it)
         },
         onDetailScreenBackPressed = {
-            viewModel.resetHomeScreenState()
+            viewModel.resetListScreenState()
+        },
+        onListScreenBackPressed = {
+            viewModel.resetListScreenState()
         },
         modifier = modifier
     )

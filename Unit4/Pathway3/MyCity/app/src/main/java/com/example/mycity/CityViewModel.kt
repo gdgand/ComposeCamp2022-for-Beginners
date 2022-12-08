@@ -20,22 +20,33 @@ class CityViewModel : ViewModel() {
 
     fun updateCurrentCategory(category: PlaceCategory) {
         _uiState.update {
-            it.copy(currentCategory = category)
+            it.copy(currentCategory = category, currentScreen = MyCityScreen.List)
         }
     }
 
     fun updatePlace(place: PlaceType) {
         _uiState.update {
-            it.copy(selectedPlace = place, isShowingHome = false)
+            it.copy(selectedPlace = place, currentScreen = MyCityScreen.Detail
+            )
         }
     }
 
     // 무조건 해당 카테고리의 첫번째 아이템을 가리키도록
-    fun resetHomeScreenState() {
+    fun resetDetailScreenState() {
         _uiState.update {
             it.copy(selectedPlace = it.selectedCategoryPlaces.get(0)
 //            it.places[it.currentCategory].get(0)
-                , isShowingHome = true
+                , currentScreen = MyCityScreen.List
+            )
+        }
+    }
+
+    fun resetListScreenState() {
+        _uiState.update {
+            it.copy(currentCategory = PlaceCategory.Restaurant
+                , selectedPlace = it.selectedCategoryPlaces.get(0)
+//            it.places[it.currentCategory].get(0)
+                , currentScreen = MyCityScreen.Start
             )
         }
     }
@@ -45,8 +56,9 @@ class CityViewModel : ViewModel() {
             Datasource.places.groupBy { it.category }
         _uiState.value =
             CityUiState(
-                places = placeMapping,
-                selectedPlace = placeMapping[PlaceCategory.Restaurant]!!.get(0) // 디풀트값
+                places = placeMapping
+                , selectedPlace = placeMapping[PlaceCategory.Restaurant]!!.get(0) // 디풀트값
+                , currentScreen = MyCityScreen.Start
             )
     }
 }

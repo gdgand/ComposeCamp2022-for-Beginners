@@ -12,9 +12,12 @@ import com.example.mycity.data.PlaceCategory
 import com.example.mycity.data.PlaceType
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -23,6 +26,12 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+
 import com.example.mycity.data.NavigationItemContent
 import com.example.mycity.data.NavigationItemContentList
 import com.example.mycity.ui.theme.MyCityTheme
@@ -30,6 +39,7 @@ import com.example.mycity.util.CityContentType
 import com.example.mycity.util.CityNavigationType
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CityHomeScreen(
     navigationType: CityNavigationType,
@@ -37,6 +47,7 @@ fun CityHomeScreen(
     uiState: CityUiState,
     onTabPressed: (PlaceCategory) -> Unit,
     onPlaceCardPressed: (PlaceType) -> Unit,
+    onListScreenBackPressed: () -> Unit,
     onDetailScreenBackPressed: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -66,16 +77,24 @@ fun CityHomeScreen(
 //            )
 //        }
     } else {
-        if (uiState.isShowingHome) {
+//        val navController = rememberNavController()
+//        val backStackEntry by navController.currentBackStackEntryAsState()
+//        val currentScreen = backStackEntry?.destination?.route ?: MyCityScreen.Start.name
+
+        if (uiState.currentScreen == MyCityScreen.Start) {
+            NavigationDrawerContent(selectedCategory = PlaceCategory.Restaurant
+                , onTabPressed = onTabPressed
+            )
+        } else if (uiState.currentScreen == MyCityScreen.List) {
             CityAppContent(
                 navigationType = navigationType,
                 contentType = contentType,
                 uiState = uiState,
                 onTabPressed = onTabPressed,
                 onPlaceCardPressed = onPlaceCardPressed,
-                modifier = modifier
-            )
-        } else {
+                onListBackPressed = onListScreenBackPressed,
+                modifier = modifier)
+        } else if (uiState.currentScreen == MyCityScreen.Detail ) {
             CityDetailsScreen(
                 uiState = uiState,
                 isFullScreen = true,
@@ -88,8 +107,28 @@ fun CityHomeScreen(
 
 }
 
-
-
+//
+//@Composable
+//fun MyCityAppBar(
+//    canNavigateBack: Boolean,
+//    navigateUp: () -> Unit,
+//    modifier: Modifier = Modifier
+//) {
+//    TopAppBar(
+//        title = { Text(stringResource(id = R.string.app_name)) },
+//        modifier = modifier,
+//        navigationIcon = {
+//            if (canNavigateBack) {
+//                IconButton(onClick = navigateUp) {
+//                    Icon(
+//                        imageVector = Icons.Filled.ArrowBack,
+//                        contentDescription = stringResource(R.string.back_button)
+//                    )
+//                }
+//            }
+//        }
+//    )
+//}
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -97,7 +136,6 @@ fun CityHomeScreen(
 private fun NavigationDrawerContent(
     selectedCategory: PlaceCategory,
     onTabPressed: ((PlaceCategory) -> Unit),
-    navigationItemContentList: List<NavigationItemContent>,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -250,7 +288,6 @@ fun NavigationDrawerContentPreview() {
     MyCityTheme {
         NavigationDrawerContent(selectedCategory = PlaceCategory.Park
             , onTabPressed = {}
-            , navigationItemContentList = NavigationItemContentList
         )
     }
 }

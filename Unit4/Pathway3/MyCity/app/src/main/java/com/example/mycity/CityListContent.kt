@@ -1,6 +1,7 @@
 package com.example.mycity
 
 import android.provider.ContactsContract
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -34,6 +35,7 @@ fun CityAppContent(
     uiState: CityUiState,
     onTabPressed: ((PlaceCategory) -> Unit),
     onPlaceCardPressed: (PlaceType) -> Unit,
+    onListBackPressed: ()->Unit = {},
     modifier: Modifier = Modifier,
 ) {
     Row(modifier = modifier.fillMaxSize()) {
@@ -60,6 +62,7 @@ fun CityAppContent(
                 CityListOnlyContent(
                     replyUiState = uiState,
                     onPlaceCardPressed = onPlaceCardPressed,
+                    onBackPressed = onListBackPressed,
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -80,10 +83,13 @@ fun CityAppContent(
 fun CityListOnlyContent(
     replyUiState: CityUiState,
     onPlaceCardPressed: (PlaceType) -> Unit,
+    onBackPressed: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val places = replyUiState.selectedCategoryPlaces
-
+    BackHandler {
+        onBackPressed()
+    }
      LazyColumn(modifier = modifier.padding(horizontal = 16.dp)) {
         item {
             CityHomeTopBar(modifier = Modifier.fillMaxWidth())
@@ -108,8 +114,10 @@ fun CityListOnlyContent(
 fun CityPlaceListItem(
     place: PlaceType,
     onCardClick: () -> Unit,
+
     modifier: Modifier = Modifier
 ) {
+
     Card(onClick = onCardClick,
         modifier = modifier.padding(vertical = 4.dp),
         enabled = true,

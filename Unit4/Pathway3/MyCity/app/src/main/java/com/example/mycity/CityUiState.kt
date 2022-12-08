@@ -10,7 +10,7 @@ data class CityUiState(
     val selectedPlace: PlaceType = PlaceType(title = ""
         , id = 0, category = PlaceCategory.CoffeeShop
         , address = "", tel = "", Email = "", like = 0, descriptions = ""),
-    val isShowingHome: Boolean = true
+    val currentScreen: MyCityScreen = MyCityScreen.Start
 ) {
 
     val selectedCategoryPlaces: List<PlaceType> by lazy { places[currentCategory]!! }
