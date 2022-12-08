@@ -145,7 +145,7 @@ fun MoveButtons(
     onNextBtnClicked: () -> Unit
 ) {
     Row(
-        horizontalArrangement = Arrangement.Center,
+        horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 30.dp)
@@ -161,8 +161,6 @@ fun MoveButtons(
                 fontSize = 10.sp,
             )
         }
-
-        Spacer(modifier = Modifier.width(60.dp))
 
         Button(
             onClick = onNextBtnClicked,
