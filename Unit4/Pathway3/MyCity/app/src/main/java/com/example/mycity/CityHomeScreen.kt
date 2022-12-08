@@ -5,72 +5,87 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import com.example.mycity.data.PlaceCategory
-import com.example.mycity.data.PlaceType
 import androidx.compose.material.icons.outlined.*
-import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-
-import androidx.compose.material.Icon
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.mycity.data.NavigationItemContentList
+import com.example.mycity.data.PlaceCategory
+import com.example.mycity.data.PlaceType
+import com.example.mycity.ui.theme.MyCityTheme
+import com.example.mycity.util.CityContentType
+import com.example.mycity.util.CityNavigationType
 
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CityHomeScreen(
-//    navigationType: CityNavigationType,
-//    contentType: CityContentType,
+    navigationType: CityNavigationType,
+    contentType: CityContentType,
     uiState: CityUiState,
     onTabPressed: (PlaceCategory) -> Unit,
     onPlaceCardPressed: (PlaceType) -> Unit,
+    onListScreenBackPressed: () -> Unit,
     onDetailScreenBackPressed: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val navigationItemContentList = listOf(
-        NavigationItemContent(
-            category = PlaceCategory.Restaurant,
-            icon = R.drawable.ic_restaurant,
-            text = stringResource(id = R.string.tab_restaurant)
-        ),
-        NavigationItemContent(
-            category = PlaceCategory.CoffeeShop,
-            icon = R.drawable.ic_coffeeshop,
-            text = stringResource(id = R.string.tab_coffeeshop)
-        ),
-        NavigationItemContent(
-            category = PlaceCategory.Park,
-            icon = R.drawable.ic_park,
-            text = stringResource(id = R.string.tab_park)
-        ),
-        NavigationItemContent(
-            category = PlaceCategory.ShoppingMall,
-            icon = R.drawable.ic_shoppingmall,
-            text = stringResource(id = R.string.tab_shoppingmall)
-        )
-    )
 
+    if (navigationType == CityNavigationType.PERMANENT_NAVIGATION_DRAWER) {
+//        val navigationDrawerContentDescription = stringResource(R.string.navigation_drawer)
+        PermanentNavigationDrawer(
+            drawerContent = {
+                PermanentDrawerSheet(modifier = Modifier.width(240.dp)
+                ) {
+                    NavigationDrawerContent(selectedCategory = uiState.currentCategory
+                        , onTabPressed = onTabPressed
+                    )
+                }
+            },
+//            modifier = Modifier.testTag(navigationDrawerContentDescription)
+        ) {
+        CityAppContent(
+            navigationType = navigationType,
+            contentType = contentType,
+            uiState = uiState,
+            onTabPressed = onTabPressed,
+            onPlaceCardPressed = onPlaceCardPressed,
+            onListBackPressed = onListScreenBackPressed,
+            modifier = modifier)
+        }
 
+    } else {
+
+        if (uiState.currentScreen == MyCityScreen.Start) {
+            NavigationDrawerContent(selectedCategory = uiState.currentCategory
+                , onTabPressed = onTabPressed
+            )
+        } else if (uiState.currentScreen == MyCityScreen.List) {
+            CityAppContent(
+                navigationType = navigationType,
+                contentType = contentType,
+                uiState = uiState,
+                onTabPressed = onTabPressed,
+                onPlaceCardPressed = onPlaceCardPressed,
+                onListBackPressed = onListScreenBackPressed,
+                modifier = modifier)
+        } else if (uiState.currentScreen == MyCityScreen.Detail ) {
+            CityDetailsScreen(
+                uiState = uiState,
+                isFullScreen = true,
+                modifier = modifier,
+                onBackPressed = onDetailScreenBackPressed
+            )
+        }
+    }
 }
-
-
-
-
-private data class NavigationItemContent(
-    val category: PlaceCategory,
-    @DrawableRes val icon: Int,
-    val text: String
-)
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -78,29 +93,28 @@ private data class NavigationItemContent(
 private fun NavigationDrawerContent(
     selectedCategory: PlaceCategory,
     onTabPressed: ((PlaceCategory) -> Unit),
-    navigationItemContentList: List<NavigationItemContent>,
     modifier: Modifier = Modifier
 ) {
     Column(
         modifier
             .wrapContentWidth()
             .fillMaxHeight()
-            .background(MaterialTheme.colorscheme.inverseOnSurface)
+//            .background(MaterialTheme.colorscheme.inverseOnSurface)
             .padding(12.dp)
     ) {
         NavigationDrawerHeader(modifier)
-        for (navItem in navigationItemContentList) {
+        for (navItem in NavigationItemContentList) {
             NavigationDrawerItem(
                 selected = selectedCategory == navItem.category,
                 label = {
                     Text(
-                        text = navItem.text,
+                        text = stringResource(id =  navItem.textId),
                         modifier = Modifier.padding(horizontal = 16.dp)
                     )
                 },
                 icon = {
                     Icon(painter = painterResource(id = navItem.icon),
-                        contentDescription = navItem.text)
+                        contentDescription = stringResource(id = navItem.textId))
                 },
                 colors = NavigationDrawerItemDefaults.colors(
                     unselectedContainerColor = Color.Transparent
@@ -121,14 +135,54 @@ private fun NavigationDrawerHeader(modifier: Modifier) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         MyCityLogo()
-        ReplyProfileImage(
-            drawableResource = LocalAccountsDataProvider.userAccount.avatar,
-            description = stringResource(id = R.string.profile),
-            modifier = Modifier
-                .size(28.dp)
-        )
+        Text(text = stringResource(id = R.string.app_name)
+            , style = MaterialTheme.typography.titleMedium
+            , color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }
+
+@Composable
+fun CityBottomNavigationBar(
+    currentTab: PlaceCategory,
+    onTabPressed: ((PlaceCategory) -> Unit),
+    modifier: Modifier = Modifier
+) {
+    NavigationBar(modifier = modifier.fillMaxWidth()) {
+        for (navItem in NavigationItemContentList) {
+            NavigationBarItem(
+                selected = currentTab == navItem.category,
+                onClick = { onTabPressed(navItem.category) },
+                icon = {
+                    Icon(painter = painterResource(id = navItem.icon),
+                        contentDescription = stringResource(id = navItem.textId))
+                }
+            )
+        }
+    }
+}
+
+
+@Composable
+fun CityNavigationRail(
+    currentTab: PlaceCategory,
+    onTabPressed: ((PlaceCategory) -> Unit),
+    modifier: Modifier = Modifier
+) {
+    NavigationRail(modifier = modifier.fillMaxHeight()) {
+        for (navItem in NavigationItemContentList) {
+            NavigationRailItem(
+                selected = currentTab == navItem.category,
+                onClick = { onTabPressed(navItem.category) },
+                icon = {
+                    Icon(painter = painterResource(id = navItem.icon),
+                        contentDescription = stringResource(id = navItem.textId))
+                }
+            )
+        }
+    }
+}
+
+
 
 @Composable
 fun MyCityLogo(modifier: Modifier = Modifier,
@@ -136,13 +190,38 @@ fun MyCityLogo(modifier: Modifier = Modifier,
 ) {
     Image(painter = painterResource(R.drawable.ic_baseline_location_city_24)
         , contentDescription = "My City"//stringResource(R.string.logo)
-//       , colorFilter = ColorFilter.tint(color)
+       , colorFilter = ColorFilter.tint(color)
         , modifier = modifier
     )
 }
 
+
 @Composable
-fun ReplyProfileImage(
+fun CityHomeTopBar(modifier: Modifier = Modifier) {
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp)
+    ) {
+        MyCityLogo(
+            modifier = Modifier
+                .size(64.dp)
+                .padding(start = 4.dp)
+        )
+        MyCityProfileImage(
+            drawableResource = R.drawable.ic_baseline_location_city_24,  // TODO:
+            description = "MyCity", // TODO:
+            modifier = Modifier
+                .padding(end = 8.dp)
+                .size(48.dp)
+        )
+    }
+}
+
+@Composable
+fun MyCityProfileImage(
     @DrawableRes drawableResource: Int,
     description: String,
     modifier: Modifier = Modifier,
@@ -152,4 +231,45 @@ fun ReplyProfileImage(
         painter = painterResource(drawableResource),
         contentDescription = description,
     )
+}
+
+
+
+@Preview(showBackground = true)
+@Composable
+fun NavigationDrawerContentPreview() {
+    MyCityTheme {
+        NavigationDrawerContent(selectedCategory = PlaceCategory.Park
+            , onTabPressed = {}
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun NavigationDrawerHeaderPreview() {
+    MyCityTheme {
+        NavigationDrawerHeader(Modifier)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BottomNavigationBarPreview() {
+    MyCityTheme {
+        CityBottomNavigationBar(currentTab = PlaceCategory.CoffeeShop
+                , onTabPressed = {}
+        )
+    }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun CityNavigationRailPreview() {
+    MyCityTheme {
+        CityNavigationRail(currentTab = PlaceCategory.ShoppingMall
+            , onTabPressed = {}
+        )
+    }
 }
