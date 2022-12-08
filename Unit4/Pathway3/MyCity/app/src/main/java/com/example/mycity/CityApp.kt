@@ -52,13 +52,12 @@ fun CityApp(windowSize: WindowWidthSizeClass
         uiState = uiState,
         onTabPressed = { it: PlaceCategory ->
             viewModel.updateCurrentCategory(category = it)
-//            viewModel.resetHomeScreenState()
         },
         onPlaceCardPressed = { it: PlaceType->
             viewModel.updatePlace(place = it)
         },
         onDetailScreenBackPressed = {
-            viewModel.resetListScreenState()
+            viewModel.resetDetailScreenState()
         },
         onListScreenBackPressed = {
             viewModel.resetListScreenState()

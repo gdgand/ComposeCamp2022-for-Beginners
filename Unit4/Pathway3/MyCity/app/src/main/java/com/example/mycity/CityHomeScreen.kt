@@ -77,12 +77,9 @@ fun CityHomeScreen(
 //            )
 //        }
     } else {
-//        val navController = rememberNavController()
-//        val backStackEntry by navController.currentBackStackEntryAsState()
-//        val currentScreen = backStackEntry?.destination?.route ?: MyCityScreen.Start.name
 
         if (uiState.currentScreen == MyCityScreen.Start) {
-            NavigationDrawerContent(selectedCategory = PlaceCategory.Restaurant
+            NavigationDrawerContent(selectedCategory = uiState.currentCategory
                 , onTabPressed = onTabPressed
             )
         } else if (uiState.currentScreen == MyCityScreen.List) {
@@ -103,32 +100,7 @@ fun CityHomeScreen(
             )
         }
     }
-
-
 }
-
-//
-//@Composable
-//fun MyCityAppBar(
-//    canNavigateBack: Boolean,
-//    navigateUp: () -> Unit,
-//    modifier: Modifier = Modifier
-//) {
-//    TopAppBar(
-//        title = { Text(stringResource(id = R.string.app_name)) },
-//        modifier = modifier,
-//        navigationIcon = {
-//            if (canNavigateBack) {
-//                IconButton(onClick = navigateUp) {
-//                    Icon(
-//                        imageVector = Icons.Filled.ArrowBack,
-//                        contentDescription = stringResource(R.string.back_button)
-//                    )
-//                }
-//            }
-//        }
-//    )
-//}
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -178,13 +150,9 @@ private fun NavigationDrawerHeader(modifier: Modifier) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         MyCityLogo()
-        MyCityProfileImage(
-            drawableResource = R.drawable.ic_baseline_location_city_24,
-//            description = stringResource(id = "MyCity"),
-            description = "MyCity",
-            modifier = Modifier
-                .size(28.dp)
-        )
+        Text(text = stringResource(id = R.string.app_name)
+            , style = MaterialTheme.typography.titleMedium
+            , color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }
 

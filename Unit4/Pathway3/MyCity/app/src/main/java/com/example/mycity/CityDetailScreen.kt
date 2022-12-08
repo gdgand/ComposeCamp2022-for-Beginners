@@ -97,7 +97,7 @@ private fun CityPlaceDetailsCard(
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
-            DetailsScreenButtomBar(category, displayToast)
+            DetailsScreenBottomBar(category, displayToast)
         }
     }
 }
@@ -108,7 +108,12 @@ private fun DetailsScreenHeader(place: PlaceType
                                 , modifier: Modifier = Modifier) {
     Row(modifier = modifier.fillMaxWidth()) {
         MyCityProfileImage(
-            drawableResource = R.drawable.ic_baseline_location_city_24 //email.sender.avatar,
+            drawableResource = when (place.category) {
+                PlaceCategory.Restaurant -> R.drawable.ic_outline_restaurant_24
+                PlaceCategory.CoffeeShop -> R.drawable.ic_outline_coffee_24
+                PlaceCategory.Park -> R.drawable.ic_outline_park_24
+                PlaceCategory.ShoppingMall -> R.drawable.ic_outline_shopping_bag_24
+            }
             , description = "MyCity"
             , modifier = Modifier.size(40.dp)
         )
@@ -172,7 +177,7 @@ private fun CityDetailsScreenTopBar(
 
 
 @Composable
-private fun DetailsScreenButtomBar(
+private fun DetailsScreenBottomBar(
     category: PlaceCategory,
     displayToast: (String) -> Unit,
     modifier: Modifier = Modifier

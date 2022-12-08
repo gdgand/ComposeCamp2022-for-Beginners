@@ -15,7 +15,6 @@ class CityViewModel : ViewModel() {
 
     init {
         initializeUIState()
-
     }
 
     fun updateCurrentCategory(category: PlaceCategory) {
@@ -43,9 +42,7 @@ class CityViewModel : ViewModel() {
 
     fun resetListScreenState() {
         _uiState.update {
-            it.copy(currentCategory = PlaceCategory.Restaurant
-                , selectedPlace = it.selectedCategoryPlaces.get(0)
-//            it.places[it.currentCategory].get(0)
+            it.copy(selectedPlace = it.selectedCategoryPlaces.get(0)
                 , currentScreen = MyCityScreen.Start
             )
         }

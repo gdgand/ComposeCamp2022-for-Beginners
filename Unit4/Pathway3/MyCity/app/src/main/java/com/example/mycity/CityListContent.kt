@@ -7,12 +7,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ComposableInferredTarget
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
@@ -60,7 +61,7 @@ fun CityAppContent(
 //                )
             } else {
                 CityListOnlyContent(
-                    replyUiState = uiState,
+                    uiState = uiState,
                     onPlaceCardPressed = onPlaceCardPressed,
                     onBackPressed = onListBackPressed,
                     modifier = Modifier.weight(1f)
@@ -81,18 +82,24 @@ fun CityAppContent(
 
 @Composable
 fun CityListOnlyContent(
-    replyUiState: CityUiState,
+    uiState: CityUiState,
     onPlaceCardPressed: (PlaceType) -> Unit,
     onBackPressed: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
-    val places = replyUiState.selectedCategoryPlaces
+    val places = uiState.selectedCategoryPlaces
     BackHandler {
         onBackPressed()
     }
-     LazyColumn(modifier = modifier.padding(horizontal = 16.dp)) {
+     LazyColumn(modifier = modifier
+         .fillMaxSize()
+         .background(color = MaterialTheme.colorScheme.inverseOnSurface)
+         .padding(horizontal = 16.dp).padding(top = 24.dp)
+     ) {
         item {
-            CityHomeTopBar(modifier = Modifier.fillMaxWidth())
+            CityListTopBar(onBackButtonClicked = onBackPressed
+                , uiState = uiState
+                , modifier = Modifier.fillMaxWidth())
         }
         items(places) { place ->
 //        items(places, key = { place -> place.id  /* optional ?? */}) { place ->
@@ -101,6 +108,45 @@ fun CityListOnlyContent(
                 onCardClick = {
                     onPlaceCardPressed(place)
                 }
+            )
+        }
+    }
+}
+
+
+@Composable
+private fun CityListTopBar(
+    onBackButtonClicked: () -> Unit,
+    uiState: CityUiState,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(bottom = 24.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        IconButton(
+            onClick = onBackButtonClicked,
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .background(MaterialTheme.colorScheme.surface, shape = CircleShape),
+        ) {
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = stringResource(id = R.string.navigation_back)
+            )
+        }
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(end = 40.dp)
+        ) {
+            Text(
+                text = uiState.currentCategory.name,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
     }
@@ -149,12 +195,21 @@ fun CityPlaceListItem(
 
 
 @Composable
-private fun CityPlaceItemHeader(place: PlaceType, modifier: Modifier = Modifier) {
+private fun CityPlaceItemHeader(
+        place: PlaceType
+        , modifier: Modifier = Modifier) {
+
     Row(modifier = modifier.fillMaxWidth()) {
+
         MyCityProfileImage(
-            drawableResource = R.drawable.ic_baseline_location_city_24,  // TODO: 각자 자기꺼
+            drawableResource = when (place.category) {
+                PlaceCategory.Restaurant -> R.drawable.ic_outline_restaurant_24
+                PlaceCategory.CoffeeShop -> R.drawable.ic_outline_coffee_24
+                PlaceCategory.Park -> R.drawable.ic_outline_park_24
+                PlaceCategory.ShoppingMall -> R.drawable.ic_outline_shopping_bag_24
+            },  // TODO: 각자 자기꺼
             description = "CityProfileImage", // email.sender.fullName, // TODO:
-            modifier = Modifier.size(40.dp)
+            modifier = Modifier.size(40.dp).fillMaxSize()
         )
         Column(
             modifier = Modifier
