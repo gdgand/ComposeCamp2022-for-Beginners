@@ -16,6 +16,7 @@
 
 package com.example.sports.ui
 
+import android.app.Activity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -39,6 +40,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -182,6 +184,30 @@ private fun SportsListImageItem(sport: Sport, modifier: Modifier = Modifier) {
             contentDescription = null,
             alignment = Alignment.TopCenter,
             contentScale = ContentScale.FillWidth
+        )
+    }
+}
+
+@Composable
+private fun SportsListAndDetail(
+    sports: List<Sport>,
+    onClick: (Sport) -> Unit,
+    selectedSport: Sport,
+    modifier: Modifier
+) {
+    Row(
+        modifier = modifier.fillMaxWidth()
+    ) {
+        SportsList(
+            sports = sports,
+            modifier = Modifier.weight(1f),
+            onClick = onClick
+        )
+        val activity = (LocalContext.current as Activity)
+        SportsDetail(
+            selectedSport = selectedSport,
+            modifier = Modifier.weight(1f),
+            onBackPressed = { activity.finish() }
         )
     }
 }
