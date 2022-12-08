@@ -17,6 +17,7 @@
 package com.example.reply.ui
 
 import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -53,207 +54,211 @@ import com.example.reply.data.MailboxType
  */
 @Composable
 fun ReplyDetailsScreen(
-    replyUiState: ReplyUiState,
-    modifier: Modifier = Modifier,
-    onBackPressed: () -> Unit = {},
+  replyUiState: ReplyUiState,
+  modifier: Modifier = Modifier,
+  onBackPressed: () -> Unit = {},
 ) {
-    LazyColumn(
-        modifier = modifier
-            .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.inverseOnSurface)
-            .padding(top = 24.dp)
-    ) {
-        item {
-            ReplyDetailsScreenTopBar(onBackPressed, replyUiState)
-            ReplyEmailDetailsCard(
-                email = replyUiState.currentSelectedEmail,
-                mailboxType = replyUiState.currentMailbox,
-                modifier = Modifier.padding(horizontal = 16.dp)
-            )
-        }
+  BackHandler {
+    onBackPressed()
+  }
+
+  LazyColumn(
+    modifier = modifier
+      .fillMaxSize()
+      .background(color = MaterialTheme.colorScheme.inverseOnSurface)
+      .padding(top = 24.dp)
+  ) {
+    item {
+      ReplyDetailsScreenTopBar(onBackPressed, replyUiState)
+      ReplyEmailDetailsCard(
+        email = replyUiState.currentSelectedEmail,
+        mailboxType = replyUiState.currentMailbox,
+        modifier = Modifier.padding(horizontal = 16.dp)
+      )
     }
+  }
 }
 
 @Composable
 private fun ReplyDetailsScreenTopBar(
-    onBackButtonClicked: () -> Unit,
-    replyUiState: ReplyUiState,
-    modifier: Modifier = Modifier
+  onBackButtonClicked: () -> Unit,
+  replyUiState: ReplyUiState,
+  modifier: Modifier = Modifier
 ) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(bottom = 24.dp),
-        verticalAlignment = Alignment.CenterVertically,
+  Row(
+    modifier = modifier
+      .fillMaxWidth()
+      .padding(bottom = 24.dp),
+    verticalAlignment = Alignment.CenterVertically,
+  ) {
+    IconButton(
+      onClick = onBackButtonClicked,
+      modifier = Modifier
+        .padding(horizontal = 16.dp)
+        .background(MaterialTheme.colorScheme.surface, shape = CircleShape),
     ) {
-        IconButton(
-            onClick = onBackButtonClicked,
-            modifier = Modifier
-                .padding(horizontal = 16.dp)
-                .background(MaterialTheme.colorScheme.surface, shape = CircleShape),
-        ) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = stringResource(id = R.string.navigation_back)
-            )
-        }
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(end = 40.dp)
-        ) {
-            Text(
-                text = replyUiState.currentSelectedEmail.subject,
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
+      Icon(
+        imageVector = Icons.Default.ArrowBack,
+        contentDescription = stringResource(id = R.string.navigation_back)
+      )
     }
+    Row(
+      horizontalArrangement = Arrangement.Center,
+      modifier = Modifier
+        .fillMaxWidth()
+        .padding(end = 40.dp)
+    ) {
+      Text(
+        text = replyUiState.currentSelectedEmail.subject,
+        style = MaterialTheme.typography.titleMedium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant
+      )
+    }
+  }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ReplyEmailDetailsCard(
-    email: Email,
-    mailboxType: MailboxType,
-    modifier: Modifier = Modifier,
+  email: Email,
+  mailboxType: MailboxType,
+  modifier: Modifier = Modifier,
 ) {
-    val context = LocalContext.current
-    val displayToast = { text: String ->
-        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
-    }
-    Card(
-        modifier = modifier,
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+  val context = LocalContext.current
+  val displayToast = { text: String ->
+    Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+  }
+  Card(
+    modifier = modifier,
+    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+  ) {
+    Column(
+      modifier = Modifier
+        .fillMaxWidth()
+        .padding(20.dp)
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp)
-        ) {
-            DetailsScreenHeader(email)
-            Text(
-                text = email.subject,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.outline,
-                modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
-            )
-            Text(
-                text = email.body,
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            DetailsScreenButtonBar(mailboxType, displayToast)
-        }
+      DetailsScreenHeader(email)
+      Text(
+        text = email.subject,
+        style = MaterialTheme.typography.bodyMedium,
+        color = MaterialTheme.colorScheme.outline,
+        modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
+      )
+      Text(
+        text = email.body,
+        style = MaterialTheme.typography.bodyLarge,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+      )
+      DetailsScreenButtonBar(mailboxType, displayToast)
     }
+  }
 }
 
 @Composable
 private fun DetailsScreenButtonBar(
-    mailboxType: MailboxType,
-    displayToast: (String) -> Unit,
-    modifier: Modifier = Modifier
+  mailboxType: MailboxType,
+  displayToast: (String) -> Unit,
+  modifier: Modifier = Modifier
 ) {
-    when (mailboxType) {
-        MailboxType.Drafts ->
-            ActionButton(
-                text = stringResource(id = R.string.continue_composing),
-                onButtonClicked = displayToast,
-                modifier = modifier
-            )
-        MailboxType.Spam ->
-            Row(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 20.dp),
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
-            ) {
-                ActionButton(
-                    text = stringResource(id = R.string.move_to_inbox),
-                    onButtonClicked = displayToast,
-                    modifier = Modifier.weight(1f)
-                )
-                ActionButton(
-                    text = stringResource(id = R.string.delete),
-                    onButtonClicked = displayToast,
-                    containIrreversibleAction = true,
-                    modifier = Modifier.weight(1f)
-                )
-            }
-        MailboxType.Sent, MailboxType.Inbox ->
-            Row(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 20.dp),
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
-            ) {
-                ActionButton(
-                    text = stringResource(id = R.string.reply),
-                    onButtonClicked = displayToast,
-                    modifier = Modifier.weight(1f)
-                )
-                ActionButton(
-                    text = stringResource(id = R.string.reply_all),
-                    onButtonClicked = displayToast,
-                    modifier = Modifier.weight(1f)
-                )
-            }
-    }
+  when (mailboxType) {
+    MailboxType.Drafts ->
+      ActionButton(
+        text = stringResource(id = R.string.continue_composing),
+        onButtonClicked = displayToast,
+        modifier = modifier
+      )
+    MailboxType.Spam ->
+      Row(
+        modifier = modifier
+          .fillMaxWidth()
+          .padding(vertical = 20.dp),
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+      ) {
+        ActionButton(
+          text = stringResource(id = R.string.move_to_inbox),
+          onButtonClicked = displayToast,
+          modifier = Modifier.weight(1f)
+        )
+        ActionButton(
+          text = stringResource(id = R.string.delete),
+          onButtonClicked = displayToast,
+          containIrreversibleAction = true,
+          modifier = Modifier.weight(1f)
+        )
+      }
+    MailboxType.Sent, MailboxType.Inbox ->
+      Row(
+        modifier = modifier
+          .fillMaxWidth()
+          .padding(vertical = 20.dp),
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+      ) {
+        ActionButton(
+          text = stringResource(id = R.string.reply),
+          onButtonClicked = displayToast,
+          modifier = Modifier.weight(1f)
+        )
+        ActionButton(
+          text = stringResource(id = R.string.reply_all),
+          onButtonClicked = displayToast,
+          modifier = Modifier.weight(1f)
+        )
+      }
+  }
 }
 
 @Composable
 private fun DetailsScreenHeader(email: Email, modifier: Modifier = Modifier) {
-    Row(modifier = modifier.fillMaxWidth()) {
-        ReplyProfileImage(
-            drawableResource = email.sender.avatar,
-            description = email.sender.fullName,
-            modifier = Modifier.size(40.dp)
-        )
-        Column(
-            modifier = Modifier
-                .weight(1f)
-                .padding(horizontal = 12.dp, vertical = 4.dp),
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = email.sender.firstName,
-                style = MaterialTheme.typography.labelMedium
-            )
-            Text(
-                text = email.createdAt,
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.outline
-            )
-        }
+  Row(modifier = modifier.fillMaxWidth()) {
+    ReplyProfileImage(
+      drawableResource = email.sender.avatar,
+      description = email.sender.fullName,
+      modifier = Modifier.size(40.dp)
+    )
+    Column(
+      modifier = Modifier
+        .weight(1f)
+        .padding(horizontal = 12.dp, vertical = 4.dp),
+      verticalArrangement = Arrangement.Center
+    ) {
+      Text(
+        text = email.sender.firstName,
+        style = MaterialTheme.typography.labelMedium
+      )
+      Text(
+        text = email.createdAt,
+        style = MaterialTheme.typography.labelMedium,
+        color = MaterialTheme.colorScheme.outline
+      )
     }
+  }
 }
 
 @Composable
 private fun ActionButton(
-    text: String,
-    onButtonClicked: (String) -> Unit,
-    modifier: Modifier = Modifier,
-    containIrreversibleAction: Boolean = false
+  text: String,
+  onButtonClicked: (String) -> Unit,
+  modifier: Modifier = Modifier,
+  containIrreversibleAction: Boolean = false
 ) {
-    Button(
-        onClick = { onButtonClicked(text) },
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(vertical = 20.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor =
-            if (!containIrreversibleAction)
-                MaterialTheme.colorScheme.inverseOnSurface
-            else MaterialTheme.colorScheme.onErrorContainer
-        )
-    ) {
-        Text(
-            text = text,
-            color =
-            if (!containIrreversibleAction)
-                MaterialTheme.colorScheme.onSurfaceVariant
-            else MaterialTheme.colorScheme.onError
-        )
-    }
+  Button(
+    onClick = { onButtonClicked(text) },
+    modifier = modifier
+      .fillMaxWidth()
+      .padding(vertical = 20.dp),
+    colors = ButtonDefaults.buttonColors(
+      containerColor =
+      if (!containIrreversibleAction)
+        MaterialTheme.colorScheme.inverseOnSurface
+      else MaterialTheme.colorScheme.onErrorContainer
+    )
+  ) {
+    Text(
+      text = text,
+      color =
+      if (!containIrreversibleAction)
+        MaterialTheme.colorScheme.onSurfaceVariant
+      else MaterialTheme.colorScheme.onError
+    )
+  }
 }
