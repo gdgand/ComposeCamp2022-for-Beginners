@@ -52,12 +52,14 @@ import com.example.reply.R
 import com.example.reply.data.Email
 import com.example.reply.data.MailboxType
 import com.example.reply.data.local.LocalAccountsDataProvider
+import com.example.reply.ui.utils.ReplyNavigationType
 
 /**
  * Composable that displays home screen
  */
 @Composable
 fun ReplyHomeScreen(
+    navigationType: ReplyNavigationType,
     replyUiState: ReplyUiState,
     onTabPressed: (MailboxType) -> Unit,
     onEmailCardPressed: (Email) -> Unit,
@@ -86,6 +88,24 @@ fun ReplyHomeScreen(
             text = stringResource(id = R.string.tab_spam)
         )
     )
+
+    if (replyUiState.isShowingHomepage) {
+        ReplyAppContent(
+            replyUiState = replyUiState,
+            onTabPressed = onTabPressed,
+            onEmailCardPressed = onEmailCardPressed,
+            navigationItemContentList = navigationItemContentList,
+            modifier = modifier
+
+        )
+    } else {
+        ReplyDetailsScreen(
+            replyUiState = replyUiState,
+            onBackPressed = onDetailScreenBackPressed,
+            modifier = modifier
+        )
+    }
+
     ReplyAppContent(
         replyUiState = replyUiState,
         onTabPressed = onTabPressed,
