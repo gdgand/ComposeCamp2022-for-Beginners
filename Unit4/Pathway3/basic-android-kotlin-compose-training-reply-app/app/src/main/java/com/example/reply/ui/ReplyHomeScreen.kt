@@ -30,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.reply.R
@@ -79,10 +80,12 @@ fun ReplyHomeScreen(
     if (navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER) {
         PermanentNavigationDrawer(
             drawerContent = {
+                val navigationDrawerContentDescription = stringResource(R.string.navigation_drawer)
                 NavigationDrawerContent(
                     selectedDestination = replyUiState.currentMailbox,
                     onTabPressed = onTabPressed,
-                    navigationItemContentList = navigationItemContentList
+                    navigationItemContentList = navigationItemContentList,
+                    modifier = Modifier.testTag(navigationDrawerContentDescription)
                 )
             }
         ) {
@@ -136,10 +139,12 @@ private fun ReplyAppContent(
 ) {
     Row(modifier = modifier.fillMaxSize()) {
         AnimatedVisibility(visible = navigationType == ReplyNavigationType.NAVIGATION_RAIL) {
+            val navigationRailContentDescription = stringResource(R.string.navigation_rail)
             ReplyNavigationRail(
                 currentTab = replyUiState.currentMailbox,
                 navigationItemContentList = navigationItemContentList,
-                onTabPressed = onTabPressed
+                onTabPressed = onTabPressed,
+                modifier = Modifier.testTag(navigationRailContentDescription)
             )
 
         }
@@ -162,10 +167,13 @@ private fun ReplyAppContent(
                 )
             }
             AnimatedVisibility(visible = navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
+                val bottomNavigationContentDescription = stringResource(R.string.navigation_bottom)
+
                 ReplyBottomNavigationBar(
                     currentTab = replyUiState.currentMailbox,
                     onTabPressed = onTabPressed,
-                    navigationItemContentList = navigationItemContentList
+                    navigationItemContentList = navigationItemContentList,
+                    modifier = Modifier.testTag(bottomNavigationContentDescription)
                 )
             }
         }
