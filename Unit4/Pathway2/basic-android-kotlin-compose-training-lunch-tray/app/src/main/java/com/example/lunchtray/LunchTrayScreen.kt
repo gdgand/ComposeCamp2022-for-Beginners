@@ -169,8 +169,8 @@ fun LunchTrayAppBar(
     TopAppBar(
         title = { Text(stringResource(id = currentScreenTitle)) },
         modifier = modifier,
-        navigationIcon = {
-            if (canNavigateBack) {
+        navigationIcon = if (canNavigateBack) {
+            {
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
@@ -178,6 +178,8 @@ fun LunchTrayAppBar(
                     )
                 }
             }
+        } else {
+            null
         }
     )
 }

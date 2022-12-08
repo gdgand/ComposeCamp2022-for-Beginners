@@ -67,8 +67,8 @@ fun CupcakeAppBar(
         title = { Text(stringResource(currentScreen.title)) }, // 여기는 왜 에러? 이넘클래스 수정해야하네
         // title = { Text(currentScreen.name) }, // 이넘 클래스 바꾸기 싫으면 이렇게..
         modifier = modifier,
-        navigationIcon = {
-            if (canNavigateBack) {
+        navigationIcon = if (canNavigateBack) {
+            {
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
@@ -76,6 +76,8 @@ fun CupcakeAppBar(
                     )
                 }
             }
+        } else {
+            null
         }
     )
 }
