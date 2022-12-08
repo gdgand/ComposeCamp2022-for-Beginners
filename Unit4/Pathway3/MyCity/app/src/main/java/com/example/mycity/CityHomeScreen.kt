@@ -5,35 +5,21 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import com.example.mycity.data.PlaceCategory
-import com.example.mycity.data.PlaceType
 import androidx.compose.material.icons.outlined.*
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
-
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
-
-import com.example.mycity.data.NavigationItemContent
 import com.example.mycity.data.NavigationItemContentList
+import com.example.mycity.data.PlaceCategory
+import com.example.mycity.data.PlaceType
 import com.example.mycity.ui.theme.MyCityTheme
 import com.example.mycity.util.CityContentType
 import com.example.mycity.util.CityNavigationType
@@ -54,28 +40,27 @@ fun CityHomeScreen(
 
     if (navigationType == CityNavigationType.PERMANENT_NAVIGATION_DRAWER) {
 //        val navigationDrawerContentDescription = stringResource(R.string.navigation_drawer)
-//        PermanentNavigationDrawer(
-//            drawerContent = {
-//                PermanentDrawerSheet(Modifier.width(240.dp)) {
-//                    NavigationDrawerContent(
-//                        selectedDestination = replyUiState.currentMailbox,
-//                        onTabPressed = onTabPressed,
-//                        navigationItemContentList = navigationItemContentList
-//                    )
-//                }
-//            },
+        PermanentNavigationDrawer(
+            drawerContent = {
+                PermanentDrawerSheet(modifier = Modifier.width(240.dp)
+                ) {
+                    NavigationDrawerContent(selectedCategory = uiState.currentCategory
+                        , onTabPressed = onTabPressed
+                    )
+                }
+            },
 //            modifier = Modifier.testTag(navigationDrawerContentDescription)
-//        ) {
-//            ReplyAppContent(
-//                navigationType = navigationType,
-//                contentType = contentType,
-//                replyUiState = replyUiState,
-//                onTabPressed = onTabPressed,
-//                onEmailCardPressed = onEmailCardPressed,
-//                navigationItemContentList = navigationItemContentList,
-//                modifier = modifier
-//            )
-//        }
+        ) {
+        CityAppContent(
+            navigationType = navigationType,
+            contentType = contentType,
+            uiState = uiState,
+            onTabPressed = onTabPressed,
+            onPlaceCardPressed = onPlaceCardPressed,
+            onListBackPressed = onListScreenBackPressed,
+            modifier = modifier)
+        }
+
     } else {
 
         if (uiState.currentScreen == MyCityScreen.Start) {

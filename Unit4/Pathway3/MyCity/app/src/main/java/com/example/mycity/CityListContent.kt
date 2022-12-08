@@ -1,5 +1,6 @@
 package com.example.mycity
 
+import android.app.Activity
 import android.provider.ContactsContract
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
@@ -15,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ComposableInferredTarget
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -54,11 +56,11 @@ fun CityAppContent(
                 .background(MaterialTheme.colorScheme.inverseOnSurface)
         ) {
             if (contentType == CityContentType.LIST_AND_DETAIL) {
-//                ReplyListAndDetailContent(
-//                    replyUiState = replyUiState,
-//                    onEmailCardPressed = onEmailCardPressed,
-//                    modifier = Modifier.weight(1f),
-//                )
+                CityListAndDetailContent(
+                    uiState = uiState,
+                    onPlaceCardPressed = onPlaceCardPressed,
+                    modifier = Modifier.weight(1f),
+                )
             } else {
                 CityListOnlyContent(
                     uiState = uiState,
@@ -78,6 +80,37 @@ fun CityAppContent(
         }
     }
 }
+
+
+@Composable
+fun CityListAndDetailContent(
+    uiState: CityUiState,
+    onPlaceCardPressed: (PlaceType) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val places = uiState.selectedCategoryPlaces
+    Row(modifier = modifier) {
+        LazyColumn(
+            modifier = Modifier
+                .weight(1f)
+                .padding(end = 16.dp, top = 20.dp)
+        ) {
+            items(places, key = { email -> email.id }) { place ->
+                CityPlaceListItem(
+                    place = place,
+                    onCardClick = { onPlaceCardPressed(place) }
+                )
+            }
+        }
+        val activity = LocalContext.current as Activity
+        CityDetailsScreen(
+            uiState = uiState,
+            modifier = Modifier.weight(1f),
+            onBackPressed = { activity.finish() }
+        )
+    }
+}
+
 
 
 @Composable

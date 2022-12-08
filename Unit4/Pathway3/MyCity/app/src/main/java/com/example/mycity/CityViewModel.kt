@@ -19,7 +19,14 @@ class CityViewModel : ViewModel() {
 
     fun updateCurrentCategory(category: PlaceCategory) {
         _uiState.update {
-            it.copy(currentCategory = category, currentScreen = MyCityScreen.List)
+            it.copy(currentCategory = category
+                , currentScreen = MyCityScreen.List
+            )
+        }
+        // TODO: Medium, Expanded 에서, selectedCategoryPlaces 가 새 category로 한박자 늦게 반영됨.
+        //  Reply 예제에서는 Default(고정값)를 뿌리고 끝.
+        _uiState.update {
+            it.copy(selectedPlace = it.selectedCategoryPlaces.get(0))
         }
     }
 
