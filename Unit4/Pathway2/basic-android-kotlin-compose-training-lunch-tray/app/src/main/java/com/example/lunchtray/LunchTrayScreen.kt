@@ -16,19 +16,16 @@
 package com.example.lunchtray
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.navigation
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.compose.*
 import com.example.lunchtray.datasource.DataSource.accompanimentMenuItems
 import com.example.lunchtray.datasource.DataSource.entreeMenuItems
 import com.example.lunchtray.datasource.DataSource.sideDishMenuItems
@@ -45,12 +42,25 @@ enum class LunchTrayScreen() {
 
 @Composable
 fun LunchTrayAppBar(
+    currentScreen: String,
+    canNavigateBack: Boolean,
+    navigateUp: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     TopAppBar(
-        title = {Text(stringResource(id = R.string.app_name))},
+        title = {Text(currentScreen)},
         modifier = modifier,
-        navigationIcon = {}
+        navigationIcon = {
+            if (canNavigateBack) {
+                IconButton(onClick = navigateUp) {
+                    Icon (
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = stringResource(id = R.string.back_button)
+                    )
+                }
+
+            }
+        }
     )
 }
 
@@ -61,10 +71,14 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
     // Create ViewModel
     val viewModel: OrderViewModel = viewModel()
 
+    val backStackEntry by navController.currentBackStackEntryAsState()
+
     Scaffold(
         topBar = {
             LunchTrayAppBar(
-
+                currentScreen = backStackEntry?.destination?.route ?: LunchTrayScreen.StartOrder.name,
+                canNavigateBack = navController.previousBackStackEntry != null,
+                navigateUp = { navController.navigateUp() },
             )
         }
     ) { innerPadding ->
@@ -87,6 +101,7 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
                 EntreeMenuScreen(
                     options = entreeMenuItems,
                     onCancelButtonClicked = {
+                        viewModel.resetOrder()
                         navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
                     },
                     onNextButtonClicked = {
@@ -102,6 +117,7 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
                 SideDishMenuScreen(
                     options = sideDishMenuItems,
                     onCancelButtonClicked = {
+                        viewModel.resetOrder()
                         navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
                     },
                     onNextButtonClicked = {
@@ -117,6 +133,7 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
                 AccompanimentMenuScreen(
                     options = accompanimentMenuItems,
                     onCancelButtonClicked = {
+                        viewModel.resetOrder()
                         navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
                     },
                     onNextButtonClicked = { 
@@ -132,9 +149,11 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
                 CheckoutScreen(
                     orderUiState = uiState,
                     onNextButtonClicked = {
+                        viewModel.resetOrder()
                         navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
                     },
                     onCancelButtonClicked = {
+                        viewModel.resetOrder()
                         navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
                     })
             }
