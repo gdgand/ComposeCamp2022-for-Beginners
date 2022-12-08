@@ -92,7 +92,9 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
                     onNextButtonClicked = {
                         navController.navigate(LunchTrayScreen.SideDishMenu.name)                  
                     },
-                    onSelectionChanged = {}
+                    onSelectionChanged = {
+                        item -> viewModel.updateEntree(item)
+                    }
                 )
             }
 
@@ -105,7 +107,9 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
                     onNextButtonClicked = {
                         navController.navigate(LunchTrayScreen.AccompanimentMenu.name)                  
                     },
-                    onSelectionChanged = {}
+                    onSelectionChanged = {
+                        item -> viewModel.updateSideDish(item)
+                    }
                 )
             }
 
@@ -118,7 +122,9 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
                     onNextButtonClicked = { 
                         navController.navigate(LunchTrayScreen.CheckOut.name)                  
                     },
-                    onSelectionChanged = {}
+                    onSelectionChanged = {
+                        item -> viewModel.updateAccompaniment(item)
+                    }
                 )
             }
 
@@ -128,7 +134,9 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
                     onNextButtonClicked = {
                         navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
                     },
-                    onCancelButtonClicked = { /*TODO*/ })
+                    onCancelButtonClicked = {
+                        navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
+                    })
             }
         }
     }
