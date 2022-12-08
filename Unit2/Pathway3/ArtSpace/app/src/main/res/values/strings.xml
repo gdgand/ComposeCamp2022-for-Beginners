@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Art Space</string>
+
+    <string name="title_1">The Creation of Adam</string>
+    <string name="artist_1">Michelangelo</string>
+    <string name="year_1">" ( 1512 ) "</string>
+
+    <string name="title_2">Mona Lisa</string>
+    <string name="artist_2">Leonardo da Vinci</string>
+    <string name="year_2">" ( 1503 ) "</string>
+
+    <string name="title_3">Sunflowers</string>
+    <string name="artist_3">Vincent Van Gogh</string>
+    <string name="year_3">" ( 1888 ) "</string>
+
+    <string name="btn_pre">Previous</string>
+    <string name="btn_next">Next</string>
 </resources>
