@@ -63,7 +63,7 @@ class CupcakeScreenNavigationTest {
 
     private fun getFormattedDate(): String {
         val calendar = Calendar.getInstance()
-        calendar.add(java.util.Calendar.DATE, 1)
+        calendar.add(Calendar.DATE, 1)
         val formatter = SimpleDateFormat("E MMM d", Locale.getDefault())
         return formatter.format(calendar.time)
     }
