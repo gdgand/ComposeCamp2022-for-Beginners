@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Art Space</string>
+    <string name="rightmaru">그저 빛 마루</string>
+    <string name="rightmaru_desc">마루는 맛있는 것을 발견했습니다..</string>
+    <string name="drinkmaru">외주 마루</string>
+    <string name="drinkmaru_desc">마루는 이웃집에 음료수 따기 외주를 맡깁니다.</string>
+    <string name="listenmaru">듣는 마루</string>
+    <string name="listenmaru_desc">마루는 꼬락내를 좋아합니다.</string>
+
 </resources>
