@@ -15,6 +15,7 @@
  */
 package com.example.cupcake.ui
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.cupcake.data.OrderUiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,7 +26,7 @@ import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-
+private const val TAG = "OrderViewModel_Cupcake"
 /** Price for a single cupcake */
 private const val PRICE_PER_CUPCAKE = 2.00
 
@@ -61,6 +62,7 @@ class OrderViewModel : ViewModel() {
      * Only 1 flavor can be selected for the whole order.
      */
     fun setFlavor(desiredFlavor: String) {
+        Log.d(TAG, "setFlavor $desiredFlavor")
         _uiState.update { currentState ->
             currentState.copy(flavor = desiredFlavor)
         }

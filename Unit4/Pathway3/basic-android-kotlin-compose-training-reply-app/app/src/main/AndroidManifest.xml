@@ -32,6 +32,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+            android:label="InstrumentationActivityInvoker$BootstrapActivity" /-->
+
     </application>
 
+    <!--uses-library android:name="android.test.runner" android:required="false" /-->
 </manifest>

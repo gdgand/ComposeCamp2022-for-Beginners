@@ -16,8 +16,15 @@
 package com.example.dessertclicker.data
 
 import com.example.dessertclicker.R
-import com.example.dessertclicker.model.Dessert
 
+
+
+/**
+ * [Dessert] is the data class to represent the Dessert imageId, price, and startProductionAmount
+ */
+data class Dessert(val imageId: Int, val price: Int, val startProductionAmount: Int) {
+
+}
 /**
  * [Datasource] generates a list of [Dessert]
  */
