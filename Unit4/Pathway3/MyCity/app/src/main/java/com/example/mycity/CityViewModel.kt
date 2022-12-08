@@ -15,8 +15,8 @@ class CityViewModel : ViewModel() {
 
     init {
         initializeUIState()
-    }
 
+    }
 
     fun updateCurrentCategory(category: PlaceCategory) {
         _uiState.update {
@@ -33,7 +33,8 @@ class CityViewModel : ViewModel() {
     // 무조건 해당 카테고리의 첫번째 아이템을 가리키도록
     fun resetHomeScreenState() {
         _uiState.update {
-            it.copy(selectedPlace = null // it.places[it.currentCategory]?.get(0)
+            it.copy(selectedPlace = it.selectedCategoryPlaces.get(0)
+//            it.places[it.currentCategory].get(0)
                 , isShowingHome = true
             )
         }
@@ -45,8 +46,7 @@ class CityViewModel : ViewModel() {
         _uiState.value =
             CityUiState(
                 places = placeMapping,
-                selectedPlace = null
-                // placeMapping[PlaceCategory.Restaurant]?.get(0) ?:  디풀트값
+                selectedPlace = placeMapping[PlaceCategory.Restaurant]!!.get(0) // 디풀트값
             )
     }
 }

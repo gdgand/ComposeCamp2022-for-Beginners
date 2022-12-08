@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
@@ -27,14 +27,5 @@ class MainActivity : ComponentActivity() {
                 CityApp(windowSize = windowSize.widthSizeClass)
             }
         }
-    }
-}
-
-@Preview(showBackground = true, widthDp = 700)
-@Composable
-fun ReplyAppPreview() {
-    MyCityTheme {
-        CityApp(windowSize = WindowWidthSizeClass.Expanded)
-//        ReplyApp(windowSize = WindowWidthSizeClass.Compact)
     }
 }
