@@ -3,12 +3,13 @@ package com.example.artspace
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,7 +28,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ArtSpaceTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
@@ -41,6 +41,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtSpaceApp() {
+    var curState by remember { mutableStateOf(0) }
+
+    val paints = arrayListOf(
+        Paint(R.drawable.paint1, R.string.title_1, R.string.artist_1, R.string.year_1),
+        Paint(R.drawable.paint2, R.string.title_2, R.string.artist_2, R.string.year_2),
+        Paint(R.drawable.paint3, R.string.title_3, R.string.artist_3, R.string.year_3)
+    )
+
     Column(
         modifier = Modifier
             .padding(20.dp)
@@ -53,7 +61,7 @@ fun ArtSpaceApp() {
             modifier = Modifier.weight(1f)
         ) {
             ArtWorkImage(
-                paint = painterResource(id = R.drawable.paint2),
+                paint = painterResource(paints[curState].paintId),
             )
         }
 
@@ -63,27 +71,34 @@ fun ArtSpaceApp() {
                 .padding(top = 40.dp)
         ) {
             ArtWorkInfo(
-                title = R.string.title_2,
-                artist = R.string.artist_2,
-                year = R.string.year_2
+                title = paints[curState].title,
+                artist = paints[curState].artist,
+                year = paints[curState].year
             )
         }
 
         Box(
         ) {
-            MoveButtons()
+            MoveButtons({
+                if (curState > 0) {
+                    curState--
+                }
+            }, {
+                if (curState < paints.size - 1) {
+                    curState++
+                }
+            })
         }
     }
 }
 
 @Composable
 fun ArtWorkImage(
-    paint: Painter,
-    description: String? = null,
     modifier: Modifier = Modifier
         .border(2.dp, Color.Gray)
-        .fillMaxWidth()
-
+        .fillMaxWidth(),
+    paint: Painter,
+    description: String? = null
 ) {
     Image(
         painter = paint,
@@ -125,7 +140,10 @@ fun ArtWorkInfo(
 }
 
 @Composable
-fun MoveButtons() {
+fun MoveButtons(
+    onPreBtnClicked: () -> Unit,
+    onNextBtnClicked: () -> Unit
+) {
     Row(
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
@@ -133,8 +151,9 @@ fun MoveButtons() {
             .padding(top = 30.dp)
     ) {
         val buttonWidth = 120
+
         Button(
-            onClick = { /*TODO*/ },
+            onClick = onPreBtnClicked,
             modifier = Modifier.width(buttonWidth.dp)
         ) {
             Text(
@@ -146,7 +165,7 @@ fun MoveButtons() {
         Spacer(modifier = Modifier.width(60.dp))
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = onNextBtnClicked,
             modifier = Modifier.width(buttonWidth.dp)
         ) {
             Text(
@@ -164,3 +183,10 @@ fun ArtSpacePreview() {
         ArtSpaceApp()
     }
 }
+
+data class Paint(
+    @DrawableRes val paintId: Int,
+    @StringRes val title: Int,
+    @StringRes val artist: Int,
+    @StringRes val year: Int
+)
