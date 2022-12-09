@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
 fun ReplyAppPreview() {
     ReplyTheme {
         ReplyApp(
-            windowSize = WindowWidthSizeClass.Compact
+            windowSize = WindowWidthSizeClass.Expanded
         )
     }
 }
