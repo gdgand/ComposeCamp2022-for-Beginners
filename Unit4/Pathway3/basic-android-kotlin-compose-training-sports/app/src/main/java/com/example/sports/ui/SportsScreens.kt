@@ -87,7 +87,13 @@ fun SportsApp(
         }
     ) { innerPadding ->
         if(contentType == ContentsType.LIST_AND_DETAIL) {
+            SportListAndDetail(
+                sport = uiState.sportsList,
+                selectedSport = uiState.currentSport,
+                onClick = {},
+                modifier = modifier
 
+            )
         } else {
             if (uiState.isShowingListPage) {
                 SportsList(
@@ -278,8 +284,16 @@ fun SportListAndDetail(
     modifier: Modifier = Modifier
 ) {
     Row(modifier = modifier.fillMaxWidth()) {
-        SportsList(sports = sport, onClick = onClick)
-        SportsDetail(selectedSport = selectedSport, onBackPressed = { /*TODO*/ })
+        SportsList(
+            sports = sport,
+            onClick = onClick,
+            modifier = Modifier.weight(1f)
+        )
+        SportsDetail(
+            selectedSport = selectedSport,
+            onBackPressed = { /*TODO*/ },
+            modifier = Modifier.weight(1f)
+        )
     }
 }
 
