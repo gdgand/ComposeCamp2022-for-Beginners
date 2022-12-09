@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Art Space</string>
+
+    <string name="img1title">HYUNDAI</string>
+    <string name="img1info">모터스튜디오</string>
+    <string name="img1year">(2022)</string>
+
+    <string name="img2title">Scheherazade</string>
+    <string name="img2info">셰에라자드</string>
+    <string name="img2year">(2022)</string>
+
+    <string name="img3title">애옹</string>
+    <string name="img3info">어딘가</string>
+    <string name="img3year">(2022)</string>
+
+    <string name="img4title">시스템점검 전광판</string>
+    <string name="img4info">수도권 8호선 어딘가</string>
+    <string name="img4year">(2022)</string>
+</resources>
