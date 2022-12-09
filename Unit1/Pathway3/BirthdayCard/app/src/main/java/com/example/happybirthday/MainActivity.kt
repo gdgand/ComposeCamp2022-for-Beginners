@@ -65,7 +65,11 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
     Box {
         Image(
             painter = image,
-            contentDescription = null
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop
             )
         BirthdayGreetingWithText(message = message, from = from)
     }
