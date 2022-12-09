@@ -76,20 +76,20 @@ fun ArtSpaceScreen() {
         )
     )
 
-    var artData by remember { mutableStateOf(artDatas[0]) }
+    var artDataIndex by remember { mutableStateOf(0) }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        ArtworkWall(artDrawableResourceId = artData.artDrawableResourceId)
+        ArtworkWall(artDrawableResourceId = artDatas[artDataIndex].artDrawableResourceId)
         Spacer(modifier = Modifier.height(8.dp))
         ArtworkDescriptor(
-            artworkTitle = artData.artworkTitle,
-            artworkArtist = artData.artworkArtist,
-            year = artData.year
+            artworkTitle = artDatas[artDataIndex].artworkTitle,
+            artworkArtist = artDatas[artDataIndex].artworkArtist,
+            year = artDatas[artDataIndex].year
         )
         Spacer(modifier = Modifier.height(8.dp))
-        DisplayController(artNumber = artData.artNumber)
+        DisplayController(artDataIndex = artDataIndex, onClick = {artDataIndex = it})
     }
 }
 
@@ -142,7 +142,7 @@ fun ArtworkDescriptor(
 }
 
 @Composable
-fun DisplayController(artNumber: Int) {
+fun DisplayController(artDataIndex: Int, onClick: (Int) -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -150,14 +150,14 @@ fun DisplayController(artNumber: Int) {
     ) {
         Spacer(modifier = Modifier.width(16.dp))
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { onClick },
             modifier = Modifier.weight(1F)
         ) {
             Text(text = stringResource(id = R.string.previousButton))
         }
         Spacer(modifier = Modifier.width(32.dp))
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { artDataIndex + 1 },
             modifier = Modifier.weight(1F)
         ) {
             Text(text = stringResource(id = R.string.nextButton))
