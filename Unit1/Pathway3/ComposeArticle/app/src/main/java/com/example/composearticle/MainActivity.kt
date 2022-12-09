@@ -32,14 +32,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ComposeArticleApp() {
-    val image = painterResource(R.drawable.bg_compose_background)
-    Image(
-        painter = image,
-        contentDescription = null,
-        modifier = Modifier
-            .fillMaxWidth(),
-        contentScale = ContentScale.Crop
-    )
+     ArticleCard(title = stringResource(R.string.title_jetpack_compose_tutorial),
+         shortDescription = stringResource(R.string.compose_short_desc),
+         longDescription = stringResource(R.string.compose_long_desc),
+         imagePainter = painterResource(R.drawable.bg_compose_background)
+     )
 }
 
 @Composable
@@ -50,7 +47,8 @@ private fun ArticleCard(
     imagePainter: Painter,
     modifier: Modifier = Modifier,
 ) {
-    Column() {
+    Column(modifier = modifier) {
+        Image(painter = imagePainter, contentDescription = null)
         Text(
             text = title,
             fontSize = 24.sp,
@@ -76,5 +74,9 @@ private fun ArticleCard(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-
+    ComposeArticleTheme {
+        Surface {
+            ComposeArticleApp()
+        }
+    }
 }
