@@ -7,9 +7,9 @@ import com.example.myjeju.model.JejuItemContent
 object JejuDataProvider {
     val defaultJejuData = getJejuData()[0]
 
-    fun getCategoryData(categoryId: Int): List<JejuItemContent> {
+    fun getCategoryData(currentCategoryItem: CategoryItemContent): List<JejuItemContent> {
         return getJejuData().filter {
-            it.categoryResourceId == categoryId
+            it.categoryResourceId == currentCategoryItem.categoryResourceId
         }
     }
 

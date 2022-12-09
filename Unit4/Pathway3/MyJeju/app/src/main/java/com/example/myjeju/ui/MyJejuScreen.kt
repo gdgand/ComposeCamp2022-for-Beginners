@@ -73,7 +73,7 @@ fun MyJejuApp(
             }
             composable(route = MyJejuScreen.CategoryList.name) {
                 CategoryScreen(
-                    jejuItems = JejuDataProvider.getCategoryData(uiState.currentCategoryItem.categoryResourceId),
+                    jejuItems = JejuDataProvider.getCategoryData(uiState.currentCategoryItem),
                     onClick = {
                         viewModel.updateCurrentJejuItem(it)
                         navController.navigate(MyJejuScreen.ItemDetail.name)
@@ -93,37 +93,6 @@ fun MyJejuApp(
                 )
             }
         }
-
-//        CategoryList(
-//            categories = JejuDataProvider.getCategory(),
-//            onClick = {
-//                viewModel.updateCurrentCategoryItem(it)
-////                viewModel.navigateToListPage()
-//                viewModel.navigateToJejuItemListPage()
-//            }
-//        )
-
-
-//        if (uiState.isShowingListPage) {
-//            JejuItemList(
-////                jejuItems = uiState.jejuItemList,
-//                jejuItems = JejuDataProvider.getCategoryData(categoryId = R.string.c_market),
-//                // 그래 바로 이거야!!!!!
-//                onClick = {
-//                    viewModel.updateCurrentJejuItem(it)
-//                    viewModel.navigateToDetailPage()
-//                },
-//                modifier = modifier.padding((innerPadding))
-//            )
-//        } else {
-//            JejuItemDetail(
-//                selectedJejuItem = uiState.currentJejuItem,
-//                modifier = modifier.padding((innerPadding)),
-//                onBackPressed = {
-//                    viewModel.navigateToListPage()
-//                }
-//            )
-//        }
     }
 }
 
@@ -135,89 +104,3 @@ fun JejuAppBar(
 
     }
 }
-
-//@OptIn(ExperimentalMaterialApi::class)
-//@Composable
-//private fun JejuItemCard(
-//    jejuItem: JejuItemContent,
-//    onItemClick: (JejuItemContent) -> Unit,
-//    modifier: Modifier = Modifier
-//) {
-//    Card(
-//        elevation = 2.dp,
-//        modifier = modifier,
-//        onClick = { onItemClick(jejuItem) }
-//    ) {
-//        Row(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .heightIn(min = 150.dp)
-//        ) {
-//            Column(
-//                modifier = Modifier
-//                    .weight(1f)
-//                    .padding(top = 16.dp)
-//            ) {
-//                Text(
-//                    text = stringResource(id = jejuItem.titleResourceId),
-//                    modifier = Modifier.padding(8.dp)
-//                )
-//            }
-//        }
-//    }
-//}
-
-//@Composable
-//fun JejuItemList(
-//    jejuItems: List<JejuItemContent>,
-//    onClick: (JejuItemContent) -> Unit,
-//    modifier: Modifier = Modifier
-//) {
-//    LazyColumn(
-//        contentPadding = PaddingValues(16.dp),
-//        verticalArrangement = Arrangement.spacedBy(16.dp),
-//        modifier = modifier
-//    ) {
-//        items(jejuItems, key = { jejuItem -> jejuItem.id }) {
-//            jejuItem ->
-//            JejuItemCard(
-//                jejuItem = jejuItem,
-//                onItemClick = onClick
-//            )
-//        }
-//    }
-//}
-
-//@Composable
-//private fun JejuItemDetail(
-//    selectedJejuItem: JejuItemContent,
-//    onBackPressed: () -> Unit,
-//    modifier: Modifier = Modifier
-//) {
-//    BackHandler() {
-//        onBackPressed()
-//    }
-//    Column (
-//        modifier = modifier.padding(4.dp)
-//    ) {
-//        Box {
-//            Image(
-//                painter = painterResource(id = selectedJejuItem.imageResourceId),
-//                contentDescription = null,
-//                alignment = Alignment.TopCenter,
-//                contentScale = ContentScale.Crop
-//            )
-//            Text(
-//                text = stringResource(id = selectedJejuItem.titleResourceId),
-//                modifier = Modifier
-//                    .padding(8.dp)
-//                    .align(Alignment.BottomStart)
-//            )
-//        }
-//        Text(
-//            text = stringResource(id = selectedJejuItem.descriptionResourceId)
-//        )
-//
-//    }
-//
-//}
