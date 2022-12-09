@@ -44,13 +44,13 @@ fun TaskCompletedScreen() {
         val image = painterResource(R.drawable.ic_task_completed)
         Image(painter = image, contentDescription = null)
         Text(
-            text = "All tasks completed",
+            text = stringResource(R.string.completed_text),
             fontSize = 24.sp,
             modifier = Modifier
                 .padding(top = 24.dp, bottom = 24.dp)
         )
         Text(
-            text = "Nice work!",
+            text = stringResource(R.string.completed_subscription_text),
             fontSize = 16.sp
         )
     }
