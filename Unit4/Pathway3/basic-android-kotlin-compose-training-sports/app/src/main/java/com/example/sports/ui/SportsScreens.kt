@@ -16,6 +16,7 @@
 
 package com.example.sports.ui
 
+import android.app.Activity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -32,13 +33,14 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -55,36 +57,60 @@ import com.example.sports.ui.theme.SportsTheme
  */
 @Composable
 fun SportsApp(
+    widthSizeClass: WindowWidthSizeClass,
     modifier: Modifier = Modifier,
 ) {
     val viewModel: SportsViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
 
+    val contentType = when (widthSizeClass) {
+        WindowWidthSizeClass.Compact -> ContentType.List
+        WindowWidthSizeClass.Medium -> ContentType.List
+        WindowWidthSizeClass.Expanded -> ContentType.ListAndDetail
+        else -> ContentType.List
+    }
+
     Scaffold(
         topBar = {
             SportsAppBar(
+                contentType = contentType,
                 isShowingListPage = uiState.isShowingListPage,
                 onBackButtonClick = { viewModel.navigateToListPage() }
             )
         }
     ) { innerPadding ->
-        if (uiState.isShowingListPage) {
-            SportsList(
+        if (contentType == ContentType.ListAndDetail) {
+            val activity = LocalContext.current as Activity
+            SportsListAndDetails(
                 sports = uiState.sportsList,
+                selectedSport = uiState.currentSport,
                 onClick = {
                     viewModel.updateCurrentSport(it)
                     viewModel.navigateToDetailPage()
                 },
-                modifier = modifier.padding((innerPadding))
-            )
-        } else {
-            SportsDetail(
-                selectedSport = uiState.currentSport,
-                modifier = modifier.padding((innerPadding)),
                 onBackPressed = {
-                    viewModel.navigateToListPage()
+                    activity.finish()
                 }
             )
+        } else {
+            if (uiState.isShowingListPage) {
+                SportsList(
+                    sports = uiState.sportsList,
+                    onClick = {
+                        viewModel.updateCurrentSport(it)
+                        viewModel.navigateToDetailPage()
+                    },
+                    modifier = modifier.padding((innerPadding))
+                )
+            } else {
+                SportsDetail(
+                    selectedSport = uiState.currentSport,
+                    modifier = modifier.padding((innerPadding)),
+                    onBackPressed = {
+                        viewModel.navigateToListPage()
+                    }
+                )
+            }
         }
     }
 }
@@ -94,32 +120,40 @@ fun SportsApp(
  */
 @Composable
 fun SportsAppBar(
+    contentType: ContentType,
     onBackButtonClick: () -> Unit,
     isShowingListPage: Boolean,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     TopAppBar(
         title = {
             Text(
-                if (!isShowingListPage) {
-                    stringResource(R.string.news_fragment_label)
-                } else {
+                if (contentType == ContentType.ListAndDetail) {
                     stringResource(R.string.list_fragment_label)
+                } else {
+                    if (!isShowingListPage) {
+                        stringResource(R.string.news_fragment_label)
+                    } else {
+                        stringResource(R.string.list_fragment_label)
+                    }
                 }
             )
         },
-        navigationIcon =
-        if (!isShowingListPage) {
-            {
-                IconButton(onClick = onBackButtonClick) {
-                    Icon(
-                        imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = stringResource(R.string.back_button)
-                    )
-                }
-            }
-        } else {
+        navigationIcon = if (contentType == ContentType.ListAndDetail) {
             null
+        } else {
+            if (!isShowingListPage) {
+                {
+                    IconButton(onClick = onBackButtonClick) {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.back_button)
+                        )
+                    }
+                }
+            } else {
+                null
+            }
         },
         modifier = modifier
     )
@@ -130,7 +164,7 @@ fun SportsAppBar(
 private fun SportsListItem(
     sport: Sport,
     onItemClick: (Sport) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Card(
         elevation = 2.dp,
@@ -190,7 +224,7 @@ private fun SportsListImageItem(sport: Sport, modifier: Modifier = Modifier) {
 private fun SportsList(
     sports: List<Sport>,
     onClick: (Sport) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
@@ -210,7 +244,7 @@ private fun SportsList(
 private fun SportsDetail(
     selectedSport: Sport,
     onBackPressed: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     BackHandler {
         onBackPressed()
@@ -248,6 +282,24 @@ private fun SportsDetail(
     }
 }
 
+@Composable
+fun SportsListAndDetails(
+    modifier: Modifier = Modifier,
+    sports: List<Sport>,
+    selectedSport: Sport,
+    onClick: (Sport) -> Unit = {},
+    onBackPressed: () -> Unit = {},
+) {
+    Row(modifier = modifier.fillMaxSize()) {
+        SportsList(modifier = Modifier.weight(1f), sports = sports, onClick = onClick)
+        SportsDetail(
+            modifier = Modifier.weight(1f),
+            selectedSport = selectedSport,
+            onBackPressed = onBackPressed
+        )
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun SportsListItemPreview() {
@@ -267,6 +319,19 @@ fun SportsListPreview() {
             SportsList(
                 sports = LocalSportsDataProvider.getSportsData(),
                 onClick = {}
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, widthDp = 1000)
+@Composable
+fun SportsListAndDetailsPreview() {
+    SportsTheme() {
+        Surface {
+            SportsListAndDetails(
+                sports = LocalSportsDataProvider.getSportsData(),
+                selectedSport = LocalSportsDataProvider.getSportsData()[0]
             )
         }
     }
