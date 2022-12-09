@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Art Space</string>
+
+    <string name="lemon_tree_content_description">Tap the lemon tree to select a lemon</string>
+    <string name="lemon_content_description">Keep tapping the lemon to squeeze it</string>
+    <string name="glass_of_lemonade_content_description">Tap the lemonade to drink it</string>
+    <string name="empty_glass_content_description">Tap the empty glass to start again</string>
+
+
+    <string name="title1">Title 1</string>
+    <string name="title2">Title 2</string>
+    <string name="title3">Title 3</string>
+    <string name="title4">Title 4</string>
+    <string name="writer1">Writer 1</string>
+    <string name="writer2">Writer 2</string>
+    <string name="writer3">Writer 3</string>
+    <string name="writer4">Writer 4</string>
+    <string name="year1">2021</string>
+    <string name="year2">2022</string>
+    <string name="year3">2023</string>
+    <string name="year4">2024</string>
+
+</resources>

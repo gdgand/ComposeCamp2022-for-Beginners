@@ -38,7 +38,14 @@ import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            HappyBirthdayTheme {
+                Surface(color = MaterialTheme.colors.background) {
+//                    BirthdayGreetingWithText( "Happy Birthday Sam!", "- from Emma")
+                    BirthdayGreetingWithImage( getString(R.string.happy_birthday_text), getString(R.string.signature_text))
+                }
+            }
+        }
     }
 }
 
@@ -46,15 +53,42 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BirthdayGreetingWithText(message: String, from: String) {
     // Create a column so that texts don't overlap
-    Column { }
+    Column {
+        Text(
+            text = message,
+            fontSize = 36.sp,
+            modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.CenterHorizontally).padding(start = 16.dp, top = 16.dp)
+        )
+        Text(
+            text = from,
+            fontSize = 24.sp,
+            modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.CenterHorizontally).padding(start = 16.dp, end = 16.dp)
+        )
+    }
 }
 
 // 5. Box 레이아웃 추
 @Composable
-fun BirthdayGreetingWithImage(message: String, from: String) { }
+fun BirthdayGreetingWithImage(message: String, from: String) {
+    val image = painterResource(id = R.drawable.androidparty)
+    Box() {
+        Image(
+            painter = image,
+            contentDescription = null,
+            modifier = Modifier.fillMaxHeight().fillMaxWidth(),
+            contentScale = ContentScale.Crop
+        )
+        BirthdayGreetingWithText(message = message, from = from)
+    }
+}
 
 // 4. 이미지 컴포저블 추가
 @Preview(showBackground = false)
 @Composable
-private fun BirthdayCardPreview() { }
+private fun BirthdayCardPreview() {
+    HappyBirthdayTheme {
+//        BirthdayGreetingWithText( "Happy Birthday Sam!", "- from Emma")
+        BirthdayGreetingWithImage( "Happy Birthday Sam!", "- from Emma")
+    }
+}
 
