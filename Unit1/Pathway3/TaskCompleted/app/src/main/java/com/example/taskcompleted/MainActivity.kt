@@ -29,6 +29,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun TaskCompletedScreen() {
     Column( ) {
+        val image = painterResource(R.drawable.ic_task_completed)
+        Image(painter = image, contentDescription = null)
         Text(
             text = "All tasks completed",
             fontSize = 24.sp,
