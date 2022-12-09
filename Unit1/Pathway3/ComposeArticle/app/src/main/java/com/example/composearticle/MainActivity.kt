@@ -60,16 +60,14 @@ private fun ArticleCard(
         Text(
             text = shortDescription,
             modifier = Modifier
-                .padding(start = 16.dp, end = 16.dp)
-                .fillMaxWidth()
-                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(start = 16.dp, end = 16.dp),
+            textAlign = TextAlign.Justify
         )
         Text(
             text = longDescription,
             modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth()
-                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(16.dp),
+            textAlign = TextAlign.Justify
         )
     }
 }
