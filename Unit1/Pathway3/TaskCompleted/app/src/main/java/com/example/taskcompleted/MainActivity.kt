@@ -46,6 +46,7 @@ fun TaskCompletedScreen() {
         Text(
             text = stringResource(R.string.completed_text),
             fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
             modifier = Modifier
                 .padding(top = 24.dp, bottom = 24.dp)
         )
