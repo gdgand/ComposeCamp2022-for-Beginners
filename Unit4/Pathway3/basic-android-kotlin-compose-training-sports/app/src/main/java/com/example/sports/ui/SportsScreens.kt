@@ -248,6 +248,28 @@ private fun SportsDetail(
     }
 }
 
+@Composable
+fun SportListAndDetail(
+    sport: List<Sport>,
+    onClick: (Sport) -> Unit,
+    selectedSport: Sport,
+    modifier: Modifier = Modifier
+) {
+    Row(modifier = modifier.fillMaxWidth()) {
+        SportsList(sports = sport, onClick = onClick)
+        SportsDetail(selectedSport = selectedSport, onBackPressed = { /*TODO*/ })
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SportListAndDetailPreview() {
+    SportsTheme {
+        SportListAndDetail(sport = LocalSportsDataProvider.getSportsData(),
+            onClick = {}, selectedSport = LocalSportsDataProvider.defaultSport)
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun SportsListItemPreview() {
