@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    ArtSpace(itemList)
+                    ArtSpace()
                 }
             }
         }
@@ -63,7 +63,7 @@ private fun initTestItems() {
 }
 
 @Composable
-fun ArtSpace(itemList: MutableList<PictureItem>) {
+fun ArtSpace() {
     initTestItems()
 
     var index = remember { mutableStateOf(0) }
@@ -178,6 +178,6 @@ fun ArtSpace(itemList: MutableList<PictureItem>) {
 @Composable
 fun DefaultPreview() {
     ArtSpaceTheme {
-        ArtSpace(itemList)
+        ArtSpace()
     }
 }
