@@ -16,4 +16,6 @@
   -->
 <resources>
     <string name="app_name">Happy Birthday</string>
+    <string name="birthday_message">Happy birthday Sam!</string>
+    <string name="from_emma">-from Emma</string>
 </resources>
