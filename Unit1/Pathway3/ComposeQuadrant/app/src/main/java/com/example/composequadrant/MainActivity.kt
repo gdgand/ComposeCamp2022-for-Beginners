@@ -32,8 +32,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ComposeQuadrantApp() {
     Column() {
-        Row() { }
-        Row() { }
+        Row() {
+
+        }
+        Row() {
+
+        }
     }
 }
 
@@ -61,4 +65,6 @@ private fun ComposableInfoCard(
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+
+}

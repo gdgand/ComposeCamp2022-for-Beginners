@@ -28,7 +28,18 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TaskCompletedScreen() {
-    Column( ) { }
+    Column( ) {
+        Text(
+            text = "All tasks completed",
+            fontSize = 24.sp,
+            modifier = Modifier
+                .padding(top = 24.dp, bottom = 24.dp)
+        )
+        Text(
+            text = "Nice work!",
+            fontSize = 16.sp
+        )
+    }
 }
 
 @Preview(showBackground = true)
