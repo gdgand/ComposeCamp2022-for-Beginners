@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -33,10 +34,32 @@ class MainActivity : ComponentActivity() {
 fun ComposeQuadrantApp() {
     Column() {
         Row() {
-
+            ComposableInfoCard(
+                title = stringResource(R.string.first_title),
+                description = stringResource(R.string.first_description),
+                backgroundColor = Color.Green,
+                modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(
+                title = stringResource(R.string.second_title),
+                description = stringResource(R.string.second_description),
+                backgroundColor = Color.Yellow,
+                modifier = Modifier.weight(1f)
+            )
         }
         Row() {
-
+            ComposableInfoCard(
+                title = stringResource(R.string.third_title),
+                description = stringResource(R.string.third_description),
+                backgroundColor = Color.Cyan,
+                modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(
+                title = stringResource(R.string.fourth_title),
+                description = stringResource(R.string.fourth_description),
+                backgroundColor = Color.LightGray,
+                modifier = Modifier.weight(1f)
+            )
         }
     }
 }
