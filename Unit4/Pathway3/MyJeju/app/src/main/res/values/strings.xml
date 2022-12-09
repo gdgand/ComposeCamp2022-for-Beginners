@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">MyJeju</string>
+    <string name="app_desc">완벽한 제주 여행을 위한 가이드</string>
 
     <string name="c_beach">해수욕장</string>
     <string name="c_island">섬</string>

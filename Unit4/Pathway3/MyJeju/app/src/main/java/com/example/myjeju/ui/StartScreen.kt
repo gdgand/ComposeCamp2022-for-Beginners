@@ -38,7 +38,7 @@ fun StartScreen(
     ) {
         items(categories) {
             CategoryItemCard(
-                category = it,
+                categoryItem = it,
                 onCategoryClick = onClick
             )
         }
@@ -48,14 +48,14 @@ fun StartScreen(
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun CategoryItemCard(
-    category: CategoryItemContent,
+    categoryItem: CategoryItemContent,
     onCategoryClick: (CategoryItemContent) -> Unit,
     modifier: Modifier = Modifier
 ){
     Card(
-        elevation = 2.dp,
+        elevation = 5.dp,
         modifier = modifier,
-        onClick = { onCategoryClick(category) }
+        onClick = { onCategoryClick(categoryItem) }
     ) {
         Row(
             modifier = Modifier
@@ -68,7 +68,7 @@ fun CategoryItemCard(
 
             ) {
                 Image(
-                    painter = painterResource(id = category.iconResourceId),
+                    painter = painterResource(id = categoryItem.iconResourceId),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -87,8 +87,8 @@ fun CategoryItemCard(
                     .align(Alignment.CenterVertically)
             ) {
                 Text(
-                    text = stringResource(id = category.categoryResourceId),
-                    modifier = Modifier.padding(8.dp)
+                    text = stringResource(id = categoryItem.categoryResourceId),
+                    modifier = Modifier.padding(start = 8.dp)
                 )
             }
         }
@@ -100,7 +100,7 @@ fun CategoryItemCard(
 fun CategoryItemCardPreview() {
     MyJejuTheme() {
         CategoryItemCard(
-            category = JejuDataProvider.getCategory()[0],
+            categoryItem = JejuDataProvider.getCategory()[0],
             onCategoryClick = {}
         )
     }

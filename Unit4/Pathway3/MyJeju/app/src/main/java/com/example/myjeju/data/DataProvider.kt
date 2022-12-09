@@ -41,7 +41,7 @@ object JejuDataProvider {
                 titleResourceId = R.string.b_hamduckbeach,
                 categoryResourceId = R.string.c_beach,
                 imageResourceId = R.drawable.b_hamduckbeach,
-//                iconResourceId = R.drawable.icon_beach,
+                iconResourceId = R.drawable.icon_beach,
                 descriptionResourceId = R.string.b_hamduckbeach_desc
             ),
             JejuItemContent(
@@ -49,7 +49,7 @@ object JejuDataProvider {
                 titleResourceId = R.string.b_hypjaebeach,
                 categoryResourceId = R.string.c_beach,
                 imageResourceId = R.drawable.b_hypjaebeach,
-//                iconResourceId = R.drawable.icon_beach,
+                iconResourceId = R.drawable.icon_beach,
                 descriptionResourceId = R.string.b_hypjaebeach_desc
             ),
             JejuItemContent(
@@ -57,7 +57,7 @@ object JejuDataProvider {
                 titleResourceId = R.string.b_jungmunbeach,
                 categoryResourceId = R.string.c_beach,
                 imageResourceId = R.drawable.b_jungmunbeach,
-//                iconResourceId = R.drawable.icon_beach,
+                iconResourceId = R.drawable.icon_beach,
                 descriptionResourceId = R.string.b_jungmunbeach_desc
             ),
             JejuItemContent(
@@ -65,7 +65,7 @@ object JejuDataProvider {
                 titleResourceId = R.string.b_pyosonbeach,
                 categoryResourceId = R.string.c_beach,
                 imageResourceId = R.drawable.b_pyosonbeach,
-//                iconResourceId = R.drawable.icon_beach,
+                iconResourceId = R.drawable.icon_beach,
                 descriptionResourceId = R.string.b_pyosonbeach_desc
             ),
             JejuItemContent(
@@ -73,7 +73,7 @@ object JejuDataProvider {
                 titleResourceId = R.string.i_biyangdo,
                 categoryResourceId = R.string.c_island,
                 imageResourceId = R.drawable.i_biyangdo,
-//                iconResourceId = R.drawable.icon_island,
+                iconResourceId = R.drawable.icon_island,
                 descriptionResourceId = R.string.i_biyangdo_desc
             ),
             JejuItemContent(
@@ -81,7 +81,7 @@ object JejuDataProvider {
                 titleResourceId = R.string.i_marado,
                 categoryResourceId = R.string.c_island,
                 imageResourceId = R.drawable.i_marado,
-//                iconResourceId = R.drawable.icon_island,
+                iconResourceId = R.drawable.icon_island,
                 descriptionResourceId = R.string.i_marado_desc
             ),
             JejuItemContent(
@@ -89,7 +89,7 @@ object JejuDataProvider {
                 titleResourceId = R.string.i_wudo,
                 categoryResourceId = R.string.c_island,
                 imageResourceId = R.drawable.i_wudo,
-//                iconResourceId = R.drawable.icon_island,
+                iconResourceId = R.drawable.icon_island,
                 descriptionResourceId = R.string.i_wudo_desc
             ),
             JejuItemContent(
@@ -97,7 +97,7 @@ object JejuDataProvider {
                 titleResourceId = R.string.m_gumunorum,
                 categoryResourceId = R.string.c_mountain,
                 imageResourceId = R.drawable.m_gumunorum,
-//                iconResourceId = R.drawable.icon_mountain,
+                iconResourceId = R.drawable.icon_mountain,
                 descriptionResourceId = R.string.m_gumunorum_desc
             ),
             JejuItemContent(
@@ -105,7 +105,7 @@ object JejuDataProvider {
                 titleResourceId = R.string.m_hallasan,
                 categoryResourceId = R.string.c_mountain,
                 imageResourceId = R.drawable.m_hallasan,
-//                iconResourceId = R.drawable.icon_mountain,
+                iconResourceId = R.drawable.icon_mountain,
                 descriptionResourceId = R.string.m_hallasan_desc
             ),
             JejuItemContent(
@@ -113,7 +113,7 @@ object JejuDataProvider {
                 titleResourceId = R.string.m_sanbangsan,
                 categoryResourceId = R.string.c_mountain,
                 imageResourceId = R.drawable.m_sanbangsan,
-//                iconResourceId = R.drawable.icon_mountain,
+                iconResourceId = R.drawable.icon_mountain,
                 descriptionResourceId = R.string.m_sanbangsan_desc
             ),
             JejuItemContent(
@@ -121,7 +121,7 @@ object JejuDataProvider {
                 titleResourceId = R.string.mk_5daymarket,
                 categoryResourceId = R.string.c_market,
                 imageResourceId = R.drawable.mk_5daymarket,
-//                iconResourceId = R.drawable.icon_market,
+                iconResourceId = R.drawable.icon_market,
                 descriptionResourceId = R.string.mk_5daymarket_desc
             ),
             JejuItemContent(
@@ -129,7 +129,7 @@ object JejuDataProvider {
                 titleResourceId = R.string.mk_dongmunmarket,
                 categoryResourceId = R.string.c_market,
                 imageResourceId = R.drawable.mk_dongmunmarket,
-//                iconResourceId = R.drawable.icon_market,
+                iconResourceId = R.drawable.icon_market,
                 descriptionResourceId = R.string.mk_dongmunmarket_desc
             ),
             JejuItemContent(
@@ -137,7 +137,7 @@ object JejuDataProvider {
                 titleResourceId = R.string.mk_seogwipomaeilollemarket,
                 categoryResourceId = R.string.c_market,
                 imageResourceId = R.drawable.mk_seogwipomaeilollemarket,
-//                iconResourceId = R.drawable.icon_market,
+                iconResourceId = R.drawable.icon_market,
                 descriptionResourceId = R.string.mk_seogwipomaeilollemarket_desc
             )
         )

@@ -12,6 +12,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -22,8 +23,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.myjeju.R
 import com.example.myjeju.data.JejuDataProvider
 import com.example.myjeju.model.JejuItemContent
+import com.example.myjeju.ui.utils.MyJejuContentType
 
 enum class MyJejuScreen(){
     Start,
@@ -41,18 +44,23 @@ fun MyJejuApp(
     val currentScreen = MyJejuScreen.valueOf(
         backStackEntry?.destination?.route ?: MyJejuScreen.Start.name
     )
-
+    val contentType: MyJejuContentType
     val viewModel: JejuViewModel = viewModel()
 
     when(windowSize) {
+        WindowWidthSizeClass.Compact,
+        WindowWidthSizeClass.Expanded -> {
+            contentType = MyJejuContentType.ListAndDetail
+        }
+        else -> {
+            contentType = MyJejuContentType.ListOnly
+        }
 
     }
 
     Scaffold(
         topBar = {
-            JejuAppBar(
-
-            )
+            JejuAppBar()
         }
     ) {
         innerPadding ->
@@ -97,10 +105,24 @@ fun MyJejuApp(
 }
 
 @Composable
-fun JejuAppBar(
-
+private fun JejuAppBar(
+    modifier: Modifier = Modifier
 ){
-    TopAppBar() {
-
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .sizeIn(minHeight = 56.dp)
+            .padding(top = 16.dp, bottom = 8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = stringResource(id = R.string.app_name),
+            style = MaterialTheme.typography.h3,
+            color = Color.White
+        )
+        Text(
+            text = stringResource(id = R.string.app_desc),
+            color = Color.White
+        )
     }
 }

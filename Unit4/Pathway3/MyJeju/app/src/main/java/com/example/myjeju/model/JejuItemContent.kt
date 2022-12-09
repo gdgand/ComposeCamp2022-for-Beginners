@@ -8,6 +8,6 @@ data class JejuItemContent(
     @StringRes val titleResourceId: Int,
     @StringRes val categoryResourceId: Int,
     @DrawableRes val imageResourceId: Int,
-//    @DrawableRes val iconResourceId: Int,
+    @DrawableRes val iconResourceId: Int,
     @StringRes val descriptionResourceId: Int
 )
