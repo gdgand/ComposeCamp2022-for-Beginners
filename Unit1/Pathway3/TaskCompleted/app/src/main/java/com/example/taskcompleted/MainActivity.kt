@@ -28,7 +28,13 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TaskCompletedScreen() {
-    Column( ) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
         val image = painterResource(R.drawable.ic_task_completed)
         Image(painter = image, contentDescription = null)
         Text(
@@ -46,4 +52,6 @@ fun TaskCompletedScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+
+}
