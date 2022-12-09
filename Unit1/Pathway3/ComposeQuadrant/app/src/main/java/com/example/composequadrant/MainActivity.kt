@@ -17,12 +17,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+
+        }
     }
 }
 
@@ -41,7 +44,18 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column( ) { }
+    Column(modifier = modifier) {
+        Text(
+            text = title,
+            fontSize = 24.sp,
+            modifier = Modifier
+                .padding(top = 24.dp, bottom = 8.dp)
+        )
+        Text(
+            text = description,
+            fontSize = 16.sp,
+        )
+    }
 }
 
 
