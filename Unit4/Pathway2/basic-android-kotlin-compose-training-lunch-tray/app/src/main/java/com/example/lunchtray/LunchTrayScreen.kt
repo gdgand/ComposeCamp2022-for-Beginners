@@ -16,6 +16,7 @@
 package com.example.lunchtray
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -25,10 +26,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.lunchtray.datasource.DataSource
 import com.example.lunchtray.ui.*
 
 // TODO: Screen enum
@@ -92,7 +94,7 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
         NavHost(
             navController = navController,
             startDestination = LunchTrayScreen.Start.name,
-            modifier = modifier
+            modifier = modifier.padding(innerPadding)
         ) {
             composable(route = LunchTrayScreen.Start.name) {
                 StartOrderScreen(onStartOrderButtonClicked = {
@@ -109,11 +111,12 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
                         navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
                     },
                     onNextButtonClicked = { navController.navigate(LunchTrayScreen.SideDish.name) },
-                    onSelectionChanged = {entreeItem ->
+                    onSelectionChanged = { entreeItem ->
                         viewModel.updateEntree(entreeItem)
                     }
                 )
             }
+
             composable(route = LunchTrayScreen.SideDish.name) {
                 SideDishMenuScreen(
                     options = DataSource.sideDishMenuItems,
@@ -157,13 +160,4 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
             }
         }
     }
-}
-
-private fun cancelOrderAndNavigateToStart(
-    viewModel: OrderViewModel,
-    navController: NavHostController
-) {
-    viewModel.resetOrder()
-    navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
-
 }
