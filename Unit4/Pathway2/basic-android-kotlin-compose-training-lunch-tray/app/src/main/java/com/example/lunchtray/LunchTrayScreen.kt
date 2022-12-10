@@ -70,6 +70,11 @@ fun AppBar(
 fun LunchTrayApp(modifier: Modifier = Modifier) {
     // TODO: Create Controller and initialization
     val navController = rememberNavController()
+
+    val backStackEntry by navController.currentBackStackEntryAsState()
+
+    val currentScreen =
+        LunchTrayScreen.valueOf(backStackEntry?.destination?.route ?: LunchTrayScreen.Start.name)
     // Create ViewModel
     val viewModel: OrderViewModel = viewModel()
 
