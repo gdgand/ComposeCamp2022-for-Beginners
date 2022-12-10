@@ -145,9 +145,15 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
             }
             composable(route = LunchTrayScreen.Checkout.name) {
                 CheckoutScreen(
-                    orderUiState =,
-                    onNextButtonClicked = { /*TODO*/ },
-                    onCancelButtonClicked = { /*TODO*/ })
+                    orderUiState = uiState,
+                    onNextButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
+                    },
+                    onCancelButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
+                    })
             }
         }
     }
