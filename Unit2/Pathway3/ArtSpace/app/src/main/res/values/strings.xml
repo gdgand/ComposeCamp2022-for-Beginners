@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Art Space</string>
+    <string name="artwork_title_1">...alors, il s\'approcha d\'elle: Parody of van Dyck\'s Betrayal of Christ</string>
+    <string name="artwork_artist_1">French 19th Century</string>
+    <string name="artwork_year_1">1832</string>
+    <string name="artwork_title_2">...detened Señor caballero el paso...</string>
+    <string name="artwork_artist_2">Célestin Nanteuil</string>
+    <string name="artwork_year_2">1855</string>
+    <string name="artwork_title_3">...dieron con Sancho en el suelo y lo mismo le avinó d D. Quixote...</string>
+    <string name="artwork_artist_3">Célestin Nanteuil</string>
+    <string name="artwork_year_3">1855</string>
+    <string name="artwork_title_4">"Any Thing for Me, If You Please?" - Post Office of the Brooklyn Fair in Aid of the Sanitary Commission,</string>
+    <string name="artwork_artist_4">Winslow Homer</string>
+    <string name="artwork_year_4">1864</string>
+    <string name="prev_button">Previous</string>
+    <string name="next_button">Next</string>
 </resources>
