@@ -23,9 +23,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -34,6 +35,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.affirmationscodelab.data.Datasource
 import com.example.affirmationscodelab.model.Affirmation
 import com.example.affirmationscodelab.ui.theme.AffirmationsTheme
 
@@ -46,16 +48,18 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 @Composable
 fun AffirmationApp() {
     AffirmationsTheme {
+        AffirmationList(affirmationList = Datasource().loadAffirmations())
     }
 }
 
 
 @Composable
-//모든 컴포저블에 수정자를 전달하고 기본값을 설정
 fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
+    //모든 컴포저블에 수정자를 전달하고 기본값을 설정
     Card(modifier = modifier.padding(8.dp), elevation = 4.dp) {
         Column {
             Image(
@@ -67,13 +71,28 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(194.dp),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Crop    // 이미지 크기
             )
             Text(
                 text = stringResource(id = affirmation.stringResourceId),
                 modifier = Modifier.padding(16.dp),
                 style = MaterialTheme.typography.h6
             )
+        }
+    }
+}
+
+
+@Composable
+private fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Modifier) {
+//    Column {
+//        affirmationList.forEach { affirmation ->
+//            AffirmationCard(affirmation = affirmation)
+//        }
+//    }
+    LazyColumn {
+        items(affirmationList) { affirmation ->
+            AffirmationCard(affirmation)
         }
     }
 }
