@@ -26,6 +26,30 @@ import com.example.lunchtray.ui.OrderViewModel
 // TODO: Screen enum
 
 // TODO: AppBar
+@Composable
+fun AppBar(
+    @StringRes currentScreenTitle: Int,
+    canNavigateBack: Boolean,
+    navigateUp: () -> Unit,
+    modifier: Modifier
+) {
+    TopAppBar(
+        title = { Text(stringResource(id = currentScreenTitle)) },
+        modifier = modifier,
+        navigationIcon = {
+            if (canNavigateBack) {
+                IconButton(onClick = { navigateUp }) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = stringResource(id = R.string.back_button)
+                    )
+                }
+            }
+        }
+    )
+
+
+}
 
 @Composable
 fun LunchTrayApp(modifier: Modifier = Modifier) {
