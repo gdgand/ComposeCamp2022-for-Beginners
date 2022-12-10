@@ -19,7 +19,12 @@ import androidx.compose.ui.unit.sp
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            TaskCompletedScreen(firstText = stringResource(R.string.all_task_completed),
+                secondText = stringResource(R.string.nice_work),
+                imagePainter = painterResource(R.drawable.ic_task_completed)
+            )
+        }
     }
 }
 
