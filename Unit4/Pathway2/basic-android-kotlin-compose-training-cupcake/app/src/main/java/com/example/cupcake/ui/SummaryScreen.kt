@@ -45,7 +45,9 @@ import com.example.cupcake.ui.components.FormattedPriceLabel
 fun OrderSummaryScreen(
     orderUiState: OrderUiState,
     // TODO: add onCancelButtonClicked
+    onCancelButtonClicked: () -> Unit,
     // TODO: add onSendButtonClicked
+    onSendButtonClicked: (String, String) -> Unit,
     modifier: Modifier = Modifier
 ){
     val resources = LocalContext.current.resources
@@ -90,13 +92,17 @@ fun OrderSummaryScreen(
         )
         Button(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { /* TODO: handle send button */ }
+//            onClick = { /* TODO: handle send button */ onSendButtonClicked(newOrder, orderSummary) }
+            onClick = { onSendButtonClicked(newOrder, orderSummary) }
+        //왜 여기에서는 {}를 사용하고 아래에서는 {}를 사용하지 않는 것인가?
+        // 호출할 때 사용한 주석은 상관 없는 듯
         ) {
             Text(stringResource(R.string.send))
         }
         OutlinedButton(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { /* TODO: handle cancel button */ }
+//            onClick = { /* TODO: handle cancel button */ onCancelButtonClicked }
+            onClick = onCancelButtonClicked
         ) {
             Text(stringResource(R.string.cancel))
         }
@@ -106,7 +112,7 @@ fun OrderSummaryScreen(
 @Preview
 @Composable
 fun OrderSummaryPreview(){
-    OrderSummaryScreen(
-        orderUiState = OrderUiState(0, "Test", "Test", "$300.00"),
-    )
+//    OrderSummaryScreen(
+//        orderUiState = OrderUiState(0, "Test", "Test", "$300.00"),
+//    )
 }

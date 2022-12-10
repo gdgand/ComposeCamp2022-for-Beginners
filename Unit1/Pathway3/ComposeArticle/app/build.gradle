@@ -46,6 +46,12 @@ android {
     }
 }
 
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '7.0'
+//}
+//tasks.register("prepareKotlinBuildScriptModel"){}
+
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'

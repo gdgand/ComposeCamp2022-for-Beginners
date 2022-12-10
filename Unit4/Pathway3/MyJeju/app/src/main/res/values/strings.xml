@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">MyJeju</string>
+    <string name="app_desc">완벽한 제주 여행을 위한 가이드</string>
+
+    <string name="c_beach">해수욕장</string>
+    <string name="c_island">섬</string>
+    <string name="c_mountain">산/오름</string>
+    <string name="c_market">시장</string>
+
+    <string name="b_hamduckbeach">함덕해수욕장</string>
+    <string name="b_hypjaebeach">협재해수욕장</string>
+    <string name="b_jungmunbeach">중문해수욕장</string>
+    <string name="b_pyosonbeach">표선해수욕장</string>
+    <string name="i_biyangdo">비양도</string>
+    <string name="i_marado">마라도</string>
+    <string name="i_wudo">우도</string>
+    <string name="m_gumunorum">검은오름</string>
+    <string name="m_hallasan">한라산</string>
+    <string name="m_sanbangsan">산방산</string>
+    <string name="mk_5daymarket">오일장</string>
+    <string name="mk_dongmunmarket">동문시장</string>
+    <string name="mk_seogwipomaeilollemarket">서귀포매일올레시장</string>
+
+    <string name="b_hamduckbeach_desc">함덕해수욕장은 제주특별자치도 제주시 조천읍 함덕리에 있는 해변이다. 바로 옆에 위치한 서우봉 때문에 함덕서우봉해변이라고도 불린다.</string>
+    <string name="b_hypjaebeach_desc">협재해변은 제주도 서쪽, 제주시 한림읍 협재리에 있는 해변이다. 해안은 흰색의 순수 패사로 이루어진 사빈 해안으로 검은색의 현무암이 노출되어 대조를 이룬다.</string>
+    <string name="b_jungmunbeach_desc">중문색달해수욕장은 대한민국 서귀포시 색달동에 있는 해수욕장이다. 해변의 길이는 560m, 너비는 50m이며 모래는 검은색, 흰색, 빨간색, 회색 등 다양한 색상이 있다.</string>
+    <string name="b_pyosonbeach_desc">총 면적 25만제곱미터, 백사장 16만 제곱미터에 이르는 표선해수욕장은 백사장이 아름다운 해수욕장으로 유명하다.</string>
+    <string name="i_biyangdo_desc">비양도는 제주특별자치도 제주시 한림읍에 있는 섬이다. 면적은 0.52km², 인구는 166명이다. 《신증동국여지승람》에서는 이 섬이 화산 활동에 의해 만들어졌다고 기록하고 있다.</string>
+    <string name="i_marado_desc">마라도는 대한민국의 최남단에 있는 섬으로, 행정구역상 제주특별자치도 서귀포시 대정읍 마라리에 속해 있다. 현재 문화재청 마라도 천연보호구역으로 지정되어 있다.</string>
+    <string name="i_wudo_desc">우도는 제주도의 동쪽 끝에 접하는 섬으로, 제주특별자치도에서 제주도 다음으로 큰 섬이다. 우도란 이름은 섬의 모습이 소가 누워 있는 것 같다고 해서 붙여졌다.</string>
+    <string name="m_gumunorum_desc">거문오름은 해발 456m(둘레 4,551m)의 오름으로 거문오름 용암동굴계를 형성한 모체로 알려져 있다. 숲이 우거져 검게 보여 검은 오름이라 하였다고 전해진다.</string>
+    <string name="m_hallasan_desc">한라산은 대한민국 제주도 중앙부에 있는 해발 1,947.06m, 면적 약 1,820km²의 화산으로, 제주도의 면적 대부분을 차지하고 있다. 정상에 백록담이라는 화산호가 있는데, 백록담이라는 이름은 흰 사슴이 물을 먹는 곳이라는 뜻에서 왔다고 전해진다.</string>
+    <string name="m_sanbangsan_desc">산방산은 대한민국 제주특별자치도 서귀포시 안덕면 사계리에 있는 산이다. 산방이라는 말은 굴이 있는 산을 뜻한다. 높이는 해발 395m이며, 남쪽 해발 150m 쯤에 해식동굴이 있어서 산방산이라 이름을 지었다. 대한민국의 명승으로 지정되었다.</string>
+    <string name="mk_5daymarket_desc">전국에서 가장 규모가 큰 오일시장으로 매월 2일, 7일 장이 열리는 날이면 압도적인 규모와 함께 장터를 가득 메운 방문객들의 열기로 가득하다.</string>
+    <string name="mk_dongmunmarket_desc">동문재래시장은 제주도 도심에 자리하였으며, 가장 크고 역사가 깊은 상설 재래시장이다. 엄청난 규모를 자랑하는 만큼 1년 내내 현지인 그리고 여행객들의 발걸음이 끊이지 않는 곳이다.</string>
+    <string name="mk_seogwipomaeilollemarket_desc">서귀포매일올레시장은 서귀포시 중심에 자리한 전통시장이자, 제주 여행에서 빼놓을 수 없는 필수 코스로 자리매김한 시장이다.</string>
+</resources>
