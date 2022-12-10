@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -65,18 +66,16 @@ fun SuperHeroAppBar(modifier: Modifier = Modifier) {
 @Composable
 fun SuperHeroCard(hero: Hero, modifier: Modifier = Modifier) {
     Card(
-        modifier = modifier
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .wrapContentHeight()
-            .fillMaxWidth(), elevation = 2.dp
+        modifier = modifier.padding(horizontal = 16.dp, vertical = 8.dp), elevation = 2.dp
     ) {
         Row(
             modifier = Modifier
+                .fillMaxWidth()
                 .padding(16.dp)
-                .fillMaxWidth(),
+                .sizeIn(minHeight = 72.dp),
             horizontalArrangement = Arrangement.SpaceAround
         ) {
-            SuperHeroInformation(name = hero.nameRes, description = hero.descriptionRes)
+            SuperHeroInformation(name = hero.nameRes, description = hero.descriptionRes, modifier = Modifier.weight(1f))
             Spacer(modifier = Modifier.size(16.dp))
             SuperHeroIcon(heroIcon = hero.imageRes, contentDescription = hero.descriptionRes)
         }
@@ -105,11 +104,12 @@ fun SuperHeroIcon(
     @StringRes contentDescription: Int?,
     modifier: Modifier = Modifier
 ) {
-    Image(
-        painter = painterResource(id = heroIcon),
-        contentDescription = contentDescription?.let { stringResource(id = it) },
-        modifier = modifier
-            .clip(Shapes.small),
-        alignment = Alignment.CenterEnd
-    )
+    Box(modifier = modifier.size(72.dp).clip(Shapes.small)) {
+        Image(
+            painter = painterResource(id = heroIcon),
+            contentDescription = contentDescription?.let { stringResource(id = it) },
+            alignment = Alignment.TopCenter,
+            contentScale = ContentScale.FillWidth,
+        )
+    }
 }
