@@ -17,6 +17,7 @@
 package com.example.reply.ui
 
 import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -47,6 +48,7 @@ import androidx.compose.ui.unit.dp
 import com.example.reply.R
 import com.example.reply.data.Email
 import com.example.reply.data.MailboxType
+import com.example.reply.ui.utils.ReplyNavigationType
 
 /**
  * Component that displays details screen
@@ -57,6 +59,9 @@ fun ReplyDetailsScreen(
     modifier: Modifier = Modifier,
     onBackPressed: () -> Unit = {},
 ) {
+    BackHandler() {
+        onBackPressed()
+    }
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
