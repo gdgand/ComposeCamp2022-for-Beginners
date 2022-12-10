@@ -88,6 +88,7 @@ fun ReplyHomeScreen(
             ReplyAppContent(
                 replyUiState = replyUiState,
                 onTabPressed = onTabPressed,
+                contentType = contentType,
                 onEmailCardPressed = onEmailCardPressed,
                 navigationItemContentList = navigationItemContentList,
                 modifier = modifier,
@@ -98,12 +99,12 @@ fun ReplyHomeScreen(
         if (replyUiState.isShowingHomepage) {
             ReplyAppContent(
                 navigationType = navigationType,
+                contentType = contentType,
                 replyUiState = replyUiState,
                 onTabPressed = onTabPressed,
                 onEmailCardPressed = onEmailCardPressed,
                 navigationItemContentList = navigationItemContentList,
                 modifier = modifier
-
             )
         } else {
             ReplyDetailsScreen(
@@ -120,6 +121,7 @@ fun ReplyHomeScreen(
  */
 @Composable
 private fun ReplyAppContent(
+    contentType: ReplyContentType,
     navigationType: ReplyNavigationType,
     replyUiState: ReplyUiState,
     onTabPressed: ((MailboxType) -> Unit),
