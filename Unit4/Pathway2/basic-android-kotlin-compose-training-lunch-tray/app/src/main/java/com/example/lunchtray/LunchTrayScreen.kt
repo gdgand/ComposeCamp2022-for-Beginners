@@ -15,15 +15,30 @@
  */
 package com.example.lunchtray
 
-import androidx.compose.material.Scaffold
+import androidx.annotation.StringRes
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.lunchtray.ui.OrderViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.lunchtray.ui.*
 
 // TODO: Screen enum
+enum class LunchTrayScreen() {
+    Start,
+    Entree,
+    SideDish,
+    Accompaniment,
+    Checkout
+}
 
 // TODO: AppBar
 @Composable
@@ -54,16 +69,70 @@ fun AppBar(
 @Composable
 fun LunchTrayApp(modifier: Modifier = Modifier) {
     // TODO: Create Controller and initialization
-
+    val navController = rememberNavController()
     // Create ViewModel
     val viewModel: OrderViewModel = viewModel()
 
     Scaffold(
         topBar = {
-            // TODO: AppBar
+            AppBar(
+                currentScreenTitle = c,
+                canNavigateBack = ,
+                navigateUp = { /*TODO*/ },
+                modifier =
+            )
         }
     ) { innerPadding ->
         val uiState by viewModel.uiState.collectAsState()
         // TODO: Navigation host
+        NavHost(
+            navController = navController,
+            startDestination = LunchTrayScreen.Start.name,
+            modifier = modifier
+        ) {
+            composable(route = LunchTrayScreen.Start.name) {
+                StartOrderScreen(onStartOrderButtonClicked = { /*TODO*/ })
+            }
+            composable(route = LunchTrayScreen.Entree.name) {
+                EntreeMenuScreen(
+                    options =,
+                    onCancelButtonClicked = { /*TODO*/ },
+                    onNextButtonClicked = { /*TODO*/ },
+                    onSelectionChanged =
+                )
+            }
+            composable(route = LunchTrayScreen.SideDish.name) {
+                SideDishMenuScreen(
+                    options =,
+                    onCancelButtonClicked = { /*TODO*/ },
+                    onNextButtonClicked = { /*TODO*/ },
+                    onSelectionChanged =
+                )
+            }
+
+            composable(route = LunchTrayScreen.Accompaniment.name) {
+                AccompanimentMenuScreen(
+                    options =,
+                    onCancelButtonClicked = { /*TODO*/ },
+                    onNextButtonClicked = { /*TODO*/ },
+                    onSelectionChanged =
+                )
+            }
+            composable(route = LunchTrayScreen.Checkout.name) {
+                CheckoutScreen(
+                    orderUiState =,
+                    onNextButtonClicked = { /*TODO*/ },
+                    onCancelButtonClicked = { /*TODO*/ })
+            }
+        }
     }
+}
+
+private fun cancelOrderAndNavigateToStart(
+    viewModel: OrderViewModel,
+    navController: NavHostController
+) {
+    viewModel.resetOrder()
+    navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
+
 }
