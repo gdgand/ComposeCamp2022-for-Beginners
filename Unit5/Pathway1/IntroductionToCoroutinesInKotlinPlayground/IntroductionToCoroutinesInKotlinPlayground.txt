@@ -1,0 +1,134 @@
+// ============================
+
+import kotlinx.coroutines.*
+
+fun main() {
+    runBlocking {
+    	println("Weather forecast")
+    	delay(1000)
+    	println("Sunny")    
+    }
+}
+
+// ============================
+
+import kotlinx.coroutines.*
+import kotlin.system.*
+
+fun main() {
+    
+    val time = measureTimeMillis {
+    	runBlocking {
+            println("Weather forecast")
+            printForecast()
+            printTemperature()
+    	}    
+    }
+    println("Execution time: ${time / 1000.0} seconds")
+    
+}
+
+suspend fun printForecast() {
+    delay(1000)
+    println("Sunny")
+}
+
+suspend fun printTemperature() {
+    delay(1000)
+    println("30\u00b0C")
+}
+
+// ============================
+
+import kotlinx.coroutines.*
+import kotlin.system.*
+
+fun main() {
+    val time = measureTimeMillis {
+        runBlocking {
+            println("Weather forecast")
+            println(getWeatherReport())
+            println("Have a good day!")
+        }
+    }
+    println("Execution time: ${time / 1000.0} seconds")
+}
+
+suspend fun getForecast(): String {
+    delay(1000)
+    return "Sunny"
+}
+
+suspend fun getTemperature(): String {
+    delay(1000)
+    return "30\u00b0C"
+}
+
+suspend fun getWeatherReport() = coroutineScope {
+	val forecast = async { getForecast() }
+    val temperature = async { getTemperature() }
+    "${forecast.await()} ${temperature.await()}"
+}
+
+// ============================
+
+import kotlinx.coroutines.*
+
+fun main() {
+    runBlocking {
+        println("Weather forecast")
+         val job = launch {
+            printForecast()
+        }
+        launch {
+            printTemperature()
+            // cancel()
+        }
+        // Cancel the coroutine that fetches weather forecast data
+        delay(200)
+        job.cancel()
+        // cancel()
+        
+        try {
+            
+            throw IllegalStateException("No city selected")
+            
+        } catch (e: IllegalStateException) {
+            println("Caught exception $e")
+            // Handle error
+        }
+        
+    }
+}
+
+suspend fun printForecast() {
+    delay(1000)
+    println("Sunny")
+}
+
+suspend fun printTemperature() {
+    delay(1000)
+    println("30\u00b0C")
+}
+
+// ============================
+
+import kotlinx.coroutines.*
+
+fun main() {
+    runBlocking {
+        println("${Thread.currentThread().name} - runBlocking function")
+        launch {
+            println("${Thread.currentThread().name} - launch function")
+            withContext(Dispatchers.Default) {
+                println("${Thread.currentThread().name} - withContext function")
+                delay(1000)
+                println("10 results found.")
+            }
+        	println("${Thread.currentThread().name} - end of launch function")
+        }
+        println("Loading...")
+    }
+}
+
+// ============================

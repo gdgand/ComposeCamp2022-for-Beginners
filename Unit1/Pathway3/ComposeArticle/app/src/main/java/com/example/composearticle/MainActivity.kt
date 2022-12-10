@@ -1,11 +1,13 @@
 package com.example.composearticle
 
+import android.icu.text.CaseMap.Title
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -24,25 +26,63 @@ import com.example.composearticle.ui.theme.ComposeArticleTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeArticleTheme {
+                Surface(color = MaterialTheme.colors.background) {
+                    DefaultPreview()
+                }
+            }
+        }
     }
 }
 
-@Composable
-fun ComposeArticleApp() { }
+
 
 @Composable
-private fun ArticleCard(
-    title: String,
-    shortDescription: String,
-    longDescription: String,
-    imagePainter: Painter,
-    modifier: Modifier = Modifier,
-) {
-    Column() { }
+fun ImageHeader() {
+    val image = painterResource(id = R.drawable.bg_compose_background)
+
+    Image(
+        painter = image,
+        contentDescription = null,
+        modifier = Modifier.fillMaxWidth()
+    )
 }
 
+@Composable
+fun Title() {
+    Text(
+        text = stringResource(R.string.titlete_text),
+        fontSize = 24.sp,
+        modifier = Modifier.padding(16.dp),
+    )
+}
+
+@Composable
+fun FirstParagraph() {
+    Text(
+        text = stringResource(id = R.string.first_paragraph_text),
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+        textAlign =  TextAlign.Justify
+    )
+}
+
+@Composable
+fun SecondParagraph() {
+    Text(
+        text = stringResource(id = R.string.second_paragraph_text),
+        modifier = Modifier.padding(16.dp),
+        textAlign =  TextAlign.Justify
+    )
+}
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    Column {
+        ImageHeader()
+        Title()
+        FirstParagraph()
+        SecondParagraph()
+    }
+}

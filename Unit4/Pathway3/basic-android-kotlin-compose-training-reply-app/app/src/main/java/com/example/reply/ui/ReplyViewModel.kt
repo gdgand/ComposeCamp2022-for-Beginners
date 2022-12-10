@@ -41,8 +41,10 @@ class ReplyViewModel : ViewModel() {
      * Initializing mailbox emails by getting them from [LocalEmailsDataProvider]
      */
     private fun initializeUIState() {
+
         var mailboxes: Map<MailboxType, List<Email>> =
             LocalEmailsDataProvider.allEmails.groupBy { it.mailbox }
+
         _uiState.value =
             ReplyUiState(
                 mailboxes = mailboxes,

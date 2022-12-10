@@ -1,0 +1,21 @@
+fun main() {
+   // val greeting = birthdayGreeting()
+   // println(greeting)
+   println(birthdayGreeting(name = "Rover",age = 5))
+   println(birthdayGreeting(age = 2, name = "Rex"))
+   
+   println(birthdayGreeting(age = 5))
+}
+
+fun birthdayGreeting(name: String = "Rover", age: Int): String {
+   
+   // println("Happy Birthday, Rover!")
+   // println("You are now 5 years old!")
+   
+   // name = "robot!" 
+    
+   val nameGreeting = "Happy Birthday, $name!"
+   val ageGreeting = "You are now $age years old"
+   
+   return "$nameGreeting $ageGreeting"
+}

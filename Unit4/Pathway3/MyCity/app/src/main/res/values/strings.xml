@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">MyCity</string>
+
+    <string name="category_dessert">Dessert</string>
+    <string name="category_sport">Sport</string>
+
+    <string name="dessert_description">very delicious</string>
+
+    <string name="sports_news_detail_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Praesent ultrices congue rutrum. Phasellus elementum ipsum ac convallis aliquam. Suspendisse
+        eleifend eros a enim faucibus mollis. Nunc placerat, est vitae vestibulum blandit, dolor
+        diam fringilla tellus, eu euismod mauris neque at neque.</string>
+
+    <string name="cupcake">cupcake</string>
+    <string name="donut">donut</string>
+    <string name="eclair">eclair</string>
+    <string name="froyo">froyo</string>
+    <string name="gingerbread">gingerbread</string>
+    <string name="honeycomb">honeycomb</string>
+    <string name="icecreamsandwich">icecreamsandwich</string>
+    <string name="jellybean">jellybean</string>
+    <string name="kitkat">kitkat</string>
+    <string name="lollipop">lollipop</string>
+    <string name="marshmallow">marshmallow</string>
+    <string name="nougat">nougat</string>
+    <string name="oreo">oreo</string>
+
+    <string name="baseball">Baseball</string>
+    <string name="badminton">Badminton</string>
+    <string name="basketball">Basketball</string>
+    <string name="bowling">Bowling</string>
+    <string name="cycling">Cycling</string>
+    <string name="golf">Golf</string>
+    <string name="running">Running</string>
+    <string name="soccer">Soccer</string>
+    <string name="swimming">Swimming</string>
+    <string name="table_tennis">Table Tennis</string>
+    <string name="tennis">Tennis</string>
+
+    <string name="back_button">Back</string>
+</resources>

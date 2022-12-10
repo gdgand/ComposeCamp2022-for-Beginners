@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BusinessCard</string>
+    <string name="full_name">hhyeok</string>
+    <string name="title">Android Developer Junior</string>
+    <string name="ic_phone_number">phone number</string>
+    <string name="ic_share">more info link</string>
+    <string name="ic_email">email</string>
+</resources>
