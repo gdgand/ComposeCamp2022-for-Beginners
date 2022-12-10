@@ -132,10 +132,15 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
 
             composable(route = LunchTrayScreen.Accompaniment.name) {
                 AccompanimentMenuScreen(
-                    options =,
-                    onCancelButtonClicked = { /*TODO*/ },
-                    onNextButtonClicked = { /*TODO*/ },
-                    onSelectionChanged =
+                    options = DataSource.accompanimentMenuItems,
+                    onCancelButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
+                    },
+                    onNextButtonClicked = { navController.navigate(LunchTrayScreen.Checkout.name) },
+                    onSelectionChanged = { accompanimentItem ->
+                        viewModel.updateAccompaniment(accompanimentItem)
+                    }
                 )
             }
             composable(route = LunchTrayScreen.Checkout.name) {
