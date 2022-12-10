@@ -28,6 +28,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             LemonadeTheme {
                 // A surface container using the 'background' color from the theme
+                LemonadeApp()
             }
         }
     }
@@ -35,11 +36,61 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun LemonadeApp(){
-    LemonadeDescriptionWithImage(
-        modifier = Modifier
-            .fillMaxSize()
-            .wrapContentSize(Alignment.Center)
-    )
+    var step by remember {
+        mutableStateOf(1)
+    }
+    var squeezeCount by remember {
+        mutableStateOf(0)
+    }
+    
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colors.background
+    ) {
+        when(step){
+            1 -> {
+                LemonadeDescriptionWithImage(
+                    textResourceId = R.string.lemon_tree_select,
+                    ImageResourceId = R.drawable.lemon_tree,
+                    contentDescriptionResourceId = R.string.lemon_tree_content_description,
+                    onImageClick = {
+                        step = 2
+                        squeezeCount = (2..4).random()
+                    })
+            }
+            2 -> {
+                LemonadeDescriptionWithImage(
+                    textResourceId = R.string.lemon_squeeze,
+                    ImageResourceId = R.drawable.lemon_squeeze,
+                    contentDescriptionResourceId = R.string.lemon_content_description,
+                    onImageClick = {
+                        squeezeCount--
+                        if(squeezeCount == 0){
+                            step = 3
+                        }
+                    })
+            }
+            3 -> {
+                LemonadeDescriptionWithImage(
+                    textResourceId = R.string.lemonade_drink,
+                    ImageResourceId = R.drawable.lemon_drink,
+                    contentDescriptionResourceId = R.string.glass_content_description,
+                    onImageClick = {
+                        step = 4
+                    })
+            }
+            4 -> {
+                LemonadeDescriptionWithImage(
+                    textResourceId = R.string.restart_lemonade,
+                    ImageResourceId = R.drawable.lemon_restart,
+                    contentDescriptionResourceId = R.string.empty_glass_content_description,
+                    onImageClick = {
+                        step = 1
+                    })
+            }
+        }
+    }
+    
 }
 
 @Composable
