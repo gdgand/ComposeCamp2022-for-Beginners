@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">SuperHeros</string>
+
+    <string name="hero1">Nick the Night and Day</string>
+    <string name="hero2">Reality Protector</string>
+    <string name="hero3">Sangyeol Park the Developer</string>
+    <string name="hero4">Benjamin the Brave</string>
+    <string name="hero5">Magnificent Maru</string>
+    <string name="hero6">Dynamic Yasmine</string>
+
+    <string name="description1">The Jetpack Hero</string>
+    <string name="description2">Understands the absolute truth</string>
+    <string name="description3">who made this app</string>
+    <string name="description4">Harnesses the power of canary\n to develop bravely</string>
+    <string name="description5">Effortlessly glides in to save th day</string>
+    <string name="description6">Ability to shift to any form \n and energize</string>
+
+</resources>

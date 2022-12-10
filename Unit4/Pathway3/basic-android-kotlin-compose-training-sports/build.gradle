@@ -20,6 +20,7 @@ buildscript {
         compose_version = '1.2.0'
         lifecycle_version = '2.4.1'
         kotlin_version = '1.7.0'
+        material3_version = '1.0.0-alpha15'
     }
 }
 

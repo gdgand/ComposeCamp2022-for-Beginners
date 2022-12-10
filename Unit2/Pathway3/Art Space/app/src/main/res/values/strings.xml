@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="image1_info_title">Monna Lisa</string>
+    <string name="image2_info_title">Sunflowers</string>
+    <string name="image3_info_title">Campbell\'s Soup: Tomato</string>
+    <string name="image4_info_title">Meisje met de parel</string>
+    <string name="image5_info_title">De sterrennacht</string>
+    <string name="image6_info_title">Kiss</string>
+
+    <string name="image1_info_artist">Leonardo da Vinci</string>
+    <string name="image2_info_artist">Vincent van Gogh</string>
+    <string name="image3_info_artist">Andy Warhol</string>
+    <string name="image4_info_artist">Johannes Vermeer</string>
+    <string name="image5_info_artist">Vincent van Gogh</string>
+    <string name="image6_info_artist">Gustav Klimt</string>
+
+    <string name="image1_info_date">(1506)</string>
+    <string name="image2_info_date">(1888)</string>
+    <string name="image3_info_date">(1968)</string>
+    <string name="image4_info_date">(1665)</string>
+    <string name="image5_info_date">(1889)</string>
+    <string name="image6_info_date">(1907)</string>
+
+    <string name="image1_content_description">Monna Lisa</string>
+    <string name="image2_content_description">Sunflowers</string>
+    <string name="image3_content_description">Campbell\'s Soup: Tomato</string>
+    <string name="image4_content_description">Meisje met de parel</string>
+    <string name="image5_content_description">De sterrennacht</string>
+    <string name="image6_content_description">Kiss</string>
+
+    <string name="button_text_previous">Previous</string>
+    <string name="button_text_next">Next</string>
+</resources>
