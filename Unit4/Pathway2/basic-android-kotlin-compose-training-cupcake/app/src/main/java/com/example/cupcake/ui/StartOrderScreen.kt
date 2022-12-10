@@ -45,7 +45,7 @@ import com.example.cupcake.data.DataSource.quantityOptions
 @Composable
 fun StartOrderScreen(
     quantityOptions: List<Pair<Int, Int>>,
-    // TODO: add onNextButtonClicked
+    onNextButtonClicked: (Int) -> Unit,
     modifier: Modifier = Modifier
 ){
     Column(
@@ -62,10 +62,13 @@ fun StartOrderScreen(
         Spacer(modifier = Modifier.height(16.dp))
         Text(text = stringResource(R.string.order_cupcakes), style = MaterialTheme.typography.h4)
         Spacer(modifier = Modifier.height(8.dp))
+
+        // 세개 버튼 중 하나를 선택하면
+        // 다음 화면으로 넘어감
         quantityOptions.forEach { item ->
             SelectQuantityButton(
-                labelResourceId = item.first,
-                onClick = { /* TODO: handle next button */ }
+                labelResourceId = item.first, // 각 버튼에 표시할 문자열의 리소스 ID
+                onClick = { onNextButtonClicked(item.second) } // 컵케이크의 실제 수량
             )
         }
     }
@@ -89,8 +92,3 @@ fun SelectQuantityButton(
     }
 }
 
-@Preview
-@Composable
-fun StartOrderPreview(){
-    StartOrderScreen(quantityOptions = quantityOptions)
-}
