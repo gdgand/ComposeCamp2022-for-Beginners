@@ -17,7 +17,16 @@ package com.example.woofcodelab.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+// light theme
+val Grey50 = Color(0xfff8f9fa)
+val Grey900 = Color(0xff202124)
+val Grey700 = Color(0xff5f6368)
+val Green50 = Color(0xffe6f4ea)
+val Green100 = Color(0xffceead6)
+
+// dark theme
+val White = Color(0xffffffff)
+val Grey100 = Color(0xfff1f3f4)
+val Cyan900 = Color(0xff007b83)
+val Cyan700 = Color(0xff129eaf)
+
