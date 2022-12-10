@@ -1,6 +1,7 @@
 package com.example.myjeju.ui
 
 import android.media.Image
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -29,8 +30,12 @@ import com.example.myjeju.ui.theme.MyJejuTheme
 fun StartScreen(
     categories: List<CategoryItemContent>,
     onClick: (CategoryItemContent) -> Unit,
+    onBackPressed: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    BackHandler() {
+        onBackPressed()
+    }
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),

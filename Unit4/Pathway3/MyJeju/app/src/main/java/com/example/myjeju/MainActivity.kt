@@ -23,7 +23,8 @@ class MainActivity : ComponentActivity() {
             MyJejuTheme {
                 val windowSize = calculateWindowSizeClass(activity = this)
                 MyJejuApp(
-                    windowSize = windowSize.widthSizeClass
+                    windowSize = windowSize.widthSizeClass,
+                    activity = this
                 )
             }
         }
