@@ -46,7 +46,7 @@ fun AppBar(
     @StringRes currentScreenTitle: Int,
     canNavigateBack: Boolean,
     navigateUp: () -> Unit,
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     TopAppBar(
         title = { Text(stringResource(id = currentScreenTitle)) },
@@ -81,10 +81,9 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
     Scaffold(
         topBar = {
             AppBar(
-                currentScreenTitle = c,
-                canNavigateBack = ,
-                navigateUp = { /*TODO*/ },
-                modifier =
+                currentScreenTitle = currentScreen.title,
+                canNavigateBack = navController.previousBackStackEntry != null,
+                navigateUp = { navController.navigateUp() }
             )
         }
     ) { innerPadding ->
