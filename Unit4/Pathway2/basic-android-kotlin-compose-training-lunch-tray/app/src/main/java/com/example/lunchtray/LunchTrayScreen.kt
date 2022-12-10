@@ -103,10 +103,15 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
             }
             composable(route = LunchTrayScreen.Entree.name) {
                 EntreeMenuScreen(
-                    options =,
-                    onCancelButtonClicked = { /*TODO*/ },
-                    onNextButtonClicked = { /*TODO*/ },
-                    onSelectionChanged =
+                    options = DataSource.entreeMenuItems,
+                    onCancelButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
+                    },
+                    onNextButtonClicked = { navController.navigate(LunchTrayScreen.SideDish.name) },
+                    onSelectionChanged = {entreeItem ->
+                        viewModel.updateEntree(entreeItem)
+                    }
                 )
             }
             composable(route = LunchTrayScreen.SideDish.name) {
