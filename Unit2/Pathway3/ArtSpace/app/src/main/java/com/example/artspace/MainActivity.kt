@@ -34,44 +34,73 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtSpaceApp() {
-    ArtInfo()
+    ArtInfo(
+        modifier = Modifier
+            .fillMaxSize()
+            .wrapContentSize(Alignment.Center)
+    )
 }
 
 @Composable
-fun ArtInfo() {
-    //이미지, 제목
+fun ArtInfo(modifier: Modifier = Modifier) {
     Column(
-        modifier = Modifier.padding(5.dp),
+        modifier = Modifier.padding(15.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
     ) {
         //이미지
-        Image(
-            painter = painterResource(R.drawable.ic_launcher_background),
-            contentDescription = null
-        )
-        //제목
-        Text(
-            text = "Art Space Title",
-            fontSize = 24.sp,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        )
-        //작품정보
-        Text(
-            text = "Information of Art (Year)",
-            fontSize = 15.sp,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        )
-        //버튼
-        Row(modifier = Modifier.padding(5.dp)) {
-
-            Button(onClick = { var a = 0 }) {
-                Text(text = stringResource(R.string.previous), fontSize = 24.sp)
-            }
-            Button(onClick = { var b = 0 }) {
-                Text(text = stringResource(R.string.next), fontSize = 24.sp)
+        Column(
+            modifier = Modifier.padding(15.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Image(
+                painter = painterResource(R.drawable.ic_launcher_background),
+                contentDescription = null
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+        }
+        Column(
+            modifier = Modifier.padding(10.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            //제목
+            Text(
+                text = "Art Space Title",
+                fontSize = 24.sp,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
+            //작품정보
+            Text(
+                text = "Information of Art (Year)",
+                fontSize = 15.sp,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            //버튼
+            Column(
+                modifier = Modifier.padding(15.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Row(modifier = Modifier.padding(5.dp)) {
+                    Button(
+                        onClick = { var a = 0 },
+                        modifier = Modifier
+                            .padding(5.dp)
+                            .weight(1f, true)
+                    ) {
+                        Text(text = stringResource(R.string.previous), fontSize = 24.sp)
+                    }
+                    Button(
+                        onClick = { var a = 0 },
+                        modifier = Modifier
+                            .padding(5.dp)
+                            .weight(1f, true)
+                    ) {
+                        Text(text = stringResource(R.string.next), fontSize = 24.sp)
+                    }
+                }
             }
         }
+
     }
 
 
