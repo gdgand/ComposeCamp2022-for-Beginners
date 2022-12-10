@@ -16,14 +16,10 @@
 
 package com.example.reply.ui
 
+import android.app.Activity
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -37,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -52,7 +49,7 @@ import com.example.reply.data.local.LocalAccountsDataProvider
 fun ReplyListOnlyContent(
     replyUiState: ReplyUiState,
     onEmailCardPressed: (Email) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val emails = replyUiState.currentMailboxEmails
 
@@ -78,7 +75,7 @@ fun ReplyListOnlyContent(
 fun ReplyListAndDetailContent(
     replyUiState: ReplyUiState,
     onEmailCardPressed: (Email) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val emails = replyUiState.currentMailboxEmails
     Row(modifier = modifier) {
@@ -96,10 +93,11 @@ fun ReplyListAndDetailContent(
                 )
             }
         }
+        val activity = LocalContext.current as Activity
         ReplyDetailsScreen(
             replyUiState = replyUiState,
             modifier = Modifier.weight(1f),
-            onBackPressed = {}
+            onBackPressed = { activity.finish() }
         )
     }
 }
