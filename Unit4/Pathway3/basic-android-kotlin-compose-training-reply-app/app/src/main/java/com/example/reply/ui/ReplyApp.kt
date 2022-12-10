@@ -74,6 +74,7 @@ fun ReplyApp(
         onDetailScreenBackPressed = {
             viewModel.resetHomeScreenStates()
         },
-        modifier = modifier
+        modifier = modifier,
+        contentType = contentType
     )
 }
