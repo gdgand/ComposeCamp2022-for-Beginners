@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             HappyBirthdayTheme() {
                 Surface(color = MaterialTheme.colors.background) {
-                    BirthdayGreetingWithImage("Happy Birthday Sam!", "- from Emma")
+                    BirthdayGreetingWithImage(getString(R.string.happy_birthday_text), getString(R.string.signature_text))
 //                    BirthdayGreetingWithText( "Happy Birthday Sam!", "- from Emma")
                 }
             }
@@ -76,10 +76,18 @@ fun BirthdayGreetingWithText(message: String, from: String) {
         Text(
             text = message,
             fontSize = 36.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(start = 16.dp, top = 16.dp)
         )
         Text(
             text = from,
             fontSize = 24.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(start = 16.dp, end = 16.dp)
         )
     }
 }
@@ -89,10 +97,18 @@ fun BirthdayGreetingWithText(message: String, from: String) {
 fun BirthdayGreetingWithImage(message: String, from: String) {
     val image = painterResource(R.drawable.androidparty)
 
-    Image(
-        painter = image,
-        contentDescription = null
-    )
+    Box {
+        Image(
+            painter = image,
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop
+        )
+
+        BirthdayGreetingWithText(message = message, from = from)
+    }
 }
 
 // 4. 이미지 컴포저블 추가
@@ -100,9 +116,12 @@ fun BirthdayGreetingWithImage(message: String, from: String) {
 @Composable
 private fun BirthdayCardPreview() {
     HappyBirthdayTheme {
+//        BirthdayGreetingWithText("avd", "from: String")
         BirthdayGreetingWithImage("Happy Birthday Sam!", "- from Emma")
 
 //        Greeting("Mingyu")
 //        BirthdayGreetingWithText("HBD", "Happy Birthday Sam!")
     }
 }
+
+
