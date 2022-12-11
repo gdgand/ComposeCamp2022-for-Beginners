@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -24,12 +22,29 @@ import com.example.composearticle.ui.theme.ComposeArticleTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeArticleTheme {
+                Surface() {
+                    ComposeArticleApp()
+                }
+            }
+        }
     }
 }
 
 @Composable
-fun ComposeArticleApp() { }
+fun ComposeArticleApp() {
+    val image = painterResource(id = R.drawable.bg_compose_background)
+    val title = stringResource(id = R.string.title_jetpack_compose_tutorial)
+    val shortDescription = stringResource(id = R.string.compose_short_desc)
+    val longDescription = stringResource(id = R.string.compose_long_desc)
+    ArticleCard(
+        title = title,
+        shortDescription = shortDescription,
+        longDescription = longDescription,
+        imagePainter = image,
+    )
+}
 
 @Composable
 private fun ArticleCard(
@@ -38,11 +53,41 @@ private fun ArticleCard(
     longDescription: String,
     imagePainter: Painter,
     modifier: Modifier = Modifier,
-) {
-    Column() { }
+)
+{
+    Column() {
+        Image (
+            painter = imagePainter,
+            contentDescription = null,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        Text (
+            text = title,
+            fontSize = 24.sp,
+            modifier = Modifier.padding(16.dp)
+        )
+        Text (
+            text = shortDescription,
+            modifier = Modifier.padding(16.dp),
+            textAlign = TextAlign.Justify
+        )
+        Text (
+            text = longDescription,
+            modifier = Modifier.padding(16.dp),
+            textAlign = TextAlign.Justify
+        )
+
+
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun ArticlePreview() {
+    ComposeArticleTheme {
+        Surface() {
+            ComposeArticleApp()
+        }
+    }
+}
