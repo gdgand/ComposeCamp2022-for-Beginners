@@ -34,30 +34,44 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtSpaceApp() {
-    var current_img by remember { mutableStateOf(3) }
+    var current_img by remember { mutableStateOf(1) }
 
-//    if (current artwork is the first artwork) {
-//        // Update states to show the second artwork.
-//    }
-//    else if (current artwork is the second artwork) {
-//        // Update states to show the third artwork.
-//    }
-//    else if (current artwork is the last artwork) {
-//        // Update state to show the first artwork.
-//    }
+    when (current_img) {
+        1 -> {
+            ArtInfo(
+                drawableResourceId = R.drawable.starynight,
+                titleResourceId = R.string.stary_night,
+                infoResourceId = R.string.vincent,
+                nextButtonClick = { current_img = 2 },
+                previousButtonClick = { current_img = 3 })
+        }
+        2 -> {
+            ArtInfo(
+                drawableResourceId = R.drawable.pearl,
+                titleResourceId = R.string.pearl,
+                infoResourceId = R.string.Johannes,
+                nextButtonClick = { current_img = 3 },
+                previousButtonClick = { current_img = 1 })
+        }
+        3 -> {
+            ArtInfo(
+                drawableResourceId = R.drawable.edgar,
+                titleResourceId = R.string.edgar,
+                infoResourceId = R.string.degas,
+                nextButtonClick = { current_img = 1 },
+                previousButtonClick = { current_img = 2 })
+        }
+    }
 
-//    ArtInfo(
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .wrapContentSize(Alignment.Center)
-//    )
 }
 
 @Composable
 fun ArtInfo(
     drawableResourceId: Int,
     titleResourceId: Int,
-    infoResourceId : Int,
+    infoResourceId: Int,
+    nextButtonClick: () -> Unit,
+    previousButtonClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -102,7 +116,7 @@ fun ArtInfo(
             ) {
                 Row(modifier = Modifier.padding(5.dp)) {
                     Button(
-                        onClick = { var a = 0 },
+                        onClick = previousButtonClick,
                         modifier = Modifier
                             .padding(5.dp)
                             .weight(1f, true)
@@ -110,7 +124,7 @@ fun ArtInfo(
                         Text(text = stringResource(R.string.previous), fontSize = 20.sp)
                     }
                     Button(
-                        onClick = { var a = 0 },
+                        onClick = nextButtonClick,
                         modifier = Modifier
                             .padding(5.dp)
                             .weight(1f, true)
@@ -130,7 +144,6 @@ fun ArtInfo(
 @Composable
 fun DefaultPreview() {
     ArtSpaceTheme {
-//        ArtSpaceApp()
-        ArtInfo()
+        ArtSpaceApp()
     }
 }
