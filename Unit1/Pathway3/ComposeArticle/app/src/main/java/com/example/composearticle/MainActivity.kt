@@ -52,7 +52,7 @@ private fun ArticleCard(
     shortDescription: String,
     longDescription: String,
     imagePainter: Painter,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.padding(16.dp),
 )
 {
     Column() {
@@ -64,16 +64,16 @@ private fun ArticleCard(
         Text (
             text = title,
             fontSize = 24.sp,
-            modifier = Modifier.padding(16.dp)
+            modifier = modifier
         )
         Text (
             text = shortDescription,
-            modifier = Modifier.padding(16.dp),
+            modifier = modifier,
             textAlign = TextAlign.Justify
         )
         Text (
             text = longDescription,
-            modifier = Modifier.padding(16.dp),
+            modifier = modifier,
             textAlign = TextAlign.Justify
         )
 
