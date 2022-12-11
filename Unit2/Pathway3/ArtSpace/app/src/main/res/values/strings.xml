@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="cat">Cat</string>
+    <string name="dog">Dog</string>
+    <string name="fox">Fox</string>
+    <string name="tiger">Tiger</string>
+    <string name="jeong">Jeong(2020)</string>
+    <string name="lee">Lee(2022)</string>
+    <string name="kate">Kate(2018)</string>
+    <string name="tom">TOM(2018)</string>
+</resources>

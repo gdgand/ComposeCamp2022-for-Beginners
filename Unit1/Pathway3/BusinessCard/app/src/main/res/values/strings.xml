@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BusinessCard</string>
+    <string name="os">Android</string>
+    <string name="user_name">Jeong Lee</string>
+    <string name="introduce">Android Developer Extraordinaire</string>
+    <string name="phone">82 1111 2222</string>
+    <string name="share">AndroidDev</string>
+    <string name="email">jeong@android.com</string>
+</resources>
