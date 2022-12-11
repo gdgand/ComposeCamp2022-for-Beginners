@@ -61,7 +61,7 @@ fun AffirmationApp() {
 
 @Composable
 fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
-    Card(modifier = modifier.padding(8.dp), elevation = 4.dp) {
+    Card(modifier = modifier.padding(8.dp), elevation = 4.dp) { // CardView
         Column {
             Image(
                 painter = painterResource(affirmation.imageResourceId),
