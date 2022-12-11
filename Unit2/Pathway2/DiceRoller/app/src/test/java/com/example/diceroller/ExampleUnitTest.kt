@@ -1,4 +1,4 @@
-package com.whyranoid.diceroller
+package com.example.diceroller
 
 import org.junit.Assert.*
 import org.junit.Test
