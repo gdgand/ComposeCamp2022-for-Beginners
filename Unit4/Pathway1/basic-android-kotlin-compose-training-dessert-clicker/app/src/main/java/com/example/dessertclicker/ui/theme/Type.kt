@@ -31,10 +31,10 @@ val Typography = Typography(
     ),
     h4 = TextStyle(
         color = Color(0xFF008577),
-        fontSize = 33.sp,
+        fontSize = 33.sp
     ),
     h6 = TextStyle(
-        color =  Color(0x99000000),
+        color = Color(0x99000000),
         fontSize = 20.sp
     )
 )
