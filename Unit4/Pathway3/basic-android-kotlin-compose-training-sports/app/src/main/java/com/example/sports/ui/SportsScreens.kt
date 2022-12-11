@@ -77,7 +77,8 @@ fun SportsApp(
         topBar = {
             SportsAppBar(
                 isShowingListPage = uiState.isShowingListPage,
-                onBackButtonClick = { viewModel.navigateToListPage() }
+                onBackButtonClick = { viewModel.navigateToListPage() },
+                windowSize = windowSize
             )
         }
     ) { innerPadding ->
@@ -109,7 +110,8 @@ fun SportsApp(
 fun SportsAppBar(
     onBackButtonClick: () -> Unit,
     isShowingListPage: Boolean,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    windowSize: WindowWidthSizeClass
 ) {
     TopAppBar(
         title = {
