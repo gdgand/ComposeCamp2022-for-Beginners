@@ -78,7 +78,7 @@ fun WoofApp() {
  */
 @Composable
 fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
-    Card (         // 이미 medium shape를 사용중
+    Card(         // 이미 medium shape 사용중
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp),
@@ -88,7 +88,7 @@ fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
-           //     .background(MaterialTheme.colors.surface)
+            //     .background(MaterialTheme.colors.surface)
         ) {
             DogIcon(dog.imageResourceId)
             DogInformation(dog.name, dog.age)
@@ -131,12 +131,12 @@ fun DogInformation(@StringRes dogName: Int, dogAge: Int, modifier: Modifier = Mo
     Column {
         Text(
             text = stringResource(dogName),
-            color = MaterialTheme.colors.onSurface,
+            style = MaterialTheme.typography.h2,
             modifier = modifier.padding(top = 8.dp)
         )
         Text(
             text = stringResource(R.string.years_old, dogAge),
-      //      color = MaterialTheme.colors.onSurface
+            style = MaterialTheme.typography.body1
         )
     }
 }
