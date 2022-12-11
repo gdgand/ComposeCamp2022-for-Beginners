@@ -45,7 +45,6 @@ import androidx.compose.ui.unit.sp
 import com.example.android.unscramble.R
 import com.example.android.unscramble.ui.theme.UnscrambleTheme
 
-
 @Composable
 fun GameScreen(modifier: Modifier = Modifier) {
     Column(
@@ -54,7 +53,6 @@ fun GameScreen(modifier: Modifier = Modifier) {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-
         GameStatus()
         GameLayout()
         Row(
@@ -91,18 +89,18 @@ fun GameStatus(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .size(48.dp),
+            .size(48.dp)
     ) {
         Text(
             text = stringResource(R.string.word_count, 0),
-            fontSize = 18.sp,
+            fontSize = 18.sp
         )
         Text(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.End),
             text = stringResource(R.string.score, 0),
-            fontSize = 18.sp,
+            fontSize = 18.sp
         )
     }
 }
@@ -110,9 +108,9 @@ fun GameStatus(modifier: Modifier = Modifier) {
 @Composable
 fun GameLayout(modifier: Modifier = Modifier) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(24.dp),
+        verticalArrangement = Arrangement.spacedBy(24.dp)
 
-        ) {
+    ) {
         Text(
             text = "scrambleun",
             fontSize = 45.sp,
@@ -135,7 +133,7 @@ fun GameLayout(modifier: Modifier = Modifier) {
             ),
             keyboardActions = KeyboardActions(
                 onDone = { }
-            ),
+            )
         )
     }
 }
