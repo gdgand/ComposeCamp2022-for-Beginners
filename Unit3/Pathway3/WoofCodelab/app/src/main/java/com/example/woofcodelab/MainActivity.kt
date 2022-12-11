@@ -22,19 +22,14 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -108,6 +103,8 @@ fun WoofApp() {
  */
 @Composable
 fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
+    var expanded by remember { mutableStateOf(false) }
+
     Card(         // 이미 medium shape 사용중
         modifier = modifier
             .fillMaxWidth()
@@ -122,7 +119,26 @@ fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
         ) {
             DogIcon(dog.imageResourceId)
             DogInformation(dog.name, dog.age)
+            Spacer(Modifier.weight(1f))
+            DogItemButton(
+                expanded = expanded,
+                onClick = { /*TODO*/ }
+            )
         }
+    }
+}
+
+@Composable
+private fun DogItemButton(
+    expanded: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    IconButton(onClick = onClick) {
+        Icon(
+            imageVector = Icons.Filled.ExpandMore,
+            tint = MaterialTheme.colors.secondary,
+            contentDescription = stringResource(id = R.string.expand_button_content_description))
     }
 }
 
