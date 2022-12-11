@@ -16,6 +16,7 @@
 
 package com.example.sports.ui
 
+import android.app.Activity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -32,6 +33,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -39,6 +41,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -48,17 +51,30 @@ import com.example.sports.R
 import com.example.sports.data.LocalSportsDataProvider
 import com.example.sports.model.Sport
 import com.example.sports.ui.theme.SportsTheme
+import com.example.sports.ui.utils.WindowStateUtils
+import com.example.sports.ui.utils.WindowStateUtils.*
 
 /**
  * Main composable that serves as container
  * which displays content according to [uiState]
  */
 @Composable
-fun SportsApp(
-    modifier: Modifier = Modifier,
+fun SportsApp(windowSize: WindowWidthSizeClass,
+              modifier: Modifier = Modifier,
 ) {
     val viewModel: SportsViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
+    val contentType: ReplyContentType
+
+    when (windowSize) {
+        WindowWidthSizeClass.Expanded -> {
+            contentType = ReplyContentType.LIST_AND_DETAIL
+        }
+        else -> {
+            contentType = ReplyContentType.LIST_ONLY
+        }
+    }
+
 
     Scaffold(
         topBar = {
@@ -68,23 +84,35 @@ fun SportsApp(
             )
         }
     ) { innerPadding ->
-        if (uiState.isShowingListPage) {
-            SportsList(
-                sports = uiState.sportsList,
+        if(contentType == ReplyContentType.LIST_AND_DETAIL){
+            SportsListAndDetails(
+                uiState = uiState,
                 onClick = {
                     viewModel.updateCurrentSport(it)
                     viewModel.navigateToDetailPage()
-                },
-                modifier = modifier.padding((innerPadding))
-            )
-        } else {
-            SportsDetail(
-                selectedSport = uiState.currentSport,
-                modifier = modifier.padding((innerPadding)),
-                onBackPressed = {
-                    viewModel.navigateToListPage()
                 }
             )
+        }
+        else {
+            if (uiState.isShowingListPage) {
+                SportsList(
+                    sports = uiState.sportsList,
+                    onClick = {
+                        viewModel.updateCurrentSport(it)
+                        viewModel.navigateToDetailPage()
+                    },
+                    modifier = modifier.padding((innerPadding))
+                )
+            }
+            else {
+                SportsDetail(
+                    selectedSport = uiState.currentSport,
+                    modifier = modifier.padding((innerPadding)),
+                    onBackPressed = {
+                        viewModel.navigateToListPage()
+                    }
+                )
+            }
         }
     }
 }
@@ -182,6 +210,37 @@ private fun SportsListImageItem(sport: Sport, modifier: Modifier = Modifier) {
             contentDescription = null,
             alignment = Alignment.TopCenter,
             contentScale = ContentScale.FillWidth
+        )
+    }
+}
+
+@Composable
+private fun SportsListAndDetails(
+    uiState: SportsUiState,
+    onClick: (Sport) -> Unit,
+    modifier: Modifier = Modifier
+){
+    val activity = LocalContext.current as Activity
+
+    Row(modifier = modifier) {
+        LazyColumn(
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier
+                .weight(1f)
+                .padding(end = 16.dp, top = 20.dp)
+        ) {
+            items(uiState.sportsList, key = { sport -> sport.id }) { sport ->
+                SportsListItem(
+                    sport = sport,
+                    onItemClick = onClick
+                )
+            }
+        }
+        SportsDetail(
+            selectedSport = uiState.currentSport,
+            modifier = Modifier.weight(1f),
+            onBackPressed = { activity.finish() }
         )
     }
 }
