@@ -49,6 +49,7 @@ import com.example.sports.R
 import com.example.sports.data.LocalSportsDataProvider
 import com.example.sports.model.Sport
 import com.example.sports.ui.theme.SportsTheme
+import com.example.sports.ui.utils.SportsContentType
 
 /**
  * Main composable that serves as container
@@ -61,6 +62,16 @@ fun SportsApp(
 ) {
     val viewModel: SportsViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
+    val contentType = when (windowSize) {
+        WindowWidthSizeClass.Compact,
+        WindowWidthSizeClass.Medium -> {
+            SportsContentType.ListOnly
+        }
+        WindowWidthSizeClass.Expanded -> {
+            SportsContentType.ListAndDetail
+        }
+        else -> SportsContentType.ListOnly
+    }
 
     Scaffold(
         topBar = {
