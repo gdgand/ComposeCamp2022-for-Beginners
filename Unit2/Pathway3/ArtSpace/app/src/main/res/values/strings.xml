@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Art Space</string>
+
+    <string name="title1">Lemon tree</string>
+    <string name="title2">Lemon</string>
+    <string name="title3">Glass of lemonade</string>
+    <string name="title4">Empty glass</string>
+
+    <string name="artist1">A Person1</string>
+    <string name="artist2">F Person2</string>
+    <string name="artist3">C Person3</string>
+    <string name="artist4">Z Person4</string>
+
+    <string name="year1">(1001)</string>
+    <string name="year2">(2002)</string>
+    <string name="year3">(3003)</string>
+    <string name="year4">(4004)</string>
+</resources>

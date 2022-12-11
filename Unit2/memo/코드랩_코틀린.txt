@@ -1,0 +1,40 @@
+서브 클래스에서 수퍼 클래스의 메소드를 재정의하려면 슈퍼 클래스 쪽 메소드에 open 키워드가 있어야함
+서브 클래스 쪽 메소드엔 override 키워드가 있어야함
+
+재정의된 메서드를 슈퍼클래스에서 호출하려면 super 키워드를 사용
+
+
+// 생성자
+open class SmartDevice protected constructor
+
+// 클래스
+internal open class SmartDevice()
+
+
+var 유형의 위임 클래스를 만들려면 ReadWriteProperty 인터페이스를 구현해야 합니다. 마찬가지로 val 유형의 경우 ReadOnlyProperty 인터페이스를 구현
+class RangeRegulator(
+    initialValue: Int,
+    private val minValue: Int,
+    private val maxValue: Int
+) : ReadWriteProperty<Any?, Int> {
+
+}
+
+
+함수를 값으로 참조하려면 trickFunction을 ::trick에 재할당
+fun main() {
+	val trickFunction = trick
+    val trickFunction = ::trick
+	
+	trick()
+    trickFunction()
+}
+
+fun trick() {
+    println("No treats!")
+}
+
+// 매개변수 생략
+val coins: (Int) -> String = {
+    "$it quarters"
+}

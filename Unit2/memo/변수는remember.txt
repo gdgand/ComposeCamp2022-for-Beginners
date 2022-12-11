@@ -1,0 +1,7 @@
+컴포저블은 기본적으로 스테이트리스(Stateless)입니다. 즉, 값을 보유하지 않고 시스템에서 언제든지 다시 호출할 수 있어 값이 재설정됨
+컴포저블을 사용하여 대화형 UI를 만듭니다.
+remember 컴포저블을 사용하여 컴포지션의 객체를 메모리에 저장합니다.
+mutableStateOf() 함수로 UI를 새로고침하여 observable을 만듭니다.
+
+이런식으로 해야됨
+* var count by remember { mutableStateOf(0) }
