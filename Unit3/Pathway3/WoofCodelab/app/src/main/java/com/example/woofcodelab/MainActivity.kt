@@ -76,6 +76,7 @@ fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .background(MaterialTheme.colors.surface)
     ) {
         DogIcon(dog.imageResourceId)
         DogInformation(dog.name, dog.age)
