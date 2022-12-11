@@ -27,6 +27,10 @@ import com.example.reply.ui.theme.ReplyTheme
 /**
  * Activity for Reply app
  */
+/*
+done 2022 12 01
+
+ */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

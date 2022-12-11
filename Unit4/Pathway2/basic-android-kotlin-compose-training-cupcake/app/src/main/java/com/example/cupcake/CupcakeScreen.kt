@@ -29,6 +29,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.cupcake.ui.OrderViewModel
+<<<<<<< HEAD
+import com.example.cupcake.ui.SelectOptionScreen
+import com.example.cupcake.ui.StartOrderScreen
+/*
+2022-12-01 done
+ */
+
+/**
+ * enum values that represent the screens in the app
+ */
+enum class CupcakeScreen(@StringRes val title: Int) {
+    Start(title = R.string.app_name),
+    Flavor(title = R.string.choose_flavor),
+    Pickup(title = R.string.choose_pickup_date),
+    Summary(title = R.string.order_summary)
+}
+=======
+>>>>>>> upstream/main
 
 /**
  * Composable that displays the topBar and displays back button if back navigation is possible.

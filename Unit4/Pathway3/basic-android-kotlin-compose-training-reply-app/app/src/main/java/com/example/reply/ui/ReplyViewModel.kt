@@ -43,11 +43,12 @@ class ReplyViewModel : ViewModel() {
     private fun initializeUIState() {
         var mailboxes: Map<MailboxType, List<Email>> =
             LocalEmailsDataProvider.allEmails.groupBy { it.mailbox }
+
+
         _uiState.value =
             ReplyUiState(
                 mailboxes = mailboxes,
-                currentSelectedEmail = mailboxes[MailboxType.Inbox]?.get(0)
-                    ?: LocalEmailsDataProvider.defaultEmail
+                currentSelectedEmail =  mailboxes[MailboxType.Inbox]?.get(0) ?: LocalEmailsDataProvider.defaultEmail
             )
     }
 
@@ -56,6 +57,8 @@ class ReplyViewModel : ViewModel() {
      * and [isShowingHomepage] to false
      */
     fun updateDetailsScreenStates(email: Email) {
+
+
         _uiState.update {
             it.copy(
                 currentSelectedEmail = email,
@@ -69,6 +72,7 @@ class ReplyViewModel : ViewModel() {
      * and [isShowingHomepage] to true
      */
     fun resetHomeScreenStates() {
+
         _uiState.update {
             it.copy(
                 currentSelectedEmail = it.mailboxes[it.currentMailbox]?.get(0)
@@ -82,6 +86,8 @@ class ReplyViewModel : ViewModel() {
      * Update [currentMailbox]
      */
     fun updateCurrentMailbox(mailboxType: MailboxType) {
+
+
         _uiState.update {
             it.copy(
                 currentMailbox = mailboxType

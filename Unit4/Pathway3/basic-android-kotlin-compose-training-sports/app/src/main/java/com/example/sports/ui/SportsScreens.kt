@@ -66,10 +66,17 @@ fun SportsApp(
                 isShowingListPage = uiState.isShowingListPage,
                 onBackButtonClick = { viewModel.navigateToListPage() }
             )
+<<<<<<< HEAD
+        })
+    { innerPadding ->
+        if (contentType == SportsContentType.ListAndDetail) {
+            SportsListAndDetail(
+=======
         }
     ) { innerPadding ->
         if (uiState.isShowingListPage) {
             SportsList(
+>>>>>>> upstream/main
                 sports = uiState.sportsList,
                 onClick = {
                     viewModel.updateCurrentSport(it)

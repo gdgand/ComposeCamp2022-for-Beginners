@@ -17,29 +17,40 @@ package com.example.woofcodelab.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Typography
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
+import com.example.woofcodelab.R
+import java.time.format.TextStyle
 
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    background = Cyan900,
+    surface = Cyan700,
+    onSurface = White,
+    primary = Grey900,
+    onPrimary = White,
+    secondary = Grey100
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
+//    primary = Purple500,
+//    primaryVariant = Purple700,
+//    secondary = Teal200
 
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+//    Other default colors to override
+    background = Green100,
+    surface = Green50,
+    onSurface = Grey900,
+    primary = Grey50,
+    onPrimary = Grey900,
+    secondary = Grey700
+
 )
 
 @Composable
@@ -57,3 +68,6 @@ fun WoofTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable (
         content = content
     )
 }
+
+
+

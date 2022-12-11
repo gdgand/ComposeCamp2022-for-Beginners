@@ -123,8 +123,13 @@ fun GameLayout(modifier: Modifier = Modifier) {
             fontSize = 17.sp,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
+<<<<<<< HEAD
+        OutlinedTextField (
+            value = userGuess,
+=======
         OutlinedTextField(
             value = "",
+>>>>>>> upstream/main
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             onValueChange = { },

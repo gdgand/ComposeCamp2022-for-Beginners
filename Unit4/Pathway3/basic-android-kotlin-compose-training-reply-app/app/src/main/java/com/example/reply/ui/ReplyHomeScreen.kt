@@ -86,6 +86,50 @@ fun ReplyHomeScreen(
             text = stringResource(id = R.string.tab_spam)
         )
     )
+<<<<<<< HEAD
+    if (navigationType  == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER) {
+        val navigationDrawerContentDescription = stringResource(R.string.navigation_drawer)
+        PermanentNavigationDrawer (
+            drawerContent = {
+                NavigationDrawerContent(
+                    selectedDestination = replyUiState.currentMailbox,
+                    onTabPressed = onTabPressed,
+                    navigationItemContentList = navigationItemContentList
+                )
+            },
+            modifier = Modifier.testTag(navigationDrawerContentDescription)
+        ) {
+            ReplyAppContent(
+                navigationType = navigationType,
+                contentType = contentType,
+                replyUiState = replyUiState,
+                onTabPressed = onTabPressed,
+                onEmailCardPressed = onEmailCardPressed,
+                navigationItemContentList = navigationItemContentList,
+                modifier = modifier
+            )
+        }
+    } else {
+        if (replyUiState.isShowingHomepage) {
+            ReplyAppContent(
+                navigationType = navigationType,
+                contentType = contentType,
+                replyUiState = replyUiState,
+                onTabPressed = onTabPressed,
+                onEmailCardPressed = onEmailCardPressed,
+                navigationItemContentList = navigationItemContentList,
+                modifier = modifier
+            )
+        } else {
+            ReplyDetailsScreen(
+                replyUiState = replyUiState,
+                isFullScreen = true,
+                modifier = modifier,
+                onBackPressed = onDetailScreenBackPressed
+            )
+        }
+    }
+=======
     ReplyAppContent(
         replyUiState = replyUiState,
         onTabPressed = onTabPressed,
@@ -94,6 +138,7 @@ fun ReplyHomeScreen(
         modifier = modifier
 
     )
+>>>>>>> upstream/main
 }
 
 /**
@@ -107,6 +152,45 @@ private fun ReplyAppContent(
     navigationItemContentList: List<NavigationItemContent>,
     modifier: Modifier = Modifier,
 ) {
+<<<<<<< HEAD
+    Row(modifier = modifier.fillMaxSize()) {
+        AnimatedVisibility(visible = navigationType == ReplyNavigationType.NAVIGATION_RAIL) {
+            val navigationRailContentDescription = stringResource(R.string.navigation_rail)
+            ReplyNavigationRail(
+                currentTab = replyUiState.currentMailbox,
+                onTabPressed = onTabPressed,
+                navigationItemContentList = navigationItemContentList,
+                modifier = Modifier.testTag(navigationRailContentDescription)
+            )
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxSize().background(MaterialTheme.colorScheme.inverseOnSurface)
+        ) {
+            if (contentType == ReplyContentType.LIST_AND_DETAIL) {
+                ReplyListAndDetailContent(
+                    replyUiState = replyUiState,
+                    onEmailCardPressed = onEmailCardPressed,
+                    modifier = Modifier.weight(1f),
+                )
+            } else {
+                ReplyListOnlyContent(
+                    replyUiState = replyUiState,
+                    onEmailCardPressed = onEmailCardPressed,
+                    modifier = Modifier.weight(1f)
+                )
+            }
+            AnimatedVisibility(visible = navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
+                val bottomNavigationContentDescription = stringResource(R.string.navigation_bottom)
+                ReplyBottomNavigationBar(
+                    currentTab = replyUiState.currentMailbox,
+                    onTabPressed = onTabPressed,
+                    navigationItemContentList = navigationItemContentList,
+                    modifier = Modifier.testTag(bottomNavigationContentDescription)
+                )
+            }
+        }
+=======
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -122,6 +206,7 @@ private fun ReplyAppContent(
             onTabPressed = onTabPressed,
             navigationItemContentList = navigationItemContentList
         )
+>>>>>>> upstream/main
     }
 }
 

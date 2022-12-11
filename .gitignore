@@ -20,7 +20,7 @@ local.properties
 # Eclipse project files
 .classpath
 .project
-
+.idea
 # Windows thumbnail db
 .DS_Store
 

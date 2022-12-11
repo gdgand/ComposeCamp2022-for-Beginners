@@ -23,7 +23,20 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.lunchtray.ui.OrderViewModel
 
+<<<<<<< HEAD
+/*
+done 2022-12-01
+ */
+enum class LunchTrayScreen(@StringRes val title: Int) {
+    Start(title = R.string.app_name),
+    Entree(title = R.string.choose_entree),
+    SideDish(title = R.string.choose_side_dish),
+    Accompaniment(title = R.string.choose_accompaniment),
+    Checkout(title = R.string.order_checkout)
+}
+=======
 // TODO: Screen enum
+>>>>>>> upstream/main
 
 // TODO: AppBar
 
