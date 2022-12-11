@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, widthDp = 700)
 @Composable
 fun ReplyAppPreview() {
     ReplyTheme {
