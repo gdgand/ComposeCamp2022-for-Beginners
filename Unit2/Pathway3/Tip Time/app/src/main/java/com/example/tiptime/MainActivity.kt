@@ -117,6 +117,7 @@ fun TipTimeScreen() {
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold
         )
+
     }
 }
 
