@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="title_horse">말 싸움</string>
+    <string name="description_horse">오빠 뭘 잘못했는데?</string>
+    <string name="title_building">빌딩 숲</string>
+    <string name="description_building">차가운 도시의 빌딩 숲.</string>
+    <string name="title_desert">황량한 사막</string>
+    <string name="description_desert">생명이 살아남기 힘들어 보이는 사막.</string>
+    <string name="title_amethyst">자수정</string>
+    <string name="description_amethyst">영롱한 자수정 영원한 시간속으로 빨려들어 갈 것만 같다.</string>
+    <string name="title_twilight">황혼</string>
+    <string name="description_twilight">인생의 황혼은 언젠가 온다.</string>
+</resources>
