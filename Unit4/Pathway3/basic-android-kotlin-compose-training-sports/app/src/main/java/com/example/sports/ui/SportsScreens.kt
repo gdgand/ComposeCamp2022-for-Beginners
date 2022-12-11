@@ -116,10 +116,11 @@ fun SportsAppBar(
     modifier: Modifier = Modifier,
     windowSize: WindowWidthSizeClass
 ) {
+    val isShowingDetailPage = windowSize != WindowWidthSizeClass.Expanded && !isShowingListPage
     TopAppBar(
         title = {
             Text(
-                if (!isShowingListPage) {
+                if (!isShowingDetailPage) {
                     stringResource(R.string.news_fragment_label)
                 } else {
                     stringResource(R.string.list_fragment_label)
@@ -127,7 +128,7 @@ fun SportsAppBar(
             )
         },
         navigationIcon =
-        if (!isShowingListPage) {
+        if (!isShowingDetailPage) {
             {
                 IconButton(onClick = onBackButtonClick) {
                     Icon(
