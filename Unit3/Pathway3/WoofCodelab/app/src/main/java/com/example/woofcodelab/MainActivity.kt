@@ -63,13 +63,12 @@ class MainActivity : ComponentActivity() {
  */
 @Composable
 fun WoofApp() {
-
     Scaffold(
         topBar = {
             WoofTopAppBar()
         }
     ) {
-        LazyColumn(modifier = Modifier.background(MaterialTheme.colors.background)) {
+        LazyColumn(modifier = Modifier.background(MaterialTheme.colors.background).padding(it)) {
             items(dogs) {
                 DogItem(dog = it)
             }
