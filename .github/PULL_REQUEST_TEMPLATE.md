@@ -19,7 +19,7 @@
 - [x] Unit3/Pathway3/WoofCodelab
 - [x] Unit4/Pathway1/DessertClicker
 - [x] Unit4/Pathway1/Unscamble
-- [ ] Unit4/Pathway2/CupCake
+- [x] Unit4/Pathway2/CupCake
 - [ ] Unit4/Pathway2/LaunchTray
 - [ ] Unit4/Pathway3/ReplyApp
 - [ ] Unit4/Pathway3/TrainingSports
