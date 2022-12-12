@@ -23,18 +23,18 @@ import com.example.dessertclicker.model.Dessert
  */
 object Datasource {
     val dessertList = listOf(
-        Dessert(R.drawable.cupcake, 5, 0),
-        Dessert(R.drawable.donut, 10, 5),
-        Dessert(R.drawable.eclair, 15, 20),
-        Dessert(R.drawable.froyo, 30, 50),
-        Dessert(R.drawable.gingerbread, 50, 100),
-        Dessert(R.drawable.honeycomb, 100, 200),
-        Dessert(R.drawable.icecreamsandwich, 500, 500),
-        Dessert(R.drawable.jellybean, 1000, 1000),
-        Dessert(R.drawable.kitkat, 2000, 2000),
-        Dessert(R.drawable.lollipop, 3000, 4000),
-        Dessert(R.drawable.marshmallow, 4000, 8000),
-        Dessert(R.drawable.nougat, 5000, 16000),
-        Dessert(R.drawable.oreo, 6000, 20000)
+        Dessert(R.drawable.cupcake, 5, 1),
+        Dessert(R.drawable.donut, 10, 4),
+        Dessert(R.drawable.eclair, 15, 7),
+        Dessert(R.drawable.froyo, 30, 10),
+        Dessert(R.drawable.gingerbread, 50, 12),
+        Dessert(R.drawable.honeycomb, 100, 14),
+        Dessert(R.drawable.icecreamsandwich, 500, 16),
+        Dessert(R.drawable.jellybean, 1000, 18),
+        Dessert(R.drawable.kitkat, 2000, 20),
+        Dessert(R.drawable.lollipop, 3000, 22),
+        Dessert(R.drawable.marshmallow, 4000, 23),
+        Dessert(R.drawable.nougat, 5000, 27),
+        Dessert(R.drawable.oreo, 6000, 29)
     )
 }
