@@ -133,7 +133,8 @@ fun ArtImage(
                 elevation = 16.dp,
                 border = BorderStroke(3.dp, color = Color.LightGray)
             ) {
-                Image(painter = painterResource(id = imageResource),
+                Image(
+                    painter = painterResource(id = imageResource),
                     contentDescription = null,
                     modifier = Modifier.padding(32.dp)
                 )
