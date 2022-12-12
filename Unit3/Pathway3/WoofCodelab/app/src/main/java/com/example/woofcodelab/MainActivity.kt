@@ -38,6 +38,8 @@ import androidx.compose.ui.unit.dp
 import com.example.woofcodelab.data.Dog
 import com.example.woofcodelab.data.dogs
 import com.example.woofcodelab.ui.theme.WoofTheme
+import androidx.compose.material.MaterialTheme
+import androidx.compose.foundation.background
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,25 +57,20 @@ class MainActivity : ComponentActivity() {
  */
 @Composable
 fun WoofApp() {
-    LazyColumn {
+    LazyColumn(modifier = Modifier.background(MaterialTheme.colors.background)) {
         items(dogs) {
             DogItem(dog = it)
         }
     }
 }
 
-/**
- * Composable that displays a list item containing a dog icon and their information.
- *
- * @param dog contains the data that populates the list item
- * @param modifier modifiers to set to this composable
- */
 @Composable
 fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .background(MaterialTheme.colors.surface)
     ) {
         DogIcon(dog.imageResourceId)
         DogInformation(dog.name, dog.age)
