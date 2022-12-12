@@ -72,4 +72,7 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 
     testImplementation 'junit:junit:4.13.2'
+
+    // ViewModel 추가
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
 }

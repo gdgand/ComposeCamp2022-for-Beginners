@@ -16,6 +16,7 @@
 
 package com.example.reply.ui
 
+import android.app.Activity
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -37,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -96,10 +98,11 @@ fun ReplyListAndDetailContent(
                 )
             }
         }
+        val activity = LocalContext.current as Activity
         ReplyDetailsScreen(
             replyUiState = replyUiState,
             modifier = Modifier.weight(1f),
-            onBackPressed = {}
+            onBackPressed = { activity.finish() }
         )
     }
 }
@@ -128,7 +131,7 @@ fun ReplyEmailListItem(
                 text = email.subject,
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
+                modifier = Modifier.padding(top = 12.dp, bottom = 8.dp)
             )
             Text(
                 text = email.body,
@@ -175,12 +178,12 @@ private fun ReplyEmailItemHeader(email: Email, modifier: Modifier = Modifier) {
 fun ReplyProfileImage(
     @DrawableRes drawableResource: Int,
     description: String,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     Image(
         modifier = modifier.clip(CircleShape),
         painter = painterResource(drawableResource),
-        contentDescription = description,
+        contentDescription = description
     )
 }
 
