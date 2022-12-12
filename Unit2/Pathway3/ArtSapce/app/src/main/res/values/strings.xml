@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">artspace</string>
+
+
+    <string name="turkey_desc">Turkey</string>
+    <string name="england_desc">England</string>
+    <string name="ukraine_desc">Ukraine</string>
+    <string name="usa_desc">USA</string>
+
+    <string name="art_title_1">Turkey</string>
+    <string name="art_title_2">England</string>
+    <string name="art_title_3">Ukraine</string>
+    <string name="art_title_4">USA</string>
+
+    <string name="artist_1">wootaeng</string>
+    <string name="artist_2">wootaeng</string>
+    <string name="artist_3">wootaeng</string>
+    <string name="artist_4">wootaeng</string>
+</resources>
