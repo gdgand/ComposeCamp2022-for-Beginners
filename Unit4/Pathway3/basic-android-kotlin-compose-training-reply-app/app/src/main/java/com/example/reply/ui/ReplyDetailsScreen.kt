@@ -19,13 +19,7 @@ package com.example.reply.ui
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -56,7 +50,8 @@ import com.example.reply.data.MailboxType
 fun ReplyDetailsScreen(
     replyUiState: ReplyUiState,
     modifier: Modifier = Modifier,
-    onBackPressed: () -> Unit = {}
+    onBackPressed: () -> Unit = {},
+    isFullScreen: Boolean = false
 ) {
     // NavHostController 를 사용하지 않고 상태에 따라 UI를 변경해주기 때문에 뒤로가기 기능 구현 필요
     BackHandler {
@@ -70,11 +65,17 @@ fun ReplyDetailsScreen(
             .padding(top = 24.dp)
     ) {
         item {
-            ReplyDetailsScreenTopBar(onBackPressed, replyUiState)
+            if (isFullScreen) {
+                ReplyDetailsScreenTopBar(onBackPressed, replyUiState)
+            }
             ReplyEmailDetailsCard(
                 email = replyUiState.currentSelectedEmail,
                 mailboxType = replyUiState.currentMailbox,
-                modifier = Modifier.padding(horizontal = 16.dp)
+                isFullScreen = isFullScreen,
+                modifier = if (isFullScreen)
+                    Modifier.padding(horizontal = 16.dp)
+                else
+                    Modifier.padding(end = 16.dp)
             )
         }
     }
@@ -123,7 +124,8 @@ private fun ReplyDetailsScreenTopBar(
 private fun ReplyEmailDetailsCard(
     email: Email,
     mailboxType: MailboxType,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isFullScreen: Boolean = false
 ) {
     val context = LocalContext.current
     val displayToast = { text: String ->
@@ -139,16 +141,20 @@ private fun ReplyEmailDetailsCard(
                 .padding(20.dp)
         ) {
             DetailsScreenHeader(email)
-            Text(
-                text = email.subject,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.outline,
-                modifier = Modifier.padding(top = 12.dp, bottom = 8.dp)
-            )
+            if (!isFullScreen) {
+                Text(
+                    text = email.subject,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.outline,
+                    modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
+                )
+            } else {
+                Spacer(modifier = Modifier.height(12.dp))
+            }
             Text(
                 text = email.body,
                 style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             DetailsScreenButtonBar(mailboxType, displayToast)
         }
