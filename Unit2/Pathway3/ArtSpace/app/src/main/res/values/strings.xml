@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Art Space</string>
+
+    <string name="green_sea_turtle">거북이</string>
+    <string name="guzman_barquin">해변</string>
+    <string name="hari_nandakumar">가젤</string>
+    <string name="hide_and_seek">집게</string>
+    <string name="humpback_whale">고래</string>
+
+    <string name="green_sea_turtle_description">작은 거북이 사진</string>
+    <string name="guzman_barquin_description">붉은 모래가 펼쳐져 있는 해변 사진</string>
+    <string name="hari_nandakumar_description">가젤인지 정확하지는 않아</string>
+    <string name="hide_and_seek_description">아주 작은 집게 사진</string>
+    <string name="humpback_whale_description">큰수염고래인듯</string>
+
+
+</resources>
