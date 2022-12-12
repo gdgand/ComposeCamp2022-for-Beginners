@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="art_title_1">dice1</string>
+    <string name="art_title_2">dice2</string>
+    <string name="art_title_3">dice3</string>
+    <string name="art_title_4">dice4</string>
+    <string name="art_description_1">num1</string>
+    <string name="art_description_2">num2</string>
+    <string name="art_description_3">num3</string>
+    <string name="art_description_4">num4</string>
+    <string name="previous_button">Previous</string>
+    <string name="next_button">Next</string>
+</resources>
