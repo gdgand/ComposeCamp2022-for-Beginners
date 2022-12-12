@@ -71,4 +71,6 @@ dependencies {
     implementation "androidx.compose.material:material:$compose_version"
 
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
 }
