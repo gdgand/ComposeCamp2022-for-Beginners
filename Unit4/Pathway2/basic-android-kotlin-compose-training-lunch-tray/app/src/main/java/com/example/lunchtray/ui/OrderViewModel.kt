@@ -56,10 +56,9 @@ class OrderViewModel : ViewModel() {
     private fun updateItem(newItem: MenuItem, previousItem: MenuItem?) {
         _uiState.update { currentState ->
             val previousItemPrice = previousItem?.price ?: 0.0
-            // subtract previous item price in case an item of this category was already added.
             val itemTotalPrice = currentState.itemTotalPrice - previousItemPrice + newItem.price
-            // recalculate tax
             val tax = itemTotalPrice * taxRate
+
             currentState.copy(
                 itemTotalPrice = itemTotalPrice,
                 orderTax = tax,
@@ -72,6 +71,7 @@ class OrderViewModel : ViewModel() {
         }
     }
 }
+
 fun Double.formatPrice(): String {
     return NumberFormat.getCurrencyInstance().format(this)
 }

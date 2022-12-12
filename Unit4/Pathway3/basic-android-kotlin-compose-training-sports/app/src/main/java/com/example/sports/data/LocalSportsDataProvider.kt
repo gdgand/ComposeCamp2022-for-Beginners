@@ -33,7 +33,7 @@ object LocalSportsDataProvider{
                 subtitleResourceId = R.string.baseball_subtitle,
                 imageResourceId = R.drawable.ic_baseball_square,
                 sportsImageBanner = R.drawable.ic_baseball_banner,
-                newsDetails = R.string.sports_news_detail_text
+                newsDetails = R.string.baseball_news_detail_text
             ),
             Sport(
                 id = 2,
@@ -41,15 +41,15 @@ object LocalSportsDataProvider{
                 subtitleResourceId = R.string.badminton_subtitle,
                 imageResourceId = R.drawable.ic_badminton_square,
                 sportsImageBanner = R.drawable.ic_badminton_banner,
-                newsDetails = R.string.sports_news_detail_text
+                newsDetails = R.string.badminton_news_detail_text
             ),
             Sport(
                 id = 3,
                 titleResourceId = R.string.basketball,
                 subtitleResourceId = R.string.basketball_subtitle,
                 imageResourceId = R.drawable.ic_basketball_square,
-                sportsImageBanner = R.drawable.ic_basketball_banner,
-                newsDetails = R.string.sports_news_detail_text
+                sportsImageBanner = R.drawable.ic_badminton_banner,
+                newsDetails = R.string.basketball_news_detail_text
             ),
             Sport(
                 id = 4,
@@ -57,7 +57,7 @@ object LocalSportsDataProvider{
                 subtitleResourceId = R.string.bowling_subtitle,
                 imageResourceId = R.drawable.ic_bowling_square,
                 sportsImageBanner = R.drawable.ic_bowling_banner,
-                newsDetails = R.string.sports_news_detail_text
+                newsDetails = R.string.bowling_news_detail_text
             ),
             Sport(
                 id = 5,
@@ -65,7 +65,7 @@ object LocalSportsDataProvider{
                 subtitleResourceId = R.string.cycling_subtitle,
                 imageResourceId = R.drawable.ic_cycling_square,
                 sportsImageBanner = R.drawable.ic_cycling_banner,
-                newsDetails = R.string.sports_news_detail_text
+                newsDetails = R.string.cycling_news_detail_text
             ),
             Sport(
                 id = 6,
@@ -73,7 +73,7 @@ object LocalSportsDataProvider{
                 subtitleResourceId = R.string.golf_subtitle,
                 imageResourceId = R.drawable.ic_golf_square,
                 sportsImageBanner = R.drawable.ic_golf_banner,
-                newsDetails = R.string.sports_news_detail_text
+                newsDetails = R.string.golf_news_detail_text
             ),
             Sport(
                 id = 7,
@@ -81,7 +81,7 @@ object LocalSportsDataProvider{
                 subtitleResourceId = R.string.running_subtitle,
                 imageResourceId = R.drawable.ic_running_square,
                 sportsImageBanner = R.drawable.ic_running_banner,
-                newsDetails = R.string.sports_news_detail_text
+                newsDetails = R.string.running_news_detail_text
             ),
             Sport(
                 id = 8,
@@ -89,7 +89,7 @@ object LocalSportsDataProvider{
                 subtitleResourceId = R.string.soccer_subtitle,
                 imageResourceId = R.drawable.ic_soccer_square,
                 sportsImageBanner = R.drawable.ic_soccer_banner,
-                newsDetails = R.string.sports_news_detail_text
+                newsDetails = R.string.soccer_news_detail_text
             ),
             Sport(
                 id = 9,
@@ -97,7 +97,7 @@ object LocalSportsDataProvider{
                 subtitleResourceId = R.string.swimming_subtitle,
                 imageResourceId = R.drawable.ic_swimming_square,
                 sportsImageBanner = R.drawable.ic_swimming_banner,
-                newsDetails = R.string.sports_news_detail_text
+                newsDetails = R.string.swimming_news_detail_text
             ),
             Sport(
                 id = 10,
@@ -105,7 +105,7 @@ object LocalSportsDataProvider{
                 subtitleResourceId = R.string.table_tennis_subtitle,
                 imageResourceId = R.drawable.ic_table_tennis_square,
                 sportsImageBanner = R.drawable.ic_table_tennis_banner,
-                newsDetails = R.string.sports_news_detail_text
+                newsDetails = R.string.table_tennis_news_detail_text
             ),
             Sport(
                 id = 11,
@@ -113,7 +113,7 @@ object LocalSportsDataProvider{
                 subtitleResourceId = R.string.tennis_subtitle,
                 imageResourceId = R.drawable.ic_tennis_square,
                 sportsImageBanner = R.drawable.ic_tennis_banner,
-                newsDetails = R.string.sports_news_detail_text
+                newsDetails = R.string.tennis_news_detail_text
             )
         )
     }
