@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Tip Time</string>
+    <string name="calculate_tip">Calculate Tip</string>
+    <string name="bill_amount">Bill Amount</string>
+    <string name="tip_amount">Tip amount: %s</string>
+    <string name="how_was_the_service">Tip (%)</string>
+    <string name="round_up_tip">Round up tip?</string>
+    <string name="prev">Previous</string>
+    <string name="next">Next</string>
+    <string name="art_title_1">Artwork Title 1</string>
+    <string name="art_title_2">Artwork Title 2</string>
+    <string name="art_title_3">Artwork Title 3</string>
+    <string name="artist_1">Artist 1</string>
+    <string name="artist_2">Artist 2</string>
+    <string name="artist_3">Artist 3</string>
+    <string name="year_1">1999</string>
+    <string name="year_2">2000</string>
+    <string name="year_3">2001</string>
+</resources>
