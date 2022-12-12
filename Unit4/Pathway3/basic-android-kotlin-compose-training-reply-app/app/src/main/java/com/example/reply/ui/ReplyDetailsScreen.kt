@@ -17,6 +17,7 @@
 package com.example.reply.ui
 
 import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -55,8 +56,13 @@ import com.example.reply.data.MailboxType
 fun ReplyDetailsScreen(
     replyUiState: ReplyUiState,
     modifier: Modifier = Modifier,
-    onBackPressed: () -> Unit = {},
+    onBackPressed: () -> Unit = {}
 ) {
+    // NavHostController 를 사용하지 않고 상태에 따라 UI를 변경해주기 때문에 뒤로가기 기능 구현 필요
+    BackHandler {
+        onBackPressed()
+    }
+
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
@@ -84,13 +90,13 @@ private fun ReplyDetailsScreenTopBar(
         modifier = modifier
             .fillMaxWidth()
             .padding(bottom = 24.dp),
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(
             onClick = onBackButtonClicked,
             modifier = Modifier
                 .padding(horizontal = 16.dp)
-                .background(MaterialTheme.colorScheme.surface, shape = CircleShape),
+                .background(MaterialTheme.colorScheme.surface, shape = CircleShape)
         ) {
             Icon(
                 imageVector = Icons.Default.ArrowBack,
@@ -117,7 +123,7 @@ private fun ReplyDetailsScreenTopBar(
 private fun ReplyEmailDetailsCard(
     email: Email,
     mailboxType: MailboxType,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
     val displayToast = { text: String ->
@@ -137,12 +143,12 @@ private fun ReplyEmailDetailsCard(
                 text = email.subject,
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.outline,
-                modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
+                modifier = Modifier.padding(top = 12.dp, bottom = 8.dp)
             )
             Text(
                 text = email.body,
                 style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             DetailsScreenButtonBar(mailboxType, displayToast)
         }
@@ -167,7 +173,7 @@ private fun DetailsScreenButtonBar(
                 modifier = modifier
                     .fillMaxWidth()
                     .padding(vertical = 20.dp),
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
             ) {
                 ActionButton(
                     text = stringResource(id = R.string.move_to_inbox),
@@ -186,7 +192,7 @@ private fun DetailsScreenButtonBar(
                 modifier = modifier
                     .fillMaxWidth()
                     .padding(vertical = 20.dp),
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
             ) {
                 ActionButton(
                     text = stringResource(id = R.string.reply),
@@ -243,17 +249,17 @@ private fun ActionButton(
             .padding(vertical = 20.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor =
-            if (!containIrreversibleAction)
+            if (!containIrreversibleAction) {
                 MaterialTheme.colorScheme.inverseOnSurface
-            else MaterialTheme.colorScheme.onErrorContainer
+            } else MaterialTheme.colorScheme.onErrorContainer
         )
     ) {
         Text(
             text = text,
             color =
-            if (!containIrreversibleAction)
+            if (!containIrreversibleAction) {
                 MaterialTheme.colorScheme.onSurfaceVariant
-            else MaterialTheme.colorScheme.onError
+            } else MaterialTheme.colorScheme.onError
         )
     }
 }
