@@ -10,29 +10,23 @@ import kotlinx.coroutines.flow.update
 
 class MainViewModel : ViewModel() {
 
-    private val nowIndex = 0
-    private var currentDessertPrice = dessertList[nowIndex].imageId
+    private var currentDessertPrice = dessertList[0].price
 
     private val _uiState =
-        MutableStateFlow(MainState(currentDessertImageId = dessertList[nowIndex].imageId))
+        MutableStateFlow(MainState(currentDessertImageId = dessertList[0].imageId))
     val uiState: StateFlow<MainState> = _uiState.asStateFlow()
 
     fun dessertAdd() {
+        val sold = uiState.value.dessertsSold + 1
+        val nextDessert = determineDessertToShow(sold)
         _uiState.update {
             it.copy(
-                revenue = it.revenue + dessertList[nowIndex].price,
-                dessertsSold = it.dessertsSold + 1
+                revenue = it.revenue + currentDessertPrice,
+                dessertsSold = sold,
+                currentDessertImageId = nextDessert.imageId
             )
         }
-
-        determineDessertToShow(_uiState.value.dessertsSold).let {
-            _uiState.update { state ->
-                state.copy(
-                    currentDessertImageId = it.imageId
-                )
-            }
-            currentDessertPrice = it.price
-        }
+        currentDessertPrice = nextDessert.price
     }
 
     private fun determineDessertToShow(
