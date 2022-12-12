@@ -15,10 +15,10 @@
 - [O] Unit2/Pathway2/Lemonade
 - [O] Unit2/Pathway3/TipTime
 - [O] Unit2/Pathway3/ArtSpace
-- [ ] Unit3/Pathway2/AffirmationsCodelab
-- [ ] Unit3/Pathway3/WoofCodelab
-- [ ] Unit4/Pathway1/DessertClicker
-- [ ] Unit4/Pathway1/Unscamble
+- [O] Unit3/Pathway2/AffirmationsCodelab
+- [O] Unit3/Pathway3/WoofCodelab
+- [O] Unit4/Pathway1/DessertClicker
+- [O] Unit4/Pathway1/Unscamble
 - [ ] Unit4/Pathway2/CupCake
 - [ ] Unit4/Pathway2/LaunchTray
 - [ ] Unit4/Pathway3/ReplyApp
