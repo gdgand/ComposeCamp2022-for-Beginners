@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.affirmationscodelab.data.Datasource
 import com.example.affirmationscodelab.model.Affirmation
 import com.example.affirmationscodelab.ui.theme.AffirmationsTheme
@@ -52,6 +53,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AffirmationApp() {
+    //var context = LocalContext.current
     AffirmationsTheme {
         //Scaffold(
         //    content = {
@@ -64,7 +66,7 @@ fun AffirmationApp() {
 @Composable
 fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
     Card(modifier = modifier.padding(8.dp), elevation = 4.dp) {
-        Column() {
+        Column {
 
             Image(
                 painter = painterResource(id = affirmation.imageResourceId),
@@ -82,10 +84,12 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
             )
         }
     }
-    val context = LocalContext.current
-    AffirmationsTheme() {
-        
-    }
+}
+
+@Preview
+@Composable
+private fun AffirmationCardPreview() {
+    AffirmationCard(Affirmation(R.string.affirmation1, R.drawable.image1))
 }
 
 @Composable
