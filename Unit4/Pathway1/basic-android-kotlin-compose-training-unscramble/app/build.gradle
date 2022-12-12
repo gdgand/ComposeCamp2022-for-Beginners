@@ -74,4 +74,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     //viewmodel
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
+    //viewmodel의 단위 테스트 작성 항목
+    testImplementation 'junit:junit:4.13.2'
+
+
 }
