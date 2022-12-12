@@ -23,9 +23,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
-/**
- * View Model for Sports app
- */
 class SportsViewModel : ViewModel() {
 
     private val _uiState = MutableStateFlow(
