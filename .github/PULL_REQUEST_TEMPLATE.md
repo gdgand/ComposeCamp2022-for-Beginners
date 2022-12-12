@@ -25,8 +25,8 @@
 - [ ] Unit4/Pathway3/TrainingSports
 
 ## 체크사항
-- [ ] 수료폼에 작성한 PR 링크 넣기
-- [ ] 수료폼 제출하기 
+- [x] 수료폼에 작성한 PR 링크 넣기
+- [x] 수료폼 제출하기 
 
 ## 수료폼
 - https://forms.gle/myphy3UTHN1iiHfN7
