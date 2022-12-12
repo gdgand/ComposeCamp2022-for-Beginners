@@ -37,15 +37,11 @@ import com.example.cupcake.R
 import com.example.cupcake.data.OrderUiState
 import com.example.cupcake.ui.components.FormattedPriceLabel
 
-/**
- * This composable expects [orderUiState] that represents the order state, [onCancelButtonClicked] lambda
- * that triggers canceling the order and passes the final order to [onSendButtonClicked] lambda
- */
 @Composable
 fun OrderSummaryScreen(
     orderUiState: OrderUiState,
-    // TODO: add onCancelButtonClicked
-    // TODO: add onSendButtonClicked
+    onCancelButtonClicked: () -> Unit,
+    onSendButtonClicked: (String, String) -> Unit,
     modifier: Modifier = Modifier
 ){
     val resources = LocalContext.current.resources
@@ -55,7 +51,7 @@ fun OrderSummaryScreen(
         orderUiState.quantity,
         orderUiState.quantity
     )
-    //Load and format a string resource with the parameters.
+
     val orderSummary = stringResource(
         R.string.order_details,
         numberOfCupcakes,
@@ -64,13 +60,10 @@ fun OrderSummaryScreen(
         orderUiState.quantity
     )
     val newOrder = stringResource(R.string.new_cupcake_order)
-    //Create a list of order summary to display
+
     val items = listOf(
-        // Summary line 1: display selected quantity
         Pair(stringResource(R.string.quantity), numberOfCupcakes),
-        // Summary line 2: display selected flavor
         Pair(stringResource(R.string.flavor), orderUiState.flavor),
-        // Summary line 3: display selected pickup date
         Pair(stringResource(R.string.pickup_date), orderUiState.date)
     )
 
@@ -90,13 +83,13 @@ fun OrderSummaryScreen(
         )
         Button(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { /* TODO: handle send button */ }
+            onClick = { onSendButtonClicked(newOrder, orderSummary) }
         ) {
             Text(stringResource(R.string.send))
         }
         OutlinedButton(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { /* TODO: handle cancel button */ }
+            onClick = onCancelButtonClicked
         ) {
             Text(stringResource(R.string.cancel))
         }
@@ -108,5 +101,7 @@ fun OrderSummaryScreen(
 fun OrderSummaryPreview(){
     OrderSummaryScreen(
         orderUiState = OrderUiState(0, "Test", "Test", "$300.00"),
+        onSendButtonClicked = { subject: String, summary: String -> },
+        onCancelButtonClicked = {}
     )
 }
