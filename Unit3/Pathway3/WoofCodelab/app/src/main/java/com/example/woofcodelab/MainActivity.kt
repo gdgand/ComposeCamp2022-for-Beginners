@@ -15,6 +15,7 @@
  */
 package com.example.woofcodelab
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -42,6 +43,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Scaffold
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
@@ -58,14 +61,22 @@ class MainActivity : ComponentActivity() {
 }
 
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun WoofApp() {
-    LazyColumn(modifier = Modifier.background(MaterialTheme.colors.background)) {
-        items(dogs) {
-            DogItem(dog = it)
+    Scaffold(
+        topBar = {
+            WoofTopAppBar()
+        }
+    ) {
+        LazyColumn(modifier = Modifier.background(MaterialTheme.colors.background)) {
+            items(dogs) {
+                DogItem(dog = it)
+            }
         }
     }
 }
+
 
 @Composable
 fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
@@ -117,6 +128,28 @@ fun DogInformation(@StringRes dogName: Int, dogAge: Int, modifier: Modifier = Mo
     }
 }
 
+@Composable
+fun WoofTopAppBar(modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(color = MaterialTheme.colors.primary),
+        verticalAlignment = Alignment.CenterVertically
+
+    ) {
+        Image(
+            modifier = Modifier
+                .size(64.dp)
+                .padding(8.dp),
+            painter = painterResource(R.drawable.ic_woof_logo),
+            contentDescription = null
+        )
+        Text(
+            text = stringResource(R.string.app_name),
+            style = MaterialTheme.typography.h1
+        )
+    }
+}
 
 @Preview
 @Composable
