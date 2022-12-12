@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="eong1">잠자는 땅콩이</string>
+    <string name="eong2">꿈꾸는 땅콩이</string>
+    <string name="eong3">식빵굽는 땅콩이</string>
+    <string name="eong1_desc">2022.11.13</string>
+    <string name="eong2_desc">2022.11.05</string>
+    <string name="eong3_desc">2022.12.12</string>
+</resources>
