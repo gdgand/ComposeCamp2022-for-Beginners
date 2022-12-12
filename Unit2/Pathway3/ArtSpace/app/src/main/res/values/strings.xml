@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ArtSpace</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="Guernica">Guernica</string>
+    <string name="Pablo_Picasso">Pablo Picasso</string>
+    <string name="monalisa">MonaLisa</string>
+    <string name="Leonardo_da_vinci">Leonardo di ser Piero da Vinci</string>
+    <string name="sunflowers">SunFlowers</string>
+    <string name="Vincent_van_gogh">Vincent Willem van Gogh</string>
+</resources>
