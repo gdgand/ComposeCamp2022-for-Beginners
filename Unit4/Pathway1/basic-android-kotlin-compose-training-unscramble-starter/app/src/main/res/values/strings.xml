@@ -22,6 +22,7 @@
     <string name="score">Score: %d</string>
     <string name="word_count">%d of 10 words</string>
     <string name="enter_your_word">Enter your word</string>
+    <string name="wrong_guess">Wrong Guess!</string>
     <string name="congratulations">Congratulations!</string>
     <string name="you_scored">"You scored: %d"</string>
     <string name="exit">Exit</string>
