@@ -8,6 +8,7 @@ import com.example.android.unscramble.data.allWords
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 
 class GameViewModel : ViewModel() {
     // Game UI state
@@ -46,6 +47,18 @@ class GameViewModel : ViewModel() {
 
     fun updateUserGuess(guessWord: String) {
         userGuess = guessWord
+    }
+
+    fun checkUserGuess() {
+        if (userGuess.equals(currentWord, ignoreCase = true)) {
+
+        } else {
+            _uiState.update { currentState ->
+                currentState.copy(isGuessedWordWrong = true)     // 복사 시 isGuessedWordWrong 값만 변경하고 나머지는 그대로 유지
+            }
+        }
+
+        updateUserGuess("")    // reset
     }
 
     fun resetGame() {
