@@ -45,7 +45,7 @@ import com.example.cupcake.data.DataSource.quantityOptions
 @Composable
 fun StartOrderScreen(
     quantityOptions: List<Pair<Int, Int>>,
-    onNextButtonClicked: (Int) -> Unit,
+    onNextButtonClicked: (Int) -> Unit = {},
     modifier: Modifier = Modifier
 ){
     Column(
