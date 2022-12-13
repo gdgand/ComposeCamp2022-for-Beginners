@@ -30,6 +30,7 @@ fun DiceRollerApp() {
 }
 
 @Composable
-fun DiceWithButtonAndImage() {
+fun DiceWithButtonAndImage(modifier:Modifier = Modifier
+    .fillMaxSize()) {
 
 }
