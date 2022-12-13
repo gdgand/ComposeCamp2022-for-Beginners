@@ -14,36 +14,27 @@ import kotlinx.coroutines.flow.update
 class DessertViewModel:ViewModel(){
     private val _uiState = MutableStateFlow(DessertUiState())
     val uiState:StateFlow<DessertUiState> = _uiState.asStateFlow()
-    var currentDessertImageId:Int = 0
-    var currentDessertPrice:Int = 0
     val desserts:List<Dessert> = dessertList
-    init{
-        currentDessertImageId = desserts[0].imageId
-        currentDessertPrice = desserts[0].price
-    }
 
     fun updateUiState() {
-
-        // Update the revenue
+        val nextDessertIndex = determineDessertToShow()
         _uiState.update { currentState ->
             currentState.copy(
-                revenue = currentState.revenue.plus(currentDessertPrice),
-                dessertsSold = currentState.dessertsSold.inc()
+                currentDessertIndex = nextDessertIndex,
+                revenue = currentState.revenue.plus(currentState.currentDessertPrice),
+                dessertsSold = currentState.dessertsSold.inc(),
+                currentDessertImageId = desserts[nextDessertIndex].imageId,
+                currentDessertPrice = desserts[nextDessertIndex].price
             )
         }
-
-        // Show the next dessert
-        val dessertToShow = determineDessertToShow()
-        currentDessertImageId = dessertToShow.imageId
-        currentDessertPrice = dessertToShow.price
     }
 
     fun determineDessertToShow(
-    ): Dessert {
-        var dessertToShow = desserts.first()
-        for (dessert in desserts) {
-            if (_uiState.value.dessertsSold >= dessert.startProductionAmount) {
-                dessertToShow = dessert
+    ): Int {
+        var dessertToShow = 0
+        for (idx in desserts.indices) {
+            if (_uiState.value.dessertsSold >= desserts[idx].startProductionAmount) {
+                dessertToShow = idx
             } else {
                 // The list of desserts is sorted by startProductionAmount. As you sell more desserts,
                 // you'll start producing more expensive desserts as determined by startProductionAmount

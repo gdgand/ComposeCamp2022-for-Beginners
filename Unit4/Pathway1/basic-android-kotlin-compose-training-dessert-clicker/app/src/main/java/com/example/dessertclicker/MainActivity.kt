@@ -124,7 +124,7 @@ private fun DessertClickerApp(
         DessertClickerScreen(
             revenue = dessertUiState.revenue,
             dessertsSold = dessertUiState.dessertsSold,
-            dessertImageId = dessertViewModel.currentDessertImageId,
+            dessertImageId = dessertUiState.currentDessertImageId,
             onDessertClicked = {dessertViewModel.updateUiState()},
             modifier = Modifier.padding(contentPadding)
         )
