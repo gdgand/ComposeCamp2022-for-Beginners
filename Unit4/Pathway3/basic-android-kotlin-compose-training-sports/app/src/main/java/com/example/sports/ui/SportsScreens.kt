@@ -39,7 +39,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -84,6 +83,7 @@ fun SportsApp(
     Scaffold(
         topBar = {
             SportsAppBar(
+                contentType = contentType,
                 isShowingListPage = uiState.isShowingListPage,
                 onBackButtonClick = { viewModel.navigateToListPage() }
             )
@@ -93,7 +93,7 @@ fun SportsApp(
             SportListAndDetail(
                 sport = uiState.sportsList,
                 selectedSport = uiState.currentSport,
-                onClick = {},
+                onClick = {viewModel.updateCurrentSport(it)},
                 modifier = modifier
 
             )
@@ -122,17 +122,22 @@ fun SportsApp(
 
 /**
  * Composable that displays the topBar and displays back button if back navigation is possible.
+ * SportsAppBar 컴포저블의 경우 뒤로 버튼이 표시되지 않고,
+ * 화면이 목록 페이지에서 확장될 때 앱 바에 Sports가 표시되도록 동작을 변경합니다.
  */
 @Composable
 fun SportsAppBar(
     onBackButtonClick: () -> Unit,
     isShowingListPage: Boolean,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    contentType: ContentsType
 ) {
+    Log.e("TAG", "contentType : $contentType")
+
     TopAppBar(
         title = {
             Text(
-                if (!isShowingListPage) {
+                if (contentType != ContentsType.LIST_AND_DETAIL) {
                     stringResource(R.string.news_fragment_label)
                 } else {
                     stringResource(R.string.list_fragment_label)
@@ -140,7 +145,7 @@ fun SportsAppBar(
             )
         },
         navigationIcon =
-        if (!isShowingListPage) {
+        if (!isShowingListPage && contentType != ContentsType.LIST_AND_DETAIL) {
             {
                 IconButton(onClick = onBackButtonClick) {
                     Icon(
