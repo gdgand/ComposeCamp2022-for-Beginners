@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ArtSpace</string>
+    <string name="sample_title">Sample Title</string>
+    <string name="sample_artist">Sample Artist</string>
+    <string name="sample_year">Sample Year</string>
+</resources>
