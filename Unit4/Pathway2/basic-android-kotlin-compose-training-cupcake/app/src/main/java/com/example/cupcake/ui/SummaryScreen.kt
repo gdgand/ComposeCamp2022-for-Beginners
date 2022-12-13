@@ -15,12 +15,7 @@
  */
 package com.example.cupcake.ui
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Divider
 import androidx.compose.material.OutlinedButton
@@ -44,10 +39,10 @@ import com.example.cupcake.ui.components.FormattedPriceLabel
 @Composable
 fun OrderSummaryScreen(
     orderUiState: OrderUiState,
-    // TODO: add onCancelButtonClicked
-    // TODO: add onSendButtonClicked
+    onCancelButtonClicked: () -> Unit,
+    onSendButtonClicked: (String, String) -> Unit,
     modifier: Modifier = Modifier
-){
+) {
     val resources = LocalContext.current.resources
 
     val numberOfCupcakes = resources.getQuantityString(
@@ -74,7 +69,7 @@ fun OrderSummaryScreen(
         Pair(stringResource(R.string.pickup_date), orderUiState.date)
     )
 
-    Column (
+    Column(
         modifier = modifier.padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
@@ -90,13 +85,13 @@ fun OrderSummaryScreen(
         )
         Button(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { /* TODO: handle send button */ }
+            onClick = { onSendButtonClicked(newOrder, orderSummary) }
         ) {
             Text(stringResource(R.string.send))
         }
         OutlinedButton(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { /* TODO: handle cancel button */ }
+            onClick = onCancelButtonClicked
         ) {
             Text(stringResource(R.string.cancel))
         }
@@ -105,8 +100,10 @@ fun OrderSummaryScreen(
 
 @Preview
 @Composable
-fun OrderSummaryPreview(){
+fun OrderSummaryPreview() {
     OrderSummaryScreen(
         orderUiState = OrderUiState(0, "Test", "Test", "$300.00"),
+        onCancelButtonClicked = {},
+        onSendButtonClicked = { _, _ -> }
     )
 }
