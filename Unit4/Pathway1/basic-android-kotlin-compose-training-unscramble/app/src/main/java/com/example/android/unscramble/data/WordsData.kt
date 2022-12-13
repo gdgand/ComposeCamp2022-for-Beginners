@@ -16,6 +16,8 @@
 
 package com.example.android.unscramble.data
 
+private lateinit var currentWord: String
+
 const val MAX_NO_OF_WORDS = 10
 const val SCORE_INCREASE = 20
 
