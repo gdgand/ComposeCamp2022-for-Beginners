@@ -89,7 +89,27 @@ fun ArtSpaceScreen() {
             year = artDatas[artDataIndex].year
         )
         Spacer(modifier = Modifier.height(8.dp))
-        DisplayController(artDataIndex = artDataIndex, onClick = {artDataIndex = it})
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        ) {
+            Spacer(modifier = Modifier.width(16.dp))
+            Button(
+                onClick = { if (artDataIndex == 0) artDataIndex = 3 else artDataIndex -= 1 },
+                modifier = Modifier.weight(1F)
+            ) {
+                Text(text = stringResource(id = R.string.previousButton))
+            }
+            Spacer(modifier = Modifier.width(32.dp))
+            Button(
+                onClick = { if (artDataIndex == 3) artDataIndex = 0 else artDataIndex  += 1 },
+                modifier = Modifier.weight(1F)
+            ) {
+                Text(text = stringResource(id = R.string.nextButton))
+            }
+            Spacer(modifier = Modifier.width(16.dp))
+        }
     }
 }
 
@@ -140,32 +160,6 @@ fun ArtworkDescriptor(
         }
     }
 }
-
-@Composable
-fun DisplayController(artDataIndex: Int, onClick: (Int) -> Unit) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-    ) {
-        Spacer(modifier = Modifier.width(16.dp))
-        Button(
-            onClick = { onClick },
-            modifier = Modifier.weight(1F)
-        ) {
-            Text(text = stringResource(id = R.string.previousButton))
-        }
-        Spacer(modifier = Modifier.width(32.dp))
-        Button(
-            onClick = { artDataIndex + 1 },
-            modifier = Modifier.weight(1F)
-        ) {
-            Text(text = stringResource(id = R.string.nextButton))
-        }
-        Spacer(modifier = Modifier.width(16.dp))
-    }
-}
-
 
 @Preview(showBackground = true)
 @Composable
