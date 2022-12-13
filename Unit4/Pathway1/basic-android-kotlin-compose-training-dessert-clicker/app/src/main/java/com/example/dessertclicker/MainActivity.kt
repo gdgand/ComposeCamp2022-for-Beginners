@@ -82,6 +82,7 @@ class MainActivity : ComponentActivity() {
         Log.d(TAG, "onStart Called")
     }
 
+    /*
     override fun onResume() {
         super.onResume()
         Log.d(TAG, "onResume Called")
@@ -106,6 +107,7 @@ class MainActivity : ComponentActivity() {
         super.onDestroy()
         Log.d(TAG, "onDestroy Called")
     }
+     */
 }
 
 /**
