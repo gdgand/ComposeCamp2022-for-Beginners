@@ -163,7 +163,7 @@ fun GameLayout(
             value = userGuess,
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
-            onValueChange = { onUserGuessChanged },
+            onValueChange = onUserGuessChanged,
             label = {
                 if (isGuessWrong) {
                     Text(stringResource(R.string.wrong_guess))

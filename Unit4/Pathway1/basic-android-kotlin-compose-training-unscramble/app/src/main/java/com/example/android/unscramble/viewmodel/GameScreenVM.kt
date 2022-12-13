@@ -15,10 +15,6 @@ import kotlinx.coroutines.flow.update
 
 class GameScreenVM : ViewModel() {
 
-    init {
-        resetGame()
-    }
-
     private val _uiState = MutableStateFlow(GameUiState())
     val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
 
@@ -27,6 +23,10 @@ class GameScreenVM : ViewModel() {
 
     private var usedWords: MutableSet<String> = mutableSetOf()
     private lateinit var currentWord: String
+
+    init {
+        resetGame()
+    }
 
     fun resetGame() {
         usedWords.clear()
