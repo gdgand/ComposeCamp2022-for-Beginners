@@ -16,6 +16,7 @@
 
 package com.example.reply.ui
 
+import android.app.Activity
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -37,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -45,9 +47,6 @@ import com.example.reply.R
 import com.example.reply.data.Email
 import com.example.reply.data.local.LocalAccountsDataProvider
 
-/**
- * Component that displays a single pane of list of emails
- */
 @Composable
 fun ReplyListOnlyContent(
     replyUiState: ReplyUiState,
@@ -71,9 +70,6 @@ fun ReplyListOnlyContent(
     }
 }
 
-/**
- * Component that displays two panes of list of emails and email details
- */
 @Composable
 fun ReplyListAndDetailContent(
     replyUiState: ReplyUiState,
@@ -96,17 +92,15 @@ fun ReplyListAndDetailContent(
                 )
             }
         }
+        val activity = LocalContext.current as Activity
         ReplyDetailsScreen(
             replyUiState = replyUiState,
             modifier = Modifier.weight(1f),
-            onBackPressed = {}
+            onBackPressed = { activity.finish() }
         )
     }
 }
 
-/**
- * Component that displays a single email list item
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReplyEmailListItem(
@@ -168,9 +162,6 @@ private fun ReplyEmailItemHeader(email: Email, modifier: Modifier = Modifier) {
     }
 }
 
-/**
- * Component that displays profile image
- */
 @Composable
 fun ReplyProfileImage(
     @DrawableRes drawableResource: Int,
@@ -184,9 +175,6 @@ fun ReplyProfileImage(
     )
 }
 
-/**
- * Component that displays Reply logo
- */
 @Composable
 fun ReplyLogo(
     modifier: Modifier = Modifier,
@@ -200,9 +188,6 @@ fun ReplyLogo(
     )
 }
 
-/**
- * Component that displays top bar.
- */
 @Composable
 private fun ReplyHomeTopBar(modifier: Modifier = Modifier) {
     Row(
