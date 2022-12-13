@@ -16,12 +16,21 @@
 package com.example.lunchtray
 
 import androidx.annotation.StringRes
-import androidx.compose.material.Scaffold
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.example.lunchtray.ui.OrderViewModel
 
 enum class LunchTrayScreen(@StringRes val title: Int) {
@@ -32,21 +41,72 @@ enum class LunchTrayScreen(@StringRes val title: Int) {
     Checkout(title = R.string.order_checkout),
 }
 
-// TODO: AppBar
+@Composable
+fun LunchTrayAppBar(
+    currentScreenNameId: Int,
+    canNavigateBack: Boolean,
+    navigateUp: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    TopAppBar(
+        title = { Text(stringResource(id = currentScreenNameId)) },
+        modifier = modifier,
+        navigationIcon = {
+            if (canNavigateBack) {
+                IconButton(onClick = navigateUp) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = stringResource(R.string.back_button)
+                    )
+                }
+            }
+        }
+    )
+}
 
 @Composable
-fun LunchTrayApp(modifier: Modifier = Modifier) {
-    // TODO: Create Controller and initialization
-
-    // Create ViewModel
-    val viewModel: OrderViewModel = viewModel()
+fun LunchTrayApp(
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController(),
+    viewModel: OrderViewModel = viewModel(),
+) {
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val currentScreen = backStackEntry?.destination?.route ?: LunchTrayScreen.StartOrder.name
 
     Scaffold(
+        modifier = modifier,
         topBar = {
-            // TODO: AppBar
+            LunchTrayAppBar(
+                currentScreenNameId = LunchTrayScreen.valueOf(currentScreen).title,
+                canNavigateBack = navController.previousBackStackEntry != null,
+                navigateUp = {
+                    navController.navigateUp()
+                }
+            )
         }
     ) { innerPadding ->
         val uiState by viewModel.uiState.collectAsState()
-        // TODO: Navigation host
+
+        NavHost(
+            navController = navController,
+            startDestination = LunchTrayScreen.StartOrder.name,
+            modifier = modifier.padding(innerPadding)
+        ) {
+            composable(route = LunchTrayScreen.StartOrder.name) {
+
+            }
+            composable(route = LunchTrayScreen.EntreeMenu.name) {
+
+            }
+            composable(route = LunchTrayScreen.SideDishMenu.name) {
+
+            }
+            composable(route = LunchTrayScreen.AccompanimentMenu.name) {
+
+            }
+            composable(route = LunchTrayScreen.Checkout.name) {
+
+            }
+        }
     }
 }
