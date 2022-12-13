@@ -5,89 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d2e5380-c043-468e-840f-826cd3e49b27" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/androidTest/java/com/example/diceroller/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/java/com/example/diceroller/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/java/com/example/diceroller/ui/theme/Color.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/java/com/example/diceroller/ui/theme/Shape.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/java/com/example/diceroller/ui/theme/Theme.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/java/com/example/diceroller/ui/theme/Type.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/drawable/dice_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/drawable/dice_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/drawable/dice_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/drawable/dice_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/drawable/dice_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/drawable/dice_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/app/src/test/java/com/example/diceroller/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Dice_Roller/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/androidTest/java/com/example/lemonade/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/java/com/example/lemonade/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/java/com/example/lemonade/ui/theme/Color.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/java/com/example/lemonade/ui/theme/Shape.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/java/com/example/lemonade/ui/theme/Theme.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/java/com/example/lemonade/ui/theme/Type.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/test/java/com/example/lemonade/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/drawable/lemon_drink.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/drawable/lemon_restart.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/drawable/lemon_squeeze.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/drawable/lemon_tree.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/java/com/example/lemonade/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/java/com/example/lemonade/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Unit2/Pathway2/Lemonade/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
