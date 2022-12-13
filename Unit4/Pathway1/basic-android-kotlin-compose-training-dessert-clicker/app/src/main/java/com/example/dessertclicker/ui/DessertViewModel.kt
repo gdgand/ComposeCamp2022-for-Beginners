@@ -46,12 +46,4 @@ class DessertViewModel:ViewModel(){
 
         return dessertToShow
     }
-    /*
-    var currentDessertPrice by rememberSaveable {
-        mutableStateOf(desserts[currentDessertIndex].price)
-    }
-    var currentDessertImageId by rememberSaveable {
-        mutableStateOf(desserts[currentDessertIndex].imageId)
-    }
-     */
 }

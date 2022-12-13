@@ -60,9 +60,6 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.dessertclicker.ui.theme.DessertClickerTheme
 
 
-// tag for logging
-private const val TAG = "MainActivity"
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,7 +102,6 @@ private fun DessertClickerApp(
     dessertViewModel: DessertViewModel = viewModel()
 ) {
     val dessertUiState by dessertViewModel.uiState.collectAsState()
-    //var revenue by remember { mutableStateOf(0) }
 
     Scaffold(
         topBar = {
