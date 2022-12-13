@@ -79,9 +79,11 @@ fun CupcakeAppBar(
 }
 
 @Composable
-fun CupcakeApp(modifier: Modifier = Modifier, viewModel: OrderViewModel = viewModel()){
-    val navController = rememberNavController()
-
+fun CupcakeApp(
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController(),
+    viewModel: OrderViewModel = viewModel(),
+) {
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentScreen = backStackEntry?.destination?.route ?: CupcakeScreen.Start.name
 
@@ -89,7 +91,7 @@ fun CupcakeApp(modifier: Modifier = Modifier, viewModel: OrderViewModel = viewMo
         topBar = {
             CupcakeAppBar(
                 currentScreenNameId = CupcakeScreen.valueOf(currentScreen).title,
-                canNavigateBack =  navController.previousBackStackEntry != null,
+                canNavigateBack = navController.previousBackStackEntry != null,
                 navigateUp = {
                     navController.navigateUp()
                 }
