@@ -15,31 +15,148 @@
  */
 package com.example.lunchtray
 
-import androidx.compose.material.Scaffold
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.lunchtray.ui.OrderViewModel
+import androidx.navigation.compose.*
+import com.example.lunchtray.datasource.DataSource.accompanimentMenuItems
+import com.example.lunchtray.datasource.DataSource.entreeMenuItems
+import com.example.lunchtray.datasource.DataSource.sideDishMenuItems
+import com.example.lunchtray.ui.*
+import javax.sql.DataSource
 
-// TODO: Screen enum
+enum class LunchTrayScreen() {
+    StartOrder,
+    EntreeMenu,
+    SideDishMenu,
+    AccompanimentMenu,
+    CheckOut
+}
 
-// TODO: AppBar
+@Composable
+fun LunchTrayAppBar(
+    currentScreen: String,
+    canNavigateBack: Boolean,
+    navigateUp: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    TopAppBar(
+        title = {Text(currentScreen)},
+        modifier = modifier,
+        navigationIcon = {
+            if (canNavigateBack) {
+                IconButton(onClick = navigateUp) {
+                    Icon (
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = stringResource(id = R.string.back_button)
+                    )
+                }
+
+            }
+        }
+    )
+}
 
 @Composable
 fun LunchTrayApp(modifier: Modifier = Modifier) {
-    // TODO: Create Controller and initialization
+    val navController = rememberNavController()
 
     // Create ViewModel
     val viewModel: OrderViewModel = viewModel()
 
+    val backStackEntry by navController.currentBackStackEntryAsState()
+
     Scaffold(
         topBar = {
-            // TODO: AppBar
+            LunchTrayAppBar(
+                currentScreen = backStackEntry?.destination?.route ?: LunchTrayScreen.StartOrder.name,
+                canNavigateBack = navController.previousBackStackEntry != null,
+                navigateUp = { navController.navigateUp() },
+            )
         }
     ) { innerPadding ->
         val uiState by viewModel.uiState.collectAsState()
-        // TODO: Navigation host
+
+        NavHost(
+            navController = navController,
+            startDestination = LunchTrayScreen.StartOrder.name,
+            modifier = modifier.padding(innerPadding)
+        ) {
+            composable(route = LunchTrayScreen.StartOrder.name) {
+                StartOrderScreen(
+                    onStartOrderButtonClicked = {
+                        navController.navigate(LunchTrayScreen.EntreeMenu.name)
+                    }
+                )
+            }
+
+            composable(route = LunchTrayScreen.EntreeMenu.name) {
+                EntreeMenuScreen(
+                    options = entreeMenuItems,
+                    onCancelButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
+                    },
+                    onNextButtonClicked = {
+                        navController.navigate(LunchTrayScreen.SideDishMenu.name)                  
+                    },
+                    onSelectionChanged = {
+                        item -> viewModel.updateEntree(item)
+                    }
+                )
+            }
+
+            composable(route = LunchTrayScreen.SideDishMenu.name) {
+                SideDishMenuScreen(
+                    options = sideDishMenuItems,
+                    onCancelButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
+                    },
+                    onNextButtonClicked = {
+                        navController.navigate(LunchTrayScreen.AccompanimentMenu.name)                  
+                    },
+                    onSelectionChanged = {
+                        item -> viewModel.updateSideDish(item)
+                    }
+                )
+            }
+
+            composable(route = LunchTrayScreen.AccompanimentMenu.name) {
+                AccompanimentMenuScreen(
+                    options = accompanimentMenuItems,
+                    onCancelButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
+                    },
+                    onNextButtonClicked = { 
+                        navController.navigate(LunchTrayScreen.CheckOut.name)                  
+                    },
+                    onSelectionChanged = {
+                        item -> viewModel.updateAccompaniment(item)
+                    }
+                )
+            }
+
+            composable(route = LunchTrayScreen.CheckOut.name) {
+                CheckoutScreen(
+                    orderUiState = uiState,
+                    onNextButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
+                    },
+                    onCancelButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.StartOrder.name, inclusive = false)
+                    })
+            }
+        }
     }
 }
