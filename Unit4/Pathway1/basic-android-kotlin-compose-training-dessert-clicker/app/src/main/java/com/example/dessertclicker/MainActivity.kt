@@ -156,6 +156,7 @@ private fun shareSoldDessertsInformation(intentContext: Context, dessertsSold: I
 
 @Composable
 private fun DessertClickerApp(
+
     desserts: List<Dessert>
 ) {
 
