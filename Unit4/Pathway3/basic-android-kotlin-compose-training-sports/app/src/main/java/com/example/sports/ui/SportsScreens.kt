@@ -16,6 +16,7 @@
 
 package com.example.sports.ui
 
+import android.util.Log
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -78,6 +79,8 @@ fun SportsApp(
             contentType = ContentsType.LIST_ONLY
         }
     }
+
+    Log.d("TAG","widnowSize $contentType")
     Scaffold(
         topBar = {
             SportsAppBar(
