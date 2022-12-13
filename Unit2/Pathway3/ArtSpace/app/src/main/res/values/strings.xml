@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Art Space</string>
+    <string name="tap">    Tap the lemon tree to select a lemon
+</string>
+    <string name="keep">    Keep tapping the lemon to squeeze it
+</string>
+    <string name="tap2">    Tap the lemonade to drink it
+</string>
+    <string name="tap3">Tap the empty glass to start again</string>
+    <string name="name">    Lemon tree
+</string>
+    <string name="name2">    Lemon
+</string>
+    <string name="name3">    Glass of lemonade
+</string>
+    <string name="name4">    Empty glass
+</string>
 </resources>
