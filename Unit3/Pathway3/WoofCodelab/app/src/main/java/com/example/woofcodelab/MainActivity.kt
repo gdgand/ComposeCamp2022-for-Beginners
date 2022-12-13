@@ -21,6 +21,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -112,7 +115,14 @@ fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
         modifier = Modifier
             .padding(8.dp),
     ){
-        Column() {
+        Column(modifier = Modifier
+            .animateContentSize(
+                animationSpec = spring(
+                    dampingRatio = Spring.DampingRatioMediumBouncy,
+                    stiffness = Spring.StiffnessLow
+                )
+            )
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
