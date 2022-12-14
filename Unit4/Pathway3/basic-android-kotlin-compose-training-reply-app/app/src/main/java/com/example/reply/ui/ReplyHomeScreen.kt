@@ -38,6 +38,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.reply.R
@@ -86,6 +87,7 @@ fun ReplyHomeScreen(
 
     if (navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER) {
         PermanentNavigationDrawer(
+            modifier = Modifier.testTag(stringResource(R.string.navigation_drawer)),
             drawerContent = {
                 NavigationDrawerContent(
                     selectedDestination = replyUiState.currentMailbox,
@@ -121,7 +123,7 @@ fun ReplyHomeScreen(
             ReplyDetailsScreen(
                 replyUiState = replyUiState,
                 onBackPressed = onDetailScreenBackPressed,
-                modifier = modifier,
+                modifier = modifier.testTag(stringResource(R.string.details_screen)),
                 isFullScreen = true
             )
         }
@@ -146,7 +148,8 @@ private fun ReplyAppContent(
             ReplyNavigationRail(
                 currentTab = replyUiState.currentMailbox,
                 onTabPressed = onTabPressed,
-                navigationItemContentList = navigationItemContentList
+                navigationItemContentList = navigationItemContentList,
+                modifier = Modifier.testTag(stringResource(R.string.navigation_rail))
             )
         }
         Column(
@@ -171,7 +174,8 @@ private fun ReplyAppContent(
                 ReplyBottomNavigationBar(
                     currentTab = replyUiState.currentMailbox,
                     onTabPressed = onTabPressed,
-                    navigationItemContentList = navigationItemContentList
+                    navigationItemContentList = navigationItemContentList,
+                    modifier = Modifier.testTag(stringResource(R.string.navigation_bottom))
                 )
             }
         }
