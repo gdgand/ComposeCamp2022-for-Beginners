@@ -16,11 +16,14 @@
 package com.example.lunchtray
 
 import androidx.annotation.StringRes
-import androidx.compose.material.Scaffold
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -37,8 +40,26 @@ enum class LunchTrayScreen(@StringRes val title: Int) {
 
 // 앱바 함수로 만들기
 @Composable
-fun LunchTrayAppBar() {
-
+fun LunchTrayAppBar(
+    @StringRes currentScreenTitle: Int,
+    canNavigateBack: Boolean,
+    navigateUp: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    TopAppBar(
+        title = { Text(stringResource(currentScreenTitle)) },
+        modifier = modifier,
+        navigationIcon = {
+            if (canNavigateBack) {
+                IconButton(onClick = navigateUp) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = stringResource(R.string.back_button)
+                    )
+                }
+            }
+        }
+    )
 }
 
 
