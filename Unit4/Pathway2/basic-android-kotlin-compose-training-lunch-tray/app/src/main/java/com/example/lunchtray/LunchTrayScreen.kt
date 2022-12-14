@@ -22,9 +22,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.example.lunchtray.ui.OrderViewModel
 
-// TODO: Screen enum
+// enum class
 enum class LunchTrayScreen(@StringRes val title: Int) {
     Start(title = R.string.app_name),
     Entree(title = R.string.choose_entree),
@@ -33,18 +35,32 @@ enum class LunchTrayScreen(@StringRes val title: Int) {
     Checkout(title = R.string.order_checkout)
 }
 
-// TODO: AppBar
+// 앱바 함수로 만들기
+@Composable
+fun LunchTrayAppBar() {
+
+}
+
 
 @Composable
 fun LunchTrayApp(modifier: Modifier = Modifier) {
-    // TODO: Create Controller and initialization
+    //Controller
+    val navController = rememberNavController()
+
+    //백스텍 이름, 항목 초기화
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val currentScreen = LunchTrayScreen.valueOf(
+        backStackEntry?.destination?.route ?: LunchTrayScreen.Start.name
+    )
+
 
     // Create ViewModel
     val viewModel: OrderViewModel = viewModel()
 
+    //appbar 만들기 : 뒤로버튼이 있는거, 없는거
     Scaffold(
         topBar = {
-            // TODO: AppBar
+
         }
     ) { innerPadding ->
         val uiState by viewModel.uiState.collectAsState()
