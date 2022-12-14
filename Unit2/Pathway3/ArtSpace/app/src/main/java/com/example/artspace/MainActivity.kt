@@ -34,20 +34,35 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtDisplay() {
-    var current by remember { mutableStateOf("") }
-    Column(horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
+    var current by remember { mutableStateOf(1) }
+
+    Column(verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
             .padding(25.dp)) {
-        ArtImageAndText(image = R.drawable.pink_sky, title = R.string.title_sky, artist = R.string.painter_sky, year = R.string.year_sky)
+        when(current)
+        {
+            1->{
+                ArtImageAndText(image = R.drawable.river, title = R.string.title_river, artist = R.string.painter_river, year = R.string.year_river)
+            }
+            2->{
+                ArtImageAndText(image = R.drawable.pink_sky, title = R.string.title_sky, artist = R.string.painter_sky, year = R.string.year_sky)
+            }
+            3-> {
+                ArtImageAndText(image = R.drawable.snow, title = R.string.title_snow, artist = R.string.painter_snow, year = R.string.year_snow)
+            }
+            else -> {
+                ArtImageAndText(image = R.drawable.snow, title = R.string.title_snow, artist = R.string.painter_snow, year = R.string.year_snow)
+            }
+        }
         Spacer(modifier = Modifier.height(25.dp))
         Row(modifier = Modifier.padding(10.dp,10.dp)) {
-            Button(modifier = Modifier.weight(1f), onClick = { /*TODO*/ }){
+            Button(modifier = Modifier.weight(1f), onClick = {if (current!=1) current--}){
                 Text(text = stringResource(id = R.string.previous))
             }
             Spacer(modifier = Modifier.width(25.dp))
-            Button(modifier = Modifier.weight(1f),onClick = { /*TODO*/ }) {
+            Button(modifier = Modifier.weight(1f),onClick = { if (current!=3) current++ }) {
                 Text(text = stringResource(id = R.string.next))
             }
         }
@@ -56,7 +71,7 @@ fun ArtDisplay() {
 
 @Composable
 fun ArtImageAndText(image:Int,title:Int,artist:Int,year:Int) {
-    Column(modifier= Modifier) {
+    Column() {
         Surface(modifier = Modifier
             .shadow(elevation = 5.dp)
             .border(BorderStroke(3.dp, Color.Gray), shape = RectangleShape)
