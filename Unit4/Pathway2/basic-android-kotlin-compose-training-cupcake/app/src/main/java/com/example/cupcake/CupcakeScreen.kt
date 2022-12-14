@@ -17,6 +17,7 @@ package com.example.cupcake
 
 import android.content.Context
 import android.content.Intent
+import androidx.annotation.StringRes
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
@@ -42,12 +43,13 @@ import com.example.cupcake.ui.SelectOptionScreen
 import com.example.cupcake.ui.OrderSummaryScreen
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 
-enum class CupcakeScreen() {
-    Start,
-    Flavor,
-    Pickup,
-    Summary
+enum class CupcakeScreen(@StringRes val title: Int) {
+    Start (title = R.string.app_name),
+    Flavor (title = R.string.choose_flavor),
+    Pickup (title = R.string.choose_pickup_date),
+    Summary (title = R.string.order_summary)
 }
 
 /**
@@ -55,12 +57,13 @@ enum class CupcakeScreen() {
  */
 @Composable
 fun CupcakeAppBar(
+    currentScreen: CupcakeScreen,
     canNavigateBack: Boolean,
     navigateUp: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     TopAppBar(
-        title = { Text(stringResource(id = R.string.app_name)) },
+        title = { Text( stringResource(currentScreen.title) ) },
         modifier = modifier,
         navigationIcon = {
             if (canNavigateBack) {
@@ -82,15 +85,23 @@ fun CupcakeApp(
     // Create NavController
     val navController = rememberNavController()
 
-    // TODO: Get current back stack entry
+    // Get current back stack entry
+    val backStackEntry by navController.currentBackStackEntryAsState()
 
-    // TODO: Get the name of the current screen
+    // Get the name of the current screen
+    val currentScreen = CupcakeScreen.valueOf(
+        backStackEntry?.destination?.route ?: CupcakeScreen.Start.name
+    )
+
 
     Scaffold(
         topBar = {
             CupcakeAppBar(
-                canNavigateBack = false,
-                navigateUp = { /* TODO: implement back navigation */ }
+                currentScreen = currentScreen,
+                navController.previousBackStackEntry != null,
+                navigateUp = { //implement back navigation
+                    navController.navigateUp()
+                }
             )
         }
     ) { innerPadding ->
