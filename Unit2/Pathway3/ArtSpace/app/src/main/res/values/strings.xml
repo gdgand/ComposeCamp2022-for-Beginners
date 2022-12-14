@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="art_title1">Still Life: Vase with Twelve Sunflowers</string>
+    <string name="art_title2">The Starry Night</string>
+    <string name="art_title3">The Last Supper</string>
+    <string name="art_title4">The Virgin and Child with Saint Anne</string>
+    <string name="art_title5">The Holy Family with Angels</string>
+    <string name="art_title6">Les Bergers d\'Arcadie (Et in Arcadia ego)</string>
+    <string name="artist1">Vincent van Gogh</string>
+    <string name="artist2">Vincent van Gogh</string>
+    <string name="artist3">Leonardo Da Vinci</string>
+    <string name="artist4">Leonardo Da Vinci</string>
+    <string name="artist5">Rembrandt Harmenszoon van Rijn</string>
+    <string name="artist6">Nicolas Poussin</string>
+</resources>
