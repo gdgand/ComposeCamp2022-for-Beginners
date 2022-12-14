@@ -42,11 +42,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -59,9 +55,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.ViewModel
 import com.example.dessertclicker.data.Datasource.dessertList
+import com.example.dessertclicker.data.DessertData
 import com.example.dessertclicker.ui.theme.DessertClickerTheme
 import com.example.dessertclicker.model.Dessert
+import com.example.dessertclicker.ui.DessertViewModel
 
 private const val TAG = "MainActivity"
 class MainActivity : ComponentActivity() {
@@ -71,7 +70,7 @@ class MainActivity : ComponentActivity() {
         Log.d(TAG, "onCreate Called")
         setContent {
             DessertClickerTheme {
-                DessertClickerApp(desserts = dessertList)
+                DessertClickerApp()
             }
         }
     }
@@ -106,29 +105,29 @@ class MainActivity : ComponentActivity() {
         Log.d(TAG, "onDestroy Called")
     }
 }
-
-/**
- * Determine which dessert to show.
- */
-fun determineDessertToShow(
-    desserts: List<Dessert>,
-    dessertsSold: Int
-): Dessert {
-    var dessertToShow = desserts.first()
-    for (dessert in desserts) {
-        if (dessertsSold >= dessert.startProductionAmount) {
-            dessertToShow = dessert
-        } else {
-            // The list of desserts is sorted by startProductionAmount. As you sell more desserts,
-            // you'll start producing more expensive desserts as determined by startProductionAmount
-            // We know to break as soon as we see a dessert who's "startProductionAmount" is greater
-            // than the amount sold.
-            break
-        }
-    }
-
-    return dessertToShow
-}
+//
+///**
+// * Determine which dessert to show.
+// */
+//fun determineDessertToShow(
+//    desserts: List<Dessert>,
+//    dessertsSold: Int
+//): Dessert {
+//    var dessertToShow = desserts.first()
+//    for (dessert in desserts) {
+//        if (dessertsSold >= dessert.startProductionAmount) {
+//            dessertToShow = dessert
+//        } else {
+//            // The list of desserts is sorted by startProductionAmount. As you sell more desserts,
+//            // you'll start producing more expensive desserts as determined by startProductionAmount
+//            // We know to break as soon as we see a dessert who's "startProductionAmount" is greater
+//            // than the amount sold.
+//            break
+//        }
+//    }
+//
+//    return dessertToShow
+//}
 
 /**
  * Share desserts sold information using ACTION_SEND intent
@@ -158,21 +157,21 @@ private fun shareSoldDessertsInformation(intentContext: Context, dessertsSold: I
 
 @Composable
 private fun DessertClickerApp(
-    desserts: List<Dessert>
+    viewModel: DessertViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
+    val dessertData by viewModel.dessertData.collectAsState()
+    DessertClickerApp(
+        dessertData = dessertData,
+        onDessertClicked = viewModel::onDessertClicked
+    )
+}
 
-    var revenue by rememberSaveable { mutableStateOf(0) }
-    var dessertsSold by rememberSaveable { mutableStateOf(0) }
-
-    val currentDessertIndex by rememberSaveable { mutableStateOf(0) }
-
-    var currentDessertPrice by rememberSaveable {
-        mutableStateOf(desserts[currentDessertIndex].price)
-    }
-    var currentDessertImageId by rememberSaveable {
-        mutableStateOf(desserts[currentDessertIndex].imageId)
-    }
-
+@Composable
+private fun DessertClickerApp(
+    dessertData: DessertData,
+    onDessertClicked: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Scaffold(
         topBar = {
             val intentContext = LocalContext.current
@@ -180,28 +179,32 @@ private fun DessertClickerApp(
                 onShareButtonClicked = {
                     shareSoldDessertsInformation(
                         intentContext = intentContext,
-                        dessertsSold = dessertsSold,
-                        revenue = revenue
+                        dessertsSold = dessertData.dessertsSold,
+                        revenue = dessertData.revenue
                     )
                 }
             )
         }
     ) { contentPadding ->
         DessertClickerScreen(
-            revenue = revenue,
-            dessertsSold = dessertsSold,
-            dessertImageId = currentDessertImageId,
-            onDessertClicked = {
-
-                // Update the revenue
-                revenue += currentDessertPrice
-                dessertsSold++
-
-                // Show the next dessert
-                val dessertToShow = determineDessertToShow(desserts, dessertsSold)
-                currentDessertImageId = dessertToShow.imageId
-                currentDessertPrice = dessertToShow.price
-            },
+            revenue = dessertData.revenue,
+            dessertsSold = dessertData.dessertsSold,
+            dessertImageId = dessertData.currentDessertImageId,
+            onDessertClicked = onDessertClicked,
+//            revenue = revenue,
+//            dessertsSold = dessertsSold,
+//            dessertImageId = currentDessertImageId,
+//            onDessertClicked = {
+//
+//                // Update the revenue
+//                revenue += currentDessertPrice
+//                dessertsSold++
+//
+//                // Show the next dessert
+//                val dessertToShow = determineDessertToShow(desserts, dessertsSold)
+//                currentDessertImageId = dessertToShow.imageId
+//                currentDessertPrice = dessertToShow.price
+//            },
             modifier = Modifier.padding(contentPadding)
         )
     }
@@ -332,6 +335,9 @@ private fun DessertsSoldInfo(dessertsSold: Int, modifier: Modifier = Modifier) {
 @Composable
 fun MyDessertClickerAppPreview() {
     DessertClickerTheme {
-        DessertClickerApp(listOf(Dessert(R.drawable.cupcake, 5, 0)))
+        DessertClickerApp(
+            dessertData = DessertData(),
+            onDessertClicked = {}
+        )
     }
 }
