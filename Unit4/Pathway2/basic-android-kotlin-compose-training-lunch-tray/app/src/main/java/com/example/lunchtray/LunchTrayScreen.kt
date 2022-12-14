@@ -81,10 +81,14 @@ fun LunchTrayApp(modifier: Modifier = Modifier) {
     //appbar 만들기 : 뒤로버튼이 있는거, 없는거
     Scaffold(
         topBar = {
-
+            LunchTrayAppBar(
+                currentScreenTitle = currentScreen.title,
+                canNavigateBack = navController.previousBackStackEntry != null,
+                navigateUp = { navController.navigateUp() }
+            )
         }
     ) { innerPadding ->
         val uiState by viewModel.uiState.collectAsState()
-        // TODO: Navigation host
+
     }
 }
