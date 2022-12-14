@@ -64,4 +64,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+
+    //ui 테스트를 위한 cupcake 설정
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.5.0'
+    androidTestImplementation "androidx.navigation:navigation-testing:2.5.3"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 }
