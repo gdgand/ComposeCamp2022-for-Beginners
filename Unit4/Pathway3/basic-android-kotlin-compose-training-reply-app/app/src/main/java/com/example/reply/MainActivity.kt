@@ -38,7 +38,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             ReplyTheme {
                 val windowSize = calculateWindowSizeClass(this)
-                ReplyApp(windowSize = windowSize.widthSizeClass)
+
+                ReplyApp(
+                    windowSize = windowSize.widthSizeClass,
+                )
             }
         }
     }
@@ -46,8 +49,30 @@ class MainActivity : ComponentActivity() {
 
 @Preview(showBackground = true)
 @Composable
-fun ReplyAppPreview() {
+fun ReplyAppCompactPreview() {
     ReplyTheme {
-        ReplyApp(windowSize = WindowWidthSizeClass.Compact)
+        ReplyApp(
+            windowSize = WindowWidthSizeClass.Compact,
+        )
+    }
+}
+
+@Preview(showBackground = true, widthDp = 700)
+@Composable
+fun ReplyAppMediumPreview() {
+    ReplyTheme {
+        ReplyApp(
+            windowSize = WindowWidthSizeClass.Medium,
+        )
+    }
+}
+
+@Preview(showBackground = true, widthDp = 1000)
+@Composable
+fun ReplyAppExpandedPreview() {
+    ReplyTheme {
+        ReplyApp(
+            windowSize = WindowWidthSizeClass.Expanded,
+        )
     }
 }
