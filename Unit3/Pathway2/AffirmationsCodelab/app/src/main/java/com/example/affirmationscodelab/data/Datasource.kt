@@ -15,12 +15,13 @@
  */
 package com.example.affirmationscodelab.data
 import com.example.affirmationscodelab.R
+import com.example.affirmationscodelab.model.Affirmation
 
 /**
  * [Datasource] generates a list of [Affirmation]
  */
 class Datasource() {
-    /*fun loadAffirmations(): List<Affirmation> {
+    fun loadAffirmations(): List<Affirmation> {
         return listOf<Affirmation>(
             Affirmation(R.string.affirmation1, R.drawable.image1),
             Affirmation(R.string.affirmation2, R.drawable.image2),
@@ -32,5 +33,5 @@ class Datasource() {
             Affirmation(R.string.affirmation8, R.drawable.image8),
             Affirmation(R.string.affirmation9, R.drawable.image9),
             Affirmation(R.string.affirmation10, R.drawable.image10))
-    }*/
+    }
 }
