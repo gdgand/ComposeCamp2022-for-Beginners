@@ -57,6 +57,7 @@ fun ReplyDetailsScreen(
     replyUiState: ReplyUiState,
     modifier: Modifier = Modifier,
     onBackPressed: () -> Unit = {},
+    isFullScreen: Boolean = false
 ) {
     BackHandler {
         onBackPressed()
@@ -69,11 +70,15 @@ fun ReplyDetailsScreen(
             .padding(top = 24.dp)
     ) {
         item {
-            ReplyDetailsScreenTopBar(onBackPressed, replyUiState)
+            if (isFullScreen) {
+                ReplyDetailsScreenTopBar(onBackPressed, replyUiState)
+            }
+
             ReplyEmailDetailsCard(
                 email = replyUiState.currentSelectedEmail,
                 mailboxType = replyUiState.currentMailbox,
-                modifier = Modifier.padding(horizontal = 16.dp)
+                modifier = Modifier.padding(horizontal = 16.dp),
+                isFullScreen = isFullScreen
             )
         }
     }
@@ -123,6 +128,7 @@ private fun ReplyEmailDetailsCard(
     email: Email,
     mailboxType: MailboxType,
     modifier: Modifier = Modifier,
+    isFullScreen: Boolean = false
 ) {
     val context = LocalContext.current
     val displayToast = { text: String ->
@@ -138,12 +144,14 @@ private fun ReplyEmailDetailsCard(
                 .padding(20.dp)
         ) {
             DetailsScreenHeader(email)
-            Text(
-                text = email.subject,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.outline,
-                modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
-            )
+            if (!isFullScreen) {
+                Text(
+                    text = email.subject,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.outline,
+                    modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
+                )
+            }
             Text(
                 text = email.body,
                 style = MaterialTheme.typography.bodyLarge,
