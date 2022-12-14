@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">artspace</string>
+
+    <string name="first_text">고기고기고기</string>
+    <string name="second_text">회회회회회회</string>
+    <string name="third_text">바다바다바다</string>
+    <string name="fourth_text">하늘하늘하늘</string>
+
+    <string name="first_description">고기(2020)</string>
+    <string name="second_description">회(2022)</string>
+    <string name="third_descriptione">바다(2023)</string>
+    <string name="fourth_description">하늘(2019)</string>
+
+    <string name="first_content_description">first</string>
+    <string name="second_content_description">second</string>
+    <string name="third_content_description">thirde</string>
+    <string name="fourth_content_description">fourth</string>
+</resources>
