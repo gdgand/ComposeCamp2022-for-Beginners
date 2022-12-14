@@ -1,17 +1,20 @@
 package com.example.tiptime
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -50,8 +53,13 @@ fun TipTimeScreen() {
 
 @Composable
 fun EditNumberField() {
-    val amountInput = "0"
-    TextField(value = amountInput, onValueChange = {})
+    var amountInput by remember { mutableStateOf("") }
+    TextField(value = amountInput, onValueChange = { amountInput = it},
+    label = { Text(text = stringResource(id = R.string.cost_of_service))},
+    modifier = Modifier.fillMaxWidth(),
+    singleLine = true,
+    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+    )
 }
 
 @Preview(showBackground = true)
