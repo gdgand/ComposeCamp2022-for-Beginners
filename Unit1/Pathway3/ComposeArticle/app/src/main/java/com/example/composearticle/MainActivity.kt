@@ -5,10 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,12 +22,23 @@ import com.example.composearticle.ui.theme.ComposeArticleTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeArticleApp()
+        }
     }
 }
 
 @Composable
-fun ComposeArticleApp() { }
+fun ComposeArticleApp() {
+    ComposeArticleTheme {
+        ArticleCard(
+            stringResource(R.string.title_jetpack_compose_tutorial),
+            stringResource(R.string.compose_short_desc),
+            stringResource(R.string.compose_long_desc),
+            painterResource(R.drawable.bg_compose_background),
+        )
+    }
+}
 
 @Composable
 private fun ArticleCard(
@@ -39,10 +48,38 @@ private fun ArticleCard(
     imagePainter: Painter,
     modifier: Modifier = Modifier,
 ) {
-    Column() { }
+    Column(modifier) {
+        Image(
+            painter = imagePainter,
+            contentDescription = title,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Text(title, fontSize = 24.sp, modifier = Modifier.padding(16.dp))
+        Text(
+            shortDescription,
+            fontSize = 16.sp,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp)
+        )
+        Text(
+            longDescription,
+            fontSize = 16.sp,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier.padding(16.dp)
+        )
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeArticleTheme {
+        ArticleCard(
+            stringResource(R.string.title_jetpack_compose_tutorial),
+            stringResource(R.string.compose_short_desc),
+            stringResource(R.string.compose_long_desc),
+            painterResource(R.drawable.bg_compose_background),
+        )
+    }
+}

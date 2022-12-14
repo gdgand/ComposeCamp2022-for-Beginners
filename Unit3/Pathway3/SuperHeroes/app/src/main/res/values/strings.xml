@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">SuperHeroes</string>
+    <string name="hero1" translatable="false">Nick the Night and Day</string>
+    <string name="description1" translatable="false">The Jetpack Hero</string>
+    <string name="hero2" translatable="false">Reality Protector</string>
+    <string name="description2" translatable="false">Understands the absolute truth</string>
+    <string name="hero3" translatable="false">Andre the Giant</string>
+    <string name="description3" translatable="false">Mimics the light and night to blend in</string>
+    <string name="hero4" translatable="false">Benjamin the Brave</string>
+    <string name="description4" translatable="false">Harnesses the power of canary to develop bravely</string>
+    <string name="hero5" translatable="false">Magnificent Maru</string>
+    <string name="description5" translatable="false">Effortlessly glides in to save the day</string>
+    <string name="hero6" translatable="false">Dynamic Yasmine</string>
+    <string name="description6" translatable="false">Ability to shift to any form and energize</string>
+</resources>
