@@ -47,6 +47,9 @@ import androidx.compose.ui.unit.dp
 import com.example.reply.R
 import com.example.reply.data.Email
 import com.example.reply.data.MailboxType
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 
 /**
  * Component that displays details screen
@@ -56,7 +59,14 @@ fun ReplyDetailsScreen(
     replyUiState: ReplyUiState,
     modifier: Modifier = Modifier,
     onBackPressed: () -> Unit = {},
+    isFullScreen: Boolean = false
 ) {
+    /*
+    BackHandler {
+        onBackPressed()
+    }
+     */
+
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
@@ -64,11 +74,17 @@ fun ReplyDetailsScreen(
             .padding(top = 24.dp)
     ) {
         item {
-            ReplyDetailsScreenTopBar(onBackPressed, replyUiState)
+            if (isFullScreen) {
+                ReplyDetailsScreenTopBar(onBackPressed, replyUiState)
+            }
             ReplyEmailDetailsCard(
                 email = replyUiState.currentSelectedEmail,
                 mailboxType = replyUiState.currentMailbox,
-                modifier = Modifier.padding(horizontal = 16.dp)
+                isFullScreen = isFullScreen,
+                modifier = if (isFullScreen)
+                    Modifier.padding(horizontal = 16.dp)
+            else
+                    Modifier.padding(end = 16.dp)
             )
         }
     }
@@ -118,6 +134,7 @@ private fun ReplyEmailDetailsCard(
     email: Email,
     mailboxType: MailboxType,
     modifier: Modifier = Modifier,
+    isFullScreen: Boolean = false
 ) {
     val context = LocalContext.current
     val displayToast = { text: String ->
@@ -133,12 +150,16 @@ private fun ReplyEmailDetailsCard(
                 .padding(20.dp)
         ) {
             DetailsScreenHeader(email)
-            Text(
-                text = email.subject,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.outline,
-                modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
-            )
+            if (!isFullScreen) {
+                Text(
+                    text = email.subject,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.outline,
+                    modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
+                )
+            } else {
+                Spacer(modifier = Modifier.height(12.dp))
+            }
             Text(
                 text = email.body,
                 style = MaterialTheme.typography.bodyLarge,

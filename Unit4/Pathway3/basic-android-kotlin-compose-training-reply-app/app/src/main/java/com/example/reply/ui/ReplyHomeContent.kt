@@ -45,6 +45,9 @@ import com.example.reply.R
 import com.example.reply.data.Email
 import com.example.reply.data.local.LocalAccountsDataProvider
 
+import android.app.Activity
+import androidx.compose.ui.platform.LocalContext
+
 /**
  * Component that displays a single pane of list of emails
  */
@@ -96,10 +99,11 @@ fun ReplyListAndDetailContent(
                 )
             }
         }
+        val activity = LocalContext.current as Activity
         ReplyDetailsScreen(
             replyUiState = replyUiState,
             modifier = Modifier.weight(1f),
-            onBackPressed = {}
+            onBackPressed = {activity.finish()}
         )
     }
 }
