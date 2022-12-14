@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="str_android">android</string>
+    <string name="str_android_by">by android.</string>
+    <string name="str_apple_workplace">apple_workplace</string>
+    <string name="str_apple_workplace_by">by apple.</string>
+    <string name="str_comet">comet</string>
+    <string name="str_comet_by">by comet.</string>
+    <string name="str_mountain">Mountain</string>
+    <string name="str_mountain_by">by mountain.</string>
+    <string name="str_night_sky">night_sky</string>
+    <string name="str_night_sky_by">night_sky_by</string>
+    <string name="str_sea">sea</string>
+    <string name="str_sea_by">sea_by</string>
+    <string name="str_space">space</string>
+    <string name="str_space_by">space_by</string>
+
+    <string name="str_previous">Previous</string>
+    <string name="str_next">Next</string>
+</resources>
