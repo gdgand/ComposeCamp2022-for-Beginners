@@ -202,3 +202,6 @@ val allWords: Set<String> =
         "zone",
         "zeal"
     )
+private val wordLengthMap: Map<Int, String> = allWords.associateBy({ it.length }, { it })
+
+internal fun getUnscrambledWord(scrambledWord: String) = wordLengthMap[scrambledWord.length] ?: ""
