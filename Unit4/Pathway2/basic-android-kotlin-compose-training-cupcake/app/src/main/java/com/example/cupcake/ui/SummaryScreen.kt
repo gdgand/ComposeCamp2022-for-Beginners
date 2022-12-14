@@ -100,9 +100,9 @@ fun OrderSummaryScreen(
         }
         OutlinedButton(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { //handle cancel button
+            onClick =  //handle cancel button
                 onCancelButtonClicked
-            }
+
         ) {
             Text(stringResource(R.string.cancel))
         }
