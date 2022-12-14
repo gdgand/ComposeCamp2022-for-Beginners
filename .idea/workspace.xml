@@ -5,66 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d2e5380-c043-468e-840f-826cd3e49b27" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/androidTest/java/com/example/tiptime/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/java/com/example/tiptime/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/java/com/example/tiptime/ui/theme/Color.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/java/com/example/tiptime/ui/theme/Shape.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/java/com/example/tiptime/ui/theme/Theme.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/java/com/example/tiptime/ui/theme/Type.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/app/src/test/java/com/example/tiptime/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit2/Pathway3/Tip_Time/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/ic_launcher-playstore.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/debug/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Unit4/Pathway1/basic-android-kotlin-compose-training-unscramble/app/src/main/java/com/example/android/unscramble/ui/GameUiState.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Unit4/Pathway1/basic-android-kotlin-compose-training-unscramble/app/src/main/java/com/example/android/unscramble/ui/GameViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/main/res/drawable-v24/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/main/res/drawable-v24/ic_launcher_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Unit3/Pathway2/AffirmationsCodelab/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unit3/Pathway3/WoofCodelab/app/src/main/java/com/example/woofcodelab/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Unit3/Pathway3/WoofCodelab/app/src/main/java/com/example/woofcodelab/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unit3/Pathway3/WoofCodelab/app/src/main/java/com/example/woofcodelab/ui/theme/Theme.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Unit3/Pathway3/WoofCodelab/app/src/main/java/com/example/woofcodelab/ui/theme/Theme.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unit3/Pathway3/WoofCodelab/app/src/main/java/com/example/woofcodelab/ui/theme/Type.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Unit3/Pathway3/WoofCodelab/app/src/main/java/com/example/woofcodelab/ui/theme/Type.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unit4/Pathway1/basic-android-kotlin-compose-training-dessert-clicker/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Unit4/Pathway1/basic-android-kotlin-compose-training-dessert-clicker/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unit4/Pathway1/basic-android-kotlin-compose-training-dessert-clicker/app/src/main/java/com/example/dessertclicker/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Unit4/Pathway1/basic-android-kotlin-compose-training-dessert-clicker/app/src/main/java/com/example/dessertclicker/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unit4/Pathway1/basic-android-kotlin-compose-training-dessert-clicker/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Unit4/Pathway1/basic-android-kotlin-compose-training-dessert-clicker/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unit4/Pathway1/basic-android-kotlin-compose-training-unscramble/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Unit4/Pathway1/basic-android-kotlin-compose-training-unscramble/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unit4/Pathway1/basic-android-kotlin-compose-training-unscramble/app/src/main/java/com/example/android/unscramble/ui/GameScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Unit4/Pathway1/basic-android-kotlin-compose-training-unscramble/app/src/main/java/com/example/android/unscramble/ui/GameScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +37,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Unit3/Pathway3/WoofCodelab" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Unit4/Pathway1/basic-android-kotlin-compose-training-unscramble" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
