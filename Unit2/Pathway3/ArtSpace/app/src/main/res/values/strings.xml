@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Art Space</string>
+
+    <string name="title_sky">Pink Sky</string>
+    <string name="painter_sky">SeoHyeon Shin</string>
+    <string name="year_sky">(2022)</string>
+
+    <string name="title_snow">Snow</string>
+    <string name="painter_snow">SeoHyeon Shin</string>
+    <string name="year_snow">(2022)</string>
+
+
+    <string name="title_river">Sparkling ripple</string>
+    <string name="painter_river">SeoHyeon Shin</string>
+    <string name="year_river">(2022)</string>
+
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
 </resources>
