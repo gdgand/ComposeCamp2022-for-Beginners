@@ -76,4 +76,3 @@ fun CupcakeApp(modifier: Modifier = Modifier, viewModel: OrderViewModel = viewMo
         // TODO: add NavHost
     }
 }
-
