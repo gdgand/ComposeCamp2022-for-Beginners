@@ -96,7 +96,7 @@ fun OrderSummaryScreen(
         }
         OutlinedButton(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { onCancelButtonClicked }
+            onClick = onCancelButtonClicked
         ) {
             Text(stringResource(R.string.cancel))
         }
@@ -108,5 +108,7 @@ fun OrderSummaryScreen(
 fun OrderSummaryPreview(){
     OrderSummaryScreen(
         orderUiState = OrderUiState(0, "Test", "Test", "$300.00"),
+        onSendButtonClicked = { subject: String, summary: String -> },
+        onCancelButtonClicked = {}
     )
 }
