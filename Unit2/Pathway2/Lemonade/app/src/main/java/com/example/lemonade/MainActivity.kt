@@ -71,7 +71,7 @@ fun LemonApp() {
                         .clickable {
                             current = 2
                             squeezeCnt = (2..4).random()
-                        })
+                        }.border(BorderStroke(2.dp, Color(105,205,216)), shape = RoundedCornerShape(4.dp)).padding(16.dp))
                 }
             }
             2->{
