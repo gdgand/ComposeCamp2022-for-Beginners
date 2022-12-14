@@ -6,10 +6,12 @@ import androidx.activity.ComponentActivity
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.navigation.compose.ComposeNavigator
-import androidx.navigation.NavHostController
 import androidx.navigation.NavController
 import androidx.navigation.testing.TestNavHostController
 import androidx.compose.ui.test.onNodeWithContentDescription
+
+import androidx.compose.ui.test.performClick
+
 
 import org.junit.Rule
 import org.junit.Before
@@ -50,4 +52,10 @@ class CupcakeScreenNavigationTest {
         composeTestRule.onNodeWithContentDescription(backText).assertDoesNotExist()
     }
 
+
+    @Test
+    fun cupcakeNavHost_clickOneCupcake_navigatesToSelectFlavorScreen() {
+        composeTestRule.onNodeWithStringId(com.example.cupcake.R.string.one_cupcake).performClick()
+        navController.assertCurrentRouteName(CupcakeScreen.Flavor.name)
+    }
 }
