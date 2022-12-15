@@ -17,7 +17,6 @@
     <string name="app_name">Reply</string>
     <string name="navigation_drawer">Navigation Drawer</string>
     <string name="navigation_rail">Navigation Rail</string>
-    <string name="navigation_bottom">Navigation Bottom</string>
     <string name="navigation_back">Back</string>
     <string name="details_screen">Details Screen</string>
     <string name="tab_inbox">Inbox</string>
@@ -32,4 +31,10 @@
     <string name="continue_composing">Continue Composing</string>
     <string name="delete">Delete</string>
     <string name="move_to_inbox">Move to Inbox</string>
+    <!--test-->
+    <string name="navigation_bottom">Navigation Bottom</string>
+    <string name="navigation_bottom1">Navigation Bottom</string>
+
+
+
 </resources>
