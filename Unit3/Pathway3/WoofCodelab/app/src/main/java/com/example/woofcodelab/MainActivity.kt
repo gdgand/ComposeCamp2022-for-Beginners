@@ -14,23 +14,28 @@
  * limitations under the License.
  */
 package com.example.woofcodelab
-
+//앱에 색상 추가하기부터,,
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -53,11 +58,19 @@ class MainActivity : ComponentActivity() {
 /**
  * Composable that displays an app bar and a list of dogs.
  */
+//몰까요 오류가나서 fast fix
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun WoofApp() {
-    LazyColumn {
-        items(dogs) {
-            DogItem(dog = it)
+    Scaffold(
+        topBar = {
+            WoofTopAppBar()
+        }
+    ) {
+        LazyColumn(modifier = Modifier.background(MaterialTheme.colors.background)) {
+            items(dogs) {
+                DogItem(dog = it)
+            }
         }
     }
 }
@@ -70,13 +83,20 @@ fun WoofApp() {
  */
 @Composable
 fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-    ) {
-        DogIcon(dog.imageResourceId)
-        DogInformation(dog.name, dog.age)
+    Card(
+        modifier = modifier
+            .padding(8.dp),
+        elevation = 4.dp //고도 추가(그림자)
+    ){ //modifier전달
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+            //    .background(MaterialTheme.colors.surface)//배경색지정
+        ) {
+            DogIcon(dog.imageResourceId)
+            DogInformation(dog.name, dog.age)
+        }
     }
 }
 
@@ -91,7 +111,9 @@ fun DogIcon(@DrawableRes dogIcon: Int, modifier: Modifier = Modifier) {
     Image(
         modifier = modifier
             .size(64.dp)
-            .padding(8.dp),
+            .padding(8.dp)
+            .clip(RoundedCornerShape(50)),//모서리 둥글게
+        contentScale = ContentScale.Crop, //이미지가 도형에 맞게 잘림
         painter = painterResource(dogIcon),
         /*
          * Content Description is not needed here - image is decorative, and setting a null content
@@ -113,10 +135,34 @@ fun DogInformation(@StringRes dogName: Int, dogAge: Int, modifier: Modifier = Mo
     Column {
         Text(
             text = stringResource(dogName),
-            modifier = modifier.padding(top = 8.dp)
+          //  color = MaterialTheme.colors.onSurface, //배경색
+            modifier = modifier.padding(top = 8.dp),
+            style = MaterialTheme.typography.h2
         )
         Text(
-            text = stringResource(R.string.years_old, dogAge)
+            text = stringResource(R.string.years_old, dogAge),
+            style = MaterialTheme.typography.body1
+         //   color = MaterialTheme.colors.onSurface
+        )
+    }
+}
+
+@Composable
+fun WoofTopAppBar(modifier: Modifier=Modifier){
+    Row(modifier = modifier
+        .background(color=MaterialTheme.colors.primary)
+        .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically //세로중앙배치
+    ) {
+        Image(
+            modifier =Modifier
+                .size(64.dp)
+                .padding(8.dp),
+            painter = painterResource(id = R.drawable.ic_woof_logo),
+            contentDescription = null
+        )
+        Text(text = stringResource(id = R.string.app_name),
+            style = MaterialTheme.typography.h1 //폰트설정
         )
     }
 }
@@ -131,3 +177,11 @@ fun WoofPreview() {
         WoofApp()
     }
 }
+//
+//@Preview
+//@Composable
+//fun DarkThemePreview() {
+//    WoofTheme(darkTheme = true) {
+//        WoofApp()
+//    }
+//}
