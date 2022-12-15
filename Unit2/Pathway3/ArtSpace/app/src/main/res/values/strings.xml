@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ArtSpace</string>
+
+    <string name="dice1_descrip">dice1</string>
+    <string name="dice2_descrip">dice2</string>
+    <string name="dice3_descrip">dice3</string>
+    <string name="dice4_descrip">dice4</string>
+    <string name="dice5_descrip">dice5</string>
+    <string name="dice6_descrip">dice6</string>
+
+    <string name="art_title_1">dice1</string>
+    <string name="art_title_2">dice2</string>
+    <string name="art_title_3">dice3</string>
+    <string name="art_title_4">dice4</string>
+    <string name="art_title_5">dice5</string>
+    <string name="art_title_6">dice6</string>
+
+    <string name="artist_1">yein1 (2022)</string>
+    <string name="artist_2">yein2 (2022)</string>
+    <string name="artist_3">yein3 (2022)</string>
+    <string name="artist_4">yein4 (2022)</string>
+    <string name="artist_5">yein5 (2022)</string>
+    <string name="artist_6">yein6 (2022)</string>
+
+</resources>
