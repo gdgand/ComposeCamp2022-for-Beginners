@@ -62,7 +62,7 @@ fun TipTimeScreen() {
         )
         Spacer(Modifier.height(24.dp))
         Text(
-            text = stringResource(R.string.tip_amount, ""),
+            text = stringResource(R.string.tip_amount, tip),
             modifier = Modifier.align(Alignment.CenterHorizontally),
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold
@@ -75,8 +75,6 @@ fun EditNumberField(
     value: String,
     onValueChange: (String) -> Unit
 ) {
-
-
     TextField(
         value = value,
         onValueChange = onValueChange,
