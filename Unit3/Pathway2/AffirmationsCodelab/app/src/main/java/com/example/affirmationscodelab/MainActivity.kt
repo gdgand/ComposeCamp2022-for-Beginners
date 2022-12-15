@@ -20,10 +20,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -46,30 +45,32 @@ class MainActivity : ComponentActivity() {
 }
 @Composable
 fun AffirmationCard(affirmation: Affirmation,modifier: Modifier = Modifier) {
-    Column() {
-        Image(
-            painter = painterResource(id = affirmation.imageResourceId),
-            contentDescription = stringResource(
-                id = affirmation.stringResourceId
-            ),
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(194.dp),
-            contentScale = ContentScale.Crop
-        )
+    Card(modifier = Modifier.padding(8.dp), elevation = 4.dp) {
+        Column() {
+            Image(
+                painter = painterResource(id = affirmation.imageResourceId),
+                contentDescription = stringResource(
+                    id = affirmation.stringResourceId
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(194.dp),
+                contentScale = ContentScale.Crop
+            )
             Text(
                 text = stringResource(id = affirmation.stringResourceId),
                 modifier = Modifier.padding(16.dp),
                 style = MaterialTheme.typography.h6
             )
+        }
     }
 }
 
 @Composable
 private fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Modifier) {
-    Column() {
-        affirmationList.forEach {
-            affirmation -> AffirmationCard(affirmation = affirmation) 
+    LazyColumn{
+        items(affirmationList) { affirmation ->
+            AffirmationCard(affirmation = affirmation)
         }
     }
 }
