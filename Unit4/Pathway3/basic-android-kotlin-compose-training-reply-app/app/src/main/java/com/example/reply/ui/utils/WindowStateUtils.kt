@@ -14,21 +14,18 @@
  * limitations under the License.
  */
 
-buildscript {
-    ext {
-        agp_version = '7.3.0'
-        compose_version = '1.2.0'
-        kotlin_version = '1.7.0'
-        lifecycle_version = '2.5.1'
-        material3_version = '1.0.1'
-    }
-}// Top-level build file where you can add configuration options common to all sub-projects/modules.
-plugins {
-    id 'com.android.application' version "$agp_version" apply false
-    id 'com.android.library' version "$agp_version" apply false
-    id 'org.jetbrains.kotlin.android' version "$kotlin_version" apply false
+package com.example.reply.ui.utils
+
+/**
+ * Different type of navigation supported by app depending on size and state.
+ */
+enum class ReplyNavigationType {
+    BOTTOM_NAVIGATION, NAVIGATION_RAIL, PERMANENT_NAVIGATION_DRAWER
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+/**
+ * Content shown depending on size and state of device.
+ */
+enum class ReplyContentType {
+    LIST_ONLY, LIST_AND_DETAIL
 }
