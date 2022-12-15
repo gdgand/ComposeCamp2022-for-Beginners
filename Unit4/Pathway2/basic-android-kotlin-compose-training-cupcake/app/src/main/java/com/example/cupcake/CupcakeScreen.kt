@@ -56,7 +56,11 @@ fun CupcakeAppBar(
 }
 
 @Composable
-fun CupcakeApp(modifier: Modifier = Modifier, viewModel: OrderViewModel = viewModel()){
+fun CupcakeApp(
+    modifier: Modifier = Modifier,
+    viewModel: OrderViewModel = viewModel(),
+    navController: Any
+){
     // TODO: Create NavController
 
     // TODO: Get current back stack entry

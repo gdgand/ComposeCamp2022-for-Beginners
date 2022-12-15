@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CupcakeTheme {
-                CupcakeApp()
+                CupcakeApp(navController = navController)
             }
         }
     }
