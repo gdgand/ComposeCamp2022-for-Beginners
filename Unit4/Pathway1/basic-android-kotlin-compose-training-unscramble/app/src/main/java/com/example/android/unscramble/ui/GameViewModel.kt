@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlin.random.Random
 
 class GameViewModel : ViewModel() {
 
@@ -25,7 +26,7 @@ class GameViewModel : ViewModel() {
 
     private fun pickRandomWordAndShuffle(): String {
         // Continue picking up a new random word until you get one that hasn't been used before
-        currentWord = allWords.random()
+        currentWord = allWords.random(Random(System.currentTimeMillis()))
         if (usedWords.contains(currentWord)) {
             return pickRandomWordAndShuffle()
         } else {
@@ -37,9 +38,9 @@ class GameViewModel : ViewModel() {
     private fun shuffleCurrentWord(word: String): String {
         val tempWord = word.toCharArray()
         // Scramble the word
-        tempWord.shuffle()
+        tempWord.shuffle(Random(System.currentTimeMillis()))
         while (String(tempWord).equals(word)) {
-            tempWord.shuffle()
+            tempWord.shuffle(Random(System.currentTimeMillis()))
         }
         return String(tempWord)
     }
