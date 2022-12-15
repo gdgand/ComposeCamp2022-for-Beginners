@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ArtSpace</string>
+    <string name="previous">이전</string>
+    <string name="next">다음</string>
+
+    <string name="img_desc_1">김승규</string>
+    <string name="img_desc_2">손흥민</string>
+    <string name="img_desc_3">황희찬</string>
+    <string name="img_desc_4">이강인</string>
+    <string name="img_desc_5">김민재</string>
+
+    <string name="title_1">김승규</string>
+    <string name="title_2">손흥민</string>
+    <string name="title_3">황희찬</string>
+    <string name="title_4">이강인</string>
+    <string name="title_5">김민재</string>
+
+    <string name="detail_1">골키퍼</string>
+    <string name="detail_2">미드필더</string>
+    <string name="detail_3">미드필더</string>
+    <string name="detail_4">미드필더</string>
+    <string name="detail_5">수비수</string>
+
+
+</resources>
