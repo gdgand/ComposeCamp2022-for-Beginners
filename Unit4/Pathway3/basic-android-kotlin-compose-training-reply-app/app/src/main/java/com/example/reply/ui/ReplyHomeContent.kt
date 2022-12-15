@@ -140,7 +140,6 @@ fun ReplyEmailListItem(
         }
     }
 }
-
 @Composable
 private fun ReplyEmailItemHeader(email: Email, modifier: Modifier = Modifier) {
     Row(modifier = modifier.fillMaxWidth()) {

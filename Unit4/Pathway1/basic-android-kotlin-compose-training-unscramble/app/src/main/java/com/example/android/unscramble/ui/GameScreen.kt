@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 package com.example.android.unscramble.ui
-
+import androidx.lifecycle.viewmodel.compose.viewModel
 import android.app.Activity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -44,19 +44,40 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.android.unscramble.R
 import com.example.android.unscramble.ui.theme.UnscrambleTheme
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
+
+var userGuess by mutableStateOf("")
+    private set
+fun updateUserGuess(guessedWord: String){
+    userGuess = guessedWord
+}
 
 @Composable
-fun GameScreen(modifier: Modifier = Modifier) {
+fun GameScreen( modifier: Modifier = Modifier,
+                gameViewModel: GameViewModel = viewModel()
+) {
+
+
+
     Column(
         modifier = modifier
             .verticalScroll(rememberScrollState())
             .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
-
+        val gameUiState by gameViewModel.uiState.collectAsState()
         GameStatus()
-        GameLayout()
+        GameLayout(
+            onUserGuessChanged = { gameViewModel.updateUserGuess(it) },
+            userGuess = gameViewModel.userGuess,
+            onKeyboardDone = { gameViewModel.checkUserGuess() },
+            currentScrambledWord = gameUiState.currentScrambledWord,
+            isGuessWrong = gameUiState.isGuessedWordWrong)
         Row(
             modifier = modifier
                 .fillMaxWidth()
@@ -108,7 +129,12 @@ fun GameStatus(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun GameLayout(modifier: Modifier = Modifier) {
+fun GameLayout(    currentScrambledWord: String,
+                   isGuessWrong: Boolean,
+                   userGuess: String,
+                   onUserGuessChanged: (String) -> Unit,
+                   onKeyboardDone: () -> Unit,
+                   modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.spacedBy(24.dp),
 
@@ -124,17 +150,17 @@ fun GameLayout(modifier: Modifier = Modifier) {
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
         OutlinedTextField(
-            value = "",
+            value = userGuess,
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
-            onValueChange = { },
+            onValueChange = onUserGuessChanged,
             label = { Text(stringResource(R.string.enter_your_word)) },
             isError = false,
             keyboardOptions = KeyboardOptions.Default.copy(
                 imeAction = ImeAction.Done
             ),
             keyboardActions = KeyboardActions(
-                onDone = { }
+                onDone = { onKeyboardDone() }
             ),
         )
     }
