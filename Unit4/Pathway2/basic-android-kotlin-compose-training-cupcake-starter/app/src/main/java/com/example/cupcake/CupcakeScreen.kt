@@ -81,9 +81,9 @@ fun CupcakeAppBar(
 @Composable
 fun CupcakeApp(
     modifier: Modifier = Modifier,
-    viewModel: OrderViewModel = viewModel()
+    viewModel: OrderViewModel = viewModel(),
+    navController: NavHostController = rememberNavController()
 ){
-    val navController = rememberNavController()
 
     val backStackEntry by navController.currentBackStackEntryAsState()
 
@@ -133,6 +133,9 @@ fun CupcakeApp(
                     subtotal = uiState.price,
                     onNextButtonClicked = {
                         navController.navigate(CupcakeScreen.Summary.name)
+                    },
+                    onCancelButtonClicked = {
+                        cancelOrderAndNavigateToStart(viewModel, navController)
                     },
                     options = uiState.pickupOptions,
                     onSelectionChanged = {viewModel.setDate(it)}
