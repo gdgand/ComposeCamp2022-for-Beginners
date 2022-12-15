@@ -22,9 +22,9 @@ import com.example.sports.model.Sport
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
-
 /**
- * View Model for Sports app
+ * Main composable that serves as container
+ * which displays content according to [uiState] and [windowSize]
  */
 class SportsViewModel : ViewModel() {
 

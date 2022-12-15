@@ -45,9 +45,6 @@ import com.example.reply.R
 import com.example.reply.data.Email
 import com.example.reply.data.local.LocalAccountsDataProvider
 
-/**
- * Component that displays a single pane of list of emails
- */
 @Composable
 fun ReplyListOnlyContent(
     replyUiState: ReplyUiState,
