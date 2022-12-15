@@ -17,17 +17,42 @@ package com.example.woofcodelab.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.woofcodelab.R
 
+val AbrilFatface = FontFamily(//다운받은 글꼴을 불러온다
+    Font(R.font.abril_fatface_regular)
+)
+val Montserrat= FontFamily(
+    Font(R.font.montserrat_regular),
+    Font(R.font.montserrat_bold,FontWeight.Bold)//컴포즈에게 이 글꼴파일이 굵은 글자라는것을 알리기위해 FontWeight.Bold를 적어야됨
+)
 // Set of Material typography styles to start with
-val Typography = Typography(
-    body1 = TextStyle(
-        fontFamily = FontFamily.Default,
+val Typography = Typography(//위에서 불러온 글꼴들이 어떨때 어떤모양으로 적용되나 설정함
+    h1= TextStyle(//h1로 설정된 모든 텍스트는 이것이 적용되는것임
+        fontFamily = AbrilFatface,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
+        fontSize = 30.sp
+    ),
+    h2 = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp
+    ),
+    h3 = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Bold,
+        fontSize = 14.sp
+    ),
+    body1 = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp
     )
+
     /* Other default text styles to override
     button = TextStyle(
         fontFamily = FontFamily.Default,
