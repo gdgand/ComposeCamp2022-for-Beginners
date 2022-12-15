@@ -26,7 +26,7 @@ class GameViewModel : ViewModel() {
 
     private fun pickRandomWordAndShuffle(): String {
         // Continue picking up a new random word until you get one that hasn't been used before
-        currentWord = allWords.random(Random(System.currentTimeMillis()))
+        currentWord = allWords.random()
         if (usedWords.contains(currentWord)) {
             return pickRandomWordAndShuffle()
         } else {
@@ -38,9 +38,9 @@ class GameViewModel : ViewModel() {
     private fun shuffleCurrentWord(word: String): String {
         val tempWord = word.toCharArray()
         // Scramble the word
-        tempWord.shuffle(Random(System.currentTimeMillis()))
+        tempWord.shuffle()
         while (String(tempWord).equals(word)) {
-            tempWord.shuffle(Random(System.currentTimeMillis()))
+            tempWord.shuffle()
         }
         return String(tempWord)
     }
