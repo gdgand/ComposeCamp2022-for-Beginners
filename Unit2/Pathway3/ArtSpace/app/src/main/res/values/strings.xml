@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <!--    리소스-->
+    <string name="stary_night">별이 빛나는 밤</string>
+    <string name="vincent">빈센트 반 고흐 (1889)</string>
+
+    <string name="pearl">진주 귀고리를 한 소녀</string>
+    <string name="Johannes">요하네스 베르메르 (1665)</string>
+
+    <string name="edgar">무대 위에서의 발레 연습</string>
+    <string name="degas">에드가 드가 (1874)</string>
+
+</resources>

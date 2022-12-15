@@ -49,10 +49,7 @@ import com.example.sports.data.LocalSportsDataProvider
 import com.example.sports.model.Sport
 import com.example.sports.ui.theme.SportsTheme
 
-/**
- * Main composable that serves as container
- * which displays content according to [uiState]
- */
+
 @Composable
 fun SportsApp(
     modifier: Modifier = Modifier,
@@ -96,8 +93,11 @@ fun SportsApp(
 fun SportsAppBar(
     onBackButtonClick: () -> Unit,
     isShowingListPage: Boolean,
+    windowSize: WindowWidthSizeClass,
     modifier: Modifier = Modifier
 ) {
+    val isShowingDetailPage = windowSize != WindowWidthSizeClass.Expanded && !isShowingListPage
+
     TopAppBar(
         title = {
             Text(
@@ -266,6 +266,22 @@ fun SportsListPreview() {
         Surface {
             SportsList(
                 sports = LocalSportsDataProvider.getSportsData(),
+                onClick = {}
+            )
+        }
+    }
+}
+//asdf
+@Preview()
+@Composable
+fun SportsListAndDetailsPreview() {
+    SportsTheme() {
+        Surface {
+            SportsListAndDetail(
+                sports = LocalSportsDataProvider.getSportsData(),
+                selectedSport = LocalSportsDataProvider.getSportsData().getOrElse(0) {
+                    LocalSportsDataProvider.defaultSport
+                },
                 onClick = {}
             )
         }
