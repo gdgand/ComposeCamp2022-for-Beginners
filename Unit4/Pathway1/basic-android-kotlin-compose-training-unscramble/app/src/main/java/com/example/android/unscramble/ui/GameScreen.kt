@@ -64,6 +64,8 @@ fun GameScreen(modifier: Modifier = Modifier, gameViewModel: GameViewModel = vie
         GameStatus(
             wordCount = gameUiStatus.currentWordCount,
             score = gameUiStatus.score,
+            gameUiStatus = gameUiStatus,
+            gameViewModel = gameViewModel,
         )
         GameLayout(
             userGuess = gameViewModel.userGuess,
@@ -101,7 +103,13 @@ fun GameScreen(modifier: Modifier = Modifier, gameViewModel: GameViewModel = vie
 }
 
 @Composable
-fun GameStatus(wordCount: Int, score: Int, modifier: Modifier = Modifier) {
+fun GameStatus(
+    wordCount: Int,
+    score: Int,
+    gameUiStatus: GameUiStatus,
+    gameViewModel: GameViewModel,
+    modifier: Modifier = Modifier
+) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -119,6 +127,11 @@ fun GameStatus(wordCount: Int, score: Int, modifier: Modifier = Modifier) {
             text = stringResource(R.string.score, score),
             fontSize = 18.sp,
         )
+        if (gameUiStatus.isGameOver) {
+            FinalScoreDialog(
+                score = gameUiStatus.score,
+                onPlayAgain = { gameViewModel.resetGame() })
+        }
     }
 }
 
@@ -151,12 +164,12 @@ fun GameLayout(
             modifier = Modifier.fillMaxWidth(),
             onValueChange = onUserGuessChanged,
             label = {
-            if(isGuessWrong) {
-                Text(stringResource(id = R.string.wrong_guess))
-            } else {
-                Text(stringResource(R.string.enter_your_word))
-            }
-                    },
+                if (isGuessWrong) {
+                    Text(stringResource(id = R.string.wrong_guess))
+                } else {
+                    Text(stringResource(R.string.enter_your_word))
+                }
+            },
             isError = isGuessWrong,
             keyboardOptions = KeyboardOptions.Default.copy(
                 imeAction = ImeAction.Done
@@ -173,6 +186,7 @@ fun GameLayout(
  */
 @Composable
 private fun FinalScoreDialog(
+    score: Int,
     onPlayAgain: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -185,7 +199,7 @@ private fun FinalScoreDialog(
             // onCloseRequest.
         },
         title = { Text(stringResource(R.string.congratulations)) },
-        text = { Text(stringResource(R.string.you_scored, 0)) },
+        text = { Text(stringResource(R.string.you_scored, score)) },
         modifier = modifier,
         dismissButton = {
             TextButton(
