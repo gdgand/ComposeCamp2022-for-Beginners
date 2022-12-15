@@ -11,7 +11,11 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun calculate_20_percent_tip_no_roundup() {
+        val amount = 10.00
+        val tipPercent = 20.00
+        val expectedTip = "$2.00"
+        val actualTip = calculateTip(amount = amount, tipPercent = tipPercent, false)
+        assertEquals(expectedTip, actualTip)
     }
 }
