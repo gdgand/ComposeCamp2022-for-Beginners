@@ -19,6 +19,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -45,7 +46,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -65,11 +66,46 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreate Called")
         setContent {
             DessertClickerTheme {
                 DessertClickerApp(desserts = dessertList)
             }
         }
+    }
+
+    override fun onStart() {
+        Log.d(TAG, "onStart Called")
+        super.onStart()
+    }
+
+    override fun onResume() {
+        Log.d(TAG, "onResume Called")
+        super.onResume()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG, "onRestart Called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause Called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop Called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy Called")
+    }
+
+    companion object {
+        private const val TAG = "MainActivity"
     }
 }
 
@@ -122,20 +158,29 @@ private fun shareSoldDessertsInformation(intentContext: Context, dessertsSold: I
     }
 }
 
+/**
+ * Composable 함수에는 기존 Activity의 Lifecycle과 관련이 없다.
+ * 즉, 별개로 동작한다.
+ * Compose에게 객체의 상태를 추적해야 한다고 알리기 위해선, MutableState, State 타입의 변수를 사용해야 한다.
+ * 값을 유지하고 재사용하게 한다면 remember를 사용해야 한다.
+ *
+ * Compose는 리컴포지션 중에 수익 상태를 기억하지만 구성 변경 중에는 이 상태를 유지하지 않습니다. Compose가 구성 변경 중에 상태를 유지하려면 rememberSaveable을 사용해야 합니다.
+ * 리컴포지션 중에 값을 저장하려면 remember를 사용해야 합니다. rememberSaveable을 사용하여 리컴포지션 및 구성 변경 중에 값을 저장합니다.
+ */
 @Composable
 private fun DessertClickerApp(
     desserts: List<Dessert>
 ) {
 
-    var revenue by remember { mutableStateOf(0) }
-    var dessertsSold by remember { mutableStateOf(0) }
+    var revenue by rememberSaveable { mutableStateOf(0) }
+    var dessertsSold by rememberSaveable { mutableStateOf(0) }
 
-    val currentDessertIndex by remember { mutableStateOf(0) }
+    val currentDessertIndex by rememberSaveable { mutableStateOf(0) }
 
-    var currentDessertPrice by remember {
+    var currentDessertPrice by rememberSaveable {
         mutableStateOf(desserts[currentDessertIndex].price)
     }
-    var currentDessertImageId by remember {
+    var currentDessertImageId by rememberSaveable {
         mutableStateOf(desserts[currentDessertIndex].imageId)
     }
 
