@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="hyukey">혀키</string>
+    <string name="homigot">호미곶</string>
+    <string name="spacework">스페이스워크</string>
+    <string name="hyukey_desc">혀키입니다.</string>
+    <string name="homigot_desc">호미곶입니다.</string>
+    <string name="spacework_desc">스페이스워크입니다.</string>
+</resources>
