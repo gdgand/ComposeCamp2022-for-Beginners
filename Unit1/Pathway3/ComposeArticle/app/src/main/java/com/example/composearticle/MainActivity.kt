@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -24,12 +22,23 @@ import com.example.composearticle.ui.theme.ComposeArticleTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            ComposeArticleApp()
+        }
     }
 }
 
 @Composable
-fun ComposeArticleApp() { }
+fun ComposeArticleApp() {
+    ComposeArticleTheme() {
+        Surface(color = MaterialTheme.colors.background){
+            ArticleCard(title = stringResource(id = R.string.title_jetpack_compose_tutorial),
+                shortDescription = stringResource(id = R.string.compose_short_desc),
+                longDescription = stringResource(id = R.string.compose_long_desc),
+                imagePainter = painterResource(id = R.drawable.bg_compose_background))
+        }
+    }
+}
 
 @Composable
 private fun ArticleCard(
@@ -39,10 +48,36 @@ private fun ArticleCard(
     imagePainter: Painter,
     modifier: Modifier = Modifier,
 ) {
-    Column() { }
+    Column() {
+        Image(
+            painter = imagePainter,
+            contentDescription = null,
+            modifier = modifier.fillMaxWidth()
+        )
+        Column (){
+            Text(
+                text = title,
+                fontSize = 24.sp,
+                modifier = modifier.padding(16.dp)
+            )
+            Text(
+                text = shortDescription,
+                textAlign = TextAlign.Justify,
+                modifier = modifier.padding(start = 16.dp, end = 16.dp)
+            )
+            Text(
+                text = longDescription,
+                textAlign = TextAlign.Justify,
+                modifier = modifier.padding(16.dp)
+            )
+        }
+
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeArticleApp()
+}
