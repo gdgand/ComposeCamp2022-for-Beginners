@@ -123,7 +123,7 @@ fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
     }
 
 }
-
+ c
 @Composable
 private fun DogItemButton(
     expanded: Boolean,
