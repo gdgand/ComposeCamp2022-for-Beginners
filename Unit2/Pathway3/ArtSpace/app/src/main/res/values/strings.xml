@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Art Space</string>
+
+    <string name="picture_1_title">Grilling Beef</string>
+    <string name="picture_1_artist">DE Hahn(2022.11)</string>
+    <string name="picture_1_content_description">Grilling Beef</string>
+
+    <string name="picture_2_title">Bottles Of Wine</string>
+    <string name="picture_2_artist">DE Hahn(2022.11)</string>
+    <string name="picture_2_content_description">Bottles Of Wine</string>
+
+    <string name="picture_3_title">Fireworks</string>
+    <string name="picture_3_artist">DE Hahn(2022.10)</string>
+    <string name="picture_3_content_description">Fireworks</string>
+</resources>

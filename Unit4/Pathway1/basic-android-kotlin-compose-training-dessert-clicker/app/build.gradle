@@ -47,6 +47,8 @@ android {
 
 dependencies {
 
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
+
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     implementation 'androidx.activity:activity-compose:1.5.1'
