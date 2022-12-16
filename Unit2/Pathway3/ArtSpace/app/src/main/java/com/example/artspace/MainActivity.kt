@@ -7,6 +7,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -62,6 +63,37 @@ fun ArtSpaceRow(
     ) {
         ImageWithFrame(imageResourceId = imageResourceId, contentDescriptionId = contentDescriptionId)
         TitleAndArtist(textTitleResourceId = textTitleResourceId, textDescriptionResourceId = textDescriptionResourceId)
+    }
+}
+
+@Composable
+fun Buttons(
+    previousButton : () -> Unit,
+    nextButton : () -> Unit,
+    modifier: Modifier = Modifier
+){
+    Row(
+        modifier = modifier.padding(7.dp)
+    ){
+        Button(
+            onClick = { previousButton() },
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(10.dp)
+                .weight(1f)
+        ){
+            Text(text = "Previous")
+        }
+        Button(
+            onClick = { nextButton() },
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(10.dp)
+                .weight(1f)
+        ) {
+            Text(text = "Next")
+        }
+
     }
 }
 
