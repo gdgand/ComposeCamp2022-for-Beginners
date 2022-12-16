@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,9 +29,46 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ComposeQuadrantApp() {
+    var modifier = Modifier
+        .fillMaxHeight()
+        .fillMaxWidth()
     Column() {
-        Row() { }
-        Row() { }
+        Row(
+            modifier = Modifier.weight(1F),
+        ) {
+            ComposableInfoCard(
+                title = stringResource(R.string.first_title),
+                description = stringResource(R.string.first_description),
+                backgroundColor = Color.Green,
+                modifier = modifier
+                    .weight(1F)
+            )
+            ComposableInfoCard(
+                title = stringResource(R.string.second_title),
+                description = stringResource(R.string.second_description),
+                backgroundColor = Color.Yellow,
+                modifier = modifier
+                    .weight(1F)
+            )
+        }
+        Row(
+            modifier = Modifier.weight(1F)
+        ) {
+            ComposableInfoCard(
+                title = stringResource(R.string.third_title),
+                description = stringResource(R.string.third_description),
+                backgroundColor = Color.Cyan,
+                modifier = modifier
+                    .weight(1F)
+            )
+            ComposableInfoCard(
+                title = stringResource(R.string.fourth_title),
+                description = stringResource(R.string.fourth_description),
+                backgroundColor = Color.Gray,
+                modifier = modifier
+                    .weight(1F)
+            )
+        }
     }
 }
 
@@ -41,10 +79,29 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column( ) { }
+    Column(
+        modifier = modifier
+            .background(backgroundColor)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(
+            text = title,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(bottom = 16.dp)
+        )
+        Text(
+            text = description,
+            textAlign = TextAlign.Justify
+        )
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeQuadrantApp()
+}
