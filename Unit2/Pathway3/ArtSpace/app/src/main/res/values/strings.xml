@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">ArtSpace</string>
+
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+
+    <string name="srDesc_0">젠투펭귄</string>
+    <string name="srDesc_1">황제펭귄</string>
+    <string name="srDesc_2">턱끈펭귄</string>
+    <string name="srDesc_3">아델리펭귄</string>
+
+    <string name="title_0">젠투펭귄</string>
+    <string name="title_1">황제펭귄</string>
+    <string name="title_2">턱끈펭귄</string>
+    <string name="title_3">아델리펭귄</string>
+
+    <string name="author_0">귀여운 젠투펭귄</string>
+    <string name="author_1">귀여운 황제펭귄</string>
+    <string name="author_2">귀여운 턱끈펭귄</string>
+    <string name="author_3">귀여운 아델리펭귄</string>
 </resources>
