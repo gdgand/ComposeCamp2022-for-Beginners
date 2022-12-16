@@ -33,5 +33,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AffirmationApp() {
     AffirmationsTheme {
+        affirmationsCard(affirmation = Affirmation(R.string.affirmation1, R.drawble.image1))
     }
 }

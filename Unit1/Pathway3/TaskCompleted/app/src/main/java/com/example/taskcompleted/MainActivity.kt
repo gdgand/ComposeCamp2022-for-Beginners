@@ -22,15 +22,33 @@ import com.example.taskcompleted.ui.theme.TaskCompletedTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent { 
+            TaskCompletedTheme{
+                Surface{
+                    TaskCompletedScreen()
+                }
+            }
+        }
     }
 }
 
 @Composable
 fun TaskCompletedScreen() {
-    Column( ) { }
+    Column(modifier=Modifier ) { 
+        val image = painterResource(R.drawable.ic_task_completed)
+        image(painter = image, contentDescription=null)
+        Text(
+            text = stringResource(R.string.completed_text)
+        )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    TaskCompletedTheme{
+        Surface{
+            TaskCompletedScreen()
+        }
+    }
+ }

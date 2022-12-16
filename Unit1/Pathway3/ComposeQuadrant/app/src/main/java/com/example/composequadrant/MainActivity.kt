@@ -22,15 +22,34 @@ import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent { 
+            ComposeQuadrantTheme {
+                Surface(color = MaterialTheme.colors.background){
+                    ComposeQuadrantApp()
+                }
+        }
     }
 }
 
 @Composable
 fun ComposeQuadrantApp() {
-    Column() {
-        Row() { }
-        Row() { }
+    Column(Modifier.fillMaxSize()) {
+        Row(Modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = stringResource(R.string.first_title),
+                description = stringResource(R.string.first_description).
+                backgroundColor = Color.Red,
+                modifier=Modifier.weight(1f)
+            )
+         }
+        Row(Modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = stringResource(R.string.third_title),
+                description = stringResource(R.string.third_description),
+                backgroundColor = Color.blue,
+                modifier = Modifier.weight(1f)
+            )
+         }
     }
 }
 
@@ -41,10 +60,26 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column( ) { }
+    Column( 
+        modifier = modifier
+            .fillMaxSize()
+            .background(backgroundColor)
+            .padding(15.dp)
+    ) { 
+        Text(
+            text = title,
+            fontWeight = FontWeight.Bold,
+            modifier=Modifier
+                .padding(bottom = 15.dp)
+        )
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    ComposeQuadrantTheme{
+        ComposeQuadrantApp()
+    }
+ }

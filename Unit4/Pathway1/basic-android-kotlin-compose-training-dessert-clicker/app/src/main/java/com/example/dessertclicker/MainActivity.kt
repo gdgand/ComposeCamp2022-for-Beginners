@@ -301,3 +301,4 @@ fun MyDessertClickerAppPreview() {
         DessertClickerApp(listOf(Dessert(R.drawable.cupcake, 5, 0)))
     }
 }
+
