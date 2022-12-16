@@ -22,7 +22,7 @@ import com.example.sports.model.Sport
 /**
  * Sports data
  */
-object LocalSportsDataProvider{
+object LocalSportsDataProvider {
     val defaultSport = getSportsData()[0]
 
     fun getSportsData(): List<Sport> {
