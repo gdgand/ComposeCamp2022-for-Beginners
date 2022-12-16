@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import com.example.android.unscramble.ui.GameScreen
 import com.example.android.unscramble.ui.theme.UnscrambleTheme
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,4 +42,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
