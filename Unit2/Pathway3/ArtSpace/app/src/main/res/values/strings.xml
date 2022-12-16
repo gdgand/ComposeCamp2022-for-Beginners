@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">ArtSpace</string>
-    <string name="sample_title">Sample Title</string>
-    <string name="sample_artist">Sample Artist</string>
-    <string name="sample_year">Sample Year</string>
+    <string name="title_1">Grapes, Lemons, Pears, and Apples</string>
+    <string name="artist_1">Vincent van Gogh</string>
+    <string name="year_1">1887</string>
+    <string name="title_2">Le Coup De Canon</string>
+    <string name="artist_2">Félix Ziem</string>
+    <string name="year_2">1880 -1885</string>
+    <string name="title_3">View Of The Jesuit Church At Olinda, Brazil</string>
+    <string name="artist_3">Frans Post</string>
+    <string name="year_3">1665</string>
 </resources>
