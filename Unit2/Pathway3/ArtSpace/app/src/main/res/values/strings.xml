@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Art Space</string>
+    <string name="christmas_tree_title">Christmas Tree</string>
+    <string name="christmas_tree_artist">Rudolph(2019)</string>
+    <string name="christmas_description">christmas tree</string>
+    <string name="blueberries_title">Blueberries</string>
+    <string name="blueberries_artist">Blueberry(2019)</string>
+    <string name="blueberries_description">blueberries</string>
+    <string name="cereal_title">Cereal</string>
+    <string name="cereal_artist">lache(2020)</string>
+    <string name="cereal_description">cereal</string>
+    <string name="macarons_title">Macarons</string>
+    <string name="macarons_artist">Catherine(2018)</string>
+    <string name="macarons_description">macarons</string>
 </resources>

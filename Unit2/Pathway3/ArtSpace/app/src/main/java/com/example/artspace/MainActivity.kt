@@ -11,7 +11,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -45,6 +45,47 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtSpaceScreen(){
+    var currentStep by remember {
+        mutableStateOf(1)
+    }
+    when(currentStep){
+        1 -> {
+            ArtSpaceRow(
+                imageResourceId = R.drawable.christmas_6902574_960_720,
+                contentDescriptionId = R.string.christmas_description,
+                textTitleResourceId = R.string.christmas_tree_title,
+                textDescriptionResourceId = R.string.christmas_tree_artist,
+                previousButton = { currentStep = 4 },
+                nextButton = { currentStep++ })
+        }
+        2 -> {
+            ArtSpaceRow(
+                imageResourceId = R.drawable.blueberries_539134_960_720,
+                contentDescriptionId = R.string.blueberries_description,
+                textTitleResourceId = R.string.blueberries_title,
+                textDescriptionResourceId = R.string.blueberries_artist,
+                previousButton = { currentStep-- },
+                nextButton = { currentStep++ })
+        }
+        3 -> {
+            ArtSpaceRow(
+                imageResourceId = R.drawable.cereal_1887237_960_720,
+                contentDescriptionId = R.string.cereal_description,
+                textTitleResourceId = R.string.cereal_title,
+                textDescriptionResourceId = R.string.cereal_artist,
+                previousButton = { currentStep-- },
+                nextButton = { currentStep++ })
+        }
+        4 -> {
+            ArtSpaceRow(
+                imageResourceId = R.drawable.macarons_5690175_960_720,
+                contentDescriptionId = R.string.macarons_description,
+                textTitleResourceId = R.string.macarons_title,
+                textDescriptionResourceId = R.string.macarons_artist,
+                previousButton = { currentStep-- },
+                nextButton = { currentStep = 1 })
+        }
+    }
 
 }
 
@@ -54,6 +95,8 @@ fun ArtSpaceRow(
     contentDescriptionId : Int,
     textTitleResourceId : Int,
     textDescriptionResourceId : Int,
+    previousButton : () -> Unit,
+    nextButton : () -> Unit,
     modifier: Modifier= Modifier
 ){
     Column(
@@ -63,6 +106,7 @@ fun ArtSpaceRow(
     ) {
         ImageWithFrame(imageResourceId = imageResourceId, contentDescriptionId = contentDescriptionId)
         TitleAndArtist(textTitleResourceId = textTitleResourceId, textDescriptionResourceId = textDescriptionResourceId)
+        Buttons(previousButton, nextButton)
     }
 }
 
