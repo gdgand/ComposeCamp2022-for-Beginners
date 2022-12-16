@@ -67,7 +67,7 @@ class GameViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel(
         savedStateHandle[GAME_UI_STATE_KEY] = GameUiState(currentScrambledWord = pickRandomWordAndShuffle())
     }
 
-    fun updateUserGuess(guessedWord: String){
+    fun updateUserGuess(guessedWord: String) {
         userGuess = guessedWord
     }
 
