@@ -55,6 +55,7 @@ fun ArtSpaceScreen(){
                 contentDescriptionId = R.string.christmas_description,
                 textTitleResourceId = R.string.christmas_tree_title,
                 textDescriptionResourceId = R.string.christmas_tree_artist,
+                textYearId = R.string.christmas_tree_year,
                 previousButton = { currentStep = 4 },
                 nextButton = { currentStep++ })
         }
@@ -64,6 +65,7 @@ fun ArtSpaceScreen(){
                 contentDescriptionId = R.string.blueberries_description,
                 textTitleResourceId = R.string.blueberries_title,
                 textDescriptionResourceId = R.string.blueberries_artist,
+                textYearId = R.string.blueberries_year,
                 previousButton = { currentStep-- },
                 nextButton = { currentStep++ })
         }
@@ -73,6 +75,7 @@ fun ArtSpaceScreen(){
                 contentDescriptionId = R.string.cereal_description,
                 textTitleResourceId = R.string.cereal_title,
                 textDescriptionResourceId = R.string.cereal_artist,
+                textYearId = R.string.cereal_year,
                 previousButton = { currentStep-- },
                 nextButton = { currentStep++ })
         }
@@ -82,6 +85,7 @@ fun ArtSpaceScreen(){
                 contentDescriptionId = R.string.macarons_description,
                 textTitleResourceId = R.string.macarons_title,
                 textDescriptionResourceId = R.string.macarons_artist,
+                textYearId = R.string.macarons_year,
                 previousButton = { currentStep-- },
                 nextButton = { currentStep = 1 })
         }
@@ -95,17 +99,20 @@ fun ArtSpaceRow(
     contentDescriptionId : Int,
     textTitleResourceId : Int,
     textDescriptionResourceId : Int,
+    textYearId : Int,
     previousButton : () -> Unit,
     nextButton : () -> Unit,
     modifier: Modifier= Modifier
 ){
     Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(15.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier.fillMaxSize()
+        verticalArrangement = Arrangement.Center
     ) {
         ImageWithFrame(imageResourceId = imageResourceId, contentDescriptionId = contentDescriptionId)
-        TitleAndArtist(textTitleResourceId = textTitleResourceId, textDescriptionResourceId = textDescriptionResourceId)
+        TitleAndArtist(textTitleResourceId = textTitleResourceId, textDescriptionResourceId = textDescriptionResourceId, textYearId)
         Buttons(previousButton, nextButton)
     }
 }
@@ -145,26 +152,37 @@ fun Buttons(
 fun TitleAndArtist(
     textTitleResourceId : Int,
     textDescriptionResourceId : Int,
+    textYearId: Int,
     modifier: Modifier = Modifier
 ){
     Surface(
-        elevation = 5.dp
+        elevation = 5.dp,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(10.dp)
     ) {
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier = modifier.fillMaxSize()
+            modifier = modifier.padding(8.dp)
         ) {
             Text(
                 text = stringResource(id = textTitleResourceId),
-                fontSize = 20.sp,
+                fontSize = 25.sp,
                 textAlign = TextAlign.Start,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Normal
             )
-            Text(
-                text = stringResource(id = textDescriptionResourceId),
-                textAlign = TextAlign.Start
-            )
+            Row(){
+                Text(
+                    text = stringResource(id = textDescriptionResourceId),
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Start
+                )
+                Text(
+                    text = stringResource(id = textYearId),
+                    fontWeight = FontWeight.Light,
+                    textAlign = TextAlign.Start
+                )
+            }
         }
     }
 }
@@ -176,9 +194,13 @@ fun ImageWithFrame(
     modifier: Modifier = Modifier
 ){
     Surface(
-        modifier = modifier.height(500.dp),
-        elevation = 3.dp,
-        border = BorderStroke(3.dp, Color.DarkGray)
+        modifier = modifier
+            .height(450.dp)
+            .fillMaxWidth()
+            .padding(10.dp)
+        ,
+        elevation = 5.dp,
+        border = BorderStroke(3.dp, Color.Gray)
     ) {
         Image(
             painter = painterResource(id = imageResourceId),
