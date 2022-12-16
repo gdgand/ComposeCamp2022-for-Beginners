@@ -33,6 +33,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.affirmationscodelab.data.Datasource
 import com.example.affirmationscodelab.model.Affirmation
 import com.example.affirmationscodelab.ui.theme.AffirmationsTheme
 
@@ -64,6 +65,15 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier){
     }
 }
 
+@Composable
+private fun AffirmationList(affirmationList : List<Affirmation>, modifier: Modifier = Modifier){
+    Column {
+        affirmationList.forEach { affirmation ->
+            AffirmationCard(affirmation = affirmation)
+        }
+    }
+}
+
 @Preview
 @Composable
 fun AffirmationCardPreview(){
@@ -75,5 +85,6 @@ fun AffirmationCardPreview(){
 @Composable
 fun AffirmationApp() {
     AffirmationsTheme {
+        AffirmationList(affirmationList = Datasource().loadAffirmations())
     }
 }
