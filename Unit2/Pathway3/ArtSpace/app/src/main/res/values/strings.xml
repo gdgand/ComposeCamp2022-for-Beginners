@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="image1_title">image1_title</string>
+    <string name="image2_title">image2_title</string>
+    <string name="image3_title">image3_title</string>
+    <string name="image4_title">image4_title</string>
+    <string name="image5_title">image5_title</string>
+    <string name="image6_title">image6_title</string>
+    <string name="image1_artist">image1_artist</string>
+    <string name="image2_artist">image2_artist</string>
+    <string name="image3_artist">image3_artist</string>
+    <string name="image4_artist">image4_artist</string>
+    <string name="image5_artist">image5_artist</string>
+    <string name="image6_artist">image6_artist</string>
+</resources>
