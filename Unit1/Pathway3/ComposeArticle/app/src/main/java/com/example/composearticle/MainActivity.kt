@@ -39,10 +39,26 @@ private fun ArticleCard(
     imagePainter: Painter,
     modifier: Modifier = Modifier,
 ) {
-    Column() { }
+    Column() { 
+
+        Text(
+            text = shortDescription,
+            modfier=Modifier
+                .padding(start=30.dp,end=15.dp)
+            textAlign = TextAlign.Justify
+        )
+
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() { 
+
+    ComposeArticleTheme{
+        Surface{
+            ComposeArticleApp()
+        }
+    }
+}
