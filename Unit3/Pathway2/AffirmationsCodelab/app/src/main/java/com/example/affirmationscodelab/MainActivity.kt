@@ -22,6 +22,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -48,28 +51,30 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier){
-    Column {
-        Image(
-            painter = painterResource(id = affirmation.imageResourceId),
-            contentDescription = stringResource(id = affirmation.stringResourceId),
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(194.dp),
-            contentScale = ContentScale.Crop
-        )
-        Text(
-            text = stringResource(id = affirmation.stringResourceId),
-            modifier = Modifier.padding(16.dp),
-            style = MaterialTheme.typography.h6
-        )
+    Card(modifier = Modifier.padding(8.dp), elevation = 4.dp) {
+        Column {
+            Image(
+                painter = painterResource(affirmation.imageResourceId),
+                contentDescription = stringResource(affirmation.stringResourceId),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(194.dp),
+                contentScale = ContentScale.Crop
+            )
+            Text(
+                text = stringResource(affirmation.stringResourceId),
+                modifier = Modifier.padding(16.dp),
+                style = MaterialTheme.typography.h6
+            )
+        }
     }
 }
 
 @Composable
-private fun AffirmationList(affirmationList : List<Affirmation>, modifier: Modifier = Modifier){
-    Column {
-        affirmationList.forEach { affirmation ->
-            AffirmationCard(affirmation = affirmation)
+private fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Modifier) {
+    LazyColumn {
+        items(affirmationList){ affirmation ->
+            AffirmationCard(affirmation)
         }
     }
 }
