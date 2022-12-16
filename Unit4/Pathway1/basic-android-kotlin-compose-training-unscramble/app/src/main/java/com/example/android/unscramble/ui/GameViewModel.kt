@@ -20,13 +20,22 @@ class GameViewModel : ViewModel() { //viewModel 클래스에서 확장
     private var usedWords: MutableSet<String> = mutableSetOf()
     //stateflow
     private val _uiState = MutableStateFlow(GameUiState())
-
     //읽기전용속성상태
     val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
+
+    init {
+        resetGame()
+    }
+
+    fun resetGame() {
+        usedWords.clear()
+        _uiState.value = GameUiState(currentScrambledWord = pickRandomWordAndShuffle())
+    }
 
     fun updateUserGuess(guessedWord: String){
         userGuess = guessedWord
     }
+
     private fun pickRandomWordAndShuffle(): String {
         // Continue picking up a new random word until you get one that hasn't been used before
         currentWord = allWords.random()
@@ -63,6 +72,7 @@ class GameViewModel : ViewModel() { //viewModel 클래스에서 확장
                 currentState.copy(isGuessedWordWrong = true)
             }
         }
+        updateUserGuess("")
     }
 
     private fun updateGameState(updatedScore: Int) {
@@ -71,7 +81,6 @@ class GameViewModel : ViewModel() { //viewModel 클래스에서 확장
                 currentState.copy(
                     isGuessedWordWrong = false,
                     score = updatedScore,
-                    currentWordCount = currentState.currentWordCount.inc(),
                     isGameOver = true
                 )
             }
@@ -86,9 +95,5 @@ class GameViewModel : ViewModel() { //viewModel 클래스에서 확장
                 )
             }
         }
-    }
-    fun resetGame() {
-        usedWords.clear()
-        _uiState.value = GameUiState(currentScrambledWord = pickRandomWordAndShuffle())
     }
 }
