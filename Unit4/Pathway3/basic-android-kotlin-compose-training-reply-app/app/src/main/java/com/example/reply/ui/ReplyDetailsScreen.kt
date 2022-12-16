@@ -68,7 +68,8 @@ fun ReplyDetailsScreen(
             ReplyEmailDetailsCard(
                 email = replyUiState.currentSelectedEmail,
                 mailboxType = replyUiState.currentMailbox,
-                modifier = Modifier.padding(horizontal = 16.dp)
+                modifier =
+                Modifier.padding(horizontal = 16.dp)
             )
         }
     }
