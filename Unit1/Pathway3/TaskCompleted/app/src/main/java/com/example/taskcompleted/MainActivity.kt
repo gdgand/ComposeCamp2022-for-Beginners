@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,15 +23,57 @@ import com.example.taskcompleted.ui.theme.TaskCompletedTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            TaskCompletedTheme() {
+                androidx.compose.material.Surface {
+                    TaskCompletedScreen()
+                }
+            }
+        }
     }
 }
 
 @Composable
 fun TaskCompletedScreen() {
-    Column( ) { }
+    val image = painterResource(id = R.drawable.ic_task_completed)
+    Column(
+       horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+        verticalArrangement = Arrangement.Center
+
+    ) {
+        Image(painter = image , contentDescription = null)
+
+        Text(
+            text = stringResource(id = R.string.all_task_completed),
+            fontSize = 24.sp,
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.
+            padding(top = 24.dp, bottom = 8.dp)
+
+        )
+
+        Text(
+            text = stringResource(id = R.string.nice_work),
+            fontSize = 16.sp,
+            textAlign = TextAlign.Center
+
+        )
+
+
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    TaskCompletedTheme() {
+        androidx.compose.material.Surface {
+            TaskCompletedScreen()
+        }
+    }
+
+}
