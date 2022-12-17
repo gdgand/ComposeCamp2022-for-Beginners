@@ -7,7 +7,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import com.example.dessertclicker.data.Datasource.dessertList
 
-class DessertUiState(
+data class DessertUiState(
     val currentDessertIndex: Int = 0,
     val dessertsSold: Int = 0,
     val revenue: Int = 0,
