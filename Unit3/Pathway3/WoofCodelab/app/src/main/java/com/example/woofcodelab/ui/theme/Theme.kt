@@ -22,15 +22,21 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    background = Cyan900,//Cyan900이런거는 Color.kt에서 찾아옴
+    surface = Cyan700,
+    onSurface = White,
+    primary = Grey900,
+    onPrimary = White,
+    secondary = Grey100,
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    background= Green100,//스크롤 간으한 콘텐츠 뒤에
+    surface= Green50,//카드, 시트, 메뉴같은 구성요소 표면
+    onSurface= Grey900,//surface위에 표시
+    primary = Grey50,//가장자주표시되는색
+    primaryVariant = Grey900,
+    secondary = Grey700//앱을 강조하고 구분하는곳에 씀
 
     /* Other default colors to override
     background = Color.White,
@@ -44,7 +50,7 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun WoofTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val colors = if (darkTheme) {
+    val colors = if (darkTheme) {//darkTheme이 true면 어두운 팔레트
         DarkColorPalette
     } else {
         LightColorPalette
