@@ -86,7 +86,9 @@ fun AffirmationList(
     affirmationList: List<Affirmation>,
     modifier: Modifier = Modifier
 ) {
-    LazyColumn {
+    LazyColumn(
+        modifier = modifier
+    ) {
         items(affirmationList) { affirmation ->
             AffirmationCard(affirmation)
         }
