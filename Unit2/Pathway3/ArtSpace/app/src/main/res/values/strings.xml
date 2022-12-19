@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ArtSpace</string>
+    <string name="art1_desc">art desc</string>
+    <string name="art1_title">blahblah</string>
+    <string name="art1_artist">i don\'t know</string>
+    <string name="art2_desc">art2_desc</string>
+    <string name="art2_title">blahblah 2</string>
+    <string name="art2_artist">i don\'t know..</string>
+    <string name="art3_desc">art3_desc</string>
+    <string name="art3_title">blahblah 3</string>
+    <string name="art3_artist">i don\'t know too</string>
+</resources>
