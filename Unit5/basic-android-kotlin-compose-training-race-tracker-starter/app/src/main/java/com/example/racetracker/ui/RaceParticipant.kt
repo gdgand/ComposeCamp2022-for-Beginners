@@ -50,17 +50,17 @@ class RaceParticipant(
      */
     fun reset() {
         currentProgress = 0
-    }
 
-    suspend fun run() {
-        try {
-            while (currentProgress < maxProgress) {
-                delay(progressDelayMillis)
-                currentProgress += progressIncrement
+        suspend fun run() {
+            try {
+                while (currentProgress < maxProgress) {
+                    delay(progressDelayMillis)
+                    currentProgress += progressIncrement
+                }
+            } catch (e: CancellationException) {
+                Log.e("RaceParticipant", "$name: ${e.message}")
+                throw e
             }
-        } catch (e: CancellationException) {
-            Log.e("RaceParticipant", "$name: ${e.message}")
-            throw e
         }
     }
 }
