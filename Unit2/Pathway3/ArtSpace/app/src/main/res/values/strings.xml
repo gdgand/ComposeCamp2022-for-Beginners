@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="bear_image">Bear</string>
+    <string name="bird_image">Bird</string>
+    <string name="building_image">Building</string>
+    <string name="car_image">Car</string>
+    <string name="cat_image">Cat</string>
+    <string name="sea_image">Sea</string>
+    <string name="bear_image_description">Kim Unknown (2020)</string>
+    <string name="bird_image_description">Lee Unknown (2018)</string>
+    <string name="building_image_description">Park Unknown (2019)</string>
+    <string name="car_image_description">Choi Unknown (2017)</string>
+    <string name="cat_image_description">Jeong Unknown (2020)</string>
+    <string name="sea_image_description">Song Unknown (2021)</string>
+    <string name="next_button">Next</string>
+    <string name="previous_button">Previous</string>
+</resources>
