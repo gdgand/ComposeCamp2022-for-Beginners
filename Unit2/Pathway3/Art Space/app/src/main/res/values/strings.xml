@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Art Space</string>
+
+    <string name="shiba">shiba</string>
+    <string name="shepherd">shepherd</string>
+    <string name="sichu">sichu</string>
+    <string name="biggle">biggle</string>
+
+    <string name="shiba_desc">Hello, I am Shiba dog</string>
+    <string name="shepherd_desc">Hello, I am Shepherd</string>
+    <string name="sichu_desc">Hello, I am Sichu</string>
+    <string name="biggle_desc">Hello, I am Biggle</string>
+
+</resources>
