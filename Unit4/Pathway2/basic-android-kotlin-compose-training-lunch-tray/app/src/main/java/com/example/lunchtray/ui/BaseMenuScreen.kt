@@ -34,9 +34,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.lunchtray.R
 import com.example.lunchtray.model.MenuItem
+import com.example.lunchtray.ui.theme.LunchTrayTheme
 
 @Composable
 fun BaseMenuScreen(
@@ -142,5 +144,28 @@ fun MenuScreenButtonGroup(
         ) {
             Text(stringResource(R.string.next).uppercase())
         }
+    }
+}
+
+
+//
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun MenuScreenButtonGroupPreview(){
+//    LunchTrayTheme {
+//        MenuScreenButtonGroup("MainDish1")
+//    }
+//}
+
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun BaseMenuScreenPreview(){
+    LunchTrayTheme {
+        BaseMenuScreen(options = listOf(MenuItem.EntreeItem("Dish1", "MainDishBlahBlah", 8.0)
+                , MenuItem.SideDishItem("Dish1", "MainDishBlahBlah", 9.0)
+                , MenuItem.AccompanimentItem("Dish1", "MainDishBlahBlah", 10.0))
+            , onSelectionChanged = {}
+        )
     }
 }

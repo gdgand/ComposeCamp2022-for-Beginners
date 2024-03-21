@@ -16,25 +16,48 @@
 
 package com.example.reply.ui
 
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.reply.data.Email
 import com.example.reply.data.MailboxType
+import com.example.reply.ui.theme.ReplyTheme
+import com.example.reply.ui.util.ReplyContentType
+import com.example.reply.ui.util.ReplyNavigationType
 
 /**
  * Main composable that serves as container
  * which displays content according to [replyUiState]
  */
 @Composable
-fun ReplyApp(modifier: Modifier = Modifier) {
+fun ReplyApp(windowSize: WindowWidthSizeClass
+             , modifier: Modifier = Modifier) {
+
     val viewModel: ReplyViewModel = viewModel()
     val replyUiState = viewModel.uiState.collectAsState().value
+    val navigationType: ReplyNavigationType = when (windowSize) {
+        WindowWidthSizeClass.Compact -> ReplyNavigationType.BOTTOM_NAVIGATION
+        WindowWidthSizeClass.Medium -> ReplyNavigationType.NAVIGATION_RAIL
+        WindowWidthSizeClass.Expanded -> ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER
+        else -> ReplyNavigationType.BOTTOM_NAVIGATION
+    }
+    val contentType: ReplyContentType = when (windowSize) {
+        WindowWidthSizeClass.Compact -> ReplyContentType.LIST_ONLY
+        WindowWidthSizeClass.Medium -> ReplyContentType.LIST_ONLY
+        WindowWidthSizeClass.Expanded -> ReplyContentType.LIST_AND_DETAIL
+        else -> ReplyContentType.LIST_ONLY
+    }
+
 
     ReplyHomeScreen(
+        navigationType = navigationType,
+        contentType = contentType,
         replyUiState = replyUiState,
-        onTabPressed = { mailboxType: MailboxType ->
+        onTabPressed = {
+                mailboxType: MailboxType ->
             viewModel.updateCurrentMailbox(mailboxType = mailboxType)
             viewModel.resetHomeScreenStates()
         },
@@ -48,4 +71,13 @@ fun ReplyApp(modifier: Modifier = Modifier) {
         },
         modifier = modifier
     )
+}
+
+
+@Preview(showBackground = true, widthDp = 700)
+@Composable
+fun ReplyAppInPreview(){
+    ReplyTheme {
+        ReplyApp(windowSize = WindowWidthSizeClass.Medium)
+    }
 }

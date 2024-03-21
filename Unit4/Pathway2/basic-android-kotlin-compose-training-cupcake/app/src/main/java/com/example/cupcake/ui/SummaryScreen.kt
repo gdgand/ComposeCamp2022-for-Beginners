@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import com.example.cupcake.R
 import com.example.cupcake.data.OrderUiState
 import com.example.cupcake.ui.components.FormattedPriceLabel
+import com.example.cupcake.ui.theme.CupcakeTheme
 
 /**
  * This composable expects [orderUiState] that represents the order state, [onCancelButtonClicked] lambda
@@ -44,8 +45,8 @@ import com.example.cupcake.ui.components.FormattedPriceLabel
 @Composable
 fun OrderSummaryScreen(
     orderUiState: OrderUiState,
-    // TODO: add onCancelButtonClicked
-    // TODO: add onSendButtonClicked
+    onCancelButtonClicked: () -> Unit = {},
+    onSendButtonClicked: (String, String) -> Unit = { _, _ ->  },
     modifier: Modifier = Modifier
 ){
     val resources = LocalContext.current.resources
@@ -86,27 +87,29 @@ fun OrderSummaryScreen(
         Spacer(modifier = Modifier.height(8.dp))
         FormattedPriceLabel(
             subtotal = orderUiState.price,
-            modifier = Modifier.align(Alignment.End)
+            modifier = Modifier.align(Alignment.End).padding(end = 16.dp)
         )
         Button(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { /* TODO: handle send button */ }
+            onClick = {  onSendButtonClicked(newOrder, orderSummary) }
         ) {
             Text(stringResource(R.string.send))
         }
         OutlinedButton(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { /* TODO: handle cancel button */ }
+            onClick = onCancelButtonClicked
         ) {
             Text(stringResource(R.string.cancel))
         }
     }
 }
 
-@Preview
+@Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun OrderSummaryPreview(){
-    OrderSummaryScreen(
-        orderUiState = OrderUiState(0, "Test", "Test", "$300.00"),
-    )
+    CupcakeTheme {
+        OrderSummaryScreen(
+            orderUiState = OrderUiState(0, "Test", "Test", "$300.00"),
+        )
+    }
 }

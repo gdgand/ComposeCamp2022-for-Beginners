@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MyCity</string>
+    <string name="tab_restaurant">식당</string>
+    <string name="tab_coffeeshop">커피점</string>
+    <string name="tab_park">공원</string>
+    <string name="tab_shoppingmall">쇼핑몰</string>
+    <string name="vallet_park_reservation">주차 예약</string>
+    <string name="call_to_manager">전화 걸기</string>
+    <string name="dining_revervation">얘약</string>
+    <string name="show_vacancy">여유 좌석 조회</string>
+    <string name="show_menu">메뉴 보기</string>
+    <string name="navigation_back">이전</string>
+</resources>
